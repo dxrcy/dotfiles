@@ -43,9 +43,10 @@
     alias wiki='wiki-tui'
     alias everygarf='everygarf ~/pics/garfield'
     alias ls='exa -l'
+    alias lsa='ls -a'
     alias scim='sc-im'
 # Misc
-    alias zshrc='nvim ~/.zshrc'
+    alias zshrc='nvim ~/dotfiles/zshrc/.zshrc'
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
 # Rust
