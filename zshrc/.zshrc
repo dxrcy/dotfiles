@@ -18,6 +18,11 @@
     export KEYTIMEOUT=1
 # Change directory by typing name
     setopt autocd
+# Persistant history
+    HISTFILE=~/.zsh_history
+    HISTSIZE=10000
+    SAVEHIST=10000
+    setopt SHARE_HISTORY
 
 #========= PACKAGES
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -44,6 +49,7 @@
     alias everygarf='everygarf ~/pics/garfield'
     alias ls='exa -l'
     alias lsa='ls -a'
+    alias tree='ls -T'
     alias scim='sc-im'
 # Misc
     alias zshrc='nvim ~/dotfiles/zshrc/.zshrc'
