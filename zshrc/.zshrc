@@ -18,11 +18,16 @@
     export KEYTIMEOUT=1
 # Change directory by typing name
     setopt autocd
+    alias '...'='cd ../../'
+    alias '....'='cd ../../../'
 # Persistant history
     HISTFILE=~/.zsh_history
     HISTSIZE=10000
     SAVEHIST=10000
     setopt SHARE_HISTORY
+# Use case-insensitive autocompletions
+    autoload -Uz compinit && compinit
+    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 #========= PACKAGES
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
