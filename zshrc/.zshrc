@@ -60,6 +60,8 @@
     alias zshrc='nvim ~/dotfiles/zshrc/.zshrc'
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
+    alias pman='doas pacman'
+    alias sudo="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1mdoas\x1b[0m\""
 # Rust
     alias c='cargo'
     alias cr='cargo run'
