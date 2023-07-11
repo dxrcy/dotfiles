@@ -51,7 +51,6 @@
     alias open='xdg-open'
     alias clip='xclip -selection clipboard'
     alias wiki='wiki-tui'
-    alias everygarf='everygarf ~/pics/garfield'
     alias ls='exa -l'
     alias lsa='ls -a'
     alias tree='ls -T'
@@ -60,8 +59,10 @@
     alias zshrc='nvim ~/dotfiles/zshrc/.zshrc'
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
-    alias pman='doas pacman'
+    alias p='pacman'
+    alias dop='doas pacman'
     alias sudo="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1mdoas\x1b[0m\""
+    alias mkdir='mkdir -p'
 # Rust
     alias c='cargo'
     alias cr='cargo run'
