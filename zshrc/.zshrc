@@ -47,6 +47,10 @@
     alias v='nvim'
     alias vi='nvim'
     alias vim='nvim'
+# Pacman
+    alias pm='pacman'
+    alias dp='doas pacman'
+    alias dpm='doas pacman'
 # Programs
     alias open='xdg-open'
     alias clip='xclip -selection clipboard'
@@ -55,15 +59,7 @@
     alias lsa='ls -a'
     alias tree='ls -T'
     alias scim='sc-im'
-    alias dolp='setsid dolphin .'
-# Misc
-    alias zshrc='nvim ~/dotfiles/zshrc/.zshrc'
-    alias p8='ping 8.8.8.8 -c 10'
-    alias copydir='pwd | clip'
-    alias p='pacman'
-    alias dop='doas pacman'
-    alias sudo="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1mdoas\x1b[0m\""
-    alias mkdir='mkdir -p'
+    alias dol='setsid dolphin .'
 # Rust
     alias c='cargo'
     alias cr='cargo run'
@@ -76,4 +72,10 @@
     alias cw='cargo watch -x run'
     alias cwt='cargo watch -x test'
     alias ci='cargo install --path .'
+# Misc
+    alias zshrc='nvim ~/dotfiles/zshrc/.zshrc'
+    alias p8='ping 8.8.8.8 -c 10'
+    alias copydir='pwd | clip'
+    alias sudo="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1mdoas\x1b[0m\""
+    alias mkdir='mkdir -p'
 
