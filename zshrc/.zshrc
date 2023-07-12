@@ -55,6 +55,7 @@
     alias lsa='ls -a'
     alias tree='ls -T'
     alias scim='sc-im'
+    alias dolp='setsid dolphin .'
 # Misc
     alias zshrc='nvim ~/dotfiles/zshrc/.zshrc'
     alias p8='ping 8.8.8.8 -c 10'
