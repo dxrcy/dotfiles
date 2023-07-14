@@ -49,8 +49,10 @@
     alias vim='nvim'
 # Pacman
     alias pm='pacman'
-    alias dp='doas pacman'
-    alias dpm='doas pacman'
+    alias sp='sudo pacman'
+    alias spm='sudo pacman'
+    alias sup='sudo pacman'
+    alias supm='sudo pacman'
 # Programs
     alias open='xdg-open'
     alias clip='xclip -selection clipboard'
@@ -76,6 +78,6 @@
     alias zshrc='nvim ~/dotfiles/zshrc/.zshrc'
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
-    alias sudo="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1mdoas\x1b[0m\""
     alias mkdir='mkdir -p'
+    alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
 
