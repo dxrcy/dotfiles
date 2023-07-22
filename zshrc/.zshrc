@@ -47,7 +47,7 @@
     alias v='nvim'
     alias vi='nvim'
     alias vim='nvim'
-    alias nv='nvim'
+    alias nvim='echo -e "\x1b[31;1mNo!\x1b[0m"'
 # Pacman
     alias pm='pacman'
     alias sp='sudo pacman'
