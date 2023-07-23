@@ -20,6 +20,7 @@
     setopt autocd
     alias '...'='cd ../../'
     alias '....'='cd ../../../'
+    alias '.....'='cd ../../../../'
 # Persistant history
     HISTFILE=~/.zsh_history
     HISTSIZE=10000
@@ -43,6 +44,7 @@
     alias gc='git add . && git commit -m $1'
     alias gp='git push'
     alias gd='git diff'
+    alias gitignore='cat .gitignore'
 # Nvim
     alias v='nvim'
     alias vi='nvim'
@@ -52,8 +54,7 @@
     alias sp='sudo pacman'
     alias spm='sudo pacman'
     alias sup='sudo pacman'
-    alias supm='sudo pacman'
-# Programs
+# Misc. Programs
     alias open='xdg-open'
     alias clip='xclip -selection clipboard'
     alias wiki='wiki-tui'
@@ -62,6 +63,7 @@
     alias tree='ls -T'
     alias scim='sc-im'
     alias dol='setsid dolphin .'
+    alias cat='bat'
 # Rust
     alias c='cargo'
     alias cr='cargo run'
