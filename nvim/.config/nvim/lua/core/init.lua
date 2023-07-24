@@ -1,5 +1,6 @@
 require("core.mappings")
 require("core.packer")
+require("core.ftdetect")
 
 -- Indentdir"
 vim.opt.softtabstop = 4
