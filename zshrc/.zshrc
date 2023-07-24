@@ -64,6 +64,7 @@
     alias scim='sc-im'
     alias dol='setsid dolphin .'
     alias cat='bat'
+    alias trs='tree-sitter'
 # Rust
     alias c='cargo'
     alias cr='cargo run'
