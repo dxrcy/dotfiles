@@ -5,9 +5,10 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Save file
 vim.keymap.set("n", "<C-s>", vim.cmd.write)
+vim.keymap.set("i", "<C-s>", vim.cmd.write)
 
 -- Enable autocompiler
-vim.keymap.set("n", "<C-y>", ":!setsid autocomp % &<CR>", { silent = true })
+-- vim.keymap.set("n", "<C-y>", ":!setsid autocomp % &<CR>", { silent = true })
 
 -- Move selection up/down in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
