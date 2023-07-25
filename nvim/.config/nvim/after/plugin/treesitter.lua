@@ -29,11 +29,12 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Phonet syntax highlighting
+-- ln -s ~/code/tree-sitter-phonet/queries ~/.config/nvim/queries/phonet
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.phonet = {
   install_info = {
     url = "~/code/tree-sitter-phonet", -- local path or git repo
-    files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
     -- optional entries:
     -- branch = "master", -- default branch in case of git repo if different from master
     -- generate_requires_npm = false, -- if stand-alone parser without npm dependencies
