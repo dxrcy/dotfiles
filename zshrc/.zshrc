@@ -13,6 +13,8 @@
     BROWSER='librewolf'
 # Add scripts to path
     PATH="$HOME/scripts:$PATH"
+    # Node binaries
+    export PATH=$PATH:./node_modules/.bin
 # Vi mode in prompt
     bindkey -v
     export KEYTIMEOUT=1
@@ -21,6 +23,8 @@
     alias '...'='cd ../../'
     alias '....'='cd ../../../'
     alias '.....'='cd ../../../../'
+# Add `code` folder to cdpath
+    export CDPATH=$CDPATH:~/code
 # Persistant history
     HISTFILE=~/.zsh_history
     HISTSIZE=10000
