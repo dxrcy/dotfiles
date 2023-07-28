@@ -50,9 +50,8 @@
     alias gd='git diff'
     alias gitignore='cat .gitignore'
 # Nvim
-    alias v='nvim'
-    alias vi='nvim'
     alias vim='nvim'
+    alias vim.='nvim .'
 # Pacman
     alias pm='pacman'
     alias sp='sudo pacman'
