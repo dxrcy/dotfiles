@@ -52,6 +52,7 @@
 # Nvim
     alias vim='nvim'
     alias vim.='nvim .'
+    alias v='nvim .'
 # Pacman
     alias pm='pacman'
     alias sp='sudo pacman'
