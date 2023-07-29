@@ -1,3 +1,7 @@
+# -------------------------
+# Blazingly fast Zsh config
+# -------------------------
+
 #========= MISC
 # Starship prompt
     eval "$(starship init zsh)"
@@ -13,7 +17,7 @@
     BROWSER='librewolf'
 # Add scripts to path
     PATH="$HOME/scripts:$PATH"
-    # Node binaries
+# Node binaries (should be in .profile i think)
     export PATH=$PATH:./node_modules/.bin
 # Vi mode in prompt
     bindkey -v
@@ -61,21 +65,8 @@
     alias vim.='nvim .'
     alias v='nvim .'
 # Pacman
-    alias pm='pacman'
+    alias p='pacman'
     alias sp='sudo pacman'
-    alias spm='sudo pacman'
-    alias sup='sudo pacman'
-# Misc. Programs
-    alias open='xdg-open'
-    alias clip='xclip -selection clipboard'
-    alias wiki='wiki-tui'
-    alias ls='exa -l'
-    alias lsa='ls -a'
-    alias tree='ls -T'
-    alias scim='sc-im'
-    alias dol='setsid dolphin .'
-    alias cat='bat'
-    alias trs='tree-sitter'
 # Rust
     alias c='cargo'
     alias cr='cargo run'
@@ -93,6 +84,17 @@
     alias dz='cd ~/dotfiles/zshrc             && nvim ./.zshrc'
     alias dv='cd ~/dotfiles/nvim/.config/nvim && nvim .'
     alias dt='cd ~/dotfiles/tmux              && nvim .tmux.conf'
+# Misc. Programs
+    alias ls='exa -l'
+    alias lsa='ls -a'
+    alias open='xdg-open'
+    alias clip='xclip -selection clipboard'
+    alias wiki='wiki-tui'
+    alias tree='ls -T'
+    alias scim='sc-im'
+    alias dol='setsid dolphin .'
+    alias trs='tree-sitter'
+    alias cat='bat'
 # Misc
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
