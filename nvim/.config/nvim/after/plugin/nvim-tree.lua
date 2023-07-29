@@ -29,6 +29,10 @@ require("nvim-tree").setup {
         open_file = {
             quit_on_open = true,
         }
-    }
+    },
+    view = {
+        -- Fullscreen
+        width = 100000,
+    },
 }
 
