@@ -81,9 +81,10 @@
     alias ci='cargo install --path .'
 # Dotfile editing
     alias dfs='cd ~/dotfiles'
-    alias dz='cd ~/dotfiles/zshrc             && nvim ./.zshrc'
-    alias dv='cd ~/dotfiles/nvim/.config/nvim && nvim .'
-    alias dt='cd ~/dotfiles/tmux              && nvim .tmux.conf'
+    alias dz='nvim ~/dotfiles/zshrc/.zshrc'
+    alias dv='cd ~/dotfiles/nvim/.config/nvim     && nvim .'
+    alias dt='cd ~/dotfiles/tmux                  && nvim .tmux.conf'
+    alias dr='cd ~/dotfiles/ranger/.config/ranger && nvim .'
 # Misc. Programs
     alias ls='exa -l'
     alias lsa='ls -a'
