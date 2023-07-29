@@ -39,13 +39,20 @@
     source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #========= ALIASES
+# Tmux
+    alias tn='tmux -u new'
+    alias ta='tmux -u attach'
 # Exit (vim)
     alias q='exit'
     alias :q='exit'
     alias :wq='exit'
+    alias Z='exit'
+    alias ZZ='exit'
 # Git
     alias g='git'
-    alias gc='git add . && git commit -m $1'
+    alias ga='git add .'
+    alias gc='git commit -m $1'
+    alias gac='git add . && git commit -m $1'
     alias gp='git push'
     alias gd='git diff'
     alias gitignore='cat .gitignore'
@@ -81,8 +88,12 @@
     alias cw='cargo watch -x run'
     alias cwt='cargo watch -x test'
     alias ci='cargo install --path .'
+# Dotfile editing
+    alias dfs='cd ~/dotfiles'
+    alias dz='cd ~/dotfiles/zshrc             && nvim ./.zshrc'
+    alias dv='cd ~/dotfiles/nvim/.config/nvim && nvim .'
+    alias dt='cd ~/dotfiles/tmux              && nvim .tmux.conf'
 # Misc
-    alias zshrc='nvim ~/dotfiles/zshrc/.zshrc'
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
     alias mkdir='mkdir -p'
