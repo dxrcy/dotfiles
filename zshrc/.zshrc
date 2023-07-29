@@ -96,6 +96,7 @@
     alias dol='setsid dolphin .'
     alias trs='tree-sitter'
     alias cat='bat'
+    alias r='ranger'
 # Misc
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
