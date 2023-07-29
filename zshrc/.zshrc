@@ -19,9 +19,10 @@
     PATH="$HOME/scripts:$PATH"
 # Node binaries (should be in .profile i think)
     export PATH=$PATH:./node_modules/.bin
-# Vi mode in prompt
+# Vi mode in prompt (best mode)
     bindkey -v
-    export KEYTIMEOUT=1
+    export KEYTIMEOUT=1 # idk ?
+    bindkey -v '^?' backward-delete-char # fix backspace
 # Change directory by typing name
     setopt autocd
     alias '...'='cd ../../'
@@ -30,7 +31,7 @@
 # Add `code` folder to cdpath
     export CDPATH=$CDPATH:~/code
 # Persistant history
-    HISTFILE=~/.zsh_history
+    HISTFILE=~/.cache/zsh_history
     HISTSIZE=10000
     SAVEHIST=10000
     setopt SHARE_HISTORY
