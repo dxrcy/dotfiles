@@ -61,9 +61,9 @@
     alias gd='git diff'
     alias gitignore='cat .gitignore'
 # Nvim
+    # Open folder in nvim, instead of new buffer
+    v() { if [ "$1" ]; then nvim $1; else nvim .; fi }
     alias vim='nvim'
-    alias vim.='nvim .'
-    alias v='nvim .'
 # Pacman
     alias p='pacman'
     alias sp='sudo pacman'
