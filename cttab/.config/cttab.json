@@ -10,8 +10,8 @@
         "https://discord.com/channels/631245611307499521/702695021966655519"
       ],
       [
-        "Calendar",
-        "https://calendar.google.com/calendar/u/0/r"
+        "GarfieldEO",
+        "https://darccyy.github.io/garfield-eo/"
       ],
       [
         "Bank",
@@ -53,7 +53,10 @@
         "jibity",
         "https://chat.openai.com/"
       ],
-      [],
+      [
+        "ReFreshing",
+        "https://swisscows.com/en/images?query=cool++photo+of+fruit+splashing+water"
+      ],
       [],
       [],
       [],
@@ -67,30 +70,33 @@
     ],
     "amount": 18
   },
-  "header": ":)",
+  "header": "👉 👈",
   "notes": [],
   "lang": "eo",
   "bg": {
     "color": "#0BB53B #660F53 #8A2B75 #7A1111 #038C8D $ ? s>30 s<90 v>20 v<60 w0.2",
-    "image": "$ $ file:///run/media/darcy/Windows-SSD/Users/darcy/Pictures/bg/baby-dance.gif file:///run/media/darcy/Windows-SSD/Users/darcy/Pictures/bg/garry.png file:///run/media/darcy/Windows-SSD/Users/darcy/Pictures/bg/jpg.jpg file:///run/media/darcy/Windows-SSD/Users\\darcy\\Pictures\\bg\\HEYAPPLE.png"
+    "image": "$ file:///home/darcy/pics/bg file:///home/darcy/pics/bg/HEYAPPLE.PNG file:///home/darcy/pics/bg/garry.png file:///home/darcy/pics/bg/JAMESNEL.jpg file:///home/darcy/pics/bg/albania.jpg file:///home/darcy/pics/bg/osm.jpg file:///home/darcy/pics/bg/borgor.jpg file:///home/darcy/pics/bg/jpg.jpg file:///home/darcy/pics/bg/baby-dance.gif file:///home/darcy/pics/bg/salam.png file:///home/darcy/pics/bg/image.png file:///home/darcy/pics/bg/ReFreshing.jpg file:///home/darcy/pics/bg/willemdafriend.jpg"
   },
   "cache": {
     "nasa": {
-      "url": "https://apod.nasa.gov/apod/image/2306/NGC-6872-LRGB-rev-5-crop-CDK-1000-22-May-2023_1024.jpg",
-      "info": "Over 500,000 light years across, NGC 6872 (top right) is a truly enormous barred spiral galaxy, at least 5 times the size of our own very large Milky Way. The appearance of this giant galaxy's distorted and stretched out spiral arms suggests the magnificent wings of a giant bird. Of course its popular moniker is the Condor galaxy. It lies about 200 million light-years distant toward the southern constellation Pavo, the Peacock. Lined with star-forming regions, the distorted spiral arms are due to NGC 6872's gravitational interaction with the nearby smaller galaxy IC 4970, seen just above the giant galaxy's core. The Pavo galaxy group's dominant giant elliptical galaxy, NGC 6876 is below and left of the soaring Condor galaxy.",
-      "time": 1687575099717
+      "url": "https://apod.nasa.gov/apod/image/2307/AS11-40-5872HR1024.jpg",
+      "info": "Bright sunlight glints as long dark shadows mark this image of the surface of the Moon. It was taken fifty-four years ago, July 20, 1969, by Apollo 11 astronaut Neil Armstrong, the first to walk on the lunar surface. Pictured is the mission's lunar module, the Eagle, and spacesuited lunar module pilot Buzz Aldrin. Aldrin is unfurling a long sheet of foil also known as the Solar Wind Composition Experiment. Exposed facing the Sun, the foil trapped particles streaming outward in the solar wind, catching a sample of material from the Sun itself. Along with moon rocks and lunar soil samples, the solar wind collector was returned for analysis in earthbound laboratories.",
+      "time": 1690684169498
     },
     "garf": {
-      "time": 1687576009513,
-      "url": "file:///home/darcy/pics/garfield/2008-01-08.png",
+      "time": 1690690014478,
+      "url": "file:///home/darcy/pics/garfield/2017-08-29.png",
       "recent": [
-        "2008-01-08",
-        "2008-02-09",
-        "1980-09-18",
-        "2020-03-18",
-        "2018-01-15"
+        "2017-08-29",
+        "2011-04-10",
+        "2000-02-13",
+        "1998-11-27",
+        "1983-04-03"
       ]
     }
   },
-  "garf": "file:///home/darcy/pics/garfield/{YYYY}-{MM}-{DD}.png"
+  "garf": {
+    "url": "file:///home/darcy/pics/garfield/{YYYY}-{MM}-{DD}.png",
+    "onlySunday": false
+  }
 }
