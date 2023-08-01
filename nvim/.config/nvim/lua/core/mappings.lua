@@ -41,3 +41,8 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- Select all
 vim.keymap.set("n", "<C-g>", "ggVG")
 
+-- Tree-sitter
+vim.keymap.set("n", "<leader>tu", "<cmd>TSUpdate<CR>")
+vim.keymap.set("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>")
+vim.keymap.set("n", "<leader>th", "<cmd>TSHighlightCapturesUnderCursor<CR>")
+
