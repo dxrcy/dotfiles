@@ -7,6 +7,9 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<C-s>", vim.cmd.write)
 vim.keymap.set("i", "<C-s>", vim.cmd.write)
 
+-- Switch to previous buffer
+vim.keymap.set("n", "tt", "<cmd>b#<CR>");
+
 -- Enable autocompiler
 -- vim.keymap.set("n", "<C-y>", ":!setsid autocomp % &<CR>", { silent = true })
 
