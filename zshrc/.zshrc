@@ -29,7 +29,7 @@
     alias '....'='cd ../../../'
     alias '.....'='cd ../../../../'
 # Add `code` folder to cdpath
-    # export CDPATH=$CDPATH:~/code
+    export CDPATH=$CDPATH:~/code
 # Persistant history
     HISTFILE=~/.cache/zsh_history
     HISTSIZE=10000
