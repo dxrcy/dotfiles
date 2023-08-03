@@ -1,33 +1,19 @@
 window:
-  opacity: 0.93
-  startup_mode: Maximized
-  title: UwU .. le Hakcing~~
-  # padding:
-  #   x: 10
-  #   y: 10
+    opacity: 0.92
+    startup_mode: Maximized
+    title: UwU .. le Hakcing~~
+    decorations: none
 
 draw_bold_text_with_bright_colors: true
 
 font:
-  size: 7
-  normal:
-    family: "FiraCode Nerd Font"
-
-# scrolling:
-#   history: 10000
-#   multiplier: 3
+    size: 7
+    normal:
+        family: "FiraCode Nerd Font"
 
 key_bindings:
-  - { key: PageUp,   mods: Shift, action: ScrollPageUp,   mode: ~Alt       }
-  - { key: PageDown, mods: Shift, action: ScrollPageDown, mode: ~Alt       }
-  - { key: Home,     mods: Shift, action: ScrollToTop,    mode: ~Alt       }
-  - { key: End,      mods: Shift, action: ScrollToBottom, mode: ~Alt       }
-  # - { key: Z, mods: Control, chars: "echo 123 \x0D", mode: ~Alt       }
-  # - command:
-  #     program: "/home/darcy/scripts/try-fg"
-  #   key: X
-  #   mods: Control
-  # - { key: Z, mods: Control, command: {program: "echo", args: ["123"]}, mode: ~Alt       }
-#   - { key: U, mods: Control, action: ScrollPageUp   }
-#   - { key: D, mods: Control, action: ScrollPageDown }
+    - { key: PageUp,   mods: Shift, action: ScrollPageUp,   mode: ~Alt       }
+    - { key: PageDown, mods: Shift, action: ScrollPageDown, mode: ~Alt       }
+    - { key: Home,     mods: Shift, action: ScrollToTop,    mode: ~Alt       }
+    - { key: End,      mods: Shift, action: ScrollToBottom, mode: ~Alt       }
 
