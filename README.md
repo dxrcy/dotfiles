@@ -12,3 +12,5 @@ cd ~/dotfiles
 stow */
 ```
 
+See also: [Shell scripts](https://github.com/darccyy/scripts)
+
