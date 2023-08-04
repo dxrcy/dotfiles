@@ -4,7 +4,7 @@
 
 #========= MISC
 # Starship prompt
-    eval "$(starship init zsh)"
+    eval "$(starship init zsh)" # A bit slow :(
 # Auto aliases
     eval "$(zoxide init zsh)"
 # Start tmux if not already running
@@ -38,10 +38,6 @@
 # Use case-insensitive autocompletions
     autoload -Uz compinit && compinit
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-
-#========= PACKAGES
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #========= ALIASES
 # Tmux
@@ -103,4 +99,23 @@
     alias copydir='pwd | clip'
     alias mkdir='mkdir -p'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
+
+#========= PACKAGES
+    # Autodownload packages
+    # At end of file, so if git clone cancelled, above aliases still work
+    packages=(
+        zsh-users/zsh-syntax-highlighting
+        zsh-users/zsh-autosuggestions
+        hlissner/zsh-autopair
+    )
+    for package in $packages; do
+        if [[ ! -d ~/.zsh/$package ]]; then
+            git clone https://github.com/$package ~/.zsh/$package;
+        fi
+    done
+    unset packages package
+    # Source manually
+    source ~/.zsh/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source ~/.zsh/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source ~/.zsh/hlissner/zsh-autopair/autopair.zsh
 
