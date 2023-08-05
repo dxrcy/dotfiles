@@ -82,6 +82,10 @@ return require("packer").startup(function(use)
         },
     }
 
+    -- Ranger
+    -- use ("kevinhwang91/rnvimr")
+    use("kelly-lin/ranger.nvim")
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
