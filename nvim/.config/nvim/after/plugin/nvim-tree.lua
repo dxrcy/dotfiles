@@ -5,14 +5,18 @@
 -- set termguicolors to enable highlight groups
 -- vim.opt.termguicolors = true
 
+local api = require "nvim-tree.api"
+
 -- Inline ???
 local function toggle_tree()
-    vim.cmd("NvimTreeToggle")
+    -- vim.cmd("NvimTreeToggle")
+    api.tree.toggle({
+        -- current_window = true,
+        -- file_file = true,
+    })
 end
 
 local function my_on_attach(bufnr)
-    local api = require "nvim-tree.api"
-
     -- default mappings
     api.config.mappings.default_on_attach(bufnr)
 
