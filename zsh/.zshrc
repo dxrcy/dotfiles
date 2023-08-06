@@ -8,8 +8,8 @@
 # Auto aliases
     eval "$(zoxide init zsh)"
 # Start tmux if not already running
-    if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-        exec tmux; fi
+    # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+    #     exec tmux; fi
 # Preferred editor for local and remote sessions
     if [[ -n $SSH_CONNECTION ]]; then export EDITOR='vim'
         else                          export EDITOR='nvim'; fi
@@ -38,10 +38,12 @@
 # Use case-insensitive autocompletions
     autoload -Uz compinit && compinit
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# Share history with tmux ?
 
 #========= ALIASES
 # Tmux
-    alias tn='tmux -u new'
+    alias t='tmux'
+    # alias tn='tmux -u new'
     alias ta='tmux -u attach'
 # Exit (vim)
     alias q='exit'
@@ -94,6 +96,7 @@
     alias trs='tree-sitter'
     alias cat='bat'
     alias r='ranger'
+    alias lw='librewolf'
 # Misc
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
