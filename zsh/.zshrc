@@ -1,3 +1,4 @@
+#!/bin/zsh
 # -------------------------
 # Blazingly fast Zsh config
 # -------------------------
@@ -8,8 +9,8 @@
 # Auto aliases
     eval "$(zoxide init zsh)"
 # Start tmux if not already running
-    # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    #     exec tmux; fi
+    if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+        exec tmux; fi
 # Preferred editor for local and remote sessions
     if [[ -n $SSH_CONNECTION ]]; then export EDITOR='vim'
         else                          export EDITOR='nvim'; fi
@@ -79,11 +80,11 @@
     alias cwt='cargo watch -x test'
     alias ci='cargo install --path .'
 # Dotfile editing
-    alias dfs='cd ~/dotfiles'
-    alias dz='nvim ~/dotfiles/zsh/.zshrc'
-    alias dv='cd ~/dotfiles/nvim/.config/nvim     && nvim .'
-    alias dt='cd ~/dotfiles/tmux/.config/tmux/    && nvim tmux.conf'
-    alias dr='cd ~/dotfiles/ranger/.config/ranger && nvim rc.conf'
+    alias d.='cd ~/dotfiles'
+    alias d.z='nvim ~/dotfiles/zsh/.zshrc'
+    alias d.v='cd ~/dotfiles/nvim/.config/nvim     && nvim .'
+    alias d.t='cd ~/dotfiles/tmux/.config/tmux/    && nvim tmux.conf'
+    alias d.r='cd ~/dotfiles/ranger/.config/ranger && nvim rc.conf'
 # Misc. Programs
     alias ls='exa -l'
     alias lsa='ls -a'
@@ -97,6 +98,7 @@
     alias cat='bat'
     alias r='ranger'
     alias lw='librewolf'
+    alias shck='shellcheck'
 # Misc
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
