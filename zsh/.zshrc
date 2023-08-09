@@ -82,10 +82,11 @@
 # Dotfile editing
     alias d.='cd ~/dotfiles'
     alias d.z='nvim ~/dotfiles/zsh/.zshrc'
-    alias d.v='cd ~/dotfiles/nvim/.config/nvim     && nvim .'
-    alias d.t='cd ~/dotfiles/tmux/.config/tmux/    && nvim tmux.conf'
-    alias d.r='cd ~/dotfiles/ranger/.config/ranger && nvim rc.conf'
-    alias d.i='cd ~/dotfiles/i3/.config/i3         && nvim config'
+    alias d.v='cd ~/dotfiles/nvim/.config/nvim           && nvim .'
+    alias d.t='cd ~/dotfiles/tmux/.config/tmux/          && nvim tmux.conf'
+    alias d.r='cd ~/dotfiles/ranger/.config/ranger       && nvim rc.conf'
+    alias d.i='cd ~/dotfiles/i3/.config/i3               && nvim config'
+    alias d.a='cd ~/dotfiles/alacritty/.config/alacritty && nvim alacritty.yml'
 # Misc. Programs
     alias ls='exa -l'
     alias lsa='ls -a'
