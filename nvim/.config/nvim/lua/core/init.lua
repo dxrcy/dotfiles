@@ -2,7 +2,7 @@ require("core.mappings")
 require("core.packer")
 require("core.ftdetect")
 
--- Indentdir"
+-- Indentdir
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true

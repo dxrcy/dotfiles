@@ -85,6 +85,7 @@
     alias d.v='cd ~/dotfiles/nvim/.config/nvim     && nvim .'
     alias d.t='cd ~/dotfiles/tmux/.config/tmux/    && nvim tmux.conf'
     alias d.r='cd ~/dotfiles/ranger/.config/ranger && nvim rc.conf'
+    alias d.i='cd ~/dotfiles/i3/.config/i3         && nvim config'
 # Misc. Programs
     alias ls='exa -l'
     alias lsa='ls -a'
