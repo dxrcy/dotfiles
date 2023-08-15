@@ -56,6 +56,13 @@ return require("packer").startup(function(use)
         }
     }
 
+    -- LSP Rename
+    use {
+        'filipdutescu/renamer.nvim',
+        branch = 'master',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
     -- Toggle comments
     use {
         "numToStr/Comment.nvim",

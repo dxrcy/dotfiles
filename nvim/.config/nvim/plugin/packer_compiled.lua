@@ -166,6 +166,11 @@ _G.packer_plugins = {
     path = "/home/darcy/.local/share/nvim/site/pack/packer/start/ranger.nvim",
     url = "https://github.com/kelly-lin/ranger.nvim"
   },
+  ["renamer.nvim"] = {
+    loaded = true,
+    path = "/home/darcy/.local/share/nvim/site/pack/packer/start/renamer.nvim",
+    url = "https://github.com/filipdutescu/renamer.nvim"
+  },
   ["rose-pine"] = {
     loaded = true,
     path = "/home/darcy/.local/share/nvim/site/pack/packer/start/rose-pine",
