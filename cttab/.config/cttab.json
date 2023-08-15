@@ -75,24 +75,25 @@
   "lang": "eo",
   "bg": {
     "color": "#0BB53B #660F53 #8A2B75 #7A1111 #038C8D $ ? s>30 s<90 v>20 v<60 w0.2",
-    "image": "$ file:///home/darcy/pics/bg file:///home/darcy/pics/bg/HEYAPPLE.PNG file:///home/darcy/pics/bg/garry.png file:///home/darcy/pics/bg/JAMESNEL.jpg file:///home/darcy/pics/bg/albania.jpg file:///home/darcy/pics/bg/osm.jpg file:///home/darcy/pics/bg/borgor.jpg file:///home/darcy/pics/bg/jpg.jpg file:///home/darcy/pics/bg/baby-dance.gif file:///home/darcy/pics/bg/salam.png file:///home/darcy/pics/bg/image.png file:///home/darcy/pics/bg/ReFreshing.jpg file:///home/darcy/pics/bg/willemdafriend.jpg"
+    "image": "$ file:///home/darcy/pics/bg/albania.jpg file:///home/darcy/pics/bg/baby-dance.gif file:///home/darcy/pics/bg/borgor.jpg file:///home/darcy/pics/bg/garry.png file:///home/darcy/pics/bg/HEYAPPLE.PNG file:///home/darcy/pics/bg/image.png file:///home/darcy/pics/bg/JAMESNEL.jpg file:///home/darcy/pics/bg/jpg.jpg file:///home/darcy/pics/bg/mmm-so-tasty.jpg file:///home/darcy/pics/bg/osm.jpg file:///home/darcy/pics/bg/ReFreshing.jpg file:///home/darcy/pics/bg/salam.png file:///home/darcy/pics/bg/willemdafriend.jpg"
   },
   "cache": {
     "nasa": {
-      "url": "https://apod.nasa.gov/apod/image/2307/AS11-40-5872HR1024.jpg",
-      "info": "Bright sunlight glints as long dark shadows mark this image of the surface of the Moon. It was taken fifty-four years ago, July 20, 1969, by Apollo 11 astronaut Neil Armstrong, the first to walk on the lunar surface. Pictured is the mission's lunar module, the Eagle, and spacesuited lunar module pilot Buzz Aldrin. Aldrin is unfurling a long sheet of foil also known as the Solar Wind Composition Experiment. Exposed facing the Sun, the foil trapped particles streaming outward in the solar wind, catching a sample of material from the Sun itself. Along with moon rocks and lunar soil samples, the solar wind collector was returned for analysis in earthbound laboratories.",
-      "time": 1690684169498
+      "url": "https://apod.nasa.gov/apod/image/2308/Ghirigori_delBooteCoronaBorealeOfiucoeChiomadiBerenice1024.jpg",
+      "info": "It's fun to scribble on the canvas of the sky. You can use a creative photographic technique to cause the light of point-like stars to dance across a digital image by tapping lightly on the telescope while making an exposure. The result will be a squiggly line traced by the star (or two squiggles traced by binary stars) that can reveal the star's color. Colorful lines, dubbed Ghirigori, made from stars found in the northern sky constellations Bootes, Corona Borealis, Ophiucus, and Coma Berenices, are captured in this artistic mosaic. The 25 stars creating the varied and colorful squiggles are identified around the border. Of course, temperature determines the color of a star. While whitish stars tend to be close to the Sun's temperature, stars with bluer hues are hotter, and yellow and red colors are cooler than the Sun.  Weekend Watch: Perseid Meteor Shower",
+      "time": 1691905482135
     },
     "garf": {
-      "time": 1690690014478,
-      "url": "file:///home/darcy/pics/garfield/2017-08-29.png",
+      "time": 1691906258465,
+      "url": "file:///home/darcy/pics/garfield/2019-07-16.png",
       "recent": [
-        "2017-08-29",
-        "2011-04-10",
-        "2000-02-13",
-        "1998-11-27",
-        "1983-04-03"
-      ]
+        "2019-07-16",
+        "2022-11-28",
+        "2000-03-21",
+        "1989-04-30",
+        "2002-10-23"
+      ],
+      "date": "2019-07-16T03:25:16.369Z"
     }
   },
   "garf": {
