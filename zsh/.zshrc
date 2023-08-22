@@ -88,6 +88,7 @@
     alias d.i='cd ~/dotfiles/i3/.config/i3               && nvim config'
     alias d.a='cd ~/dotfiles/alacritty/.config/alacritty && nvim alacritty.yml'
 # Misc. Programs
+    alias j='just'
     alias ls='exa -l'
     alias lsa='ls -a'
     alias open='xdg-open'
