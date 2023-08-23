@@ -107,6 +107,8 @@
     alias copydir='pwd | clip'
     alias mkdir='mkdir -p'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
+    alias Gf='garf-find'
+    alias G='garf'
 
 #========= PACKAGES
     # Autodownload packages
