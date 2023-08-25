@@ -30,7 +30,7 @@
     alias '....'='cd ../../../'
     alias '.....'='cd ../../../../'
 # Add `code` folder to cdpath
-    export CDPATH=$CDPATH:~/code
+    # export CDPATH=$CDPATH:~/code
 # Persistant history
     HISTFILE=~/.cache/zsh_history
     HISTSIZE=10000
@@ -107,8 +107,9 @@
     alias copydir='pwd | clip'
     alias mkdir='mkdir -p'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
-    alias Gf='garf-find'
     alias G='garf'
+    alias Gf='garf-find'
+    alias Gfd='garf-find-date'
 
 #========= PACKAGES
     # Autodownload packages
