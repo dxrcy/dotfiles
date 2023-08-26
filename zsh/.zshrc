@@ -76,7 +76,8 @@
     alias crr='cargo run --release'
     alias cbr='cargo build --release'
     alias cdoc='cargo doc --no-deps --open'
-    alias cw='cargo watch -x run'
+    alias cw='cargo watch'
+    alias cwr='cargo watch -x run'
     alias cwt='cargo watch -x test'
     alias ci='cargo install --path .'
 # Dotfile editing
