@@ -104,8 +104,8 @@
     alias lw='librewolf'
     alias shck='shellcheck'
 # Garf scripts
-    for i in ~/scripts/garf/*; do alias "garf-$(basename $i)"="$i"; done # Alias all files in scripts/garf
-    alias garf='garf-run' # Overrides folder in scripts path
+    # Overrides folder in scripts path
+    alias garf='~/scripts/garf/run'
     alias g='garf'
 # Misc
     alias p8='ping 8.8.8.8 -c 10'
