@@ -17,6 +17,7 @@
 # Override default browser
     BROWSER='librewolf'
 # Add scripts to path
+    # Change to alias loop ?
     PATH="$HOME/scripts:$PATH"
 # Node binaries (should be in .profile i think)
     export PATH=$PATH:./node_modules/.bin
@@ -53,7 +54,6 @@
     alias Z='exit'
     alias ZZ='exit'
 # Git
-    alias g='git'
     alias ga='git add .'
     alias gc='git commit -m $1'
     alias gac='git add . && git commit -m $1'
@@ -103,14 +103,15 @@
     alias r='ranger'
     alias lw='librewolf'
     alias shck='shellcheck'
+# Garf scripts
+    for i in ~/scripts/garf/*; do alias "garf-$(basename $i)"="$i"; done # Alias all files in scripts/garf
+    alias garf='garf-run' # Overrides folder in scripts path
+    alias g='garf'
 # Misc
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
     alias mkdir='mkdir -p'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
-    alias G='garf'
-    alias Gf='garf-find'
-    alias Gfd='garf-find-date'
 
 #========= PACKAGES
     # Autodownload packages
