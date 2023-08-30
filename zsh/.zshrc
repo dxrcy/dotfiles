@@ -54,7 +54,7 @@
     alias Z='exit'
     alias ZZ='exit'
 # Git
-    alias ga='git add .'
+    alias ga='git add'
     alias gc='git commit -m $1'
     alias gac='git add . && git commit -m $1'
     alias gp='git push'
