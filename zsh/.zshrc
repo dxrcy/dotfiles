@@ -102,10 +102,8 @@
     alias r='ranger'
     alias lw='librewolf'
     alias shck='shellcheck'
-# Garf scripts
-    alias garf='~/scripts/garf/run'
-    alias g='garf'
 # Misc
+    alias g='garf'
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
     alias mkdir='mkdir -p'
