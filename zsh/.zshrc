@@ -17,8 +17,7 @@
 # Override default browser
     BROWSER='librewolf'
 # Add scripts to path
-    # Change to alias loop ?
-    PATH="$HOME/scripts:$PATH"
+    PATH="$HOME/scripts/cmd:$PATH"
 # Node binaries (should be in .profile i think)
     export PATH=$PATH:./node_modules/.bin
 # Vi mode in prompt (best mode)
@@ -104,7 +103,6 @@
     alias lw='librewolf'
     alias shck='shellcheck'
 # Garf scripts
-    # Overrides folder in scripts path
     alias garf='~/scripts/garf/run'
     alias g='garf'
 # Misc
