@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 6.07 for darcy on Mon Sep  4 11:11:07 2023.
+# Written by xscreensaver-demo 6.07 for darcy on Mon Sep  4 12:00:42 2023.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:06:00
@@ -41,7 +41,7 @@ settingsGeom:	0,29 0,29
 
 programs:								      \
 				maze --root				    \n\
-  GL: 				superquadrics --root			    \n\
+- GL: 				superquadrics --root			    \n\
 				attraction --root			    \n\
 				blitspin --root				    \n\
 				greynetic --root			    \n\
@@ -57,7 +57,7 @@ programs:								      \
 				flame --root				    \n\
 -				halo --root				    \n\
 				slidescreen --root			    \n\
-				pedal --root				    \n\
+-				pedal --root				    \n\
 				bouboule --root				    \n\
 -				braid --root				    \n\
 				coral --root				    \n\
@@ -79,7 +79,7 @@ programs:								      \
 				penrose --root				    \n\
   GL: 				pipes --root				    \n\
 				rdbomb --root				    \n\
-  GL: 				rubik --root				    \n\
+- GL: 				rubik --root				    \n\
 -				sierpinski --root			    \n\
 				slip --root				    \n\
   GL: 				sproingies --root			    \n\
@@ -87,8 +87,8 @@ programs:								      \
 				strange --root				    \n\
 				swirl --root				    \n\
 				triangle --root				    \n\
-				xjack --root				    \n\
-				xlyap --root				    \n\
+-				xjack --root				    \n\
+-				xlyap --root				    \n\
   GL: 				atlantis --root				    \n\
 				bsod --root				    \n\
   GL: 				bubble3d --root				    \n\
@@ -104,7 +104,7 @@ programs:								      \
 				kumppa --root				    \n\
 - GL: 				lament --root				    \n\
 				moire2 --root				    \n\
-  GL: 				sonar --root				    \n\
+- GL: 				sonar --root				    \n\
   GL: 				stairs --root				    \n\
 				truchet --root				    \n\
 -				vidwhacker --root			    \n\
@@ -130,8 +130,8 @@ programs:								      \
 				xflame --root				    \n\
 				xmatrix --root				    \n\
   GL: 				gflux --root				    \n\
--				nerverot --root				    \n\
-				xrayswarm --root			    \n\
+				nerverot --root				    \n\
+-				xrayswarm --root			    \n\
 				xspirograph --root			    \n\
   GL: 				circuit --root				    \n\
   GL: 				dangerball --root			    \n\
@@ -144,7 +144,7 @@ programs:								      \
 				rotzoomer --root			    \n\
 				scooter --root				    \n\
 				speedmine --root			    \n\
-  GL: 				starwars --root				    \n\
+- GL: 				starwars --root				    \n\
   GL: 				stonerview --root			    \n\
 				vermiculate --root			    \n\
 				whirlwindwarp --root			    \n\
@@ -191,7 +191,7 @@ programs:								      \
 				piecewise --root			    \n\
   GL: 				polytopes --root			    \n\
 				pong --root				    \n\
-				popsquares --root			    \n\
+-				popsquares --root			    \n\
   GL: 				surfaces --root				    \n\
 				xanalogtv --root			    \n\
 -				abstractile --root			    \n\
@@ -206,8 +206,8 @@ programs:								      \
 				pacman --root				    \n\
   GL: 				pinion --root				    \n\
   GL: 				polyhedra --root			    \n\
-- GL: 				providence --root			    \n\
-				substrate --root			    \n\
+  GL: 				providence --root			    \n\
+-				substrate --root			    \n\
 				wormhole --root				    \n\
 - GL: 				antmaze --root				    \n\
   GL: 				boing --root				    \n\
@@ -220,7 +220,7 @@ programs:								      \
   GL: 				fliptext --root				    \n\
   GL: 				glhanoi --root				    \n\
   GL: 				tangram --root				    \n\
-  GL: 				timetunnel --root			    \n\
+- GL: 				timetunnel --root			    \n\
   GL: 				glschool --root				    \n\
   GL: 				topblock --root				    \n\
 - GL: 				cubicgrid --root			    \n\
@@ -236,23 +236,23 @@ programs:								      \
 -				lcdscrub --root				    \n\
   GL: 				photopile --root			    \n\
   GL: 				skytentacles --root			    \n\
-  GL: 				rubikblocks --root			    \n\
+- GL: 				rubikblocks --root			    \n\
   GL: 				companioncube --root			    \n\
   GL: 				hilbert --root				    \n\
   GL: 				tronbit --root				    \n\
   GL: 				geodesic --root				    \n\
 -				hexadrop --root				    \n\
   GL: 				kaleidocycle --root			    \n\
-  GL: 				quasicrystal --root			    \n\
+- GL: 				quasicrystal --root			    \n\
   GL: 				unknownpleasures --root			    \n\
 				binaryring --root			    \n\
   GL: 				cityflow --root				    \n\
   GL: 				geodesicgears --root			    \n\
   GL: 				projectiveplane --root			    \n\
-  GL: 				romanboy --root				    \n\
+- GL: 				romanboy --root				    \n\
 				tessellimage --root			    \n\
   GL: 				winduprobot --root			    \n\
-  GL: 				splitflap --root			    \n\
+- GL: 				splitflap --root			    \n\
   GL: 				cubestack --root			    \n\
   GL: 				cubetwist --root			    \n\
   GL: 				discoball --root			    \n\
@@ -272,7 +272,7 @@ programs:								      \
   GL: 				maze3d --root				    \n\
   GL: 				peepers --root				    \n\
   GL: 				razzledazzle --root			    \n\
-				vfeedback --root			    \n\
+-				vfeedback --root			    \n\
 - GL: 				deepstars --root			    \n\
   GL: 				gravitywell --root			    \n\
   GL: 				beats --root				    \n\
@@ -287,7 +287,7 @@ programs:								      \
   GL: 				hextrail --root				    \n\
 - GL: 				mapscroller --root			    \n\
   GL: 				nakagin --root				    \n\
-  GL: 				squirtorus --root			    \n\
+- GL: 				squirtorus --root			    \n\
   GL: 				cubocteversion --root			    \n\
 				droste --root				    \n\
   GL: 				papercube --root			    \n\
