@@ -49,3 +49,14 @@ vim.keymap.set("n", "<leader>tu", "<cmd>TSUpdate<CR>")
 vim.keymap.set("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>")
 vim.keymap.set("n", "<leader>th", "<cmd>TSHighlightCapturesUnderCursor<CR>")
 
+-- Toggle wrap
+vim.keymap.set("n", "<leader>z", function ()
+    if vim.wo.wrap then
+        vim.wo.wrap = false
+        print("Line wrapping is OFF")
+    else
+        vim.wo.wrap = true
+        print("Line wrapping is ON")
+    end
+end)
+
