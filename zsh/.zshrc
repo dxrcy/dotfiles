@@ -39,7 +39,8 @@
 # Use case-insensitive autocompletions
     autoload -Uz compinit && compinit
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-# Share history with tmux ?
+# Fix zsh tab completion when using `eza` package
+    _exa() { eza }
 
 #========= ALIASES
 # Tmux
@@ -89,7 +90,7 @@
     alias d.a='cd ~/dotfiles/alacritty/.config/alacritty && nvim alacritty.yml'
 # Misc. Programs
     alias j='just'
-    alias ls='exa -l'
+    alias ls='eza -l'
     alias lsa='ls -a'
     alias open='xdg-open'
     alias clip='xclip -selection clipboard'
