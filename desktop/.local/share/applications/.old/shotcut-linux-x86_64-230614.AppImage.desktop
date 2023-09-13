@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/home/darcy/dl/appimage/shotcut-linux-x86_64-230614.AppImage
+MimeType=application/shotcut;
+Name=shotcut-linux-x86_64-230614.AppImage
+NoDisplay=true
+Type=Application

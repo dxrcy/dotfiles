@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Plants vs Zombies PvZ
+Exec=wine start /unix '/home/darcy/.wine/drive_c/Program Files/Plants vs Zombies/PlantsVsZombies.exe' %U
+Terminal=false
+Type=Application
+Icon=96F1_unins000.0
+Categories=Game;
+

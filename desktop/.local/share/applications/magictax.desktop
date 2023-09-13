@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MagicTax
+Exec=/home/darcy/.cargo/bin/magictax %U
+Terminal=false
+Type=Application
+MimeType=application/magictax;
+Icon=/home/darcy/code/magictax/icon.png
+Comment=Tax Calculator
+Categories=Utility;

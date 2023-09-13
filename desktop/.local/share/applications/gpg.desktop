@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=gpg
+MimeType=application/pgp-encrypted;
+Name=gpg
+NoDisplay=true
+Type=Application

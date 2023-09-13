@@ -1,0 +1,19 @@
+[MIME Cache]
+application/json=librewolf.desktop;
+application/magictax=magictax.desktop;
+application/pdf=librewolf.desktop;
+application/pgp-encrypted=gpg.desktop;
+application/shotcut=.old-shotcut-linux-x86_64-230614.AppImage.desktop;
+application/vnd.ms-htmlhelp=wine-extension-chm.desktop;
+application/winhlp=wine-extension-hlp.desktop;
+application/x-wine-extension-msp=wine-extension-msp.desktop;
+application/x-xpinstall=librewolf.desktop;thunderbird.desktop;
+application/xhtml+xml=librewolf.desktop;
+message/rfc822=thunderbird.desktop;
+text/html=librewolf.desktop;
+text/vbscript=wine-extension-vbs.desktop;
+text/xml=librewolf.desktop;
+x-scheme-handler/http=librewolf.desktop;
+x-scheme-handler/https=librewolf.desktop;
+x-scheme-handler/mailto=thunderbird.desktop;
+x-scheme-handler/spotify=spotify.desktop;

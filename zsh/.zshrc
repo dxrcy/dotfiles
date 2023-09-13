@@ -20,6 +20,9 @@
     PATH="$HOME/scripts/cmd:$PATH"
 # Node binaries (should be in .profile i think)
     export PATH=$PATH:./node_modules/.bin
+# Flyctl binary
+    export FLYCTL_INSTALL="/home/darcy/.fly"
+    export PATH="$FLYCTL_INSTALL/bin:$PATH"
 # Vi mode in prompt (best mode)
     bindkey -v
     export KEYTIMEOUT=1 # idk ?
