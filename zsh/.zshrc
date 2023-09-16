@@ -91,6 +91,7 @@
     alias d.r='cd ~/dotfiles/ranger/.config/ranger       && nvim rc.conf'
     alias d.i='cd ~/dotfiles/i3/.config/i3               && nvim config'
     alias d.a='cd ~/dotfiles/alacritty/.config/alacritty && nvim alacritty.yml'
+    alias d.k='cd ~/dotfiles/kitty/.config/kitty         && nvim kitty.conf'
 # Misc. Programs
     alias j='just'
     alias ls='eza -l'
