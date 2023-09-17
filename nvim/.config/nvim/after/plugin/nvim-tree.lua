@@ -38,5 +38,11 @@ require("nvim-tree").setup {
         -- Fullscreen
         width = 100000,
     },
+    filters = {
+        custom = {
+            -- Hide object files and the like
+            "*.o", "*.so", "*.hi"
+        },
+    },
 }
 
