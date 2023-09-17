@@ -2,7 +2,7 @@ require("core.mappings")
 require("core.packer")
 require("core.ftdetect")
 
--- Indentdir
+-- Indent
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
@@ -21,7 +21,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.local/state/nvim-undodir"
 vim.opt.undofile = true
 
 -- Don't highlight all searches
-vim.opt.hlsearch = false
+-- vim.opt.hlsearch = false
 
 -- Minimum lines to show ahead while scrolling
 vim.opt.scrolloff = 8
