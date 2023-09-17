@@ -60,3 +60,9 @@ vim.keymap.set("n", "<leader>z", function ()
     end
 end)
 
+-- Stop highlighting searched text
+vim.keymap.set('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
+
+-- Start a new find-replace command without terms
+vim.keymap.set("n", '?', ':%s/')
+
