@@ -22,8 +22,8 @@
         "https://lms.vsvonline.vic.edu.au/course/view.php?id=950"
       ],
       [
-        "VSV Meating",
-        "https://vsv.webex.com/vsv/j.php?MTID=m311ed8a06e32f86a7c0ad65eea135544"
+        "localhost",
+        "http://localhost/"
       ],
       [
         "Clompass",
@@ -46,8 +46,8 @@
         "https://darccyy.github.io/dogfood"
       ],
       [
-        "localhost",
-        "http://localhost/"
+        "localhost:3000",
+        "http://localhost:3000"
       ],
       [
         "jibity",
@@ -57,10 +57,19 @@
         "ReFreshing",
         "https://swisscows.com/en/images?query=cool++photo+of+fruit+splashing+water"
       ],
+      [
+        "Glosbe",
+        "https://glosbe.com/en/eo"
+      ],
+      [
+        "Buffer",
+        "https://publish.buffer.com/"
+      ],
       [],
-      [],
-      [],
-      [],
+      [
+        "localhost:4000",
+        "http://localhost:4000"
+      ],
       [],
       [],
       [],
@@ -75,25 +84,30 @@
   "lang": "eo",
   "bg": {
     "color": "#0BB53B #660F53 #8A2B75 #7A1111 #038C8D $ ? s>30 s<90 v>20 v<60 w0.2",
-    "image": "$ file:///home/darcy/pics/bg/albania.jpg file:///home/darcy/pics/bg/baby-dance.gif file:///home/darcy/pics/bg/borgor.jpg file:///home/darcy/pics/bg/garry.png file:///home/darcy/pics/bg/HEYAPPLE.PNG file:///home/darcy/pics/bg/image.png file:///home/darcy/pics/bg/JAMESNEL.jpg file:///home/darcy/pics/bg/jpg.jpg file:///home/darcy/pics/bg/mmm-so-tasty.jpg file:///home/darcy/pics/bg/osm.jpg file:///home/darcy/pics/bg/ReFreshing.jpg file:///home/darcy/pics/bg/salam.png file:///home/darcy/pics/bg/willemdafriend.jpg"
+    "image": "$ file:///home/darcy/pics/bg/baby-dance.gif file:///home/darcy/pics/bg/borgor.jpg file:///home/darcy/pics/bg/friends.jpg file:///home/darcy/pics/bg/garry.png file:///home/darcy/pics/bg/gobbling.jpg file:///home/darcy/pics/bg/HEYAPPLE.PNG file:///home/darcy/pics/bg/image.png file:///home/darcy/pics/bg/JAMESNEL.jpg file:///home/darcy/pics/bg/jpg.jpg file:///home/darcy/pics/bg/mmm-so-tasty.jpg file:///home/darcy/pics/bg/osm.jpg file:///home/darcy/pics/bg/ReFreshing.jpg file:///home/darcy/pics/bg/salam.png file:///home/darcy/pics/bg/willemdafriend.jpg"
   },
   "cache": {
     "nasa": {
-      "url": "https://apod.nasa.gov/apod/image/2308/Ghirigori_delBooteCoronaBorealeOfiucoeChiomadiBerenice1024.jpg",
-      "info": "It's fun to scribble on the canvas of the sky. You can use a creative photographic technique to cause the light of point-like stars to dance across a digital image by tapping lightly on the telescope while making an exposure. The result will be a squiggly line traced by the star (or two squiggles traced by binary stars) that can reveal the star's color. Colorful lines, dubbed Ghirigori, made from stars found in the northern sky constellations Bootes, Corona Borealis, Ophiucus, and Coma Berenices, are captured in this artistic mosaic. The 25 stars creating the varied and colorful squiggles are identified around the border. Of course, temperature determines the color of a star. While whitish stars tend to be close to the Sun's temperature, stars with bluer hues are hotter, and yellow and red colors are cooler than the Sun.  Weekend Watch: Perseid Meteor Shower",
-      "time": 1691905482135
+      "url": "https://apod.nasa.gov/apod/image/2309/SpriteTree_Villaeys_960.jpg",
+      "info": "The sprite and tree could hardly be more different. To start, the red sprite is an unusual form of lightning, while the tree is a common plant. The sprite is far away -- high in Earth's atmosphere, while the tree is nearby -- only about a football field away.  The sprite is fast -- electrons streaming up and down at near light's speed, while the tree is slow -- wood anchored to the ground. The sprite is bright -- lighting up the sky, while the tree is dim -- shining mostly by reflected light. The sprite was fleeting -- lasting only a small fraction of a second, while the tree is durable -- living now for many years.  Both however, when captured together, appear oddly similar in this featured composite image captured early this month in France as a thunderstorm passed over mountains of the Atlantic Pyrenees.    Your Sky Surprise: What picture did APOD feature on your birthday? (post 1995)",
+      "time": 1695120623735
     },
     "garf": {
-      "time": 1691906258465,
-      "url": "file:///home/darcy/pics/garfield/2019-07-16.png",
+      "time": 1695199524184,
+      "url": "file:///home/darcy/pics/garfield/1997-08-18.png",
       "recent": [
-        "2019-07-16",
-        "2022-11-28",
-        "2000-03-21",
-        "1989-04-30",
-        "2002-10-23"
+        "1997-08-18",
+        "2017-06-28",
+        "1996-05-02",
+        "2009-01-18",
+        "2022-04-29",
+        "1999-09-05",
+        "1993-11-15",
+        "2002-07-12",
+        "1998-01-16",
+        "2014-03-29"
       ],
-      "date": "2019-07-16T03:25:16.369Z"
+      "date": "1997-08-18T02:16:26.372Z"
     }
   },
   "garf": {
