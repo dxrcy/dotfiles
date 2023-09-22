@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=15 Puzzle
+Exec=/home/darcy/.cargo/bin/puzzle %U
+Terminal=false
+Type=Application
+Icon=/home/darcy/code/puzzle/icon.png
+Comment=Puzzle Game
+Categories=Game;
