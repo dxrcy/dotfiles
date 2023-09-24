@@ -60,7 +60,7 @@ return require("packer").startup(function(use)
     use {
         'filipdutescu/renamer.nvim',
         branch = 'master',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     -- Toggle comments
@@ -94,6 +94,9 @@ return require("packer").startup(function(use)
     use("kelly-lin/ranger.nvim")
 
     use "lukas-reineke/lsp-format.nvim"
+
+    -- Save files with sudo
+    use "lambdalisue/suda.vim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
