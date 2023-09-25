@@ -1,0 +1,5 @@
+https:push.services.mozilla.com:443:.::3	0	19625	https:push.services.mozilla.com:443:push.services.mozilla.com:443::n:1695633390:h3:n:1695633357:n::|n:y:
+https:www.youtube.com:443:.:^partitionKey=%28file%2C%29:3	0	19625	https:www.youtube.com:443:www.youtube.com:443::n:1695633075:h3:n:1695632987:n:^partitionKey=%28file%2C%29:|n:y:
+https:ajax.googleapis.com:443:.:^partitionKey=%28https%2Cstackexchange.com%29:3	0	19625	https:ajax.googleapis.com:443:ajax.googleapis.com:443::n:1695633444:h3:n:1695633357:n:^partitionKey=%28https%2Cstackexchange.com%29:|n:y:
+https:accounts.google.com:443:.:^partitionKey=%28https%2Ci3wm.org%29:3	0	19625	https:accounts.google.com:443:accounts.google.com:443::n:1695633156:h3:n:1695632987:n:^partitionKey=%28https%2Ci3wm.org%29:|n:y:
+https:lh3.googleusercontent.com:443:.:^partitionKey=%28https%2Cstackexchange.com%29:3	0	19625	https:lh3.googleusercontent.com:443:lh3.googleusercontent.com:443::n:1695633445:h3:n:1695633357:n:^partitionKey=%28https%2Cstackexchange.com%29:|n:y:
