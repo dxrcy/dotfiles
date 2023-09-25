@@ -9,6 +9,7 @@
 # Auto aliases
     eval "$(zoxide init zsh)"
 # Start tmux if not already running
+    # Remove for i3 ??
     if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
         exec tmux; fi
 # Preferred editor for local and remote sessions
