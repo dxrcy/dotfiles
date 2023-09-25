@@ -291,6 +291,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volume_br
 # Background
 exec_always --no-startup-id nitrogen --restore
 
+# Transparent windows
+exec --no-startup-id picom -CGb
+
 # ----------------
 # Custom shortcuts
 # ----------------
@@ -309,5 +312,5 @@ bindsym $mod+Shift+b exec --no-startup-id ~/scripts/cmd/bt disconnect
 bindsym $mod+c exec --no-startup-id ~/scripts/cmd/consv gui
 
 # Garfield comic
-bindsym $mod+g exec --no-startup-id ~/scripts/cmd/garf show
+bindsym $mod+g exec --no-startup-id ~/scripts/cmd/garf show -r
 
