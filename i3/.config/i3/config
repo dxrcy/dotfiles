@@ -257,6 +257,8 @@ strip_workspace_numbers yes
 
 # Set display (ImageMagick) windows to floating and near center of screen
 for_window [class="Display"] floating enable, move position 200px 200px
+# Floating mode
+for_window [class="spectacle"] floating enable
 
 # Set inner and outer gaps
 gaps inner 6
@@ -313,4 +315,7 @@ bindsym $mod+c exec --no-startup-id ~/scripts/cmd/consv gui
 
 # Garfield comic
 bindsym $mod+g exec --no-startup-id ~/scripts/cmd/garf show -r
+
+# Screenshot
+bindsym Print exec spectacle
 
