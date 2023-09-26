@@ -256,10 +256,11 @@ strip_workspace_numbers yes
 
 exec --no-startup-id xrandr --output eDP-1 --mode 1680x1050
 
-# Set display (ImageMagick) windows to floating and near center of screen
-for_window [class="Display"] floating enable, move position 200px 200px
 # Floating mode
 for_window [class="spectacle"] floating enable
+for_window [class="Windscribe2"] floating enable
+# Floating and custom position
+for_window [class="Display"] floating enable, move position 200px 200px
 
 # Set inner and outer gaps
 gaps inner 6
@@ -299,7 +300,8 @@ exec_always --no-startup-id nitrogen --restore
 exec --no-startup-id picom -CGb
 
 # Autostart programs
-# librewolf starts regardless
+# librewolf starts regardless ???
+exec --no-startup-id windscribe
 exec --no-startup-id spotify
 exec --no-startup-id ~/scripts/cmd/bt connect
 
