@@ -2,8 +2,17 @@
 # original source: https://gitlab.com/Nmoleo/i3-volume-brightness-indicator
 # taken from here: https://gitlab.com/Nmoleo/i3-volume-brightness-indicator
 
-# NOTE: (IF USING xbacklight NOT brightnessctl) Must be ran as root, or add the following line to /etc/sudoers (with your username replacing <USERNAME>):
-# <USERNAME> ALL = (root) NOPASSWD: /usr/bin/xbacklight
+# --------------------------------------------------
+# NOTE ABOUT BACKLIGHT API:
+#
+# This script uses brightnessctl, as it does not need root permissions, is easy to use, and works
+#
+# If using the (default for EndevourOS) xbacklight, this script must be ran as root, or
+#   add the following line to /etc/sudoers (with your username replacing <USERNAME>):
+#   <USERNAME> ALL = (root) NOPASSWD: /usr/bin/xbacklight
+#
+# - darcy
+# --------------------------------------------------
 
 # See README.md for usage instructions
 bar_color="#7f7fff"
@@ -21,9 +30,8 @@ function get_mute {
     pactl get-sink-mute @DEFAULT_SINK@ | grep -Po '(?<=Mute: )(yes|no)'
 }
 
-# Uses regex to get brightness from sudo xbacklight
+# Uses expressions to get brightness from brighnessctl
 function get_brightness {
-    # sudo xbacklight -get | grep -Po '[0-9]{1,3}' | head -n 1
     value=$(brightnessctl get)
     max=$(brightnessctl max)
     percent=$((100 * value / max))

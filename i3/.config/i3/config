@@ -332,6 +332,6 @@ bindsym $mod+Shift+g exec --no-startup-id ~/scripts/cmd/garf show -r
 # Screenshot
 bindsym Print exec spectacle
 
-# Sleep/suspend
-bindsym $mod+Delete exec systemctl suspend
+# Open power menu
+bindsym $mod+Escape exec ~/.config/i3/scripts/powermenu
 
