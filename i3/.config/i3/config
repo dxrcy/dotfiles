@@ -286,8 +286,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/volume_br
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_down
 
 # Background
-exec_always --no-startup-id feh --randomize --bg-scale ~/pics/bg2/*
-bindsym $mod+p exec feh --randomize --bg-scale ~/pics/bg2/*
+exec --no-startup-id ~/scripts/cmd/bg-change --forever
+bindsym $mod+p exec ~/scripts/cmd/bg-change
 
 # Transparent windows
 exec --no-startup-id picom -CGb
@@ -297,7 +297,7 @@ exec --no-startup-id picom -CGb
 exec --no-startup-id windscribe
 exec --no-startup-id thunderbird
 exec --no-startup-id spotify
-exec --no-startup-id ~/scripts/cmd/bt connect
+exec --no-startup-id 'sleep 5 && ~/scripts/cmd/bt connect'
 
 # ----------------
 # Custom shortcuts
@@ -317,10 +317,10 @@ bindsym $mod+b       exec --no-startup-id ~/scripts/cmd/bt connect
 bindsym $mod+Shift+b exec --no-startup-id ~/scripts/cmd/bt disconnect
 
 # Conservation mode TLP toggle (gui)
-bindsym $mod+c exec --no-startup-id ~/scripts/cmd/consv gui
+bindsym $mod+c exec ~/scripts/cmd/consv gui
 
 # Garfield comic
-bindsym $mod+Shift+g exec --no-startup-id ~/scripts/cmd/garf show -r
+bindsym $mod+Shift+g exec ~/scripts/cmd/garf show -r
 
 # Screenshot
 bindsym Print exec spectacle
