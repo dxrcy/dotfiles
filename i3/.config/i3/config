@@ -255,6 +255,8 @@ strip_workspace_numbers yes
 
 # exec --no-startup-id synclient VertScrollDelta=111
 
+exec --no-startup-id xrandr --output eDP-1 --mode 1680x1050
+
 # Set display (ImageMagick) windows to floating and near center of screen
 for_window [class="Display"] floating enable, move position 200px 200px
 # Floating mode
@@ -271,6 +273,7 @@ bindsym $mod+asciitilde workspace back_and_forth
 for_window [class="LibreWolf"] border pixel 0, move, resize
 
 # Assign programs to workspaces
+assign [class="LibreWolf"] $ws2
 assign [class="Spotify"] $ws10
 
 # Switch between workspaces
@@ -295,6 +298,11 @@ exec_always --no-startup-id nitrogen --restore
 
 # Transparent windows
 exec --no-startup-id picom -CGb
+
+# Autostart programs
+# librewolf starts regardless
+exec --no-startup-id spotify
+exec --no-startup-id ~/scripts/cmd/bt connect
 
 # ----------------
 # Custom shortcuts
