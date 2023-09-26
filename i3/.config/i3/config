@@ -299,10 +299,6 @@ exec --no-startup-id thunderbird
 exec --no-startup-id spotify
 exec --no-startup-id 'sleep 5 && ~/scripts/cmd/bt connect'
 
-# ----------------
-# Custom shortcuts
-# ----------------
-
 # Set split to vertical and open terminal
 bindsym $mod+Shift+Return exec "i3-msg split v && setsid kitty"
 
