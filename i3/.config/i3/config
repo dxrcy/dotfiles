@@ -300,7 +300,7 @@ exec_always --no-startup-id nitrogen --restore
 exec --no-startup-id picom -CGb
 
 # Autostart programs
-exec --no-startup-id librewolf
+# exec --no-startup-id librewolf
 exec --no-startup-id windscribe
 exec --no-startup-id spotify
 exec --no-startup-id ~/scripts/cmd/bt connect
