@@ -2,7 +2,7 @@
 # original source: https://gitlab.com/Nmoleo/i3-volume-brightness-indicator
 # taken from here: https://gitlab.com/Nmoleo/i3-volume-brightness-indicator
 
-# NOTE: Must be ran as root, or add the following line to /etc/sudoers (with your username replacing <USERNAME>):
+# NOTE: (IF USING xbacklight NOT brightnessctl) Must be ran as root, or add the following line to /etc/sudoers (with your username replacing <USERNAME>):
 # <USERNAME> ALL = (root) NOPASSWD: /usr/bin/xbacklight
 
 # See README.md for usage instructions
@@ -23,7 +23,11 @@ function get_mute {
 
 # Uses regex to get brightness from sudo xbacklight
 function get_brightness {
-    sudo xbacklight -get | grep -Po '[0-9]{1,3}' | head -n 1
+    # sudo xbacklight -get | grep -Po '[0-9]{1,3}' | head -n 1
+    value=$(brightnessctl get)
+    max=$(brightnessctl max)
+    percent=$((100 * value / max))
+    echo $percent
 }
 
 # Returns a mute icon, a volume-low icon, or a volume-high icon, depending on the volume
@@ -86,13 +90,13 @@ case $1 in
 
     brightness_up)
     # Increases brightness and displays the notification
-    sudo xbacklight -inc $brightness_step -time 0 
+    brightnessctl set +$brightness_step% 
     show_brightness_notif
     ;;
 
     brightness_down)
     # Decreases brightness and displays the notification
-    sudo xbacklight -dec $brightness_step -time 0
+    brightnessctl set $brightness_step%-
     show_brightness_notif
     ;;
 esac
