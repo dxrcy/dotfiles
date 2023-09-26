@@ -331,3 +331,6 @@ bindsym $mod+g exec --no-startup-id ~/scripts/cmd/garf show -r
 # Screenshot
 bindsym Print exec spectacle
 
+# Sleep/suspend
+bindsym $mod+Delete exec systemctl suspend
+
