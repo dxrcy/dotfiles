@@ -47,7 +47,7 @@ bindsym Control+Shift+braceright exec "playerctl next"
 
 # Background
 exec --no-startup-id ~/scripts/cmd/bg-change --forever
-bindsym $mod+p exec ~/scripts/cmd/bg-change
+bindsym $mod+Shift+p exec ~/scripts/cmd/bg-change
 
 # Transparent windows
 exec --no-startup-id picom -CGb
@@ -200,10 +200,7 @@ for_window [class="Spotify"] floating enable, resize set 400 200, move scratchpa
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+        # Resize window
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -223,6 +220,12 @@ mode "resize" {
 
 # Enter resize mode
 bindsym $mod+r mode "resize"
+
+# Resize window
+bindsym $mod+y resize shrink width 10 px or 10 ppt
+bindsym $mod+u resize grow height 10 px or 10 ppt
+bindsym $mod+i resize shrink height 10 px or 10 ppt
+bindsym $mod+o resize grow width 10 px or 10 ppt
 
 ######################################
 # color settings for bar and windows #
