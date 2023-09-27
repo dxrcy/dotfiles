@@ -80,7 +80,7 @@ bindsym $mod+Shift+Return exec "i3-msg split v && setsid kitty"
 bindsym $mod+d exec --no-startup-id dmenu_run -b
 
 # Start librewolf
-bindsym $mod+p exec --no-startup-id librewolf
+bindsym $mod+n exec --no-startup-id librewolf
 
 # Kill focused window
 bindsym $mod+q kill
