@@ -76,11 +76,14 @@ bindsym $mod+Return exec kitty
 # Set split to vertical and open terminal
 bindsym $mod+Shift+Return exec "i3-msg split v && setsid kitty"
 
-# Kill focused window
-bindsym $mod+q kill
-
 # Start dmenu (at bottom)
 bindsym $mod+d exec --no-startup-id dmenu_run -b
+
+# Start librewolf
+bindsym $mod+p exec --no-startup-id librewolf
+
+# Kill focused window
+bindsym $mod+q kill
 
 # Change focus
 bindsym $mod+h focus left
@@ -222,10 +225,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Resize window
-bindsym $mod+y resize shrink width 10 px or 10 ppt
-bindsym $mod+u resize grow height 10 px or 10 ppt
-bindsym $mod+i resize shrink height 10 px or 10 ppt
-bindsym $mod+o resize grow width 10 px or 10 ppt
+bindsym $mod+Shift+y resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+u resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+i resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+o resize grow width 10 px or 10 ppt
 
 ######################################
 # color settings for bar and windows #
