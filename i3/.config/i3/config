@@ -188,23 +188,23 @@ for_window [class="Display"] floating enable, move position 200px 200px
 
 # Kitty scratchpad
 bindsym $mod+F1 [class="sc-terminal"] scratchpad show; move position center
-for_window [class="sc-terminal"] floating enable, resize set 1200 800, move scratchpad
+for_window [class="sc-terminal"] floating enable, resize set 1200 800, move scratchpad, border pixel 0
 exec_always --no-startup-id \
     pgrep -f '^kitty --class sc-terminal' \
     || kitty --class 'sc-terminal'
 
 # Thunderbird scratchpad
 bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
-for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad
+for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
 # exec --no-startup-id 'thunderbird'
 
 # Spotify scratchpad
 bindsym $mod+F3 [class="Spotify"] scratchpad show; move position center
-for_window [class="Spotify"] floating enable, resize set 400 200, move scratchpad
+for_window [class="Spotify"] floating enable, resize set 400 200, move scratchpad, border pixel 0
 exec --no-startup-id 'spotify'
 
 # Calculator scratchpad
-bindsym $mod+F12 [class="sc-calculator"] scratchpad show; move position center
+bindsym F12 [class="sc-calculator"] scratchpad show; move position center
 for_window [class="sc-calculator"] floating enable, resize set 400 600, move scratchpad
 exec_always --no-startup-id \
     pgrep -f '^kitty --class sc-calculator' \
