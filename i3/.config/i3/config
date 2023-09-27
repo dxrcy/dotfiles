@@ -55,7 +55,7 @@ exec --no-startup-id picom -CGb
 # Autostart programs
 # exec --no-startup-id librewolf
 exec --no-startup-id windscribe
-exec --no-startup-id 'sleep 5 && ~/scripts/cmd/bt connect'
+exec --no-startup-id 'sleep 5 && bluetoothctl scan on & ~/scripts/cmd/bt connect && bluetoothctl scan off'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -301,4 +301,8 @@ bindsym Print exec spectacle
 bindsym $mod+Escape exec ~/.config/i3/scripts/blur-lock
 # Open power menu
 bindsym $mod+Shift+Escape exec ~/.config/i3/scripts/powermenu
+
+# Esperanto keymap (manual)
+bindsym $mod+s       exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/enable
+bindsym $mod+Shift+s exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/disable
 
