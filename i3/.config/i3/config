@@ -282,7 +282,7 @@ exec_always --no-startup-id pgrep -f '^kitty --class sp-kitty' || kitty --class 
 for_window [class="sp-kitty"] floating enable, resize set 1200 800, move scratchpad, border pixel 0
 # Scratchpad: Thunderbird
 bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
-exec --no-startup-id 'thunderbird'
+# exec --no-startup-id 'thunderbird'
 for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
 # Scratchpad: Spotify
 bindsym $mod+F3 [class="Spotify"] scratchpad show; move position center
