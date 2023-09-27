@@ -69,8 +69,8 @@
     v() { if [ "$1" ]; then nvim $1; else nvim .; fi }
     alias vim='nvim'
 # Pacman
-    alias p='pacman'
-    alias sp='sudo pacman'
+    alias p='pacman-thing'
+    alias pp='pacman-thing p'
 # Rust
     alias c='cargo'
     alias cr='cargo run'
