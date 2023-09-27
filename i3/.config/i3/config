@@ -50,7 +50,7 @@ exec --no-startup-id ~/scripts/cmd/bg-change --forever
 bindsym $mod+Shift+p exec ~/scripts/cmd/bg-change
 
 # Transparent windows
-exec --no-startup-id picom -CGb
+exec_always --no-startup-id picom -CGb
 
 # Autostart programs
 # exec --no-startup-id librewolf
