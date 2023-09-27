@@ -107,7 +107,7 @@ bindsym $mod+Shift+l move right
 # bindsym $mod+Shift+Right move right
 
 # Toggle split direction
-bindsym $mod+v split toggle
+bindsym $mod+t split toggle
 
 # Fullscreen window
 bindsym $mod+f fullscreen toggle
