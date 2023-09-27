@@ -297,10 +297,10 @@ bindsym $mod+Shift+g exec ~/scripts/cmd/garf show -r
 # Screenshot
 bindsym Print exec spectacle
 
-# Lock screen with blur
-bindsym $mod+Escape exec ~/.config/i3/scripts/blur-lock
+# Lock screen, with blur
+bindsym $mod+Shift+Escape exec ~/.config/i3/scripts/blur-lock
 # Open power menu
-bindsym $mod+Shift+Escape exec ~/.config/i3/scripts/powermenu
+bindsym $mod+Escape exec ~/.config/i3/scripts/powermenu
 
 # Esperanto keymap (manual)
 bindsym $mod+s       exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/enable
