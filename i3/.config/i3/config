@@ -265,18 +265,29 @@ gaps outer 0
 # Switch back and forth 2 most recent workspaces
 bindsym $mod+asciitilde workspace back_and_forth
 
-# Disable title and border for librewolf
-for_window [class="LibreWolf"] border pixel 0, move, resize
+# Disable title and border
+for_window [class="LibreWolf"] border pixel 0
 
 # Assign programs to workspaces
 assign [class="LibreWolf"] $ws2
-assign [class="thunderbird"] $ws9
-assign [class="Spotify"] $ws10
 
 # Floating mode (and custom position)
 for_window [class="spectacle"] floating enable
 for_window [class="Windscribe2"] floating enable
 for_window [class="Display"] floating enable, move position 200px 200px
+
+# Scratchpad: Kitty
+bindsym $mod+F1 [class="sp-kitty"] scratchpad show; move position center
+exec --no-startup-id kitty --class 'sp-kitty'
+for_window [class="sp-kitty"] floating enable, resize set 1200 800, move scratchpad, border pixel 0
+# Scratchpad: Thunderbird
+bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
+exec --no-startup-id 'thunderbird'
+for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
+# Scratchpad: Spotify
+bindsym $mod+F3 [class="Spotify"] scratchpad show; move position center
+exec --no-startup-id 'spotify'
+for_window [class="Spotify"] floating enable, resize set 400 200, move scratchpad, border pixel 0
 
 # Backlight
 bindsym XF86MonBrightnessUp exec --no-startup-id sh /home/darcy/.config/i3/scripts/volume_brightness.sh brightness_up
@@ -295,8 +306,6 @@ exec --no-startup-id picom -CGb
 # Autostart programs
 # exec --no-startup-id librewolf
 exec --no-startup-id windscribe
-exec --no-startup-id thunderbird
-exec --no-startup-id spotify
 exec --no-startup-id 'sleep 5 && ~/scripts/cmd/bt connect'
 
 # Set split to vertical and open terminal
