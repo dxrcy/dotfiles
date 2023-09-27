@@ -122,8 +122,8 @@ set $ws5 "5:"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9:@"
-set $ws10 "10:🎵"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -278,7 +278,7 @@ for_window [class="Display"] floating enable, move position 200px 200px
 
 # Scratchpad: Kitty
 bindsym $mod+F1 [class="sp-kitty"] scratchpad show; move position center
-exec --no-startup-id kitty --class 'sp-kitty'
+exec_always --no-startup-id pgrep -f '^kitty --class sp-kitty' || kitty --class sp-kitty
 for_window [class="sp-kitty"] floating enable, resize set 1200 800, move scratchpad, border pixel 0
 # Scratchpad: Thunderbird
 bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
