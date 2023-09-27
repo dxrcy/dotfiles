@@ -55,7 +55,7 @@ exec --no-startup-id picom -CGb
 # Autostart programs
 # exec --no-startup-id librewolf
 exec --no-startup-id windscribe
-exec --no-startup-id 'sleep 5 && bluetoothctl scan on & ~/scripts/cmd/bt connect && bluetoothctl scan off'
+exec --no-startup-id 'bluetoothctl scan on && sleep 5 && ~/scripts/cmd/bt connect && bluetoothctl scan off'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
