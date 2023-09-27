@@ -300,6 +300,9 @@ bindsym $mod+c exec ~/scripts/cmd/consv gui
 # Garfield comic
 bindsym $mod+Shift+g exec ~/scripts/cmd/garf show -r
 
+# Emoji finder
+bindsym $mod+period exec ~/scripts/cmd/dmenu-unicode
+
 # Screenshot
 bindsym Print exec spectacle
 
