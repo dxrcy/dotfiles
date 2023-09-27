@@ -187,9 +187,9 @@ for_window [class="Windscribe2"] floating enable
 for_window [class="Display"] floating enable, move position 200px 200px
 
 # Scratchpad: Kitty
-bindsym $mod+F1 [class="sp-kitty"] scratchpad show; move position center
-exec_always --no-startup-id pgrep -f '^kitty --class sp-kitty' || kitty --class sp-kitty
-for_window [class="sp-kitty"] floating enable, resize set 1200 800, move scratchpad, border pixel 0
+bindsym $mod+F1 [class="terminal-scratchpad"] scratchpad show; move position center
+exec_always --no-startup-id pgrep -f '^kitty --class terminal-scratchpad' || kitty --class 'terminal-scratchpad'
+for_window [class="terminal-scratchpad"] floating enable, resize set 1200 800, move scratchpad, border pixel 0
 
 # Scratchpad: Thunderbird
 bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
@@ -200,6 +200,37 @@ for_window [class="thunderbird"] floating enable, resize set 1400 900, move scra
 bindsym $mod+F3 [class="Spotify"] scratchpad show; move position center
 exec --no-startup-id 'spotify'
 for_window [class="Spotify"] floating enable, resize set 400 200, move scratchpad, border pixel 0
+
+# Open a simple calculator
+# Not a scratchpad
+bindsym $mod+F12 exec --no-startup-id kitty --class 'terminal-calculator' sh -c "~/scripts/cmd/title Calculator | lolcat | lolcat && qalc"
+for_window [class="terminal-calculator"] floating enable, resize set 400 600, move position center center
+
+# Bluetooth toggle
+bindsym $mod+b       exec --no-startup-id ~/scripts/cmd/bt connect
+bindsym $mod+Shift+b exec --no-startup-id ~/scripts/cmd/bt disconnect
+
+# Conservation mode TLP toggle (gui)
+bindsym $mod+c exec ~/scripts/cmd/consv gui
+
+# Garfield comic
+bindsym $mod+Shift+g exec ~/scripts/cmd/garf show -r
+
+# Emoji finder
+bindsym $mod+period exec ~/scripts/cmd/dmenu-unicode
+
+# Screenshot
+bindsym Print exec spectacle
+
+# Lock screen, with blur
+bindsym $mod+Shift+Escape exec ~/.config/i3/scripts/blur-lock
+# Open power menu
+bindsym $mod+Escape exec ~/.config/i3/scripts/powermenu
+
+# Esperanto keymap (manual)
+bindsym $mod+s       exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/enable
+bindsym $mod+Shift+s exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/disable
+
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
@@ -289,29 +320,4 @@ strip_workspace_numbers yes
 		urgent_workspace	$darkgrey	    	$darkgrey	$grey		$purple
 	}
 }
-
-# Bluetooth toggle
-bindsym $mod+b       exec --no-startup-id ~/scripts/cmd/bt connect
-bindsym $mod+Shift+b exec --no-startup-id ~/scripts/cmd/bt disconnect
-
-# Conservation mode TLP toggle (gui)
-bindsym $mod+c exec ~/scripts/cmd/consv gui
-
-# Garfield comic
-bindsym $mod+Shift+g exec ~/scripts/cmd/garf show -r
-
-# Emoji finder
-bindsym $mod+period exec ~/scripts/cmd/dmenu-unicode
-
-# Screenshot
-bindsym Print exec spectacle
-
-# Lock screen, with blur
-bindsym $mod+Shift+Escape exec ~/.config/i3/scripts/blur-lock
-# Open power menu
-bindsym $mod+Escape exec ~/.config/i3/scripts/powermenu
-
-# Esperanto keymap (manual)
-bindsym $mod+s       exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/enable
-bindsym $mod+Shift+s exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/disable
 
