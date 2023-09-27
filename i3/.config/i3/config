@@ -186,25 +186,29 @@ for_window [class="spectacle"] floating enable
 for_window [class="Windscribe2"] floating enable
 for_window [class="Display"] floating enable, move position 200px 200px
 
-# Scratchpad: Kitty
-bindsym $mod+F1 [class="terminal-scratchpad"] scratchpad show; move position center
-exec_always --no-startup-id pgrep -f '^kitty --class terminal-scratchpad' || kitty --class 'terminal-scratchpad'
-for_window [class="terminal-scratchpad"] floating enable, resize set 1200 800, move scratchpad, border pixel 0
+# Kitty scratchpad
+bindsym $mod+F1 [class="sc-terminal"] scratchpad show; move position center
+for_window [class="sc-terminal"] floating enable, resize set 1200 800, move scratchpad
+exec_always --no-startup-id \
+    pgrep -f '^kitty --class sc-terminal' \
+    || kitty --class 'sc-terminal'
 
-# Scratchpad: Thunderbird
+# Thunderbird scratchpad
 bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
+for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad
 # exec --no-startup-id 'thunderbird'
-for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
 
-# Scratchpad: Spotify
+# Spotify scratchpad
 bindsym $mod+F3 [class="Spotify"] scratchpad show; move position center
+for_window [class="Spotify"] floating enable, resize set 400 200, move scratchpad
 exec --no-startup-id 'spotify'
-for_window [class="Spotify"] floating enable, resize set 400 200, move scratchpad, border pixel 0
 
-# Open a simple calculator
-# Not a scratchpad
-bindsym $mod+F12 exec --no-startup-id kitty --class 'terminal-calculator' sh -c "~/scripts/cmd/title Calculator | lolcat | lolcat && qalc"
-for_window [class="terminal-calculator"] floating enable, resize set 400 600, move position center center
+# Calculator scratchpad
+bindsym $mod+F12 [class="sc-calculator"] scratchpad show; move position center
+for_window [class="sc-calculator"] floating enable, resize set 400 600, move scratchpad
+exec_always --no-startup-id \
+    pgrep -f '^kitty --class sc-calculator' \
+    || kitty --class 'sc-calculator' sh -c "~/scripts/cmd/title Calculator | lolcat | lolcat && qalc"
 
 # Bluetooth toggle
 bindsym $mod+b       exec --no-startup-id ~/scripts/cmd/bt connect
