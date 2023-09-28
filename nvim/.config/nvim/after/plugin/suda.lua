@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>ss", ":SudaWrite<CR>")
+vim.keymap.set("n", "<C-M-s>", ":SudaWrite<CR>")

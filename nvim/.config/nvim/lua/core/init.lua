@@ -28,3 +28,6 @@ vim.opt.scrolloff = 8
 
 -- vim.opt.updatetime = 50
 
+-- Disable 'Warning: changing a readonly file'
+vim.cmd("au BufEnter * set noro")
+
