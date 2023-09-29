@@ -1,3 +1,5 @@
+source "~/.config/mutt/passwords"
+
 set from = "acednes@gmail.com"
 set realname = "darcy"
 
