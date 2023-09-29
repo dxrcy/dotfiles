@@ -71,14 +71,14 @@ bindsym $mod+Shift+r restart
 # Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# Start a terminal
-bindsym $mod+Return exec kitty
-# Set split to vertical and start terminal
-bindsym $mod+Shift+Return exec "i3-msg split v && setsid kitty"
+# Start a terminal WITH tmux
+bindsym $mod+Return exec kitty tmux
+# Set split to vertical and start terminal WITH tmux
+bindsym $mod+Shift+Return exec "i3-msg split v && setsid kitty tmux"
 # Start terminal and attach to most recent tmux session
 bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
 # Start terminal WITHOUT tmux
-bindsym $mod+Shift+Mod1+Return exec --no-startup-id kitty zsh
+bindsym $mod+Control+Return exec --no-startup-id kitty
 
 # Start dmenu (at bottom)
 bindsym $mod+d exec --no-startup-id dmenu_run -b
