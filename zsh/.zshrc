@@ -87,13 +87,14 @@
     alias ci='cargo install --path .'
 # Dotfile editing
     alias d.='cd ~/dotfiles'
-    alias d.z='nvim ~/dotfiles/zsh/.zshrc'
-    alias d.v='cd ~/dotfiles/nvim/.config/nvim           && nvim .'
-    alias d.t='cd ~/dotfiles/tmux/.config/tmux/          && nvim tmux.conf'
-    alias d.r='cd ~/dotfiles/ranger/.config/ranger       && nvim rc.conf'
-    alias d.i='cd ~/dotfiles/i3/.config/i3               && nvim config'
-    # alias d.a='cd ~/dotfiles/alacritty/.config/alacritty && nvim alacritty.yml'
-    alias d.k='cd ~/dotfiles/kitty/.config/kitty         && nvim kitty.conf'
+    alias d.z='cd ~/dotfiles/zsh                   && nvim .zshrc'
+    alias d.v='cd ~/dotfiles/nvim/.config/nvim     && nvim .'
+    alias d.t='cd ~/dotfiles/tmux/.config/tmux     && nvim tmux.conf'
+    alias d.r='cd ~/dotfiles/ranger/.config/ranger && nvim rc.conf'
+    alias d.i='cd ~/dotfiles/i3/.config/i3         && nvim config'
+    alias d.k='cd ~/dotfiles/kitty/.config/kitty   && nvim kitty.conf'
+    # todo: move to dotfiles
+    alias d.m='cd ~/.config/mutt && nvim muttrc ; title "remember: not in dotfiles"'
 # Misc. Programs
     alias j='just'
     alias ls='eza -l'
