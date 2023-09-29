@@ -88,6 +88,7 @@ bindsym $mod+n exec --no-startup-id librewolf
 
 # Kill focused window
 bindsym $mod+q kill
+bindsym $mod+scircumflex kill
 
 # Change focus
 bindsym $mod+h focus left
@@ -121,7 +122,9 @@ bindsym $mod+f fullscreen toggle
 
 # Change container layout
 bindsym $mod+w layout tabbed
+bindsym $mod+gcircumflex layout tabbed
 bindsym $mod+Shift+w layout stacking
+bindsym $mod+Shift+gcircumflex layout stacking
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -236,8 +239,8 @@ bindsym $mod+Shift+Escape exec --no-startup-id ~/.config/i3/scripts/blur-lock
 bindsym $mod+Escape exec --no-startup-id ~/.config/i3/scripts/powermenu
 
 # Esperanto keymap (manual)
-bindsym $mod+s       exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/enable
-bindsym $mod+Shift+s exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/disable
+bindsym $mod+BackSpace exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/disable
+bindsym $mod+Shift+BackSpace       exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/enable
 
 
 # Resize window (you can also use the mouse for that)
