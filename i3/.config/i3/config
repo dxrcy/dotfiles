@@ -195,7 +195,7 @@ for_window [class="Display"] floating enable, move position 200px 200px
 
 # Terminal (kitty) scratchpad
 bindsym $mod+F1 [class="sp-terminal"] scratchpad show; move position center
-for_window [class="sp-terminal"] floating enable, resize set 1200 800, move scratchpad, border pixel 2
+for_window [class="sp-terminal"] floating enable, resize set 1100 700, move scratchpad, border pixel 2
 exec_always --no-startup-id \
     pgrep -f '^kitty --class sp-terminal' \
     || kitty --class 'sp-terminal'
@@ -206,14 +206,18 @@ for_window [class="sp-mutt"] floating enable, resize set 1200 800, move scratchp
 exec_always --no-startup-id \
     pgrep -f '^kitty --class sp-mutt' \
     || kitty --class 'sp-mutt' -o window_padding_width=0 mutt
-# bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
-# for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
-# exec --no-startup-id 'thunderbird'
 
 # Spotify scratchpad
 bindsym $mod+F3 [class="Spotify"] scratchpad show; move position center
 for_window [class="Spotify"] floating enable, resize set 400 200, move scratchpad, border pixel 0
 exec --no-startup-id 'spotify'
+
+# Btop scratchpad
+bindsym $mod+F4 [class="sp-btop"] scratchpad show; move position center
+for_window [class="sp-btop"] floating enable, resize set 1300 900, move scratchpad, border pixel 2
+exec_always --no-startup-id \
+    pgrep -f '^kitty --class sp-btop' \
+    || kitty --class 'sp-btop' btop
 
 # Calculator scratchpad
 bindsym F12 [class="sp-calculator"] scratchpad show; move position center
