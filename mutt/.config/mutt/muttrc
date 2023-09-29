@@ -3,10 +3,7 @@ source "~/.config/mutt/passwords"
 set from = "acednes@gmail.com"
 set realname = "darcy"
 
-# IMAP settings
 set imap_user = "acednes@gmail.com"
-
-# SMTP settings
 set smtp_url = "smtps://acednes@smtp.gmail.com"
 
 # Remote Gmail folders
