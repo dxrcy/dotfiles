@@ -102,7 +102,6 @@
     alias wiki='wiki-tui'
     alias tree='ls -T'
     alias scim='sc-im'
-    alias dol='setsid dolphin .'
     alias trs='tree-sitter'
     alias cat='bat'
     alias r='ranger'
