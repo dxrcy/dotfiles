@@ -93,8 +93,7 @@
     alias d.r='cd ~/dotfiles/ranger/.config/ranger && nvim rc.conf'
     alias d.i='cd ~/dotfiles/i3/.config/i3         && nvim config'
     alias d.k='cd ~/dotfiles/kitty/.config/kitty   && nvim kitty.conf'
-    # todo: move to dotfiles
-    alias d.m='cd ~/.config/mutt && nvim muttrc ; title "remember: not in dotfiles"'
+    alias d.m='cd ~/dotfiles/mutt/.config/mutt     && nvim muttrc'
 # Misc. Programs
     alias j='just'
     alias ls='eza -l'
