@@ -58,6 +58,7 @@
     alias Z='exit'
     alias ZZ='exit'
 # Git
+    alias g='git'
     alias ga='git add'
     alias gc='git commit -m $1'
     alias gac='git add . && git commit -m $1'
@@ -108,7 +109,7 @@
     alias lw='librewolf'
     alias shck='shellcheck'
 # Misc
-    alias g='garf'
+    # alias g='garf'
     alias p8='ping 8.8.8.8 -c 10'
     alias copydir='pwd | clip'
     alias mkdir='mkdir -p'
