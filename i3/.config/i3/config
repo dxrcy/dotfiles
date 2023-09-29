@@ -193,16 +193,21 @@ for_window [class="spectacle"] floating enable
 for_window [class="Windscribe2"] floating enable
 for_window [class="Display"] floating enable, move position 200px 200px
 
-# Kitty scratchpad
-bindsym $mod+F1 [class="sc-terminal"] scratchpad show; move position center
-for_window [class="sc-terminal"] floating enable, resize set 1200 800, move scratchpad, border pixel 0
+# Terminal (kitty) scratchpad
+bindsym $mod+F1 [class="sp-terminal"] scratchpad show; move position center
+for_window [class="sp-terminal"] floating enable, resize set 1200 800, move scratchpad, border pixel 2
 exec_always --no-startup-id \
-    pgrep -f '^kitty --class sc-terminal' \
-    || kitty --class 'sc-terminal'
+    pgrep -f '^kitty --class sp-terminal' \
+    || kitty --class 'sp-terminal'
 
-# Thunderbird scratchpad
-bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
-for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
+# Email (mutt) scratchpad
+bindsym $mod+F2 [class="sp-mutt"] scratchpad show; move position center
+for_window [class="sp-mutt"] floating enable, resize set 1200 800, move scratchpad, border pixel 2
+exec_always --no-startup-id \
+    pgrep -f '^kitty --class sp-mutt' \
+    || kitty --class 'sp-mutt' -o window_padding_width=0 mutt
+# bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
+# for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
 # exec --no-startup-id 'thunderbird'
 
 # Spotify scratchpad
@@ -211,11 +216,11 @@ for_window [class="Spotify"] floating enable, resize set 400 200, move scratchpa
 exec --no-startup-id 'spotify'
 
 # Calculator scratchpad
-bindsym F12 [class="sc-calculator"] scratchpad show; move position center
-for_window [class="sc-calculator"] floating enable, resize set 400 600, move scratchpad
+bindsym F12 [class="sp-calculator"] scratchpad show; move position center
+for_window [class="sp-calculator"] floating enable, resize set 400 600, move scratchpad, border pixel 2
 exec_always --no-startup-id \
-    pgrep -f '^kitty --class sc-calculator' \
-    || kitty --class 'sc-calculator' sh -c "~/scripts/cmd/title Calculator | lolcat | lolcat && qalc"
+    pgrep -f '^kitty --class sp-calculator' \
+    || kitty --class 'sp-calculator' -o window_padding_width=0 sh -c "~/scripts/cmd/title Calculator | lolcat | lolcat && qalc"
 
 # Bluetooth toggle
 bindsym $mod+b       exec --no-startup-id ~/scripts/cmd/bt connect
