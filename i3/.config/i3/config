@@ -45,12 +45,15 @@ bindsym Control+Shift+backslash exec --no-startup-id "playerctl pause"
 bindsym Control+Shift+braceleft exec --no-startup-id "playerctl previous"
 bindsym Control+Shift+braceright exec --no-startup-id "playerctl next"
 
+# Transparent windows
+exec_always --no-startup-id picom -CGb
+
 # Background
 exec --no-startup-id ~/scripts/cmd/bg-change --forever
 bindsym $mod+Shift+p exec --no-startup-id ~/scripts/cmd/bg-change
 
-# Transparent windows
-exec_always --no-startup-id picom -CGb
+# Screensaver
+exec --no-startup-id xscreensaver
 
 # Autostart programs
 # exec --no-startup-id librewolf
@@ -226,6 +229,9 @@ exec_always --no-startup-id \
     pgrep -f '^kitty --class sp-calculator' \
     || kitty --class 'sp-calculator' -o window_padding_width=0 sh -c "~/scripts/cmd/title Calculator | lolcat | lolcat && qalc"
 
+# Esperanto keyboard
+bindsym $mod+m exec --no-startup-id ~/scripts/cmd/esperanto toggle
+
 # Bluetooth toggle
 bindsym $mod+b       exec --no-startup-id ~/scripts/cmd/bt connect
 bindsym $mod+Shift+b exec --no-startup-id ~/scripts/cmd/bt disconnect
@@ -246,10 +252,6 @@ bindsym Print exec --no-startup-id spectacle
 bindsym $mod+Shift+Escape exec --no-startup-id ~/.config/i3/scripts/blur-lock
 # Open power menu
 bindsym $mod+Escape exec --no-startup-id ~/.config/i3/scripts/powermenu
-
-# Esperanto keymap (manual)
-bindsym $mod+BackSpace exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/disable
-bindsym $mod+Shift+BackSpace       exec --no-startup-id xmodmap ~/.config/i3/esperanto-keymap/enable
 
 
 # Resize window (you can also use the mouse for that)
