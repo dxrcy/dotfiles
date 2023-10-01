@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [ "$(playerctl status)" = 'Playing' ]; then
-    echo ''
-else
-    echo ''
-fi
-
