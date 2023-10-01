@@ -227,7 +227,7 @@ bindsym F12 [class="sp-calculator"] scratchpad show; move position center
 for_window [class="sp-calculator"] floating enable, resize set 400 600, move scratchpad, border pixel 2
 exec_always --no-startup-id \
     pgrep -f '^kitty --class sp-calculator' \
-    || kitty --class 'sp-calculator' -o window_padding_width=0 sh -c "~/scripts/cmd/title Calculator | lolcat | lolcat && qalc"
+    || kitty --class 'sp-calculator' -o window_padding_width=0 sh -c "~/scripts/cmd/title -a Calculator | lolcat | lolcat && qalc"
 
 # Esperanto keyboard
 bindsym $mod+m exec --no-startup-id ~/scripts/cmd/esperanto toggle
