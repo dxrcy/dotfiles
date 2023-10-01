@@ -128,7 +128,7 @@ bindsym $mod+Shift+gcircumflex layout stacking
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-# bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # Change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -192,6 +192,7 @@ assign [class="LibreWolf"] $ws2
 for_window [class="spectacle"] floating enable
 for_window [class="Windscribe2"] floating enable
 for_window [class="Display"] floating enable, move position 200px 200px
+for_window [class="feh-floating"] floating enable
 
 # Terminal (kitty) scratchpad
 bindsym $mod+F1 [class="sp-terminal"] scratchpad show; move position center
