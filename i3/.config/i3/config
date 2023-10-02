@@ -205,7 +205,7 @@ for_window [class="Display"] floating enable, move position 200px 200px
 set $sp-global floating enable, move scratchpad, border pixel 2
 
 # Terminal (kitty)
-set $sp-kitty 'kitty --class "i3sp-kitty" sh -c "title -w119 Hacking | lolcat && zsh"'
+set $sp-kitty 'kitty --class "i3sp-kitty" sh -c "~/scripts/cmd/quote | title -w119 | lolcat && zsh"'
 bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3sp-kitty" $sp-kitty
 for_window [class="i3sp-kitty"] $sp-global resize set 1100 700
 exec --no-startup-id $sp-kitty
