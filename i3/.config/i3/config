@@ -6,7 +6,7 @@
 set $mod Mod4
 
 # Path for scripts
-set $i3-scripts ~/.config/i3/scripts
+set $i3_scripts ~/.config/i3/scripts
 set $scripts ~/scripts
 
 # Font for window titles
@@ -37,11 +37,11 @@ set $refresh_i3status killall -SIGUSR1 i3status
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Backlight
-bindsym XF86MonBrightnessUp exec --no-startup-id sh $i3-scripts/volume_brightness.sh brightness_up
-bindsym XF86MonBrightnessDown exec --no-startup-id sh $i3-scripts/volume_brightness.sh brightness_down
+bindsym XF86MonBrightnessUp exec --no-startup-id sh $i3_scripts/volume_brightness.sh brightness_up
+bindsym XF86MonBrightnessDown exec --no-startup-id sh $i3_scripts/volume_brightness.sh brightness_down
 # Volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id $i3-scripts/volume_brightness.sh volume_up
-bindsym XF86AudioLowerVolume exec --no-startup-id $i3-scripts/volume_brightness.sh volume_down
+bindsym XF86AudioRaiseVolume exec --no-startup-id $i3_scripts/volume_brightness.sh volume_up
+bindsym XF86AudioLowerVolume exec --no-startup-id $i3_scripts/volume_brightness.sh volume_down
 
 # Custom media control keybinds
 bindsym Control+backslash exec --no-startup-id "playerctl play-pause"
@@ -65,7 +65,7 @@ exec --no-startup-id clipit
 # Autostart programs
 # exec --no-startup-id librewolf
 exec --no-startup-id windscribe
-exec --no-startup-id 'sleep 5 && ~/scripts/cmd/bt connect'
+exec --no-startup-id sleep 5 && ~/scripts/cmd/bt connect && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -106,23 +106,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# Change focus with arrow keys
-# bindsym $mod+Left focus left
-# bindsym $mod+Down focus down
-# bindsym $mod+Up focus up
-# bindsym $mod+Right focus right
-
 # Move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# Move focused window with arrow keys
-# bindsym $mod+Shift+Left move left
-# bindsym $mod+Shift+Down move down
-# bindsym $mod+Shift+Up move up
-# bindsym $mod+Shift+Right move right
 
 # Toggle split direction
 bindsym $mod+t split toggle
@@ -207,43 +195,50 @@ for_window [class="Display"] floating enable, move position 200px 200px
 # SCRATCHPADS
 
 # For each scratchpad:
+# - Command definition
 # - Keybinding
 # - Custom window options
 # - Startup command
 
 # Global settings
-for_window [class="i3sp-*"] floating enable
-for_window [class="i3sp-*"] move scratchpad
-for_window [class="i3sp-*"] border pixel 2
+for_window [class="i3sp-*"] floating enable, move scratchpad, border pixel 2
 
 # Terminal (kitty)
-bindsym $mod+F1 exec --no-startup-id $i3-scripts/scratchpad "i3sp-kitty" 'kitty --class "i3sp-kitty"'
+set $sp-kitty 'kitty --class "i3sp-kitty"'
+bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3sp-kitty"
 for_window [class="i3sp-kitty"] resize set 1100 700
 
 # Email (mutt)
-bindsym $mod+F2 exec --no-startup-id $i3-scripts/scratchpad "i3sp-mutt" 'kitty --class "i3sp-mutt" mutt'
+set $sp-mutt 'kitty --class "i3sp-mutt" mutt'
+bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad "i3sp-mutt" $sp-mutt
 for_window [class="i3sp-mutt"] resize set 1200 800
-exec --no-startup-id 'kitty --class "i3sp-mutt" mutt'
+exec --no-startup-id $sp-mutt
 
 # Spotify
-bindsym $mod+F3 exec --no-startup-id $i3-scripts/scratchpad "Spotify" 'spotify'
+# Also duplicate global settings, because class cannot be changed
+set $sp-spotify 'spotify'
+bindsym $mod+F3 exec --no-startup-id $i3_scripts/scratchpad "spotify" $sp-spotify
+for_window [class="Spotify"] floating enable, move scratchpad, border pixel 2
 for_window [class="Spotify"] resize set 400 200
-exec --no-startup-id 'spotify'
+exec --no-startup-id $sp-spotify
 
 # Btop
-bindsym $mod+F4 exec --no-startup-id $i3-scripts/scratchpad "i3sp-btop" 'kitty --class "i3sp-btop" btop'
+set $sp-btop 'kitty --class "i3sp-btop" btop'
+bindsym $mod+F4 exec --no-startup-id $i3_scripts/scratchpad "i3sp-btop" $sp-btop
 for_window [class="i3sp-btop"] resize set 1300 900
-exec --no-startup-id 'kitty --class "i3sp-btop" btop'
+exec --no-startup-id $sp-btop
 
 # Calculator scratchpad
-bindsym F12 exec --no-startup-id $i3-scripts/scratchpad "i3sp-calc" 'kitty --class "i3sp-calc" -o window_padding_width=2 sh -c "~/scripts/cmd/title -a Calculator | lolcat && qalc"'
+set $sp-calc 'kitty --class "i3sp-calc" -o window_padding_width=2 sh -c "~/scripts/cmd/title -a Calculator | lolcat && qalc"'
+bindsym F12 exec --no-startup-id $i3_scripts/scratchpad "i3sp-calc" $sp-calc
 for_window [class="i3sp-calc"] resize set 400 600
+exec --no-startup-id $sp-calc
 
 # /SCRATCHPADS
 # -------------------------------------------------
 
 # Esperanto keyboard
-bindsym $mod+m exec --no-startup-id $scripts/cmd/esperanto toggle
+bindsym $mod+m exec --no-startup-id $scripts/cmd/esperanto toggle && $refresh_i3status
 
 # Bluetooth toggle
 bindsym $mod+b       exec --no-startup-id $scripts/cmd/bt connect
@@ -262,9 +257,9 @@ bindsym $mod+period exec --no-startup-id $scripts/cmd/dmenu-unicode
 bindsym Print exec --no-startup-id spectacle
 
 # Lock screen, with blur
-bindsym $mod+Shift+Escape exec --no-startup-id $i3-scripts/blur-lock
+bindsym $mod+Shift+Escape exec --no-startup-id $i3_scripts/blur-lock
 # Open power menu
-bindsym $mod+Escape exec --no-startup-id $i3-scripts/powermenu
+bindsym $mod+Escape exec --no-startup-id $i3_scripts/powermenu
 
 
 # Resize window (you can also use the mouse for that)
