@@ -216,12 +216,6 @@ bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad "i3sp-mutt" $sp-mutt
 for_window [class="i3sp-mutt"] $sp-global resize set 1200 800
 exec --no-startup-id $sp-mutt
 
-# Spotify TUI
-set $sp-spt 'kitty --class "i3sp-spt" ~/scripts/cmd/spt'
-bindsym $mod+Shift+F3 exec --no-startup-id $i3_scripts/scratchpad "i3sp-spt" $sp-spt
-for_window [class="i3sp-spt"] $sp-global resize set 1000 700
-exec --no-startup-id $sp-spt
-
 # Spotify
 set $sp-spotify 'spotify'
 bindsym $mod+F3 exec --no-startup-id $i3_scripts/scratchpad "spotify" $sp-spotify
@@ -269,6 +263,9 @@ bindsym Print exec --no-startup-id spectacle
 bindsym $mod+Shift+Escape exec --no-startup-id $i3_scripts/blur-lock
 # Open power menu
 bindsym $mod+Escape exec --no-startup-id $i3_scripts/powermenu
+
+# Show playing song metadata in notification
+bindsym $mod+s exec --no-startup-id dunstify -t 1000 "$(playerctl metadata --format '{{title}} - {{artist}}')"
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
