@@ -35,6 +35,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
 
 # Backlight
 bindsym XF86MonBrightnessUp exec --no-startup-id sh $i3_scripts/volume_brightness.sh brightness_up
@@ -228,7 +229,7 @@ for_window [class="i3sp-btop"] $sp-global resize set 1300 900
 exec --no-startup-id $sp-btop
 
 # Calculator scratchpad
-set $sp-calc 'kitty --class "i3sp-calc" -o window_padding_width=2 sh -c "title -w43 Calculator | lolcat && qalc"'
+set $sp-calc 'kitty --class "i3sp-calc" -o window_padding_width=2 sh -c "printf \"\x1b[1m\" && title -w43 Calculator | lolcat && qalc"'
 bindsym F12 exec --no-startup-id $i3_scripts/scratchpad "i3sp-calc" $sp-calc
 for_window [class="i3sp-calc"] $sp-global resize set 400 600
 exec --no-startup-id $sp-calc
