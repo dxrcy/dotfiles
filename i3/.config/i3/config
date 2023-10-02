@@ -196,42 +196,41 @@ for_window [class="Display"] floating enable, move position 200px 200px
 
 # For each scratchpad:
 # - Command definition
-# - Keybinding
+# - Keybind to open scratchpad (may rerun command)
 # - Custom window options
-# - Startup command
+# - Run command on startup
 
-# Global settings
-for_window [class="i3sp-*"] floating enable, move scratchpad, border pixel 2
+# Global window settings
+set $sp-global floating enable, move scratchpad, border pixel 2
 
 # Terminal (kitty)
 set $sp-kitty 'kitty --class "i3sp-kitty"'
-bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3sp-kitty"
-for_window [class="i3sp-kitty"] resize set 1100 700
+bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3sp-kitty" $sp-kitty
+for_window [class="i3sp-kitty"] $sp-global resize set 1100 700
+exec --no-startup-id $sp-kitty
 
 # Email (mutt)
-set $sp-mutt 'kitty --class "i3sp-mutt" mutt'
+set $sp-mutt 'kitty --class "i3sp-mutt" -o window_padding_width=0 mutt'
 bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad "i3sp-mutt" $sp-mutt
-for_window [class="i3sp-mutt"] resize set 1200 800
+for_window [class="i3sp-mutt"] $sp-global resize set 1200 800
 exec --no-startup-id $sp-mutt
 
 # Spotify
-# Also duplicate global settings, because class cannot be changed
 set $sp-spotify 'spotify'
 bindsym $mod+F3 exec --no-startup-id $i3_scripts/scratchpad "spotify" $sp-spotify
-for_window [class="Spotify"] floating enable, move scratchpad, border pixel 2
-for_window [class="Spotify"] resize set 400 200
+for_window [class="Spotify"] $sp-global resize set 400 200
 exec --no-startup-id $sp-spotify
 
 # Btop
 set $sp-btop 'kitty --class "i3sp-btop" btop'
 bindsym $mod+F4 exec --no-startup-id $i3_scripts/scratchpad "i3sp-btop" $sp-btop
-for_window [class="i3sp-btop"] resize set 1300 900
+for_window [class="i3sp-btop"] $sp-global resize set 1300 900
 exec --no-startup-id $sp-btop
 
 # Calculator scratchpad
 set $sp-calc 'kitty --class "i3sp-calc" -o window_padding_width=2 sh -c "~/scripts/cmd/title -a Calculator | lolcat && qalc"'
 bindsym F12 exec --no-startup-id $i3_scripts/scratchpad "i3sp-calc" $sp-calc
-for_window [class="i3sp-calc"] resize set 400 600
+for_window [class="i3sp-calc"] $sp-global resize set 400 600
 exec --no-startup-id $sp-calc
 
 # /SCRATCHPADS
