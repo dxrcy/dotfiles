@@ -211,10 +211,16 @@ for_window [class="i3sp-kitty"] $sp-global resize set 1100 700
 exec --no-startup-id $sp-kitty
 
 # Email (mutt)
-set $sp-mutt 'kitty --class "i3sp-mutt" -o window_padding_width=0 mutt'
-bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad "i3sp-mutt" $sp-mutt
-for_window [class="i3sp-mutt"] $sp-global resize set 1200 800
-exec --no-startup-id $sp-mutt
+# set $sp-mutt 'kitty --class "i3sp-mutt" -o window_padding_width=0 mutt'
+# bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad "i3sp-mutt" $sp-mutt
+# for_window [class="i3sp-mutt"] $sp-global resize set 1200 800
+# exec --no-startup-id $sp-mutt
+
+# Email (thunderbird)
+set $sp-thunderbird 'thunderbird'
+bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad "thunderbird" $sp-thunderbird
+for_window [class="thunderbird"] $sp-global resize set 1200 800
+exec --no-startup-id $sp-thunderbird
 
 # Spotify
 set $sp-spotify 'spotify'
