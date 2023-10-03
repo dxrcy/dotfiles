@@ -66,3 +66,6 @@ vim.keymap.set('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
 -- Start a new find-replace command without terms
 vim.keymap.set("n", '?', ':%s/')
 
+-- Make open file executable
+vim.keymap.set("n", "<C-M-x>", ":echo 'hello'<CR>:!chmod +x %")
+
