@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sensors | grep 'Core' | awk '{sum += $3} END {printf "%.0f°C\n", sum/NR}'
+
