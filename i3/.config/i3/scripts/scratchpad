@@ -3,9 +3,7 @@
 # File:           scratchpad_script.sh
 # Description:    Script to toggle or create scratchpad windows
 # Author:       RayZ0rr, Reinaldo Molina
-# Revision:     0.0.0
 # Created:        Fri Jan 18 2019 12:20
-# Last Modified:  Fri Feb 12 2022
 
 ############# GLOBVAR/PREP ###############
 
@@ -39,6 +37,13 @@ fi
 
 visible_wid="$(xdotool search --onlyvisible --classname "${name}" | tail -1 2> /dev/null)"
 
+# Use `class` for thunderbird
+if [ "$name" = 'thunderbird' ]; then
+    selector='class';
+else
+    selector='instance';
+fi
+
 if [[ -z "$visible_wid" ]]; then # If the scratchpad window is not visible
   wid="$(xdotool search --classname "${name}" | tail -1 2> /dev/null)"
   if [[ -z "$wid" ]]; then       # If the scratchpad window does not exist
@@ -60,17 +65,17 @@ if [[ -z "$visible_wid" ]]; then # If the scratchpad window is not visible
       wid="$(xdotool search --classname "${name}" | tail -1 2> /dev/null)"
     done
 
-    i3-msg "[instance=\"${name}\"] scratchpad show; \
-      [instance=\"${name}\"] move position center"
+    i3-msg "[$selector=\"${name}\"] scratchpad show; \
+      [$selector=\"${name}\"] move position center"
     exit 0
   fi
 
   echo "${name} found. Showing scratchpad."
-  i3-msg "[instance=\"${name}\"] scratchpad show; \
-    [instance=\"${name}\"] move position center"
+  i3-msg "[$selector=\"${name}\"] scratchpad show; \
+    [$selector=\"${name}\"] move position center"
   exit $?
 fi
 
 echo "Hiding instance of ${name}."
-i3-msg "[instance=\"${name}\"] scratchpad show"
+i3-msg "[$selector=\"${name}\"] scratchpad show"
 exit $?

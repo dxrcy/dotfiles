@@ -64,9 +64,9 @@ exec --no-startup-id xscreensaver
 exec --no-startup-id clipit
 
 # Autostart programs
-# exec --no-startup-id librewolf
-# exec --no-startup-id windscribe
-exec --no-startup-id dunstify 'REMEMBER: windscribe is not on!'
+exec --no-startup-id librewolf
+exec --no-startup-id windscribe
+# exec --no-startup-id dunstify 'REMEMBER: windscribe is not on!'
 exec --no-startup-id sleep 5 && ~/scripts/cmd/bt connect && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -248,10 +248,13 @@ exec --no-startup-id $sp-kitty
 # exec --no-startup-id $sp-mutt
 
 # Email (thunderbird)
-# set $sp-thunderbird 'thunderbird'
-# bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad "thunderbird" $sp-thunderbird
-# for_window [class="thunderbird"] $sp-global resize set 1200 800
-# exec --no-startup-id $sp-thunderbird
+set $sp-thunderbird 'thunderbird'
+bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad 'thunderbird' $sp-thunderbird
+for_window [class="thunderbird"] $sp-global resize set 1200 800
+exec --no-startup-id $sp-thunderbird
+
+# bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
+# for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
 
 # Spotify
 set $sp-spotify 'spotify'
