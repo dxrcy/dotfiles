@@ -65,7 +65,8 @@ exec --no-startup-id clipit
 
 # Autostart programs
 # exec --no-startup-id librewolf
-exec --no-startup-id windscribe
+# exec --no-startup-id windscribe
+exec --no-startup-id dunstify 'REMEMBER: windscribe is not on!'
 exec --no-startup-id sleep 5 && ~/scripts/cmd/bt connect && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -150,6 +151,20 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# Assign workspaces to displays
+set $display1 "eDP-1"
+set $display2 "HDMI-1"
+workspace $ws1 output $display1
+workspace $ws2 output $display2
+workspace $ws3 output $display1
+workspace $ws4 output $display1
+workspace $ws5 output $display1
+workspace $ws6 output $display1
+workspace $ws7 output $display1
+workspace $ws8 output $display1
+workspace $ws9 output $display1
+workspace $ws10 output $display2
+
 # Switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -198,6 +213,7 @@ for_window [tiling] border pixel 0
 
 # Assign programs to workspaces
 assign [class="LibreWolf"] $ws2
+assign [class="Thunar"] $ws3
 
 # Floating mode (and custom position)
 for_window [class="spectacle"] floating enable
@@ -229,10 +245,10 @@ exec --no-startup-id $sp-kitty
 # exec --no-startup-id $sp-mutt
 
 # Email (thunderbird)
-set $sp-thunderbird 'thunderbird'
-bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad "thunderbird" $sp-thunderbird
-for_window [class="thunderbird"] $sp-global resize set 1200 800
-exec --no-startup-id $sp-thunderbird
+# set $sp-thunderbird 'thunderbird'
+# bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad "thunderbird" $sp-thunderbird
+# for_window [class="thunderbird"] $sp-global resize set 1200 800
+# exec --no-startup-id $sp-thunderbird
 
 # Spotify
 set $sp-spotify 'spotify'
