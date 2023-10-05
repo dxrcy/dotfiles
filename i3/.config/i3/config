@@ -64,7 +64,7 @@ exec --no-startup-id xscreensaver
 exec --no-startup-id clipit
 
 # Autostart programs
-exec --no-startup-id librewolf
+# exec --no-startup-id librewolf
 exec --no-startup-id windscribe
 # exec --no-startup-id dunstify 'REMEMBER: windscribe is not on!'
 exec --no-startup-id sleep 5 && ~/scripts/cmd/bt connect && $refresh_i3status
