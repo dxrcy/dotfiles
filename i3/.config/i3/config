@@ -26,8 +26,8 @@ exec --no-startup-id nm-applet
 
 # Keyboard layout
 exec --no-startup-id setxkbmap -layout au
-# Display resolution
-exec --no-startup-id xrandr --output eDP-1 --mode 1680x1050
+# Set display mode and resolution from number of connected displays
+exec_always --no-startup-id $scripts/cmd/monitors
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -151,9 +151,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# Change settings for displays
-exec --no-startup-id i3-nagbar -t warning -m 'run xrandr?' -B 'YES!' 'xrandr --output eDP-1 --primary --mode 1680x1050 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1680x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off && dunstify Done.'
-
 # Assign workspaces to displays
 set $display1 "eDP-1"
 set $display2 "HDMI-1"
@@ -251,7 +248,7 @@ exec --no-startup-id $sp-kitty
 set $sp-thunderbird 'thunderbird'
 bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad 'thunderbird' $sp-thunderbird
 for_window [class="thunderbird"] $sp-global resize set 1200 800
-exec --no-startup-id $sp-thunderbird
+# exec --no-startup-id $sp-thunderbird
 
 # bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
 # for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
