@@ -7,7 +7,7 @@ set $mod Mod4
 
 # Path for scripts
 set $i3_scripts ~/.config/i3/scripts
-set $scripts ~/scripts
+set $scripts ~/scripts/cmd
 
 # Font for window titles
 font pango: Noto Sans Regular 10
@@ -27,7 +27,7 @@ exec --no-startup-id nm-applet
 # Keyboard layout
 exec --no-startup-id setxkbmap -layout au
 # Set display mode and resolution from number of connected displays
-exec_always --no-startup-id $scripts/cmd/monitors
+exec_always --no-startup-id $scripts/monitors
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -54,8 +54,8 @@ bindsym Control+Shift+braceright exec --no-startup-id "playerctl next"
 exec_always --no-startup-id picom -CGb
 
 # Background
-exec --no-startup-id $scripts/cmd/bg-change --forever
-bindsym $mod+Shift+p exec --no-startup-id $scripts/cmd/bg-change
+exec --no-startup-id $scripts/bg-change --forever
+bindsym $mod+Shift+p exec --no-startup-id $scripts/bg-change
 
 # Screensaver
 exec --no-startup-id xscreensaver
@@ -275,23 +275,23 @@ exec --no-startup-id $sp-calc
 # -------------------------------------------------
 
 # Esperanto keyboard
-bindsym $mod+m exec --no-startup-id $scripts/cmd/esperanto toggle && $refresh_i3status
+bindsym $mod+m exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
 
 # Bluetooth toggle
-bindsym $mod+b       exec --no-startup-id $scripts/cmd/bt connect
-bindsym $mod+Shift+b exec --no-startup-id $scripts/cmd/bt disconnect
+bindsym $mod+b       exec --no-startup-id $scripts/bt connect
+bindsym $mod+Shift+b exec --no-startup-id $scripts/bt disconnect
 
 # Conservation mode TLP toggle (gui)
-bindsym $mod+c exec --no-startup-id $scripts/cmd/consv gui
+bindsym $mod+c exec --no-startup-id $scripts/consv gui
 
 # Garfield comic
-bindsym $mod+Shift+g exec --no-startup-id $scripts/cmd/garf show -r
+bindsym $mod+Shift+g exec --no-startup-id $scripts/garf show -r
 
 # Open a quick note
-bindsym $mod+g exec --no-startup-id kitty nvim $($scripts/cmd/notename)
+bindsym $mod+g exec --no-startup-id kitty nvim $($scripts/notename)
 
 # Emoji finder
-bindsym $mod+period exec --no-startup-id $scripts/cmd/dmenu-unicode
+bindsym $mod+period exec --no-startup-id $scripts/dmenu-unicode
 
 # Screenshot
 bindsym Print exec --no-startup-id spectacle
