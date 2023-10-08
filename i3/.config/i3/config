@@ -94,6 +94,8 @@ bindsym $mod+Control+Return exec --no-startup-id kitty
 
 # Start dmenu (at bottom)
 bindsym $mod+d exec --no-startup-id $scripts/dmenu-custom -b
+# Refresh custom dmenu cache
+exec_always --no-startup-id $scripts/dmenu-custom refresh
 
 # Start librewolf
 bindsym $mod+n exec --no-startup-id librewolf
