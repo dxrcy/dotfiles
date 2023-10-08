@@ -63,8 +63,6 @@ end)
 -- Stop highlighting searched text
 vim.keymap.set('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
 
--- Use :/ instead of /
-vim.keymap.set("n", '/', ':/')
 -- Start a new find-replace command without terms
 vim.keymap.set("n", '?', ':%s/')
 
