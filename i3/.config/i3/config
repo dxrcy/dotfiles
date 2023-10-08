@@ -157,7 +157,7 @@ workspace $ws4 output $display1
 workspace $ws5 output $display1
 workspace $ws6 output $display1
 workspace $ws7 output $display1
-workspace $ws8 output $display1
+workspace $ws8 output $display2
 workspace $ws9 output $display1
 workspace $ws10 output $display2
 
