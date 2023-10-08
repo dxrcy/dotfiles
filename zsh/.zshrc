@@ -95,6 +95,7 @@
     alias d.k='cd ~/dotfiles/kitty/.config/kitty   && nvim kitty.conf'
     alias d.m='cd ~/dotfiles/mutt/.config/mutt     && nvim muttrc'
 # Misc. Programs
+    alias grep='grep --color=auto'
     alias G='garf'
     alias j='just'
     alias ls='eza -l'
