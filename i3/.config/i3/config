@@ -93,7 +93,7 @@ bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
 bindsym $mod+Control+Return exec --no-startup-id kitty
 
 # Start dmenu (at bottom)
-bindsym $mod+d exec --no-startup-id dmenu_run -b
+bindsym $mod+d exec --no-startup-id $scripts/dmenu-custom -b
 
 # Start librewolf
 bindsym $mod+n exec --no-startup-id librewolf
