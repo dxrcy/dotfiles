@@ -174,9 +174,11 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # Panic mode
-bindsym $mod+comma  workspace number $ws10 ; \
-                    workspace number $ws9  ; \
-                    exec --no-startup-id surf 'https://en.wikipedia.org/wiki/Trigonometric_functions' ;  \
+bindsym $mod+comma  workspace number $ws10 ;\
+                    workspace number $ws9  ;\
+                    exec --no-startup-id playerctl pause ;\
+                    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% ;\
+                    exec --no-startup-id surf -F 'https://en.wikipedia.org/wiki/Trigonometric_functions' ;\
                     exec --no-startup-id thunar --class 'i3-ws-9' 'school'
 
 # Move focused container to workspace
@@ -326,12 +328,6 @@ mode "resize" {
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        # bindsym Left resize shrink width 10 px or 10 ppt
-        # bindsym Down resize grow height 10 px or 10 ppt
-        # bindsym Up resize shrink height 10 px or 10 ppt
-        # bindsym Right resize grow width 10 px or 10 ppt
 
         # Exit resize mode
         bindsym Return mode "default"
