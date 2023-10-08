@@ -46,6 +46,9 @@
 # Fix zsh tab completion when using `eza` package
     _exa() { eza }
 
+# Show a funny quote
+quote | title | lolcat
+
 #========= ALIASES
 # Tmux
     alias t='tmux'
