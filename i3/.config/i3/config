@@ -293,7 +293,7 @@ bindsym $mod+Shift+g exec --no-startup-id $scripts/garf show -r
 bindsym $mod+g exec --no-startup-id kitty nvim $($scripts/notename)
 
 # Emoji finder
-bindsym $mod+period exec --no-startup-id $scripts/dmenu-unicode
+bindsym $mod+period exec --no-startup-id $scripts/emoji-menu
 
 # Screenshot
 bindsym Print exec --no-startup-id spectacle
