@@ -67,7 +67,7 @@ exec --no-startup-id clipit
 # exec --no-startup-id librewolf
 exec --no-startup-id windscribe
 # exec --no-startup-id dunstify 'REMEMBER: windscribe is not on!'
-exec --no-startup-id sleep 5 && ~/scripts/cmd/bt connect && $refresh_i3status
+exec --no-startup-id sleep 5 && $scripts/bt connect && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -305,7 +305,7 @@ bindsym $mod+c exec --no-startup-id $scripts/consv gui
 # Garfield comic
 bindsym $mod+Shift+g exec --no-startup-id $scripts/garf show -r
 
-# Open a quick note
+# Open a quick notE
 bindsym $mod+g exec --no-startup-id kitty sh -c "cd ~/docs/notes && nvim $($scripts/notename)"
 
 # Emoji finder
