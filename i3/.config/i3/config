@@ -306,7 +306,7 @@ bindsym $mod+c exec --no-startup-id $scripts/consv gui
 bindsym $mod+Shift+g exec --no-startup-id $scripts/garf show -r
 
 # Open a quick note
-bindsym $mod+g exec --no-startup-id kitty nvim $($scripts/notename)
+bindsym $mod+g exec --no-startup-id kitty sh -c "cd ~/docs/notes && nvim $($scripts/notename)"
 
 # Emoji finder
 bindsym $mod+period exec --no-startup-id $scripts/emoji-menu
