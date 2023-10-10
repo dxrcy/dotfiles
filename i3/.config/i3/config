@@ -93,7 +93,8 @@ bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
 bindsym $mod+Control+Return exec --no-startup-id kitty
 
 # Start dmenu (at bottom)
-bindsym $mod+d exec --no-startup-id $scripts/dmenu-custom -b
+bindsym $mod+d       exec --no-startup-id $scripts/dmenu-custom -b
+bindsym $mod+Shift+d exec --no-startup-id dmenu_run -b
 # Refresh custom dmenu cache
 exec_always --no-startup-id $scripts/dmenu-custom refresh
 
