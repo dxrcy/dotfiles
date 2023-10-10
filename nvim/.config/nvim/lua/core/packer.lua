@@ -27,7 +27,7 @@ return require("packer").startup(function(use)
     use("nvim-treesitter/playground")
 
     -- File navigation
-    use("theprimeagen/harpoon")
+    -- use("theprimeagen/harpoon")
 
     -- Undo history
     use("mbbill/undotree")
