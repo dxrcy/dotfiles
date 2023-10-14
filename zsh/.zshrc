@@ -85,6 +85,7 @@
     alias cwr='cargo watch -x run'
     alias cwt='cargo watch -x test'
     alias ci='cargo install --path .'
+    alias cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro open in nvim
 # Dotfile editing
     alias d.='cd ~/dotfiles'
     alias d.z='cd ~/dotfiles/zsh                   && nvim .zshrc'
