@@ -209,7 +209,7 @@ bindsym $mod+Control+0 move container to workspace number $ws10, workspace numbe
 
 # Assign programs to workspaces
 assign [class="LibreWolf"] $ws2
-assign [class="Thunar"] $ws3
+# assign [class="Thunar"] $ws3
 assign [class="Surf"] $ws10
 
 # Override workspace assign with WM class
@@ -292,6 +292,9 @@ exec --no-startup-id $sp-calc
 
 # /SCRATCHPADS
 # -------------------------------------------------
+
+# Telegram open/focus (like a scratchpad)
+bindsym $mod+F5 exec --no-startup-id telegram-desktop
 
 # Esperanto keyboard
 bindsym F11 exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
