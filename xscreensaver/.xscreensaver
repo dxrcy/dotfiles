@@ -16,7 +16,7 @@ demoCommand:	xscreensaver-settings
 nice:		10
 fade:		True
 unfade:		False
-fadeSeconds:	0:00:02
+fadeSeconds:	0:00:01
 ignoreUninstalledPrograms:False
 dpmsEnabled:	False
 dpmsQuickOff:	False
@@ -26,7 +26,7 @@ dpmsOff:	4:00:00
 grabDesktopImages:  False
 grabVideoFrames:    False
 chooseRandomImages: True
-imageDirectory:	~/pics/bg/
+imageDirectory:	~/pics/funny-wallpapers/
 
 mode:		random
 selected:	236
