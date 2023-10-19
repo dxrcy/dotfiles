@@ -31,7 +31,7 @@ vim.opt.scrolloff = 8
 -- Disable 'signcolumn' - gutter left of line numbers
 vim.opt.signcolumn = 'no'
 -- Use same line for status line (lualine), commands, command output
-vim.opt.cmdheight = 0
+-- vim.opt.cmdheight = 0
 
 -- Disable 'Warning: changing a readonly file'
 vim.cmd("au BufEnter * set noro")
