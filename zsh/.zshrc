@@ -47,6 +47,18 @@
     _exa() { eza }
 
 #========= PROMPT
+    # Colors
+    local rc='%f'              # Reset
+    local userc='%F{yellow}'   # Username
+    local atc='%F{green}'      # @ symbol
+    local hostc='%F{blue}'     # Hostname
+    local dirc='%F{magenta}'   # Directory
+    local jobsc='%F{cyan}'     # Jobs count
+    local gbranchc='%F{blue}'  # Git branch
+    local ginfoc='%F{red}'     # Git info
+    local prompt0c='%F{green}' # Prompt symbol (exit 0)
+    local prompt1c='%F{red}'   # Prompt symbol (exit 1)
+    # Git branch name and information
     #TODO Add: unpulled, deleted
     git_is_repo() { git rev-parse --is-inside-work-tree > /dev/null 2>&1 }
     git_branch()  { git_is_repo || return; echo "$(git branch --show-current)" }
@@ -56,16 +68,6 @@
     git_has_changes()  { [ -n "$(git status --porcelain)" ]             && echo '?' }
     git_has_unpushed() { [ -n "$(git log --branches --not --remotes)" ] && echo '↑' }
     setopt PROMPT_SUBST
-    local rc='%f'              # Reset
-    local userc='%F{yellow}'   # Username
-    local atc='%F{green}'      # @ symbol
-    local hostc='%F{blue}'     # Hostname
-    local dirc='%F{magenta}'   # Directory
-    local jobsc='%F{cyan}'     # Jobs count
-    local gbranchc='%F{blue}' # Git branch
-    local ginfoc='%F{red}'     # Git info
-    local prompt0c='%F{green}' # Prompt symbol (exit 0)
-    local prompt1c='%F{red}'   # Prompt symbol (exit 1)
 export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~ $gbranchc\$(git_branch) $ginfoc\$(git_info)
 $jobsc%(1j.[%j].)$exitc%(?.$prompt0c.$prompt1c)❯$resetc "
 
