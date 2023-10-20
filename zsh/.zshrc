@@ -48,7 +48,7 @@
 
 #========= PROMPT
     # Colors
-    local rc='%f'              # Reset
+    local rc='%f'              # Reset (also set to white at end)
     local userc='%F{yellow}'   # Username
     local atc='%F{green}'      # @ symbol
     local hostc='%F{blue}'     # Hostname
@@ -68,7 +68,7 @@
     git_has_changes()  { [ -n "$(git status --porcelain)" ]             && echo '?' }
     git_has_unpushed() { [ -n "$(git log --branches --not --remotes)" ] && echo '↑' }
     setopt PROMPT_SUBST
-export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git_branch)$ginfoc\$(git_info) $jobsc%(1j.[%j].)$exitc%(?.$prompt0c.$prompt1c)❯$resetc "
+export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git_branch)$ginfoc\$(git_info) $jobsc%(1j.[%j].)$exitc%(?.$prompt0c.$prompt1c)❯$resetc%F{white} "
 
 #========= ALIASES
 # Tmux
