@@ -85,8 +85,6 @@ bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed 
 
 # Start a terminal WITH tmux
 bindsym $mod+Return exec --no-startup-id kitty tmux
-# Set split to vertical and start terminal WITH tmux
-bindsym $mod+Shift+Return exec --no-startup-id "i3-msg split v && setsid kitty tmux"
 # Start terminal and attach to most recent tmux session
 bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
 # Start terminal WITHOUT tmux
