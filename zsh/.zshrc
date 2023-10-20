@@ -50,7 +50,9 @@
     #TODO Add: unpulled, deleted
     git_is_repo() { git rev-parse --is-inside-work-tree > /dev/null 2>&1 }
     git_branch()  { git_is_repo || return; echo "$(git branch --show-current)" }
-    git_info()    { git_is_repo || return info="$(git_has_changes)$(git_has_unpushed)" [ -n "$info" ] && echo "[$info]" }
+    git_info()    { git_is_repo || return;
+        info="$(git_has_changes)$(git_has_unpushed)";
+        [ -n "$info" ] && echo "[$info]" }
     git_has_changes()  { [ -n "$(git status --porcelain)" ]             && echo '?' }
     git_has_unpushed() { [ -n "$(git log --branches --not --remotes)" ] && echo '↑' }
     setopt PROMPT_SUBST
