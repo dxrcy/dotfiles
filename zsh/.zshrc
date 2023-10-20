@@ -5,7 +5,7 @@
 
 #========= MISC
 # Starship prompt
-    eval "$(starship init zsh)" # A bit slow :(
+    # eval "$(starship init zsh)" # A bit slow :(
 # Auto aliases
     eval "$(zoxide init zsh)"
 # Start tmux if not already running
@@ -45,6 +45,18 @@
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Fix zsh tab completion when using `eza` package
     _exa() { eza }
+
+#========= PROMPT
+    local rc="%f"              # Reset
+    local userc="%F{yellow}"   # Username
+    local atc="%F{green}"      # @ symbol
+    local hostc="%F{blue}"     # Hostname
+    local dirc="%F{magenta}"   # Directory
+    local jobsc="%F{cyan}"     # Jobs count
+    local prompt0c="%F{green}" # Prompt symbol (exit 0)
+    local prompt1c="%F{red}"   # Prompt symbol (exit 1)
+export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~
+$jobsc%(1j.[%j].)$exitc%(?.$prompt0c.$prompt1c)❯ "
 
 #========= ALIASES
 # Tmux
