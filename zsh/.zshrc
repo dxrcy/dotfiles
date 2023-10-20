@@ -58,18 +58,17 @@
     local ginfoc='%F{red}'     # Git info
     local prompt0c='%F{green}' # Prompt symbol (exit 0)
     local prompt1c='%F{red}'   # Prompt symbol (exit 1)
-    # Git branch name and information
+    # Git branch name and information. Spaces included in functions
     #TODO Add: unpulled, deleted
     git_is_repo() { git rev-parse --is-inside-work-tree > /dev/null 2>&1 }
-    git_branch()  { git_is_repo || return; echo "$(git branch --show-current)" }
+    git_branch()  { git_is_repo || return; echo " $(git branch --show-current)" }
     git_info()    { git_is_repo || return;
         info="$(git_has_changes)$(git_has_unpushed)";
-        [ -n "$info" ] && echo "[$info]" }
+        [ -n "$info" ] && echo " [$info]" }
     git_has_changes()  { [ -n "$(git status --porcelain)" ]             && echo '?' }
     git_has_unpushed() { [ -n "$(git log --branches --not --remotes)" ] && echo '↑' }
     setopt PROMPT_SUBST
-export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~ $gbranchc\$(git_branch) $ginfoc\$(git_info)
-$jobsc%(1j.[%j].)$exitc%(?.$prompt0c.$prompt1c)❯$resetc "
+export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git_branch)$ginfoc\$(git_info) $jobsc%(1j.[%j].)$exitc%(?.$prompt0c.$prompt1c)❯$resetc "
 
 #========= ALIASES
 # Tmux
