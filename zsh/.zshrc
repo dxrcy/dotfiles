@@ -68,7 +68,8 @@
     git_has_changes()  { [ -n "$(git status --porcelain)" ]             && echo '?' }
     git_has_unpushed() { [ -n "$(git log --branches --not --remotes)" ] && echo '↑' }
     setopt PROMPT_SUBST
-export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git_branch)$ginfoc\$(git_info) $jobsc%(1j.[%j].)$exitc%(?.$prompt0c.$prompt1c)❯$resetc%F{white} "
+export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git_branch)$ginfoc\$(git_info)
+$jobsc%(1j.[%j].)$exitc%(?.$prompt0c.$prompt1c)❯$resetc%F{white} "
 
 #========= ALIASES
 # Tmux
