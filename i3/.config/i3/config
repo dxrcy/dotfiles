@@ -300,7 +300,7 @@ exec --no-startup-id $sp-calc
 bindsym $mod+F5 exec --no-startup-id telegram-desktop
 
 # Esperanto keyboard
-bindsym F11 exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
+bindsym F1 exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
 
 # Bluetooth toggle
 bindsym $mod+b       exec --no-startup-id $scripts/bt connect
