@@ -4,8 +4,6 @@
 # -------------------------
 
 #========= MISC
-# Starship prompt
-    # eval "$(starship init zsh)" # A bit slow :(
 # Auto aliases
     eval "$(zoxide init zsh)"
 # Start tmux if not already running
@@ -161,4 +159,6 @@ $jobsc%(1j.[%j].)$exitc%(?.$prompt0c.$prompt1c)❯$resetc%F{white} "
     source ~/.zsh/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
     source ~/.zsh/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source ~/.zsh/hlissner/zsh-autopair/autopair.zsh
+    # Settings for packages
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
 
