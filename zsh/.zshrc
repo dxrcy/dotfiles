@@ -62,7 +62,7 @@
     git_branch()  { git_is_repo || return; echo " $(git branch --show-current)" }
     git_info()    { git_is_repo || return;
         info="$(git_has_changes)$(git_has_unpushed)";
-        [ -n "$info" ] && echo " \x1b[2m[\x1b[22m$info\x1b[2m]\x1b[22m" }
+        [ -n "$info" ] && echo " [$info]" }
     git_has_changes()  { [ -n "$(git status --porcelain)" ]             && echo '?' }
     git_has_unpushed() { [ -n "$(git log --branches --not --remotes)" ] && echo '↑' }
     setopt PROMPT_SUBST
