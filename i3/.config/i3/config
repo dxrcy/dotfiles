@@ -272,13 +272,13 @@ for_window [class="thunderbird"] $sp-global resize set 1200 800
 
 # Spotify
 set $sp-spotify 'spotify'
-bindsym $mod+F3 exec --no-startup-id $i3_scripts/scratchpad "spotify" $sp-spotify
+bindsym $mod+F3 exec --no-startup-id $i3_scripts/scratchpad "^spotify$" $sp-spotify
 for_window [class="Spotify"] $sp-global resize set 400 200
 exec --no-startup-id $sp-spotify
 
 # Spotify TUI
 set $sp-spotifytui 'kitty --class "i3-sp-spotifytui" ~/scripts/cmd/spt'
-bindsym $mod+Shift+S exec --no-startup-id $i3_scripts/scratchpad "i3-sp-spotifytui" $sp-spotifytui
+bindsym $mod+Shift+F3 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-spotifytui" $sp-spotifytui
 for_window [class="i3-sp-spotifytui"] $sp-global resize set 800 600
 exec --no-startup-id $sp-spotifytui
 
