@@ -249,9 +249,10 @@ for_window [tiling] border pixel 0
 set $sp-global floating enable, move scratchpad, border pixel 2
 
 # Terminal (kitty)
-set $sp-kitty 'kitty --class "i3-sp-kitty" sh -c "~/scripts/cmd/quote | title -w119 | lolcat && zsh"'
+set $sp-kitty 'kitty --class "i3-sp-kitty"'
+# sh -c "~/scripts/cmd/quote | title -w119 | lolcat && zsh"'
 bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-kitty" $sp-kitty
-for_window [class="i3-sp-kitty"] $sp-global resize set 1100 700
+for_window [class="i3-sp-kitty"] $sp-global resize set 500 300
 exec --no-startup-id $sp-kitty
 
 # Email (mutt)
@@ -274,6 +275,12 @@ set $sp-spotify 'spotify'
 bindsym $mod+F3 exec --no-startup-id $i3_scripts/scratchpad "spotify" $sp-spotify
 for_window [class="Spotify"] $sp-global resize set 400 200
 exec --no-startup-id $sp-spotify
+
+# Spotify TUI
+set $sp-spotifytui 'kitty --class "i3-sp-spotifytui" ~/scripts/cmd/spt'
+bindsym $mod+Shift+S exec --no-startup-id $i3_scripts/scratchpad "i3-sp-spotifytui" $sp-spotifytui
+for_window [class="i3-sp-spotifytui"] $sp-global resize set 800 600
+exec --no-startup-id $sp-spotifytui
 
 # Btop
 set $sp-btop 'kitty --class "i3-sp-btop" btop'
