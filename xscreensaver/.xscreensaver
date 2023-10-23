@@ -32,7 +32,7 @@ mode:		random
 selected:	236
 
 textMode:	literal
-textLiteral:	stinky poopy
+textLiteral:	https://bruh.news
 textFile:	
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
