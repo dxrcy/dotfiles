@@ -46,16 +46,16 @@
 
 #========= PROMPT
     # Colors
-    local rc='%f'              # Reset (also set to white at end)
-    local userc='%F{yellow}'   # Username
-    local atc='%F{green}'      # @ symbol
-    local hostc='%F{blue}'     # Hostname
-    local dirc='%F{magenta}'   # Directory
-    local jobsc='%F{cyan}'     # Jobs count
-    local gbranchc='%F{blue}'  # Git branch
-    local ginfoc='%F{red}'     # Git info
-    local prompt0c='%F{green}' # Prompt symbol (exit 0)
-    local prompt1c='%F{red}'   # Prompt symbol (exit 1)
+    local rc='%f'             # Reset (also set to white at end)
+    local userc='%F{yellow}'  # Username
+    local atc='%F{green}'     # @ symbol
+    local hostc='%F{blue}'    # Hostname
+    local dirc='%F{magenta}'  # Directory
+    local jobsc='%F{cyan}'    # Jobs count
+    local gbranchc='%F{blue}' # Git branch
+    local ginfoc='%F{red}'    # Git info
+    local exitc='%F{cyan}'    # Prompt symbol (exit 1)
+    local promptc='%F{green}' # Prompt symbol (exit 0)
     # Git branch name and information. Spaces included in functions
     #TODO Add: unpulled, deleted
     git_is_repo() { git rev-parse --is-inside-work-tree > /dev/null 2>&1 }
@@ -66,8 +66,8 @@
     git_has_changes()  { [ -n "$(git status --porcelain)" ]             && echo '?' }
     git_has_unpushed() { [ -n "$(git log --branches --not --remotes)" ] && echo '↑' }
     setopt PROMPT_SUBST
-export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git_branch)$ginfoc\$(git_info)
-$jobsc%(1j.[%j].)$exitc%(?.$prompt0c.$prompt1c)❯$resetc%F{white} "
+export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git_branch)$ginfoc\$(git_info)$exitc%(0?.. ○)
+$jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
 
 #========= ALIASES
 # Tmux
