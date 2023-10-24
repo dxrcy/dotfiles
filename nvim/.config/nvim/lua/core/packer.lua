@@ -89,10 +89,6 @@ return require("packer").startup(function(use)
         },
     }
 
-    -- Ranger
-    -- use ("kevinhwang91/rnvimr")
-    use("kelly-lin/ranger.nvim")
-
     use "lukas-reineke/lsp-format.nvim"
 
     -- Save files with sudo
