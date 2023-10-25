@@ -87,6 +87,7 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias gac='git add . && git commit -m $1'
     alias gp='git push'
     alias gd='git diff'
+    alias gl='git log'
     alias gitignore='cat .gitignore'
 # Nvim
     # Open folder in nvim, instead of new buffer
@@ -134,6 +135,7 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias r='ranger'
     alias lw='librewolf'
     alias shck='shellcheck'
+    alias lg='lazygit'
 # Misc
     # alias g='garf'
     alias p8='ping 8.8.8.8 -c 10'
