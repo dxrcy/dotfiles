@@ -121,6 +121,7 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias d.m='cd ~/dotfiles/mutt/.config/mutt     && nvim muttrc'
 # Misc. Programs
     alias grep='grep --color=auto'
+    alias grepr='grep -R --exclude-dir .git --exclude-dir target'
     alias G='garf'
     alias j='just'
     alias ls='eza -l'
