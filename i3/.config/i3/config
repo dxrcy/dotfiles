@@ -318,10 +318,10 @@ bindsym $mod+Shift+b exec --no-startup-id $scripts/bt disconnect
 bindsym $mod+c exec --no-startup-id $scripts/consv gui
 
 # Garfield comic
-bindsym $mod+Shift+g exec --no-startup-id $scripts/garf show -r
+bindsym $mod+g exec --no-startup-id $scripts/garf show -r
 
-# Open a quick notE
-bindsym $mod+g exec --no-startup-id kitty sh -c "cd ~/docs/notes && nvim $($scripts/notename)"
+# Open a quick note
+bindsym $mod+o exec --no-startup-id kitty sh -c "cd ~/docs/notes && nvim $($scripts/notename)"
 
 # Emoji finder
 bindsym $mod+period exec --no-startup-id $scripts/emoji-menu
