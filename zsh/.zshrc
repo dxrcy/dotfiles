@@ -110,23 +110,23 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias d.k='cd ~/dotfiles/kitty/.config/kitty   && nvim kitty.conf'
     alias d.m='cd ~/dotfiles/mutt/.config/mutt     && nvim muttrc'
 # Misc. Programs
-    alias    ls='eza -l'
-    alias   lsa='ls -a'
-    alias  tree='ls -T'
-    alias  grep='grep --color=auto'
+    alias ls='eza -l'
+    alias lsa='ls -a'
+    alias tree='ls -T'
+    alias grep='grep --color=auto'
     alias grepr='grep -R --exclude-dir .git --exclude-dir target'
-    alias   cat='bat'
-    alias     g='garf'
-    alias     j='just'     # also in tmux
-    alias    lg='lazygit' # also in tmux
-    alias     o='xdg-open'
-    alias     r='ranger'
-    alias    lw='librewolf'
+    alias cat='bat'
+    alias g='garf'
+    alias j='just'     # also in tmux
+    alias lg='lazygit' # also in tmux
+    alias o='xdg-open'
+    alias r='ranger'
+    alias lw='librewolf'
     alias mkdir='mkdir -p'
-    alias  clip='xclip -selection clipboard'
-    alias  wiki='wiki-tui'
-    alias  scim='sc-im'
-    alias   trs='tree-sitter'
+    alias clip='xclip -selection clipboard'
+    alias wiki='wiki-tui'
+    alias scim='sc-im'
+    alias trs='tree-sitter'
 # Misc
     alias ping8='ping 8.8.8.8 -c 10'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
