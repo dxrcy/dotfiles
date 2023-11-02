@@ -37,7 +37,8 @@
     HISTFILE=~/.cache/zsh_history
     HISTSIZE=10000
     SAVEHIST=10000
-    setopt SHARE_HISTORY
+    setopt SHARE_HISTORY        # share history between terminals
+    setopt HIST_IGNORE_ALL_DUPS # duplicate history lines are ignored
 # Use case-insensitive autocompletions
     autoload -Uz compinit && compinit
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
