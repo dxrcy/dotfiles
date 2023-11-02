@@ -6,10 +6,6 @@
 #========= MISC
 # Auto aliases
     eval "$(zoxide init zsh)"
-# Start tmux if not already running
-    # Don't use with i3
-    # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ ! "$NO_TMUX" ]; then
-    #     exec tmux; fi
 # Preferred editor for local and remote sessions
     if [[ -n $SSH_CONNECTION ]]; then export EDITOR='vim'
         else                          export EDITOR='nvim'; fi
@@ -17,22 +13,15 @@
     BROWSER='librewolf'
 # Add scripts to path
     PATH="$HOME/scripts/cmd:$PATH"
-# Node binaries (should be in .profile i think)
-    # export PATH=$PATH:./node_modules/.bin
-# Flyctl binary
-    export FLYCTL_INSTALL="/home/darcy/.fly"
-    export PATH="$FLYCTL_INSTALL/bin:$PATH"
 # Vi mode in prompt (best mode)
     bindkey -v
     export KEYTIMEOUT=1 # idk ?
     bindkey -v '^?' backward-delete-char # fix backspace
 # Change directory by typing name
-    setopt autocd
-    alias '...'='cd ../../'
-    alias '....'='cd ../../../'
+    setopt AUTOCD
+    alias   '...'='cd ../../'
+    alias  '....'='cd ../../../'
     alias '.....'='cd ../../../../'
-# Add `code` folder to cdpath
-    # export CDPATH=$CDPATH:~/code
 # Persistant history
     HISTFILE=~/.cache/zsh_history
     HISTSIZE=10000
@@ -44,6 +33,9 @@
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Fix zsh tab completion when using `eza` package
     _exa() { eza }
+# Flyctl binary
+    export FLYCTL_INSTALL="/home/darcy/.fly"
+    export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 #========= PROMPT
     # Colors
@@ -73,16 +65,14 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
 #========= ALIASES
 # Tmux
     alias t='tmux'
-    # alias tn='tmux -u new'
     alias ta='tmux -u attach'
-# Exit (vim)
+# Exit (vim style)
     alias q='exit'
     alias :q='exit'
     alias :wq='exit'
     alias Z='exit'
     alias ZZ='exit'
-# Git
-    alias g='git'
+# Git (even tho lazygit is easier)
     alias ga='git add'
     alias gc='git commit -m $1'
     alias gac='git add . && git commit -m $1'
@@ -94,10 +84,9 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     # Open folder in nvim, instead of new buffer
     v() { if [ "$1" ]; then nvim $1; else nvim .; fi }
     alias vim='nvim'
-# Pacman
+# Pacman wrapper script
     alias p='pacman-thing'
-    alias pp='pacman-thing p'
-# Rust
+# Rust (cargo)
     alias c='cargo'
     alias cr='cargo run'
     alias cb='cargo build'
@@ -110,7 +99,7 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias cwr='cargo watch -x run'
     alias cwt='cargo watch -x test'
     alias ci='cargo install --path .'
-    alias cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro open in nvim
+    alias cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
 # Dotfile editing
     alias d.='cd ~/dotfiles'
     alias d.z='cd ~/dotfiles/zsh                   && nvim .zshrc'
@@ -121,28 +110,25 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias d.k='cd ~/dotfiles/kitty/.config/kitty   && nvim kitty.conf'
     alias d.m='cd ~/dotfiles/mutt/.config/mutt     && nvim muttrc'
 # Misc. Programs
-    alias grep='grep --color=auto'
+    alias    ls='eza -l'
+    alias   lsa='ls -a'
+    alias  tree='ls -T'
+    alias  grep='grep --color=auto'
     alias grepr='grep -R --exclude-dir .git --exclude-dir target'
-    alias G='garf'
-    alias j='just'
-    alias ls='eza -l'
-    alias lsa='ls -a'
-    alias open='xdg-open'
-    alias clip='xclip -selection clipboard'
-    alias wiki='wiki-tui'
-    alias tree='ls -T'
-    alias scim='sc-im'
-    alias trs='tree-sitter'
-    alias cat='bat'
-    alias r='ranger'
-    alias lw='librewolf'
-    alias shck='shellcheck'
-    alias lg='lazygit'
-# Misc
-    # alias g='garf'
-    alias p8='ping 8.8.8.8 -c 10'
-    alias copydir='pwd | clip'
+    alias   cat='bat'
+    alias     g='garf'
+    alias     j='just'     # also in tmux
+    alias    lg='lazygit' # also in tmux
+    alias     o='xdg-open'
+    alias     r='ranger'
+    alias    lw='librewolf'
     alias mkdir='mkdir -p'
+    alias  clip='xclip -selection clipboard'
+    alias  wiki='wiki-tui'
+    alias  scim='sc-im'
+    alias   trs='tree-sitter'
+# Misc
+    alias ping8='ping 8.8.8.8 -c 10'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
 
 #========= PACKAGES
@@ -165,4 +151,12 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     source ~/.zsh/hlissner/zsh-autopair/autopair.zsh
     # Settings for packages
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
+
+#========= OLD
+# Start tmux if not already running
+    # Don't use with i3
+    # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ ! "$NO_TMUX" ]; then
+    #     exec tmux; fi
+# Node binaries (should be in .profile i think)
+    # export PATH=$PATH:./node_modules/.bin
 
