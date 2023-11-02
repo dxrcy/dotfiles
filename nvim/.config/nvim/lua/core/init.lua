@@ -34,5 +34,7 @@ vim.opt.signcolumn = 'no'
 -- vim.opt.cmdheight = 0
 
 -- Disable 'Warning: changing a readonly file'
-vim.cmd("au BufEnter * set noro")
+vim.api.nvim_create_autocmd("BufEnter", { callback = function()
+    vim.cmd "set noro"
+end })
 
