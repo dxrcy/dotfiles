@@ -35,5 +35,5 @@ vim.opt.signcolumn = 'no'
 
 -- Disable 'Warning: changing a readonly file'
 vim.cmd "au BufEnter * set noro"
-vim.cmd "au BufWriteCmd * set noro"
+vim.cmd "au BufWritePost * set noro"
 

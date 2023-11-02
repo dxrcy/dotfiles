@@ -4,8 +4,23 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Save file
-vim.keymap.set("n", "<C-s>", vim.cmd.write)
-vim.keymap.set("i", "<C-s>", vim.cmd.write)
+-- Show nice error if file is readonly
+function is_file_writable()
+    local current_file = vim.fn.bufname(vim.fn.bufnr('%'))
+    local writable = vim.fn.system({ "ls", "-l", current_file })
+    return string.sub(writable, 3, 3) == "w"
+end
+function save_file()
+    if is_file_writable() then
+        vim.cmd.write()
+    else
+        vim.cmd "echohl ErrorMsg"
+        vim.cmd "echom 'File is readonly'"
+        vim.cmd "echohl None"
+    end
+end
+vim.keymap.set("n", "<C-s>", save_file)
+vim.keymap.set("i", "<C-s>", save_file)
 
 -- Switch to previous buffer
 vim.keymap.set("n", "tt", "<cmd>b#<CR>");
