@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+NoDisplay=true
+Exec=nsxiv -a %f
+Name=nsxiv -a
+Comment=Custom definition for nsxiv -a
