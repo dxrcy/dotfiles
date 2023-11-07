@@ -39,6 +39,7 @@ require("nvim-tree").setup {
         width = 100000,
     },
     filters = {
+        dotfiles = true,
         custom = {
             -- Hide object files and the like
             "*.o", "*.so", "*.hi"
