@@ -71,9 +71,16 @@ return require("packer").startup(function(use)
         end
     }
 
+    use {
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup()
+        end
+    }
+
     -- Autoclose brackets and quotes
     -- Not working ???
-    use "m4xshen/autoclose.nvim"
+    -- use "m4xshen/autoclose.nvim"
 
     -- Statusline
     use {
