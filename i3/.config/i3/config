@@ -49,6 +49,8 @@ bindsym Control+backslash exec --no-startup-id "playerctl play-pause"
 bindsym Control+Shift+backslash exec --no-startup-id "playerctl pause"
 bindsym Control+Shift+braceleft exec --no-startup-id "playerctl previous"
 bindsym Control+Shift+braceright exec --no-startup-id "playerctl next"
+bindsym Control+Shift+jcircumflex exec --no-startup-id "playerctl previous"
+bindsym Control+Shift+hcircumflex exec --no-startup-id "playerctl next"
 
 # Transparent windows
 exec_always --no-startup-id picom -CGb
