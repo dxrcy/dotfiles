@@ -79,6 +79,7 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias gp='git push'
     alias gd='git diff'
     alias gl='git log'
+    alias gcl='git clone'
     alias gitignore='cat .gitignore'
 # Nvim
     # Open folder in nvim, instead of new buffer
