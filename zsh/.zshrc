@@ -103,9 +103,9 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
     # cargo new
     cn() {
-        [ ! "$1" ] && { cargo new || exit $? }
-        cargo new "$1"            || exit $?
-        cd "$1"                   || exit $?
+        [ ! "$1" ] && { cargo new || return $? }
+        cargo new "$1"            || return $?
+        cd "$1"                   || return $?
     }
 # Dotfile editing
     alias d.='cd ~/dotfiles'
