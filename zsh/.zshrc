@@ -101,6 +101,12 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias cwt='cargo watch -x test'
     alias ci='cargo install --path .'
     alias cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
+    # cargo new
+    cn() {
+        [ ! "$1" ] && { cargo new || exit $? }
+        cargo new "$1"            || exit $?
+        cd "$1"                   || exit $?
+    }
 # Dotfile editing
     alias d.='cd ~/dotfiles'
     alias d.z='cd ~/dotfiles/zsh                   && nvim .zshrc'
