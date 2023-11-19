@@ -1,50 +1,56 @@
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-    if fn.empty(fn.glob(install_path)) > 0 then
-        print("Installing packer...")
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-        vim.cmd [[packadd packer.nvim]]
-        return true
-    end
-    return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
+local plugins = {
+    "wbthomason/packer.nvim",
 
-return require("packer").startup(function(use)
-    use "wbthomason/packer.nvim"
+    {
+        "nvim-telescope/telescope.nvim", 
+        version = "0.1.2",
+        dependencies = { { "nvim-lua/plenary.nvim" } },
+    },
 
-    use {
-        "nvim-telescope/telescope.nvim", tag = "0.1.2",
-        requires = { { "nvim-lua/plenary.nvim" } }
-    }
-
-    use({ "rose-pine/neovim", as = "rose-pine" })
+    {
+        "rose-pine/neovim",
+        name = "rose-pine"
+    },
 
     -- Treesitter
-    use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
-    use("nvim-treesitter/playground")
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+    },
+    "nvim-treesitter/playground",
 
     -- File navigation
     -- use("theprimeagen/harpoon")
 
     -- Undo history
-    use("mbbill/undotree")
+    "mbbill/undotree",
 
     -- Git
-    use("tpope/vim-fugitive")
+    "tpope/vim-fugitive",
 
     -- LSP
-    use {
+    {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v2.x",
-        requires = {
+        dependencies = {
             -- LSP Support
             { "neovim/nvim-lspconfig" }, -- Required
             {                            -- Optional
                 "williamboman/mason.nvim",
-                run = function()
+                build = function()
                     pcall(vim.cmd, "MasonUpdate")
                 end,
             },
@@ -55,78 +61,77 @@ return require("packer").startup(function(use)
             { "L3MON4D3/LuaSnip" },                  -- Required
             { "hrsh7th/vim-vsnip" },
         }
-    }
+    },
 
     -- LSP Rename
-    use {
+    {
         'filipdutescu/renamer.nvim',
         branch = 'master',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+        dependencies = { { 'nvim-lua/plenary.nvim' } }
+    },
 
     -- Toggle comments
-    use {
+    {
         "numToStr/Comment.nvim",
         config = function()
             require("Comment").setup()
         end
-    }
+    },
 
-    use {
+    {
         "windwp/nvim-autopairs",
         config = function()
             require("nvim-autopairs").setup()
         end
-    }
+    },
 
     -- Autoclose brackets and quotes
     -- Not working ???
-    -- use "m4xshen/autoclose.nvim"
+    -- "m4xshen/autoclose.nvim"
 
     -- Statusline
-    use {
+    {
         'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
+        dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
+    },
 
     -- Filetree
-    use {
+    {
         'nvim-tree/nvim-tree.lua',
-        requires = {
+        dependencies = {
             'nvim-tree/nvim-web-devicons', -- optional
         },
-    }
+    },
 
-    use "lukas-reineke/lsp-format.nvim"
+    "lukas-reineke/lsp-format.nvim",
 
     -- Save files with sudo
-    use "lambdalisue/suda.vim"
+    "lambdalisue/suda.vim",
 
     -- Neorg
-    use {
+    {
         "nvim-neorg/neorg",
-        config = function()
-            require('neorg').setup {
-                load = {
-                    ["core.defaults"] = {}, -- Loads default behaviour
-                    ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                    ["core.dirman"] = { -- Manages Neorg workspaces
-                        config = {
-                            workspaces = {
-                                notes = "~/docs/notes",
-                            },
-                        },
-                    },
-                },
-            }
-        end,
-        run = ":Neorg sync-parsers",
-        requires = "nvim-lua/plenary.nvim",
-    }
+        -- config = function()
+        --     require('neorg').setup {
+        --         load = {
+        --             ["core.defaults"] = {}, -- Loads default behaviour
+        --             ["core.concealer"] = {}, -- Adds pretty icons to your documents
+        --             ["core.dirman"] = { -- Manages Neorg workspaces
+        --                 config = {
+        --                     workspaces = {
+        --                         notes = "~/docs/notes",
+        --                     },
+        --                 },
+        --             },
+        --         },
+        --     }
+        -- end,
+        build = ":Neorg sync-parsers",
+        dependencies = "nvim-lua/plenary.nvim",
+    },
+}
 
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
-    if packer_bootstrap then
-        require("packer").sync()
-    end
-end)
+local opts = {}
+
+return require("lazy").setup(plugins, opts)
+
