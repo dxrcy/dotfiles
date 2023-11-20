@@ -114,22 +114,24 @@ local plugins = {
     -- Neorg
     {
         "nvim-neorg/neorg",
-        -- config = function()
-        --     require('neorg').setup {
-        --         load = {
-        --             ["core.defaults"] = {}, -- Loads default behaviour
-        --             ["core.concealer"] = {}, -- Adds pretty icons to your documents
-        --             ["core.dirman"] = { -- Manages Neorg workspaces
-        --                 config = {
-        --                     workspaces = {
-        --                         notes = "~/docs/notes",
-        --                     },
-        --                 },
-        --             },
-        --         },
-        --     }
-        -- end,
-        build = ":Neorg sync-parsers",
+        config = function()
+            require('neorg').setup {
+                load = {
+                    ["core.defaults"] = {}, -- Loads default behaviour
+                    ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                    ["core.dirman"] = { -- Manages Neorg workspaces
+                        config = {
+                            workspaces = {
+                                notes = "~/docs/notes",
+                            },
+                        },
+                    },
+                },
+            }
+        end,
+        build = function()
+            vim.cmd(":Neorg sync-parsers")
+        end,
         dependencies = "nvim-lua/plenary.nvim",
     },
 }
