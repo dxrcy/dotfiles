@@ -324,6 +324,8 @@ bindsym $mod+g exec --no-startup-id $scripts/garf show -r
 
 # Open a quick note
 bindsym $mod+o exec --no-startup-id kitty sh -c "cd ~/docs/notes && nvim $($scripts/notename)"
+# Open a quick language model (ollama+oatmeal)
+bindsym $mod+p exec --no-startup-id kitty sh -c "oatmeal -m mistral:latest"
 
 # Emoji finder
 bindsym $mod+period exec --no-startup-id $scripts/emoji-menu
