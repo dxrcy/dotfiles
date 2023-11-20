@@ -15,12 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 print(lazypath)
 
 local plugins = {
-    {
-        "nvim-telescope/telescope.nvim", 
-        version = "0.1.2",
-        dependencies = { { "nvim-lua/plenary.nvim" } },
-    },
-
+    -- Rose pine color theme
     {
         "rose-pine/neovim",
         name = "rose-pine"
@@ -29,20 +24,14 @@ local plugins = {
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
-        -- build = function ()
-        --     -- vim.cmd("TSUpdate") 
-        -- end,
+        build = function ()
+            -- vim.cmd("TSUpdate") 
+        end,
     },
     "nvim-treesitter/playground",
 
-    -- File navigation
-    -- use("theprimeagen/harpoon")
-
     -- Undo history
     "mbbill/undotree",
-
-    -- Git
-    "tpope/vim-fugitive",
 
     -- LSP
     {
@@ -81,6 +70,7 @@ local plugins = {
         end
     },
 
+    -- Autoclose brackets/quotes
     {
         "windwp/nvim-autopairs",
         config = function()
@@ -88,11 +78,7 @@ local plugins = {
         end
     },
 
-    -- Autoclose brackets and quotes
-    -- Not working ???
-    -- "m4xshen/autoclose.nvim"
-
-    -- Statusline
+    -- Status line
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
@@ -106,12 +92,13 @@ local plugins = {
         },
     },
 
+    -- ?
     "lukas-reineke/lsp-format.nvim",
 
     -- Save files with sudo
     "lambdalisue/suda.vim",
 
-    -- Neorg
+    -- Neorg (markdown-like notes)
     {
         "nvim-neorg/neorg",
         config = function()
@@ -134,6 +121,18 @@ local plugins = {
         end,
         dependencies = "nvim-lua/plenary.nvim",
     },
+
+    -- Remove this stuff ? (i dont use)
+    
+    -- Telescope
+    {
+        "nvim-telescope/telescope.nvim", 
+        version = "0.1.2",
+        dependencies = { { "nvim-lua/plenary.nvim" } },
+    },
+
+    -- Git
+    "tpope/vim-fugitive",
 }
 
 local opts = {}
