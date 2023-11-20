@@ -10,10 +10,9 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+print(lazypath)
 
 local plugins = {
-    "wbthomason/packer.nvim",
-
     {
         "nvim-telescope/telescope.nvim", 
         version = "0.1.2",
