@@ -98,6 +98,7 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias cdoc='cargo doc --no-deps --open'
     alias cw='cargo watch -c'
     alias cwr='cargo watch -x run'
+    alias cwc='cargo watch -x clippy'
     alias cwt='cargo watch -x test'
     alias ci='cargo install --path .'
     alias cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
