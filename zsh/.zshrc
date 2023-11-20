@@ -135,7 +135,8 @@ $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
     alias scim='sc-im'
     alias trs='tree-sitter'
     alias th='thunar'
-    alias ol='ollama run mistral'
+    alias ol='ollama'
+    alias olr='ollama run mistral'
 # Misc
     alias ping8='ping 8.8.8.8 -c 10'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
