@@ -28,7 +28,9 @@ local plugins = {
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
+        -- build = function ()
+        --     -- vim.cmd("TSUpdate") 
+        -- end,
     },
     "nvim-treesitter/playground",
 

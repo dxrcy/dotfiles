@@ -1,5 +1,5 @@
 require("core.mappings")
-require("core.packer")
+require("core.lazy")
 require("core.ftdetect")
 
 -- Indent
