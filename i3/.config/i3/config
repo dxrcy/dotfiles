@@ -325,7 +325,8 @@ bindsym $mod+g exec --no-startup-id $scripts/garf show -r
 # Open a quick note
 bindsym $mod+o exec --no-startup-id kitty sh -c "cd ~/docs/notes && nvim $($scripts/notename)"
 # Open a quick language model (ollama)
-bindsym $mod+p exec --no-startup-id kitty sh -c "title 'Hello Ollama' && ollama run mistral:latest"
+set $ollama_model 'llama2'
+bindsym $mod+p exec --no-startup-id kitty sh -c "title 'Hello $ollama_model' && ollama run $ollama_model:latest"
 
 # Emoji finder
 bindsym $mod+period exec --no-startup-id $scripts/emoji-menu
