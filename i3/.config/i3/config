@@ -308,6 +308,9 @@ for_window [class="i3-sp-calc"] $sp-global resize set 400 600
 # Telegram open/focus (like a scratchpad)
 # bindsym $mod+F5 exec --no-startup-id telegram-desktop
 
+# Windscribe
+bindsym $mod+Ctrl+w exec --no-startup-id windscribe
+
 # Esperanto keyboard
 bindsym F1       exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
 bindsym Shift+F1 exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
