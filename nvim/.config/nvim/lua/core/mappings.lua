@@ -7,8 +7,9 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 -- Show nice error if file is readonly
 function is_file_writable()
     local current_file = vim.fn.bufname(vim.fn.bufnr('%'))
-    local writable = vim.fn.system({ "ls", "-l", current_file })
-    return string.sub(writable, 3, 3) == "w"
+    -- returns `0` if file DOESNT exist, OR is writable by user
+    local writable = vim.fn.system("! test -f " .. current_file .. " || test -w " .. current_file .. " ; echo $?")
+    return string.sub(writable, 1, 1) == '0'
 end
 function save_file()
     if is_file_writable() then
@@ -82,5 +83,5 @@ vim.keymap.set('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
 vim.keymap.set("n", '?', ':%s/')
 
 -- Make open file executable
-vim.keymap.set("n", "<C-M-x>", ":echo 'hello'<CR>:!chmod +x %")
+vim.keymap.set("n", "<C-M-x>", ":!chmod +x %<CR>")
 
