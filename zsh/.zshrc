@@ -57,7 +57,7 @@
         info="$(git_has_changes)$(git_has_unpushed)";
         [ -n "$info" ] && echo " [$info]" }
     git_has_changes()  { [ -n "$(git status --porcelain)" ]             && echo '?' }
-    git_has_unpushed() { [ -n "$(git log --branches --not --remotes)" ] && echo '↑' }
+    git_has_unpushed() { [ -n "$(git log origin/$(git symbolic-ref --short HEAD)..HEAD)" ] && echo '↑' }
     setopt PROMPT_SUBST
 export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git_branch)$ginfoc\$(git_info)$exitc%(0?.. ·)
 $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
