@@ -49,17 +49,8 @@
     local ginfoc='%F{red}'    # Git info
     local exitc='%F{cyan}'    # Prompt symbol (exit 1)
     local promptc='%F{green}' # Prompt symbol (exit 0)
-    # Git branch name and information. Spaces included in functions
-    #TODO Add: unpulled, deleted
-    git_is_repo() { git rev-parse --is-inside-work-tree > /dev/null 2>&1 }
-    git_branch()  { git_is_repo || return; echo " $(git branch --show-current)" }
-    git_info()    { git_is_repo || return;
-        info="$(git_has_changes)$(git_has_unpushed)";
-        [ -n "$info" ] && echo " [$info]" }
-    git_has_changes()  { [ -n "$(git status --porcelain)" ]             && echo '?' }
-    git_has_unpushed() { [ -n "$(git rev-parse --verify "$remote_branch" >/dev/null 2>&1 && git log origin/$(git symbolic-ref --short HEAD)..HEAD)" ] && echo '↑' }
     setopt PROMPT_SUBST
-export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git_branch)$ginfoc\$(git_info)$exitc%(0?.. ·)
+export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git-info -f -b)$ginfoc\$(git-info -f)$exitc%(0?.. ·)
 $jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
 
 #========= ALIASES
