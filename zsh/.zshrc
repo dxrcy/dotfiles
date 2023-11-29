@@ -39,7 +39,7 @@
 
 #========= PROMPT
     # Colors
-    local rc='%f'             # Reset (also set to white at end)
+    local rc='%f%F{white}'    # Reset
     local userc='%F{yellow}'  # Username
     local atc='%F{green}'     # @ symbol
     local hostc='%F{blue}'    # Hostname
@@ -47,14 +47,16 @@
     local jobsc='%F{cyan}'    # Jobs count
     local gbranchc='%F{blue}' # Git branch
     local ginfoc='%F{red}'    # Git info
+    local versionc="%F{green}" # Package version
     local exitc='%F{cyan}'    # Prompt symbol (exit 1)
     local promptc='%F{green}' # Prompt symbol (exit 0)
     # Wrap `git-info` output with color
     git_branch() { x=$(git-info -b); [ "$x" ] && echo "$gbranchc $x" }
     git_status() { x=$(git-info);    [ "$x" ] && echo "$ginfoc [$x]" }
+    version() { x=$(package-version); [ "$x" ] && echo "$versionc\x1b[2m v$x$rc\x1b[0m" }
     setopt PROMPT_SUBST       # Allow functions in prompt
-export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~\$(git_branch)\$(git_status)$exitc%(0?.. ·)
-$jobsc%(1j.[%j].)$promptc❯$rc%F{white} "
+export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~\$(git_branch)\$(git_status)\$(version)$exitc%(0?.. ·)
+$jobsc%(1j.[%j].)$promptc❯$rc "
 
 #========= ALIASES
 # Tmux
