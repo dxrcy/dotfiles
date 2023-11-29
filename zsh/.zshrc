@@ -49,9 +49,12 @@
     local ginfoc='%F{red}'    # Git info
     local exitc='%F{cyan}'    # Prompt symbol (exit 1)
     local promptc='%F{green}' # Prompt symbol (exit 0)
-    setopt PROMPT_SUBST
-export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~$gbranchc\$(git-info -f -b)$ginfoc\$(git-info -f)$exitc%(0?.. ·)
-$jobsc%(1j.[%j].)$promptc❯$resetc%F{white} "
+    # Wrap `git-info` output with color
+    git_branch() { x=$(git-info -b); [ "$x" ] && echo "$gbranchc $x" }
+    git_status() { x=$(git-info);    [ "$x" ] && echo "$ginfoc [$x]" }
+    setopt PROMPT_SUBST       # Allow functions in prompt
+export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~\$(git_branch)\$(git_status)$exitc%(0?.. ·)
+$jobsc%(1j.[%j].)$promptc❯$rc%F{white} "
 
 #========= ALIASES
 # Tmux
