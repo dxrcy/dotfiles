@@ -149,14 +149,15 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Assign workspaces to displays
+# Alternating
 set $display1 "eDP-1"
 set $display2 "HDMI-1"
 workspace $ws1 output $display1
 workspace $ws2 output $display2
 workspace $ws3 output $display1
-workspace $ws4 output $display1
+workspace $ws4 output $display2
 workspace $ws5 output $display1
-workspace $ws6 output $display1
+workspace $ws6 output $display2
 workspace $ws7 output $display1
 workspace $ws8 output $display2
 workspace $ws9 output $display1
