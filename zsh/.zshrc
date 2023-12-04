@@ -98,6 +98,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias cwt='cargo watch -x test'
     alias ci='cargo install --path .'
     alias cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
+    alias ccl='cargo clippy'
     # cargo new
     cn() {
         cd ~/code
