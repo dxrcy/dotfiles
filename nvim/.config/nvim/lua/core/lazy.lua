@@ -30,7 +30,7 @@ local plugins = {
     "nvim-treesitter/playground",
 
     -- Undo history
-    "mbbill/undotree",
+    -- "mbbill/undotree",
 
     -- LSP
     {
