@@ -101,7 +101,6 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias ccl='cargo clippy'
     # cargo new
     cn() {
-        cd ~/code
         [ ! "$1" ] && { cargo new || return $? }
         cargo new "$1"            || return $?
         cd "$1"                   || return $?
