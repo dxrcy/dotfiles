@@ -93,9 +93,9 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias cbr='cargo build --release'
     alias cdoc='cargo doc --no-deps --open'
     alias cw='cargo watch -c'
-    alias cwr='cargo watch -x run'
-    alias cwc='cargo watch -x clippy'
-    alias cwt='cargo watch -x test'
+    alias cwr='cargo watch -x run -c'
+    alias cwc='cargo watch -x clippy -c'
+    alias cwt='cargo watch -x test -c'
     alias ci='cargo install --path .'
     alias cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
     alias ccl='cargo clippy'
