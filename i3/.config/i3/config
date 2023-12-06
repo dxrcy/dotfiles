@@ -322,7 +322,7 @@ bindsym $mod+Ctrl+w exec --no-startup-id windscribe
 
 # Esperanto keyboard
 bindsym F1       exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
-bindsym Shift+F1 exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
+bindsym Shift+F1 exec --no-startup-id $scripts/esperanto off && $refresh_i3status
 
 # Bluetooth toggle
 bindsym $mod+b       exec --no-startup-id $scripts/bt connect
