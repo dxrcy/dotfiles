@@ -175,6 +175,14 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
+# Move workspace to display
+bindsym $mod+Mod1+h move workspace to output $display1
+bindsym $mod+Mod1+l move workspace to output $display2
+
+# Switch to display
+bindsym $mod+Control+h focus output $display1
+bindsym $mod+Control+l focus output $display2
+
 # Panic mode
 bindsym $mod+comma  workspace number $ws10 ;\
                     workspace number $ws9  ;\
