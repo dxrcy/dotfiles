@@ -77,6 +77,8 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias gl='git log'
     alias gcl='git clone'
     alias gitignore='cat .gitignore'
+    alias gr='git remote'
+    alias grao='git remote add origin'
 # Nvim
     # Open folder in nvim, instead of new buffer
     v() { if [ "$1" ]; then nvim $1; else nvim .; fi }
