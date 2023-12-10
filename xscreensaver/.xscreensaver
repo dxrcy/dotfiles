@@ -21,7 +21,7 @@ ignoreUninstalledPrograms:False
 dpmsEnabled:	True
 dpmsQuickOff:	False
 dpmsStandby:	0:10:00
-dpmsSuspend:	2:00:00
+dpmsSuspend:	0:10:00
 dpmsOff:	4:00:00
 grabDesktopImages:  False
 grabVideoFrames:    False
