@@ -311,6 +311,10 @@ bindsym F12 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-calc" $sp-calc
 for_window [class="i3-sp-calc"] $sp-global resize set 400 600
 # exec --no-startup-id $sp-calc
 
+# Autoclicker script
+bindsym $mod+m       exec --no-startup-id $scripts/autoclicker
+bindsym $mod+Shift+m exec --no-startup-id killall autoclicker
+
 # /SCRATCHPADS
 # -------------------------------------------------
 
