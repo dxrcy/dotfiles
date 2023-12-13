@@ -3,6 +3,9 @@ vim.g.mapleader = " "
 -- Open file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+-- Esperanto keys
+vim.api.nvim_set_option('langmap', 'ĉx,ĝw,ĥ],ĵ[,ŝq,ŭy')
+
 -- Save file
 -- Show nice error if file is readonly
 function is_file_writable()
