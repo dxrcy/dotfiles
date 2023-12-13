@@ -312,8 +312,8 @@ for_window [class="i3-sp-calc"] $sp-global resize set 400 600
 # exec --no-startup-id $sp-calc
 
 # Autoclicker script
-bindsym $mod+m       exec --no-startup-id $scripts/autoclicker
-bindsym $mod+Shift+m exec --no-startup-id killall autoclicker
+bindsym $mod+m         exec --no-startup-id $scripts/autoclicker
+bindsym $mod+Control+m exec --no-startup-id $scripts/autoclicker stop
 
 # /SCRATCHPADS
 # -------------------------------------------------
