@@ -129,6 +129,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias o='xdg-open'
     alias r='ranger'
     alias lw='librewolf'
+    alias cp='cp -r'
     alias mkdir='mkdir -p'
     alias clip='xclip -selection clipboard'
     alias wiki='wiki-tui'
