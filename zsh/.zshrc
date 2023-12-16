@@ -17,6 +17,16 @@
     bindkey -v
     export KEYTIMEOUT=1 # idk ?
     bindkey -v '^?' backward-delete-char # fix backspace
+    # Use narrow cursor for insert mode
+    function zle-keymap-select {
+      if [[ $KEYMAP == "vicmd" ]]; then
+        echo -ne "\e[1 q"  # Set block cursor in command mode
+      else
+        echo -ne "\e[5 q"  # Set thin vertical bar cursor in insert mode
+      fi
+    }
+    zle -N zle-keymap-select
+    zle-keymap-select
 # Change directory by typing name
     setopt AUTOCD
     alias   '...'='cd ../../'
