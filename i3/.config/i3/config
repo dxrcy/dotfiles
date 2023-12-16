@@ -53,7 +53,10 @@ bindsym Control+Shift+jcircumflex exec --no-startup-id "playerctl previous"
 bindsym Control+Shift+hcircumflex exec --no-startup-id "playerctl next"
 
 # Transparent windows
-exec_always --no-startup-id picom -CGb
+# -G : something to do with GLX?
+# --shadow : something to do with client-side shadows?
+# --transparent-cliping : don't render windows below, in stacked view
+exec_always --no-startup-id picom -G --shadow --transparent-clipping
 
 # Background
 exec --no-startup-id $scripts/bg-change --forever
