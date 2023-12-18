@@ -27,7 +27,7 @@ exec --no-startup-id nm-applet
 # Keyboard layout
 exec --no-startup-id setxkbmap -layout au
 # Set display mode and resolution from number of connected displays
-exec_always --no-startup-id $scripts/monitors
+exec_always --no-startup-id $scripts/monitors auto
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -223,8 +223,6 @@ bindsym $mod+Control+0 move container to workspace number $ws10, workspace numbe
 assign [class="LibreWolf"] $ws2
 # assign [class="Thunar"] $ws3
 assign [class="Surf"] $ws10
-
-assign [instance="garf-transcribe"] $ws4
 
 # Override workspace assign with WM class
 assign [class='i3-ws-1']  $ws1
