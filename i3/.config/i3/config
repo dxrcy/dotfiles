@@ -367,16 +367,16 @@ bindsym $mod+Shift+s exec --no-startup-id dunstify -t 2000 "$(date '+%H:%M | %a 
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
-        # Resize window
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    # Resize window
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # Exit resize mode
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # Exit resize mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 # Enter resize mode
@@ -393,16 +393,16 @@ bindsym $mod+Shift+o resize grow width 10 px or 10 ppt
 ######################################
 
 # Define colors variables:
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $black		#000000
-set $purple		#e345ff
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
-# set $darkgrey		#0b0d12
-# set $darkgreytrans	#0b0d1288
+set $darkbluetrans    #08052be6
+set $darkblue         #08052b
+set $lightblue        #5294e2
+set $urgentred        #e53935
+set $black            #000000
+set $purple           #e345ff
+set $mediumgrey       #8b8b8b
+set $yellowbrown      #e1b700
+# set $darkgrey        #0b0d12
+# set $darkgreytrans    #0b0d1288
 
 # Background
 # Transparency to match picom settings
@@ -410,19 +410,19 @@ set $darkgrey           #080b10e2
 set $darkgrey-trans     #080b10b0
 set $darkgrey-trans2    #080b10d0
 # Text
-set $white		#dddddd
-set $grey		#888888
+set $white              #dddddd
+set $grey               #888888
 
 # set $clear              #00000000
 # set $black              #1a1e23
 
 # define colors for windows:
-#class		        	border		    bground		text	    indicator	    child_border
-client.focused		    	$darkgrey    	    $darkgrey	        $white	    $white	    $mediumgrey
-client.unfocused	    	$darkgrey-trans	    $darkgrey-trans	$grey	    $darkgrey	    $darkgrey
-client.focused_inactive		$darkgrey-trans2    $darkgrey-trans2	$grey	    $black	    $black
-client.urgent		    	$urgentred	    $urgentred 	        $white	    $yellowbrown    $yellowbrown
-# client.urgent		    	$darkblue	    $darkblue	        $grey	    $darkgrey	    $darkgrey
+#class                      border              bground             text        indicator       child_border
+client.focused              $darkgrey           $darkgrey           $white      $white          $mediumgrey
+client.unfocused            $darkgrey-trans     $darkgrey-trans     $grey       $darkgrey       $darkgrey
+client.focused_inactive     $darkgrey-trans2    $darkgrey-trans2    $grey       $black          $black
+client.urgent               $urgentred          $urgentred          $white      $yellowbrown    $yellowbrown
+# client.urgent               $darkblue           $darkblue           $grey       $darkgrey       $darkgrey
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -431,33 +431,31 @@ client.urgent		    	$urgentred	    $urgentred 	        $white	    $yellowbrown  
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
 bar {
-		font pango: Noto Sans Monospace 10
-		status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	    	position top
-    	# i3bar_command i3bar --transparency
-# it could be that you have no primary display set: set one (xrandr --output <output> --primary)
-# reference: https://i3wm.org/docs/userguide.html#_tray_output
-		    #tray_output primary
-		    tray_padding 3
+    font pango: Noto Sans Monospace 10
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    position top
+    #tray_output primary
+    tray_padding 3
 
-# When strip_workspace_numbers is set to yes,
-# any workspace that has a name of the form
-# “[n][:][NAME]” will display only the name.
-strip_workspace_numbers yes
-##strip_workspace_name no
+    # When strip_workspace_numbers is set to yes,
+    # any workspace that has a name of the form
+    # “[n][:][NAME]” will display only the name.
+    strip_workspace_numbers yes
+    ##strip_workspace_name no
 
-		    colors {
-		    separator          $purple
-		    background         $darkgrey
-		    statusline         $white
+    colors {
+        separator          $purple
+        background         $darkgrey
+        statusline         $white
 
-                # background $darkgreytrans
-#                          		border 		        bg		txt		indicator
-		focused_workspace	$darkgrey	        $grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
-		# urgent_workspace	$urgentred	    	$urgentred	$white		$purple
-		urgent_workspace	$darkgrey	    	$darkgrey	$grey		$purple
-	}
+        # background $darkgreytrans
+
+        #                       border          bg              txt         indicator
+        focused_workspace       $darkgrey       $grey           $darkgrey   $purple
+        active_workspace        $lightblue      $mediumgrey     $darkgrey   $purple
+        inactive_workspace      $darkgrey       $darkgrey       $grey       $purple
+        urgent_workspace        $urgentred      $urgentred      $white      $purple
+        # urgent_workspace        $darkgrey       $darkgrey       $grey       $purple
+    }
 }
 
