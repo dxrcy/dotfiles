@@ -401,26 +401,26 @@ set $black            #000000
 set $purple           #e345ff
 set $mediumgrey       #8b8b8b
 set $yellowbrown      #e1b700
-# set $darkgrey        #0b0d12
+# set $darkgrey         #0b0d12
 # set $darkgreytrans    #0b0d1288
 
 # Background
 # Transparency to match picom settings
-set $darkgrey           #080b10e2
-set $darkgrey-trans     #080b10b0
-set $darkgrey-trans2    #080b10d0
+set $darkgrey-full      #080b10e2
+set $darkgrey-half      #080b10c2
+set $darkgrey-trans     #080b10a2
 # Text
 set $white              #dddddd
-set $grey               #888888
+set $grey               #a0a0a0
 
 # set $clear              #00000000
 # set $black              #1a1e23
 
 # define colors for windows:
 #class                      border              bground             text        indicator       child_border
-client.focused              $darkgrey           $darkgrey           $white      $white          $mediumgrey
+client.focused              $darkgrey-full      $darkgrey-full      $white      $white          $mediumgrey
 client.unfocused            $darkgrey-trans     $darkgrey-trans     $grey       $darkgrey       $darkgrey
-client.focused_inactive     $darkgrey-trans2    $darkgrey-trans2    $grey       $black          $black
+client.focused_inactive     $darkgrey-half      $darkgrey-half      $grey       $black          $black
 client.urgent               $urgentred          $urgentred          $white      $yellowbrown    $yellowbrown
 # client.urgent               $darkblue           $darkblue           $grey       $darkgrey       $darkgrey
 
@@ -445,17 +445,17 @@ bar {
 
     colors {
         separator          $purple
-        background         $darkgrey
+        background         $darkgrey-full
         statusline         $white
 
         # background $darkgreytrans
 
-        #                       border          bg              txt         indicator
-        focused_workspace       $darkgrey       $grey           $darkgrey   $purple
-        active_workspace        $lightblue      $mediumgrey     $darkgrey   $purple
-        inactive_workspace      $darkgrey       $darkgrey       $grey       $purple
-        urgent_workspace        $urgentred      $urgentred      $white      $purple
-        # urgent_workspace        $darkgrey       $darkgrey       $grey       $purple
+        #                       border              bg                  txt             indicator
+        focused_workspace       $darkgrey-full      $grey               $darkgrey-full  $purple
+        active_workspace        $lightblue          $mediumgrey         $darkgrey-full  $purple
+        inactive_workspace      $darkgrey-full      $darkgrey-full      $grey           $purple
+        urgent_workspace        $urgentred          $urgentred          $white          $purple
+        # urgent_workspace        $darkgrey           $darkgrey           $grey           $purple
     }
 }
 
