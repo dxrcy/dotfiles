@@ -223,6 +223,8 @@ assign [class="LibreWolf"] $ws2
 # assign [class="Thunar"] $ws3
 assign [class="Surf"] $ws10
 
+assign [instance="garf-transcribe"] $ws4
+
 # Override workspace assign with WM class
 assign [class='i3-ws-1']  $ws1
 assign [class='i3-ws-2']  $ws2
