@@ -55,7 +55,7 @@ bindsym Control+Shift+hcircumflex exec --no-startup-id "playerctl next"
 # Transparent windows
 # -G : something to do with GLX?
 # --shadow : something to do with client-side shadows?
-# --transparent-cliping : don't render windows below, in stacked view
+# --transparent-cliping : don't render windows below, in tabbed/stacked view
 exec_always --no-startup-id picom -G --shadow --transparent-clipping
 
 # Background
@@ -126,9 +126,10 @@ bindsym $mod+f fullscreen toggle
 # Change container layout
 bindsym $mod+w layout tabbed
 bindsym $mod+gcircumflex layout tabbed
-bindsym $mod+Shift+w layout stacking
-bindsym $mod+Shift+gcircumflex layout stacking
 bindsym $mod+e layout toggle split
+
+# bindsym $mod+Shift+w layout stacking
+# bindsym $mod+Shift+gcircumflex layout stacking
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -396,22 +397,32 @@ set $darkbluetrans	#08052be6
 set $darkblue		#08052b
 set $lightblue		#5294e2
 set $urgentred		#e53935
-set $white		#ffffff
 set $black		#000000
 set $purple		#e345ff
-set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
-set $darkgrey		#0b0d12
+# set $darkgrey		#0b0d12
 # set $darkgreytrans	#0b0d1288
 
+# Background
+# Transparency to match picom settings
+set $darkgrey           #080b10e2
+set $darkgrey-trans     #080b10b0
+set $darkgrey-trans2    #080b10d0
+# Text
+set $white		#dddddd
+set $grey		#888888
+
+# set $clear              #00000000
+# set $black              #1a1e23
+
 # define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
-client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
-client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
-# client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
-client.urgent		    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
+#class		        	border		    bground		text	    indicator	    child_border
+client.focused		    	$darkgrey    	    $darkgrey	        $white	    $white	    $mediumgrey
+client.unfocused	    	$darkgrey-trans	    $darkgrey-trans	$grey	    $darkgrey	    $darkgrey
+client.focused_inactive		$darkgrey-trans2    $darkgrey-trans2	$grey	    $black	    $black
+client.urgent		    	$urgentred	    $urgentred 	        $white	    $yellowbrown    $yellowbrown
+# client.urgent		    	$darkblue	    $darkblue	        $grey	    $darkgrey	    $darkgrey
 
 ############################################
 # bar settings (input comes from i3blocks) #
