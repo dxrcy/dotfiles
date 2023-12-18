@@ -76,6 +76,9 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias q='exit'
     alias :q='exit'
     alias :wq='exit'
+    alias ŝ='exit'
+    alias :ŝ='exit'
+    alias :ĝŝ='exit'
     alias Z='exit'
     alias ZZ='exit'
 # Git (even tho lazygit is easier)
