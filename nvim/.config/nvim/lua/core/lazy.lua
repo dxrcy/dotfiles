@@ -132,6 +132,11 @@ local plugins = {
 
     -- Git
     "tpope/vim-fugitive",
+
+    {
+        "coot/cmdalias_vim",
+        dependencies = { { "coot/CRDispatcher" } },
+    },
 }
 
 local opts = {}
