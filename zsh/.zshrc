@@ -70,7 +70,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
 
 #========= ALIASES
 # Tmux
-    alias t='tmux'
+    alias  t='tmux'
     alias ta='tmux -u attach'
 # Exit (vim style)
     alias   q='exit'
@@ -142,15 +142,16 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
 # Misc. Abbreviations / Mispellings
+    alias j='just'
     alias a='garf'
-    alias lg='lazygit' # also in tmux
     alias o='xdg-open'
     alias r='ranger'
+    alias th='thunar'
     alias lw='librewolf'
+    alias lg='lazygit' # also in tmux
     alias clip='xclip -selection clipboard'
     alias scim='sc-im'
     alias trs='tree-sitter'
-    alias th='thunar'
     alias ol='ollama'
     alias olr='ollama run mistral'
     alias en='translate eo en'
