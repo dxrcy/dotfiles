@@ -88,3 +88,6 @@ vim.keymap.set("n", '?', ':%s/')
 -- Make open file executable
 vim.keymap.set("n", "<C-M-x>", ":!chmod +x %<CR>")
 
+-- Don't of showing in command history, if `:q` is mistyped
+vim.keymap.set("n", "q:", ":")
+
