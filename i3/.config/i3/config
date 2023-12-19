@@ -332,6 +332,10 @@ bindsym $mod+Ctrl+w exec --no-startup-id windscribe
 bindsym F1       exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
 bindsym Shift+F1 exec --no-startup-id $scripts/esperanto off && $refresh_i3status
 
+# Use English keys for some common keybinds (eg. <C-x>, <C-w>)
+bindsym --release Control+ccircumflex exec --no-startup-id xdotool type 'x'
+bindsym --release Control+gcircumflex exec --no-startup-id xdotool type 'w'
+
 # English in esperanto mode, with Alt key
 bindsym --release Mod1+scircumflex exec --no-startup-id xdotool type --clearmodifiers 'q'
 bindsym --release Mod1+gcircumflex exec --no-startup-id xdotool type --clearmodifiers 'w'
