@@ -29,9 +29,6 @@ local plugins = {
     },
     "nvim-treesitter/playground",
 
-    -- Undo history
-    -- "mbbill/undotree",
-
     -- LSP
     {
         "VonHeikemen/lsp-zero.nvim",
@@ -121,22 +118,30 @@ local plugins = {
         dependencies = "nvim-lua/plenary.nvim",
     },
 
-    -- Remove this stuff ? (i dont use)
-    
-    -- Telescope
-    {
-        "nvim-telescope/telescope.nvim", 
-        version = "0.1.2",
-        dependencies = { { "nvim-lua/plenary.nvim" } },
-    },
-
-    -- Git
-    "tpope/vim-fugitive",
-
+    -- Command aliases
     {
         "coot/cmdalias_vim",
         dependencies = { { "coot/CRDispatcher" } },
     },
+
+    -- Git stuff
+    "lewis6991/gitsigns.nvim",
+
+    -----------------------------------
+    -- Remove this stuff ? (i dont use)
+    
+    -- Telescope
+    -- {
+    --     "nvim-telescope/telescope.nvim", 
+    --     version = "0.1.2",
+    --     dependencies = { { "nvim-lua/plenary.nvim" } },
+    -- },
+
+    -- Git
+    -- "tpope/vim-fugitive",
+
+    -- Undo history
+    -- "mbbill/undotree",
 }
 
 local opts = {}

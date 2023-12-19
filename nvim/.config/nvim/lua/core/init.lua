@@ -29,7 +29,9 @@ vim.opt.scrolloff = 8
 -- vim.opt.updatetime = 50
 
 -- Disable 'signcolumn' - gutter left of line numbers
-vim.opt.signcolumn = 'no'
+-- THIS DISABLES GITSIGNS!!!
+-- vim.opt.signcolumn = 'no'
+
 -- Use same line for status line (lualine), commands, command output
 -- vim.opt.cmdheight = 0
 
