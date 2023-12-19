@@ -332,6 +332,20 @@ bindsym $mod+Ctrl+w exec --no-startup-id windscribe
 bindsym F1       exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
 bindsym Shift+F1 exec --no-startup-id $scripts/esperanto off && $refresh_i3status
 
+# English in esperanto mode, with Alt key
+bindsym --release Mod1+scircumflex exec --no-startup-id xdotool type --clearmodifiers 'q'
+bindsym --release Mod1+gcircumflex exec --no-startup-id xdotool type --clearmodifiers 'w'
+bindsym --release Mod1+ubreve exec --no-startup-id xdotool type --clearmodifiers 'y'
+bindsym --release Mod1+ccircumflex exec --no-startup-id xdotool type --clearmodifiers 'x'
+bindsym --release Mod1+jcircumflex exec --no-startup-id xdotool type --clearmodifiers '['
+bindsym --release Mod1+hcircumflex exec --no-startup-id xdotool type --clearmodifiers ']'
+bindsym --release Mod1+Shift+scircumflex exec --no-startup-id xdotool type --clearmodifiers 'Q'
+bindsym --release Mod1+Shift+gcircumflex exec --no-startup-id xdotool type --clearmodifiers 'W'
+bindsym --release Mod1+Shift+ubreve exec --no-startup-id xdotool type --clearmodifiers 'Y'
+bindsym --release Mod1+Shift+ccircumflex exec --no-startup-id xdotool type --clearmodifiers 'X'
+bindsym --release Mod1+Shift+jcircumflex exec --no-startup-id xdotool type --clearmodifiers '{'
+bindsym --release Mod1+Shift+hcircumflex exec --no-startup-id xdotool type --clearmodifiers '}'
+
 # Bluetooth toggle
 bindsym $mod+b       exec --no-startup-id $scripts/bt connect
 bindsym $mod+Shift+b exec --no-startup-id $scripts/bt disconnect
