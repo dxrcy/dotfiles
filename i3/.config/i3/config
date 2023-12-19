@@ -333,22 +333,22 @@ bindsym F1       exec --no-startup-id $scripts/esperanto toggle && $refresh_i3st
 bindsym Shift+F1 exec --no-startup-id $scripts/esperanto off && $refresh_i3status
 
 # Use English keys for some common keybinds (eg. <C-x>, <C-w>)
-bindsym Control+ccircumflex exec --no-startup-id "xdotool keyup ccircumflex; xdotool key 'x'"
-bindsym Control+gcircumflex exec --no-startup-id "xdotool keyup gcircumflex; xdotool key 'w'"
+bindsym Control+ccircumflex exec --no-startup-id "xdotool keyup 'ccircumflex'; xdotool key 'x'"
+bindsym Control+gcircumflex exec --no-startup-id "xdotool keyup 'gcircumflex'; xdotool key 'w'"
 
 # English in esperanto mode, with Alt key
-bindsym --release Mod1+scircumflex exec --no-startup-id xdotool type --clearmodifiers 'q'
-bindsym --release Mod1+gcircumflex exec --no-startup-id xdotool type --clearmodifiers 'w'
-bindsym --release Mod1+ubreve exec --no-startup-id xdotool type --clearmodifiers 'y'
-bindsym --release Mod1+ccircumflex exec --no-startup-id xdotool type --clearmodifiers 'x'
-bindsym --release Mod1+jcircumflex exec --no-startup-id xdotool type --clearmodifiers '['
-bindsym --release Mod1+hcircumflex exec --no-startup-id xdotool type --clearmodifiers ']'
-bindsym --release Mod1+Shift+scircumflex exec --no-startup-id xdotool type --clearmodifiers 'Q'
-bindsym --release Mod1+Shift+gcircumflex exec --no-startup-id xdotool type --clearmodifiers 'W'
-bindsym --release Mod1+Shift+ubreve exec --no-startup-id xdotool type --clearmodifiers 'Y'
-bindsym --release Mod1+Shift+ccircumflex exec --no-startup-id xdotool type --clearmodifiers 'X'
-bindsym --release Mod1+Shift+jcircumflex exec --no-startup-id xdotool type --clearmodifiers '{'
-bindsym --release Mod1+Shift+hcircumflex exec --no-startup-id xdotool type --clearmodifiers '}'
+bindsym Mod1+scircumflex       exec --no-startup-id "xdotool keyup 'scircumflex'; xdotool key --clearmodifiers 'q'"
+bindsym Mod1+gcircumflex       exec --no-startup-id "xdotool keyup 'gcircumflex'; xdotool key --clearmodifiers 'w'"
+bindsym Mod1+ubreve            exec --no-startup-id "xdotool keyup 'ubreve';      xdotool key --clearmodifiers 'y'"
+bindsym Mod1+ccircumflex       exec --no-startup-id "xdotool keyup 'ccircumflex'; xdotool key --clearmodifiers 'x'"
+bindsym Mod1+jcircumflex       exec --no-startup-id "xdotool keyup 'jcircumflex'; xdotool key --clearmodifiers 'bracketleft'"
+bindsym Mod1+hcircumflex       exec --no-startup-id "xdotool keyup 'hcircumflex'; xdotool key --clearmodifiers 'bracketright'"
+bindsym Mod1+Shift+scircumflex exec --no-startup-id "xdotool keyup 'scircumflex'; xdotool key --clearmodifiers 'Q'"
+bindsym Mod1+Shift+gcircumflex exec --no-startup-id "xdotool keyup 'gcircumflex'; xdotool key --clearmodifiers 'W'"
+bindsym Mod1+Shift+ubreve      exec --no-startup-id "xdotool keyup 'ubreve';      xdotool key --clearmodifiers 'Y'"
+bindsym Mod1+Shift+ccircumflex exec --no-startup-id "xdotool keyup 'ccircumflex'; xdotool key --clearmodifiers 'X'"
+bindsym Mod1+Shift+jcircumflex exec --no-startup-id "xdotool keyup 'jcircumflex'; xdotool key --clearmodifiers 'braceleft'"
+bindsym Mod1+Shift+hcircumflex exec --no-startup-id "xdotool keyup 'hcircumflex'; xdotool key --clearmodifiers 'braceright'"
 
 # Bluetooth toggle
 bindsym $mod+b       exec --no-startup-id $scripts/bt connect
