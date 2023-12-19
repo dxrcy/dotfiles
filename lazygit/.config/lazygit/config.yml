@@ -7,6 +7,10 @@ gui:
 
 git:
   paging:
-    # colorArg: never
     pager: delta --dark --paging=never
+
+customCommands:
+  - key: 'ŝ'
+    context: 'global'
+    command: 'kill "$PPID"'
 
