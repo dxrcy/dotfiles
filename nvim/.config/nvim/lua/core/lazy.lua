@@ -51,6 +51,9 @@ local plugins = {
         }
     },
 
+    -- ?
+    "lukas-reineke/lsp-format.nvim",
+
     -- LSP Rename
     {
         'filipdutescu/renamer.nvim',
@@ -87,9 +90,6 @@ local plugins = {
             'nvim-tree/nvim-web-devicons', -- optional
         },
     },
-
-    -- ?
-    "lukas-reineke/lsp-format.nvim",
 
     -- Save files with sudo
     "lambdalisue/suda.vim",
