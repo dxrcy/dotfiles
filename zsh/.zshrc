@@ -163,23 +163,27 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
 #========= PACKAGES
     # Autodownload packages
     # At end of file, so if git clone cancelled, above aliases still work
-    packages=(
-        zsh-users/zsh-syntax-highlighting
-        zsh-users/zsh-autosuggestions
-        hlissner/zsh-autopair
+    # Package list entry is zsh file of package, relative to ~/.zsh
+    PACKAGES=(
+        zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
+	# zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
+        hlissner/zsh-autopair/autopair.zsh
     )
-    for package in $packages; do
-        if [[ ! -d ~/.zsh/$package ]]; then
-            git clone https://github.com/$package ~/.zsh/$package;
+    dir="$HOME/.zsh" # Where to download packages to
+    for filepath in $PACKAGES; do
+	package="${filepath%/*}" # Remove filename from path
+        if [[ ! -d "$dir/$package" ]]; then
+            git clone "https://github.com/$package" "$dir/$package"
         fi
+	source "$dir/$filepath"
     done
-    unset packages package
-    # Source manually
-    source ~/.zsh/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
-    source ~/.zsh/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    source ~/.zsh/hlissner/zsh-autopair/autopair.zsh
+    unset filepath package
     # Settings for packages
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
+    # bindkey '^[[A' history-substring-search-up
+    # bindkey '^[[B' history-substring-search-down
+    # HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
 #========= OLD
 # Start tmux if not already running
