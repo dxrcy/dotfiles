@@ -335,6 +335,7 @@ bindsym Shift+F1 exec --no-startup-id $scripts/esperanto off && $refresh_i3statu
 # Use English keys for some common keybinds (eg. <C-x>, <C-w>)
 bindsym Control+ccircumflex exec --no-startup-id "xdotool keyup 'ccircumflex'; xdotool key 'x'"
 bindsym Control+gcircumflex exec --no-startup-id "xdotool keyup 'gcircumflex'; xdotool key 'w'"
+bindsym Control+ubreve      exec --no-startup-id "xdotool keyup 'ubreve';      xdotool key 'y'"
 
 # English in esperanto mode, with Alt key
 bindsym Mod1+scircumflex       exec --no-startup-id "xdotool keyup 'scircumflex'; xdotool key --clearmodifiers 'q'"
