@@ -413,7 +413,7 @@ bindsym $mod+Shift+o resize grow width 10 px or 10 ppt
 set $darkbluetrans    #08052be6
 set $darkblue         #08052b
 set $lightblue        #5294e2
-set $urgentred        #e53935
+set $urgentred        #952925
 set $black            #000000
 set $purple           #e345ff
 set $mediumgrey       #8b8b8b
