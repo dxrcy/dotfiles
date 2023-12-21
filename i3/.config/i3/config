@@ -413,7 +413,8 @@ bindsym $mod+Shift+o resize grow width 10 px or 10 ppt
 set $darkbluetrans    #08052be6
 set $darkblue         #08052b
 set $lightblue        #5294e2
-set $urgentred        #952925
+set $urgentred        #280b10
+set $urgentred-bright #480b10
 set $black            #000000
 set $purple           #e345ff
 set $mediumgrey       #8b8b8b
@@ -471,7 +472,7 @@ bar {
         focused_workspace       $darkgrey-full      $grey               $darkgrey-full  $purple
         active_workspace        $lightblue          $mediumgrey         $darkgrey-full  $purple
         inactive_workspace      $darkgrey-full      $darkgrey-full      $grey           $purple
-        urgent_workspace        $urgentred          $urgentred          $white          $purple
+        urgent_workspace        $urgentred-bright   $urgentred-bright   $white          $purple
         # urgent_workspace        $darkgrey           $darkgrey           $grey           $purple
     }
 }
