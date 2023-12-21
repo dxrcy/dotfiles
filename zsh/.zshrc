@@ -156,6 +156,8 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias olr='ollama run mistral'
     alias en='translate eo en'
     alias eo='translate en eo'
+    alias sy='systemctl'
+    alias syu='systemctl --user'
     alias ping8='ping 8.8.8.8 -c 10'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
 
