@@ -335,18 +335,18 @@ bindsym Control+gcircumflex exec --no-startup-id "xdotool keyup 'gcircumflex'; x
 bindsym Control+ubreve      exec --no-startup-id "xdotool keyup 'ubreve';      xdotool key 'y'"
 
 # English in esperanto mode, with Alt key
-bindsym Mod1+scircumflex       exec --no-startup-id "xdotool keyup 'scircumflex'; xdotool key --clearmodifiers 'q'"
-bindsym Mod1+gcircumflex       exec --no-startup-id "xdotool keyup 'gcircumflex'; xdotool key --clearmodifiers 'w'"
-bindsym Mod1+ubreve            exec --no-startup-id "xdotool keyup 'ubreve';      xdotool key --clearmodifiers 'y'"
-bindsym Mod1+ccircumflex       exec --no-startup-id "xdotool keyup 'ccircumflex'; xdotool key --clearmodifiers 'x'"
-bindsym Mod1+jcircumflex       exec --no-startup-id "xdotool keyup 'jcircumflex'; xdotool key --clearmodifiers 'bracketleft'"
-bindsym Mod1+hcircumflex       exec --no-startup-id "xdotool keyup 'hcircumflex'; xdotool key --clearmodifiers 'bracketright'"
-bindsym Mod1+Shift+scircumflex exec --no-startup-id "xdotool keyup 'scircumflex'; xdotool key --clearmodifiers 'Q'"
-bindsym Mod1+Shift+gcircumflex exec --no-startup-id "xdotool keyup 'gcircumflex'; xdotool key --clearmodifiers 'W'"
-bindsym Mod1+Shift+ubreve      exec --no-startup-id "xdotool keyup 'ubreve';      xdotool key --clearmodifiers 'Y'"
-bindsym Mod1+Shift+ccircumflex exec --no-startup-id "xdotool keyup 'ccircumflex'; xdotool key --clearmodifiers 'X'"
-bindsym Mod1+Shift+jcircumflex exec --no-startup-id "xdotool keyup 'jcircumflex'; xdotool key --clearmodifiers 'braceleft'"
-bindsym Mod1+Shift+hcircumflex exec --no-startup-id "xdotool keyup 'hcircumflex'; xdotool key --clearmodifiers 'braceright'"
+bindsym Mod1+scircumflex       exec --no-startup-id $i3_scripts/alt-key 'scircumflex' 'q'
+bindsym Mod1+gcircumflex       exec --no-startup-id $i3_scripts/alt-key 'gcircumflex' 'w'
+bindsym Mod1+ubreve            exec --no-startup-id $i3_scripts/alt-key 'ubreve'      'y'
+bindsym Mod1+ccircumflex       exec --no-startup-id $i3_scripts/alt-key 'ccircumflex' 'x'
+bindsym Mod1+jcircumflex       exec --no-startup-id $i3_scripts/alt-key 'jcircumflex' 'bracketleft'
+bindsym Mod1+hcircumflex       exec --no-startup-id $i3_scripts/alt-key 'hcircumflex' 'bracketright'
+bindsym Mod1+Shift+scircumflex exec --no-startup-id $i3_scripts/alt-key 'scircumflex' 'Q'
+bindsym Mod1+Shift+gcircumflex exec --no-startup-id $i3_scripts/alt-key 'gcircumflex' 'W'
+bindsym Mod1+Shift+ubreve      exec --no-startup-id $i3_scripts/alt-key 'ubreve'      'Y'
+bindsym Mod1+Shift+ccircumflex exec --no-startup-id $i3_scripts/alt-key 'ccircumflex' 'X'
+bindsym Mod1+Shift+jcircumflex exec --no-startup-id $i3_scripts/alt-key 'jcircumflex' 'braceleft'
+bindsym Mod1+Shift+hcircumflex exec --no-startup-id $i3_scripts/alt-key 'hcircumflex' 'braceright'
 
 # Bluetooth toggle
 bindsym $mod+b       exec --no-startup-id $scripts/bt connect
