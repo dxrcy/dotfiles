@@ -86,6 +86,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias   ga='git add'
     alias   gc='git commit -m $1'
     alias  gac='git add . && git commit -m $1'
+    alias  gca='git commit --amend'
     alias   gp='git push'
     alias   gd='git diff'
     alias   gl='git log'
