@@ -69,10 +69,7 @@ exec --no-startup-id xscreensaver
 exec --no-startup-id clipit
 
 # Autostart programs
-# exec --no-startup-id librewolf
-exec --no-startup-id windscribe
-# exec --no-startup-id dunstify 'REMEMBER: windscribe is not on!'
-# exec --no-startup-id sleep 5 && &scripts/bt disconnect && $scripts/bt connect && $refresh_i3status
+exec --no-startup-id librewolf
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
