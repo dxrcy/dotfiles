@@ -90,7 +90,7 @@ bindsym $mod+Return exec --no-startup-id kitty tmux
 # Start terminal and attach to most recent tmux session
 bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
 # Start terminal WITHOUT tmux
-bindsym $mod+Control+Return exec --no-startup-id kitty
+bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\x1b[1m(No tmux)\n" && zsh'
 
 # Start dmenu (at bottom)
 bindsym $mod+d       exec --no-startup-id $scripts/dmenu-custom refresh
