@@ -23,8 +23,7 @@
       [[ $KEYMAP == "vicmd" ]] \
         && echo -ne "\e[1 q" \
         || echo -ne "\e[5 q"
-    }
-    zle -N zle-keymap-select
+    }; zle -N zle-keymap-select
     zle-keymap-select
 # Change directory by typing name
     setopt AUTOCD
