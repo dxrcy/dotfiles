@@ -46,6 +46,8 @@
 # Flyctl binary
     export FLYCTL_INSTALL="/home/darcy/.fly"
     export PATH="$FLYCTL_INSTALL/bin:$PATH"
+# Fix i3-msg
+    unset I3SOCK
 
 #========= PROMPT
     # Colors
