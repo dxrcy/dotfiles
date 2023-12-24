@@ -85,8 +85,35 @@ vim.keymap.set('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
 -- Start a new find-replace command without terms
 vim.keymap.set("n", '?', ':%s/')
 
--- Make open file executable
-vim.keymap.set("n", "<C-M-x>", ":!chmod +x %<CR>")
+-- Read key from stdin, return true unless <Esc>
+function prompt_confirm(prompt)
+    print(prompt)
+    local input = vim.fn.nr2char(vim.fn.getchar())
+    if input == "\27" then
+        print("Cancelled.")
+        return false
+    end
+    return true
+end
+
+-- Make current file an executable shell script
+vim.keymap.set("n", "<C-M-x>", function ()
+    local confirm = prompt_confirm("Make executable shell script? ")
+    if not confirm then
+        return
+    end
+
+    -- Add shebang if none found
+    local first_line = vim.fn.getline(1)
+    if first_line == "" or not first_line:match("^#!") then
+        vim.fn.append(0, "#!/bin/sh")
+        vim.fn.append(1, "")
+    end
+    -- Save, make executable, and set filetype
+    vim.cmd("w")
+    vim.cmd("silent !chmod +x %")
+    vim.cmd("set filetype=sh")
+end, { noremap = true, silent = true })
 
 -- Don't of showing in command history, if `:q` is mistyped
 vim.keymap.set("n", "q:", ":")
