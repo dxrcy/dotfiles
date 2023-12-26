@@ -3,4 +3,6 @@
 configuration {
     terminal: "kitty";
     show-icons: true;
+    sort: true;
+    sorting-method: "fzf";
 }
