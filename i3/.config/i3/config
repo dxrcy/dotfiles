@@ -239,7 +239,7 @@ for_window [class="Windscribe2"] floating enable
 for_window [class="Display"] floating enable, move position 200px 200px
 
 # Switch back and forth 2 most recent workspaces
-bindsym $mod+asciitilde workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 # Set inner and outer gaps
 gaps inner 10
