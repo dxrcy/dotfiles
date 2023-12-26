@@ -95,10 +95,13 @@ bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\x1b[1m(No
 # -------------------------------------------------
 # ROFI STUFF
 
-# Rofi run
-bindsym $mod+d exec --no-startup-id rofi -show run
+# Run application
+bindsym $mod+d exec --no-startup-id rofi -show drun
+# Run command
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+
 # (Dmenu fallback)
-bindsym $mod+Shift+d exec --no-startup-id dmenu_run -b
+bindsym $mod+Control+d exec --no-startup-id dmenu_run -b
 
 # Emoji (rofi-emoji)
 bindsym $mod+period exec --no-startup-id rofi -modi emoji -show emoji
