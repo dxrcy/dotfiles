@@ -97,6 +97,9 @@ bindsym $mod+d exec --no-startup-id rofi -show run
 # (Dmenu fallback)
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run -b
 
+# Rofi emoji
+bindsym $mod+period exec --no-startup-id rofi -modi emoji -show emoji
+
 # Kill focused window
 bindsym $mod+q kill
 bindsym $mod+scircumflex kill
@@ -362,9 +365,6 @@ bindsym $mod+o exec --no-startup-id kitty sh -c "cd ~/docs/notes && nvim $($scri
 # Open a quick language model (ollama)
 set $ollama_model 'llama2'
 bindsym $mod+p exec --no-startup-id kitty sh -c "title 'Hello $ollama_model' && ollama run $ollama_model:latest"
-
-# Emoji finder
-bindsym $mod+period exec --no-startup-id $scripts/emoji-menu
 
 # Screenshot
 bindsym Print exec --no-startup-id spectacle
