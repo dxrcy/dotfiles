@@ -92,11 +92,10 @@ bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
 # Start terminal WITHOUT tmux
 bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\x1b[1m(No tmux)\n" && zsh'
 
-# Start dmenu (at bottom)
-bindsym $mod+d       exec --no-startup-id $scripts/dmenu-custom refresh
+# Rofi run
+bindsym $mod+d exec --no-startup-id rofi -show run
+# (Dmenu fallback)
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run -b
-# Refresh custom dmenu cache
-# exec_always --no-startup-id $scripts/dmenu-custom refresh
 
 # Kill focused window
 bindsym $mod+q kill
