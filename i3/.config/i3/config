@@ -99,15 +99,16 @@ bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\x1b[1m(No
 bindsym $mod+d exec --no-startup-id rofi -show drun
 # Run command
 bindsym $mod+Shift+d exec --no-startup-id rofi -show run
-
-# (Dmenu fallback)
-bindsym $mod+Control+d exec --no-startup-id dmenu_run -b
+# Switch to window
+bindsym $mod+Control+d exec --no-startup-id rofi -show window
 
 # Emoji (rofi-emoji)
 bindsym $mod+period exec --no-startup-id rofi -modi emoji -show emoji
-
 # Clipboard (rofi-greenclip)
 bindsym $mod+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
+# (Dmenu fallback)
+bindsym $mod+Mod1+d exec --no-startup-id dmenu_run -b
 
 # -------------------------------------------------
 
