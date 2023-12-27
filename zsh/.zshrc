@@ -177,7 +177,11 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     for filepath in $PACKAGES; do
 	package="${filepath%/*}" # Remove filename from path
         if [[ ! -d "$dir/$package" ]]; then
-            git clone "https://github.com/$package" "$dir/$package"
+            printf "\x1b[2;33mInstalling '%s'...\x1b[0m\n" "$package"
+            git clone --quiet "https://github.com/$package" "$dir/$package" || {
+                printf "\x1b[31mSome packages failed to download.\x1b[0m\n"
+                break
+            }
         fi
 	source "$dir/$filepath"
     done
