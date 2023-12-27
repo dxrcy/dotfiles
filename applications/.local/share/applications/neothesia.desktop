@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Neothesia
-Exec=/home/darcy/.cargo/bin/neothesia %U
-Terminal=false
-Type=Application
-Icon=/home/darcy/.local/share/applications/icon/neothesia.png
-Comment=MIDI Piano Player
