@@ -95,28 +95,28 @@ local plugins = {
     "lambdalisue/suda.vim",
 
     -- Neorg (markdown-like notes)
-    {
-        "nvim-neorg/neorg",
-        config = function()
-            require('neorg').setup {
-                load = {
-                    ["core.defaults"] = {}, -- Loads default behaviour
-                    ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                    ["core.dirman"] = { -- Manages Neorg workspaces
-                        config = {
-                            workspaces = {
-                                notes = "~/docs/notes",
-                            },
-                        },
-                    },
-                },
-            }
-        end,
-        build = function()
-            vim.cmd(":Neorg sync-parsers")
-        end,
-        dependencies = "nvim-lua/plenary.nvim",
-    },
+    -- {
+    --     "nvim-neorg/neorg",
+    --     config = function()
+    --         require('neorg').setup {
+    --             load = {
+    --                 ["core.defaults"] = {}, -- Loads default behaviour
+    --                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
+    --                 ["core.dirman"] = { -- Manages Neorg workspaces
+    --                     config = {
+    --                         workspaces = {
+    --                             notes = "~/docs/notes",
+    --                         },
+    --                     },
+    --                 },
+    --             },
+    --         }
+    --     end,
+    --     build = function()
+    --         vim.cmd(":Neorg sync-parsers")
+    --     end,
+    --     dependencies = "nvim-lua/plenary.nvim",
+    -- },
 
     -- Command aliases
     {
