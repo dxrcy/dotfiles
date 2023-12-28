@@ -92,6 +92,9 @@ bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
 # Start terminal WITHOUT tmux
 bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\x1b[1m(No tmux)\n" && zsh'
 
+# Start thunar
+bindsym $mod+n exec --no-startup-id thunar
+
 # -------------------------------------------------
 # ROFI STUFF
 
