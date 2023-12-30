@@ -56,7 +56,8 @@ bindsym Control+Shift+hcircumflex exec --no-startup-id "playerctl next"
 # -G : something to do with GLX?
 # --shadow : something to do with client-side shadows?
 # --transparent-cliping : don't render windows below, in tabbed/stacked view
-exec_always --no-startup-id picom -G --shadow --transparent-clipping
+# Kill and restart, to fix rendering issues
+exec_always --no-startup-id killall picom; picom -G --shadow --transparent-clipping
 
 # Background
 exec --no-startup-id $scripts/bg-change --forever
