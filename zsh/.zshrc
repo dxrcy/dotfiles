@@ -148,6 +148,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias a='garf'
     alias o='xdg-open'
     alias r='ranger'
+    alias :='abandon' # Script
     alias th='thunar'
     alias lw='librewolf'
     alias lg='lazygit' # also in tmux
