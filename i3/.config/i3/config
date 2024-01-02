@@ -254,7 +254,6 @@ assign [class='i3-ws-10'] $ws10
 for_window [workspace=$ws2] layout tabbed
 
 # Floating mode (and custom position)
-for_window [class="spectacle"] floating enable
 for_window [class="Windscribe2"] floating enable
 for_window [class="Display"] floating enable, move position 200px 200px
 
@@ -385,7 +384,8 @@ set $ollama_model 'llama2'
 bindsym $mod+p exec --no-startup-id kitty sh -c "title 'Hello $ollama_model' && ollama run $ollama_model:latest"
 
 # Screenshot
-bindsym Print exec --no-startup-id spectacle
+bindsym Print exec --no-startup-id flameshot gui
+exec --no-startup-id flameshot
 
 # Lock screen, with blur
 bindsym $mod+Shift+Escape exec --no-startup-id xscreensaver-command --lock
