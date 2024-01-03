@@ -235,7 +235,7 @@ bindsym $mod+Control+9 move container to workspace number $ws9, workspace number
 bindsym $mod+Control+0 move container to workspace number $ws10, workspace number $ws10
 
 # Assign programs to workspaces
-assign [class="LibreWolf"] $ws2
+# assign [class="LibreWolf"] $ws2
 assign [class="Surf"] $ws10
 
 # Override workspace assign with WM class
