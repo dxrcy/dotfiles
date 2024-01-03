@@ -73,6 +73,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
 # Tmux
     alias  t='tmux'
     alias ta='tmux -u attach'
+    alias tk='tmux kill-server'
 # Exit (vim style)
     alias   q='exit'
     alias  :q='exit'
