@@ -203,12 +203,12 @@ bindsym $mod+Control+h focus output $display1
 bindsym $mod+Control+l focus output $display2
 
 # Panic mode
-bindsym $mod+comma  workspace number $ws10 ;\
-                    workspace number $ws9  ;\
-                    exec --no-startup-id playerctl pause ;\
-                    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% ;\
-                    exec --no-startup-id surf -F 'https://en.wikipedia.org/wiki/Trigonometric_functions' ;\
-                    exec --no-startup-id thunar --class 'i3-ws-9' 'school'
+# bindsym $mod+comma  workspace number $ws10 ;\
+#                     workspace number $ws9  ;\
+#                     exec --no-startup-id playerctl pause ;\
+#                     exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% ;\
+#                     exec --no-startup-id surf -F 'https://en.wikipedia.org/wiki/Trigonometric_functions' ;\
+#                     exec --no-startup-id thunar --class 'i3-ws-9' 'school'
 
 # Move focused container to workspace
 bindsym $mod+shift+1 move container to workspace number $ws1
