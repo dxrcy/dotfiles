@@ -93,6 +93,9 @@ bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
 # Start terminal WITHOUT tmux
 bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\x1b[1m(No tmux)\n" && zsh'
 
+# Kill unattached tmux sessions
+bindsym $mod+Mod1+Delete exec --no-startup-id $scripts/kill-orphans
+
 # Start thunar
 bindsym $mod+n exec --no-startup-id thunar
 
