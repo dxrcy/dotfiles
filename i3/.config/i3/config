@@ -69,8 +69,9 @@ exec --no-startup-id xscreensaver
 # Clipboard
 exec_always --no-startup-id greenclip daemon
 
-# Autostart programs
-# exec --no-startup-id librewolf
+# Autostart browser on workspace
+# Same as `assign`, but only affects this window instance
+exec --no-startup-id i3-msg 'workspace $ws2' && librewolf
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -258,7 +259,6 @@ for_window [workspace=$ws2] layout tabbed
 
 # Floating mode (and custom position)
 for_window [class="Windscribe2"] floating enable
-for_window [class="Display"] floating enable, move position 200px 200px
 
 # Switch back and forth 2 most recent workspaces
 bindsym $mod+Tab workspace back_and_forth
