@@ -44,13 +44,16 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sh $i3_scripts/volume_brightn
 bindsym XF86AudioRaiseVolume exec --no-startup-id $i3_scripts/volume_brightness.sh volume_up
 bindsym XF86AudioLowerVolume exec --no-startup-id $i3_scripts/volume_brightness.sh volume_down
 
-# Custom media control keybinds
-bindsym Control+backslash exec --no-startup-id "playerctl play-pause"
-bindsym Control+Shift+backslash exec --no-startup-id "playerctl pause"
-bindsym Control+Shift+braceleft exec --no-startup-id "playerctl previous"
-bindsym Control+Shift+braceright exec --no-startup-id "playerctl next"
-bindsym Control+Shift+jcircumflex exec --no-startup-id "playerctl previous"
-bindsym Control+Shift+hcircumflex exec --no-startup-id "playerctl next"
+# Media control keybinds
+bindsym XF86AudioPlay  exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+# Custom media controls
+bindsym Control+backslash         exec --no-startup-id playerctl play-pause
+bindsym Control+Shift+backslash   exec --no-startup-id playerctl pause
+bindsym Control+Shift+braceleft   exec --no-startup-id playerctl previous
+bindsym Control+Shift+braceright  exec --no-startup-id playerctl next
+bindsym Control+Shift+jcircumflex exec --no-startup-id playerctl previous
+bindsym Control+Shift+hcircumflex exec --no-startup-id playerctl next
 
 # Transparent windows
 # -G : something to do with GLX?
