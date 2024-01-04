@@ -18,7 +18,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -29,8 +29,10 @@ exec --no-startup-id setxkbmap -layout au
 # Set display mode and resolution from number of connected displays
 exec_always --no-startup-id $scripts/monitors auto
 
-# Use pactl to adjust volume in PulseAudio.
+# ????
 set $refresh_i3status killall -SIGUSR1 i3status
+
+# Use pactl to adjust volume in PulseAudio.
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
@@ -81,7 +83,7 @@ floating_modifier $mod
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
+# tiling_drag modifier titlebar
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -210,12 +212,13 @@ bindsym $mod+Control+h focus output $display1
 bindsym $mod+Control+l focus output $display2
 
 # Panic mode
-# bindsym $mod+comma  workspace number $ws10 ;\
+# bindsym $mo+comma  workspace number $ws10 ;\
 #                     workspace number $ws9  ;\
 #                     exec --no-startup-id playerctl pause ;\
 #                     exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% ;\
 #                     exec --no-startup-id surf -F 'https://en.wikipedia.org/wiki/Trigonometric_functions' ;\
 #                     exec --no-startup-id thunar --class 'i3-ws-9' 'school'
+# assign [class="Surf"] $ws10
 
 # Move focused container to workspace
 bindsym $mod+shift+1 move container to workspace number $ws1
@@ -243,7 +246,6 @@ bindsym $mod+Control+0 move container to workspace number $ws10, workspace numbe
 
 # Assign programs to workspaces
 # assign [class="LibreWolf"] $ws2
-assign [class="Surf"] $ws10
 
 # Override workspace assign with WM class
 assign [class='i3-ws-1']  $ws1
@@ -286,11 +288,11 @@ for_window [tiling] border pixel 0
 set $sp-global floating enable, move scratchpad, border pixel 2
 
 # Terminal (kitty)
-set $sp-kitty 'kitty --class "i3-sp-kitty"'
-# sh -c "~/scripts/cmd/quote | title -w119 | lolcat && zsh"'
-bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-kitty" $sp-kitty
-for_window [class="i3-sp-kitty"] $sp-global resize set 500 300
-exec --no-startup-id $sp-kitty
+# set $sp-kitty 'kitty --class "i3-sp-kitty"'
+# # sh -c "~/scripts/cmd/quote | title -w119 | lolcat && zsh"'
+# bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-kitty" $sp-kitty
+# for_window [class="i3-sp-kitty"] $sp-global resize set 500 300
+# exec --no-startup-id $sp-kitty
 
 # Email (mutt)
 # set $sp-mutt 'kitty --class "i3-sp-mutt" -o window_padding_width=0 mutt'
@@ -302,7 +304,7 @@ exec --no-startup-id $sp-kitty
 set $sp-thunderbird 'thunderbird'
 bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad 'thunderbird' $sp-thunderbird
 for_window [class="thunderbird"] $sp-global resize set 1200 800
-# exec --no-startup-id $sp-thunderbird
+exec_always --no-startup-id $sp-thunderbird
 
 # bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
 # for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
@@ -335,7 +337,7 @@ exec --no-startup-id $sp-btop
 set $sp-calc 'kitty --class "i3-sp-calc" -o window_padding_width=2 sh -c "title -w43 Calculator | lolcat && qalc"'
 bindsym F12 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-calc" $sp-calc
 for_window [class="i3-sp-calc"] $sp-global resize set 400 600
-# exec --no-startup-id $sp-calc
+exec_always --no-startup-id $sp-calc
 
 # Autoclicker script
 # bindsym $mod+m         exec --no-startup-id $scripts/autoclicker
@@ -349,9 +351,13 @@ for_window [class="i3-sp-calc"] $sp-global resize set 400 600
 
 # Windscribe
 bindsym $mod+Ctrl+w exec --no-startup-id windscribe
+bindsym $mod+Ctrl+gcircumflex exec --no-startup-id windscribe
 
 # Mount/unmount a drive, with gui
 bindsym $mod+m exec --no-startup-id $scripts/mount-gui --notify
+
+# -------------------------------------------------
+# ESPERANTO STUFF
 
 # Esperanto keyboard
 bindsym F1       exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
@@ -376,6 +382,9 @@ bindsym Mod1+Shift+ccircumflex exec --no-startup-id $i3_scripts/alt-key 'ccircum
 bindsym Mod1+Shift+jcircumflex exec --no-startup-id $i3_scripts/alt-key 'jcircumflex' 'braceleft'
 bindsym Mod1+Shift+hcircumflex exec --no-startup-id $i3_scripts/alt-key 'hcircumflex' 'braceright'
 
+# /ESPERANTO STUFF
+# -------------------------------------------------
+
 # Bluetooth toggle
 bindsym $mod+b       exec --no-startup-id $scripts/bt connect
 bindsym $mod+Shift+b exec --no-startup-id $scripts/bt disconnect
@@ -389,8 +398,8 @@ bindsym $mod+g exec --no-startup-id $scripts/garf show -r
 # Open a quick note
 bindsym $mod+o exec --no-startup-id kitty sh -c "cd ~/docs/notes && nvim $($scripts/notename)"
 # Open a quick language model (ollama)
-set $ollama_model 'llama2'
-bindsym $mod+p exec --no-startup-id kitty sh -c "title 'Hello $ollama_model' && ollama run $ollama_model:latest"
+# set $ollama_model 'llama2'
+# bindsym $mod+p exec --no-startup-id kitty sh -c "title 'Hello $ollama_model' && ollama run $ollama_model:latest"
 
 # Screenshot
 # Always starts persistant daemon if not running
@@ -405,6 +414,7 @@ bindsym $mod+Escape exec --no-startup-id $i3_scripts/powermenu
 
 # Show playing song metadata in notification
 bindsym $mod+s exec --no-startup-id dunstify -t 1000 "$(playerctl metadata --format '{{title}} - {{artist}}')"
+# Show date and time in notification
 bindsym $mod+Shift+s exec --no-startup-id dunstify -t 2000 "$(date '+%H:%M | %a %d %b')"
 
 # Resize window (you can also use the mouse for that)
@@ -420,7 +430,6 @@ mode "resize" {
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }
-
 # Enter resize mode
 bindsym $mod+r mode "resize"
 
