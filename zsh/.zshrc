@@ -19,12 +19,14 @@
     export KEYTIMEOUT=1                  # Remove timeout for <Esc>
     bindkey -v '^?' backward-delete-char # Fix backspace
     # Use narrow cursor for insert mode, block cursor for normal mode
-    function zle-keymap-select {
+    zle-keymap-select() {
       [[ $KEYMAP == "vicmd" ]] \
         && echo -ne "\e[1 q" \
         || echo -ne "\e[5 q"
     }; zle -N zle-keymap-select
     zle-keymap-select
+    # Add missing keybinds
+    bindkey -M vicmd '\_' beginning-of-line
 # Change directory by typing name
     setopt AUTOCD
     alias   '...'='cd ../../'
