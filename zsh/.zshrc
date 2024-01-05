@@ -146,6 +146,11 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias grepr='grep -R --exclude-dir .git --exclude-dir target'
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
+    alias spotdl='spotdl --output "{list-position} {title}"'
+    mkd() { # mkdir && cd
+        mkdir -p "$*" || return $?
+        cd "$*"       || return $?
+    }
 # Misc. Abbreviations / Mispellings
     alias j='just'
     alias a='garf'
