@@ -246,6 +246,7 @@ bindsym $mod+Control+0 move container to workspace number $ws10, workspace numbe
 
 # Assign programs to workspaces
 # assign [class="LibreWolf"] $ws2
+assign [class="qBittorrent"] $ws5
 
 # Override workspace assign with WM class
 assign [class='i3-ws-1']  $ws1
