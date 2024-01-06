@@ -88,9 +88,9 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
 # Git (even tho lazygit is easier)
     alias    g='git'
     alias   ga='git add'
-    alias   gc='git commit -m $1'
-    alias  gac='git add . && git commit -m $1'
-    alias  gca='git commit --amend'
+    alias   gc='git commit -m'
+    alias  gac='git add . && git commit -m'
+    alias  gca='git commit --amend -m'
     alias   gp='git push'
     alias   gd='git diff'
     alias   gl='git log'
@@ -98,7 +98,6 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias   gr='git remote'
     alias grao='git remote add origin'
     alias grro='git remote remove origin'
-    alias gitignore='cat .gitignore'
 # Nvim
     # Open folder in nvim, instead of new buffer
     v() { [ "$*" ] && nvim $* || nvim . }
@@ -146,7 +145,6 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias grepr='grep -R --exclude-dir .git --exclude-dir target'
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
-    alias spotdl='spotdl --output "{list-position} {title}"'
     mkd() { # mkdir && cd
         mkdir -p "$*" || return $?
         cd "$*"       || return $?
