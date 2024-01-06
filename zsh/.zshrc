@@ -49,6 +49,10 @@
     export PATH="$FLYCTL_INSTALL/bin:$PATH"
 # Fix i3-msg
     unset I3SOCK
+# Shell nesting
+    [ -z $ZSH ] && ZSH=0 \
+        || { [ -z $ZSH_NOINC ] && ZSH=$((ZSH + 1)); }
+    export ZSH
 
 #========= PROMPT
     # Colors
@@ -64,11 +68,16 @@
     local    exitc='%F{cyan}'    # Prompt symbol (exit 1)
     local  promptc='%F{green}'   # Prompt symbol (exit 0)
     # Wrap custom commands with color
+    setopt PROMPT_SUBST          # Allow functions in prompt
     git_branch() { x=$(git-info -b);  [ "$x" ] && echo "$gbranchc $x" }
     git_status() { x=$(git-info);     [ "$x" ] && echo "$ginfoc [$x]" }
     version() { x=$(package-version); [ "$x" ] && echo "$versionc\x1b[2m v$x$rc\x1b[0m" }
-    setopt PROMPT_SUBST       # Allow functions in prompt
-export PS1="%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~\$(git_branch)\$(git_status)\$(version)$exitc%(0?.. ·)
+    # Shell nesting
+    local arrow=''
+    for _ in $(seq 1 $ZSH); do arrow="$arrow="; done
+    [ $arrow ] && { arrow="$arrow> "; }
+    # Make prompt
+export PS1="%F{cyan}$arrow%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~\$(git_branch)\$(git_status)\$(version)$exitc%(0?.. ·)
 $jobsc%(1j.[%j].)$promptc❯$rc "
 
 #========= ALIASES
@@ -171,6 +180,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias cal3='cal -3'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
     alias sb='cd ~/code/sandbox && v src/main.rs'
+    alias zr='ZSH_NOINC=1 source ~/.zshrc'
 
 #========= PACKAGES
     # Autodownload packages
