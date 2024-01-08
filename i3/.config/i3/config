@@ -249,6 +249,9 @@ bindsym $mod+Control+0 move container to workspace number $ws10, workspace numbe
 # assign [class="LibreWolf"] $ws2
 assign [class="qBittorrent"] $ws5
 
+# Sticky (show on all workspaces)
+for_window [instance="Toolkit"] sticky enable
+
 # Override workspace assign with WM class
 assign [class='i3-ws-1']  $ws1
 assign [class='i3-ws-2']  $ws2
