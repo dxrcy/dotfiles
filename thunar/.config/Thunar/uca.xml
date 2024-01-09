@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1695547390004040-1</unique-id>
+	<command>unset ZSH; kitty --directory %f</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>edit-copy</icon>
+	<name>Copy File Contents</name>
+	<submenu></submenu>
+	<unique-id>1704774555420209-1</unique-id>
+	<command>cat %f | xclip -selection clipboard</command>
+	<description>Add contents of selected file to clipboard</description>
+	<range>1</range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>
