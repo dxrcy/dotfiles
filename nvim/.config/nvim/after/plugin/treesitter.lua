@@ -39,6 +39,14 @@ parser_config.phonet = {
   },
 }
 
+-- Transcript
+parser_config.transcript = {
+  install_info = {
+    url = "~/code/tree-sitter-transcript", -- local path or git repo
+    files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+  },
+}
+
 -- Other filetypes
 parser_config.razor = {
   install_info = {
