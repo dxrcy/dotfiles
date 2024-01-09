@@ -154,7 +154,13 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias grepr='grep -R --exclude-dir .git --exclude-dir target'
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
-    mkd() { # mkdir && cd
+    # Use ranger to `cd`, without spawning subshell
+    alias ranger='ranger --choosedir=/tmp/rangerdir; cd "$(cat /tmp/rangerdir)"'
+    # Undo last `cd`
+    alias cd='LASTDIR="$(pwd)"; cd'      # Save working directory
+    alias dc='_DIR=$LASTDIR; cd "$_DIR"' # Go back to previous directory
+    # Make directory and cd
+    mkd() {
         mkdir -p "$*" || return $?
         cd "$*"       || return $?
     }
