@@ -100,7 +100,7 @@ bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
 bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\x1b[1m(No tmux)\n" && zsh'
 
 # Kill unattached tmux sessions
-bindsym $mod+Mod1+Shift+Delete exec --no-startup-id $scripts/kill-orphans
+bindsym $mod+Mod1+Delete exec --no-startup-id $scripts/kill-orphans
 
 # Start thunar
 bindsym $mod+n exec --no-startup-id thunar
@@ -398,7 +398,7 @@ bindsym $mod+Shift+b exec --no-startup-id $scripts/bt disconnect
 bindsym $mod+c exec --no-startup-id $scripts/consv gui
 
 # Garfield comic
-bindsym $mod+g exec --no-startup-id $scripts/garf show -r
+bindsym $mod+g exec --no-startup-id $scripts/garf show
 
 # Open a quick note
 bindsym $mod+o exec --no-startup-id kitty sh -c "cd ~/docs/notes && nvim $($scripts/notename)"
