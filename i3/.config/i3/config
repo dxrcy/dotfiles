@@ -269,6 +269,8 @@ for_window [workspace=$ws2] layout tabbed
 
 # Floating mode (and custom position)
 for_window [class="Windscribe2"] floating enable
+# Inkscape preferences
+for_window [title="^Preferences -"] floating disable
 
 # Switch back and forth 2 most recent workspaces
 bindsym $mod+Tab workspace back_and_forth
