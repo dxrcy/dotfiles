@@ -340,7 +340,7 @@ exec --no-startup-id $sp-btop
 
 # Calculator scratchpad
 set $sp-calc 'kitty --class "i3-sp-calc" -o window_padding_width=2 sh -c "title -w43 Calculator | lolcat && qalc"'
-bindsym F12 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-calc" $sp-calc
+bindsym $mod+F12 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-calc" $sp-calc
 for_window [class="i3-sp-calc"] $sp-global resize set 400 600
 exec_always --no-startup-id $sp-calc
 
