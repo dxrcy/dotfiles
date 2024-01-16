@@ -27,6 +27,8 @@
     zle-keymap-select
     # Add missing keybinds
     bindkey -s -M vicmd '\_' '^'
+# Other keybinds
+    bindkey -s '^Z' 'fg\n'
 # Change directory by typing name
     setopt AUTOCD
     alias   '...'='cd ../../'
