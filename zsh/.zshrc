@@ -163,8 +163,19 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias dc='_DIR=$LASTDIR; cd "$_DIR"' # Go back to previous directory
     # Make directory and cd
     mkd() {
-        mkdir -p "$*" || return $?
-        cd "$*"       || return $?
+        mkdir -p "$*" &&\
+        cd "$*"
+    }
+    # Garfeo
+    eo() {
+        cd ~/code/garfeo &&\
+        tmux split-window -h -c "#{pane_current_path}" 'just;zsh' &&\
+        tmux resize-pane -R 40 &&\
+        tmux select-pane -L &&\
+        clear &&\
+        printf '\x1b[32m' &&\
+        title 'Garfield' &&\
+        printf '\x1b[0m'
     }
 # Misc. Abbreviations / Mispellings
     alias j='just'
@@ -180,8 +191,6 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias trs='tree-sitter'
     alias ol='ollama'
     alias olr='ollama run mistral'
-    alias en='translate eo en'
-    alias eo='translate en eo'
     alias sy='systemctl'
     alias syu='systemctl --user'
     alias ping8='ping 8.8.8.8 -c 10'
