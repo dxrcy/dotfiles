@@ -367,7 +367,7 @@ bindsym $mod+m exec --no-startup-id $scripts/mount-gui --notify
 # ESPERANTO STUFF
 
 # Esperanto keyboard
-bindsym F1       exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
+bindsym Alt+F1       exec --no-startup-id $scripts/esperanto toggle && $refresh_i3status
 bindsym Shift+F1 exec --no-startup-id $scripts/esperanto off && $refresh_i3status
 
 # Use English keys for some common keybinds (eg. <C-x>, <C-w>)
