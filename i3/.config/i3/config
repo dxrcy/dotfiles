@@ -72,7 +72,7 @@ bindsym $mod+Shift+p exec --no-startup-id $scripts/bg-change
 exec --no-startup-id xscreensaver
 
 # Clipboard
-exec_always --no-startup-id greenclip daemon
+exec_always --no-startup-id clipcatd
 
 # Autostart browser on workspace
 # Same as `assign`, but only affects this window instance
@@ -117,9 +117,9 @@ bindsym $mod+Control+d exec --no-startup-id rofi -show window
 
 # Emoji (rofi-emoji)
 bindsym $mod+period exec --no-startup-id rofi -modi emoji -show emoji
-# Clipboard (rofi-greenclip)
-bindsym $mod+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
-bindsym $mod+Mod1+v exec --no-startup-id greenclip clear && notify-send -t 1000 'Cleared clipboard history'
+
+# Clipboard (clipcat-menu)
+bindsym $mod+v exec --no-startup-id clipcat-menu
 
 # (Dmenu fallback)
 bindsym $mod+Mod1+d exec --no-startup-id dmenu_run -b
