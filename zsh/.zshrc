@@ -128,7 +128,8 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias  cwr='cargo watch -x run -c'
     alias  cwc='cargo watch -x clippy -c'
     alias  cwt='cargo watch -x test -c'
-    alias   ci='cargo install --path .'
+    alias   ci='cargo install'
+    alias  cip='cargo install --path .'
     alias  cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
     alias  ccl='cargo clippy'
     cn() { # cargo new
@@ -197,7 +198,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias cal3='cal -3'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
     alias sb='cd ~/code/sandbox && v src/main.rs'
-    alias zr='ZSH_NOINC=1 source ~/.zshrc'
+    alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
 
 #========= PACKAGES
     # Autodownload packages
