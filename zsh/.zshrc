@@ -199,6 +199,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
     alias sb='cd ~/code/sandbox && v src/main.rs'
     alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
+    alias pk='pkill'
 
 #========= PACKAGES
     # Autodownload packages
