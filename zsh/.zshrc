@@ -36,8 +36,8 @@
     alias '.....'='cd ../../../../'
 # Persistant history
     HISTFILE=~/.cache/zsh_history
-    HISTSIZE=10000
-    SAVEHIST=10000
+    HISTSIZE=1000
+    SAVEHIST=1000
     setopt SHARE_HISTORY        # Share history between terminals
     setopt HIST_IGNORE_ALL_DUPS # Duplicate history lines are ignored
     # See also: zsh-history-substring-search plugin
@@ -157,6 +157,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias grepr='grep -R --exclude-dir .git --exclude-dir target'
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
+    alias vhistory='v ~/.cache/zsh_history'
     # Use ranger to `cd`, without spawning subshell
     alias ranger='ranger --choosedir=/tmp/rangerdir; cd "$(cat /tmp/rangerdir)"'
     # Undo last `cd`
