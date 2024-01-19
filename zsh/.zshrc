@@ -182,6 +182,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
 # Misc. Abbreviations / Mispellings
     alias j='just'
     alias a='garf'
+    alias G='garf'
     alias o='xdg-open'
     alias r='ranger'
     alias :='abandon' # Script
