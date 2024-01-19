@@ -403,7 +403,7 @@ bindsym $mod+c exec --no-startup-id $scripts/consv gui
 bindsym $mod+g exec --no-startup-id $scripts/garf show
 
 # Open a quick note
-bindsym $mod+o exec --no-startup-id kitty sh -c "cd ~/docs/notes && nvim $($scripts/notename)"
+bindsym $mod+o exec --no-startup-id kitty tmux new 'cd ~/docs/notes && nvim $($scripts/notename) && zsh'
 # Open a quick language model (ollama)
 # set $ollama_model 'llama2'
 # bindsym $mod+p exec --no-startup-id kitty sh -c "title 'Hello $ollama_model' && ollama run $ollama_model:latest"
