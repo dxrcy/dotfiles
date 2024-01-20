@@ -202,6 +202,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias sb='cd ~/code/sandbox && v src/main.rs'
     alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
     alias pk='pkill'
+    alias z='zi'
 
 #========= PACKAGES
     # Autodownload packages
