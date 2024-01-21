@@ -17,10 +17,7 @@
         "Desmos",
         "https://www.desmos.com/calculator"
       ],
-      [
-        "Advent of Code",
-        "https://adventofcode.com/"
-      ],
+      [],
       [
         "localhost",
         "http://localhost/"
@@ -56,7 +53,7 @@
       [],
       []
     ],
-    "amount": 18
+    "amount": 12
   },
   "header": "💛",
   "notes": [],
@@ -67,26 +64,26 @@
   },
   "cache": {
     "nasa": {
-      "url": "https://apod.nasa.gov/apod/image/2312/Jellyfish_Payne_960.jpg",
-      "info": "Why is this jellyfish swimming in a sea of stars? Drifting near bright star Eta Geminorum, seen at the right, the Jellyfish Nebula extends its tentacles from the bright arcing ridge of emission left of center.  In fact, the cosmic jellyfish is part of bubble-shaped supernova remnant IC 443, the expanding debris cloud from a massive star that exploded.  Light from the explosion first reached planet Earth over 30,000 years ago.  Like its cousin in astronomical waters, the Crab Nebula supernova remnant IC 443 is known to harbor a neutron star -- the remnant of the collapsed stellar core.  The Jellyfish Nebula is about 5,000 light-years away.  At that distance, the featured image would span about 140 light-years across.   Your Sky Surprise: What picture did APOD feature on your birthday? (post 1995)",
-      "time": 1703634240123
+      "url": "https://apod.nasa.gov/apod/image/2401/MagneticStormRohner1024.jpg",
+      "info": "Northern lights shine in this night skyview from planet Earth's stratosphere, captured on January 15. The single, 5 second exposure was made with a hand-held camera on board an aircraft above Winnipeg, Canada. During the exposure, terrestrial lights below leave colorful trails along the direction of motion of the speeding aircraft. Above the more distant horizon, energetic particles accelerated along Earth's magnetic field at the planet's polar regions excite atomic oxygen to create the shimmering display of Aurora Borealis. The aurora's characteristic greenish hue is generated at altitudes of 100-300 kilometers and red at even higher altitudes and lower atmospheric densities. The luminous glow of faint stars along the plane of our Milky Way galaxy arcs through the night, while the Andromeda galaxy extends this northern skyview to extragalactic space. A diffuse hint of Andromeda, the closest large spiral to the Milky Way, can just be seen to the upper left.",
+      "time": 1705638094064
     },
     "garf": {
-      "time": 1703649484126,
-      "url": "file:///home/darcy/pics/garfield/2002-12-07.png",
+      "time": 1705803374640,
+      "url": "file:///home/darcy/pics/garfield/1988-01-25.png",
       "recent": [
-        "2002-12-07",
-        "2022-09-11",
-        "1982-10-03",
-        "2003-06-07",
-        "1997-09-23",
-        "2011-05-30",
-        "1997-07-23",
-        "2001-05-30",
-        "2004-04-06",
-        "2020-03-30"
+        "1988-01-25",
+        "1996-09-01",
+        "1985-01-19",
+        "1981-11-04",
+        "2002-02-23",
+        "2011-03-17",
+        "2018-08-18",
+        "1978-11-10",
+        "2014-09-24",
+        "2002-07-25"
       ],
-      "date": "2002-12-07T12:57:57.301Z"
+      "date": "1988-01-25T05:00:28.272Z"
     }
   },
   "garf": {
