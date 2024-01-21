@@ -171,7 +171,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     # Garfeo
     eo() {
         cd ~/code/garfeo &&\
-        tmux split-window -h -c "#{pane_current_path}" 'just;zsh' &&\
+        tmux split-window -h -c "#{pane_current_path}" 'killall basic-http-server; just; zsh' &&\
         tmux resize-pane -R 40 &&\
         tmux select-pane -L &&\
         clear &&\
