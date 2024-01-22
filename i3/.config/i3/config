@@ -76,7 +76,7 @@ exec_always --no-startup-id clipcatd
 
 # Autostart browser on workspace
 # Same as `assign`, but only affects this window instance
-exec --no-startup-id i3-msg 'workspace $ws2' && sleep 1 && librewolf
+exec --no-startup-id i3-msg 'workspace $ws2' && sleep 2 && librewolf
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -310,7 +310,8 @@ set $sp-global floating enable, move scratchpad, border pixel 2
 # Email (thunderbird)
 set $sp-thunderbird 'thunderbird'
 bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad 'thunderbird' $sp-thunderbird
-for_window [class="thunderbird"] $sp-global resize set 1200 800
+for_window [class="thunderbird"] floating enable, resize set 1100 750, border pixel 2
+for_window [instance="Mail"] move scratchpad, resize set 1300 900
 exec_always --no-startup-id $sp-thunderbird
 
 # bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
