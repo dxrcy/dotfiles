@@ -1,20 +1,25 @@
+-- Shorthands for this file
+local opts = { noremap = true, silent = true }
+local keymap = vim.keymap.set
+
 -- Leader space
 vim.g.mapleader = " "
+
 -- Open file explorer
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+keymap("n", "<leader>pv", vim.cmd.Ex)
 
 -- Esperanto keys
 vim.api.nvim_set_option('langmap', 'ĉx,ĝw,ĥ],ĵ[,ŝq,ŭy,ĈX,ĜW,Ĥ},Ĵ{,ŜQ,ŬY')
 
 -- Save file
 -- Show nice error if file is readonly
-function is_file_writable()
+local function is_file_writable()
     local current_file = vim.fn.bufname(vim.fn.bufnr('%'))
     -- returns `0` if file DOESNT exist, OR is writable by user
     local writable = vim.fn.system("! test -f " .. current_file .. " || test -w " .. current_file .. " ; echo $?")
     return string.sub(writable, 1, 1) == '0'
 end
-function save_file()
+local function save_file()
     if is_file_writable() then
         vim.cmd.write()
     else
@@ -23,53 +28,51 @@ function save_file()
         vim.cmd "echohl None"
     end
 end
-vim.keymap.set("n", "<C-s>", save_file)
-vim.keymap.set("i", "<C-s>", save_file)
+keymap("n", "<C-s>", save_file)
+keymap("i", "<C-s>", save_file)
 
 -- Switch to previous buffer
-vim.keymap.set("n", "tt", "<cmd>b#<CR>");
-
--- Enable autocompiler
--- vim.keymap.set("n", "<C-y>", ":!setsid autocomp % &<CR>", { silent = true })
+-- See also: telescope.lua
+keymap("n", "tt", "<cmd>b#<CR>");
 
 -- Move selection up/down in visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Preserve cursor position when merging lines
-vim.keymap.set("n", "J", "mzJ`z")
+keymap("n", "J", "mzJ`z")
 
 -- Override paste without copying deleted text
--- ??? Same as Shift+P ???
-vim.keymap.set("x", "<leader>p", "\"_dP")
+keymap("v", "p", '"_dP')
+-- keymap("v", "<leader>p", 'p')
 
 -- Disable Shift+Q
-vim.keymap.set("n", "Q", "<nop>")
+keymap("n", "Q", "<nop>")
 
 -- Switch tmux projects
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Format
-vim.keymap.set("n", "<leader>f", function()
+keymap("n", "<leader>f", function()
     vim.lsp.buf.format()
 end)
 
 -- Quickfix ???
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
+keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
+keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
+keymap("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Select all
-vim.keymap.set("n", "<C-g>", "ggVG")
+keymap("n", "<leader>vv", "ggVG")
 
 -- Tree-sitter
-vim.keymap.set("n", "<leader>tu", "<cmd>TSUpdate<CR>")
-vim.keymap.set("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>")
-vim.keymap.set("n", "<leader>th", "<cmd>TSHighlightCapturesUnderCursor<CR>")
+keymap("n", "<leader>tu", "<cmd>TSUpdate<CR>")
+keymap("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>")
+keymap("n", "<leader>th", "<cmd>TSHighlightCapturesUnderCursor<CR>")
 
 -- Toggle wrap
-vim.keymap.set("n", "<leader>z", function ()
+keymap("n", "<leader>z", function()
     if vim.wo.wrap then
         vim.wo.wrap = false
         print("Line wrapping is OFF")
@@ -80,13 +83,13 @@ vim.keymap.set("n", "<leader>z", function ()
 end)
 
 -- Stop highlighting searched text
-vim.keymap.set('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
+keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
 
 -- Start a new find-replace command without terms
-vim.keymap.set("n", '?', ':%s/')
+keymap("n", '?', ':%s/')
 
 -- Read key from stdin, return true unless <Esc>
-function prompt_confirm(prompt)
+local function prompt_confirm(prompt)
     print(prompt)
     local input = vim.fn.nr2char(vim.fn.getchar())
     if input == "\27" then
@@ -97,7 +100,7 @@ function prompt_confirm(prompt)
 end
 
 -- Make current file an executable shell script
-vim.keymap.set("n", "<C-M-x>", function ()
+keymap("n", "<leader>ex", function()
     local confirm = prompt_confirm("Make executable shell script? ")
     if not confirm then
         return
@@ -116,5 +119,14 @@ vim.keymap.set("n", "<C-M-x>", function ()
 end, { noremap = true, silent = true })
 
 -- Don't of showing in command history, if `:q` is mistyped
-vim.keymap.set("n", "q:", ":")
+keymap("n", "q:", ":")
 
+-- Window (vim panes) navigation
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- Stay in indent mode
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)

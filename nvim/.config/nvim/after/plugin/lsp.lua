@@ -4,6 +4,8 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
     "rust_analyzer",
+    "lua_ls",
+    -- "shellcheck",
 })
 
 -- stuff here
@@ -25,4 +27,3 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
-
