@@ -56,7 +56,7 @@ if [[ -z "$visible_wid" ]]; then # If the scratchpad window is not visible
     # Forking process, so this script is not halted until program closes
     # This does not catch any errors! (I think)
     echo "${name} not found. Executing: '${2}'."
-    "$2" &
+    eval "$2" &
 
     # Constantly try to show newly spawned window
     # Much more reliable than waiting with `xdotool`
