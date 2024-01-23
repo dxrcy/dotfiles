@@ -8,5 +8,7 @@ percent="$(playerctl metadata -f '{{position / mpris:length * 100}}')"
 status=''
 [ "$(playerctl status)" = 'Playing' ] && status=''
 
-dunstify -r 9238 -t 1000 "$song" "$status $time" -h int:value:"${percent%.*}" -h string:hlcolor:"$bar_color"
+~/scripts/cmd/bt status && charge="|  $(~/scripts/cmd/bt charge)"
+
+dunstify -r 9238 -t 1000 "$song" "$status $time $charge" -h int:value:"${percent%.*}" -h string:hlcolor:"$bar_color"
 
