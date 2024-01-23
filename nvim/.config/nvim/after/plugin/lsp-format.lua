@@ -1,3 +1,5 @@
+-- Idk what this all does
+
 require("lsp-format").setup {
     markdown = {{ cmd = { "mdformat" } }}
 }

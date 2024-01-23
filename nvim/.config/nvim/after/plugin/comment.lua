@@ -1,14 +1,10 @@
 local api = require("Comment.api")
 
--- Comment line in normal mode
+-- Comment line
 vim.keymap.set("n", "<C-_>", api.toggle.linewise.current)
+vim.keymap.set("i", "<C-_>", api.toggle.linewise.current)
 
--- Comment line in insert mode
-vim.keymap.set("i", "<C-_>", function()
-    api.toggle.linewise.current()
-end)
-
--- idk?
+-- idk what this does?
 local esc = vim.api.nvim_replace_termcodes(
     "<ESC>", true, false, true
 )
