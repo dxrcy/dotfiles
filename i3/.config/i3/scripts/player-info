@@ -1,0 +1,10 @@
+#!/bin/sh
+
+bar_color="#7f7fff"
+
+song="$(playerctl metadata -f '{{title}} - {{artist}}')"
+time="$(playerctl metadata -f '{{duration(position)}} / {{duration(mpris:length)}}')"
+percent="$(playerctl metadata -f '{{position / mpris:length * 100}}')"
+
+dunstify -r 9238 -t 1000 "$song" "$time" -h int:value:"${percent%.*}" -h string:hlcolor:"$bar_color"
+
