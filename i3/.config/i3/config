@@ -419,7 +419,9 @@ exec_always --no-startup-id flameshot
 # Lock screen, with blur
 bindsym $mod+Shift+Escape exec --no-startup-id xscreensaver-command --lock
 # Open power menu
-bindsym $mod+Escape exec --no-startup-id $i3_scripts/powermenu
+bindsym $mod+Escape exec --no-startup-id $scripts/powermenu
+# Fallback
+bindsym $mod+Control+Escape exec --no-startup-id $i3_scripts/powermenu
 
 # Show playing song metadata in notification
 bindsym $mod+s exec --no-startup-id $scripts/player-info $player 'notify'
