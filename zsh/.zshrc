@@ -151,6 +151,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias ls='eza -l'
     alias lsa='ls -a'
     alias tree='ls -T'
+    alias treea='ls -T -a'
     alias mkdir='mkdir -p'
     alias cp='cp -r'
     alias grep='grep --color=auto'
