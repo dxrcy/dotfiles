@@ -53,7 +53,7 @@ keymap("n", "Q", "<nop>")
 keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Format
-keymap("n", "<leader>f", function()
+keymap("n", "<leader>lf", function()
     vim.lsp.buf.format()
 end)
 
