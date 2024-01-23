@@ -7,24 +7,13 @@
 
 local api = require "nvim-tree.api"
 
--- Inline ???
-local function toggle_tree()
-    -- vim.cmd("NvimTreeToggle")
-    api.tree.toggle({
-        -- current_window = true,
-        -- file_file = true,
-    })
-end
-
 local function my_on_attach(bufnr)
     -- default mappings
     api.config.mappings.default_on_attach(bufnr)
-
     -- custom mappings
-    vim.keymap.set("n", "T", toggle_tree)
+    vim.keymap.set("n", "T", api.tree.toggle)
 end
-
-vim.keymap.set("n", "T", toggle_tree)
+vim.keymap.set("n", "T", api.tree.toggle)
 
 -- pass to setup along with your other options
 require("nvim-tree").setup {
@@ -35,6 +24,8 @@ require("nvim-tree").setup {
         }
     },
     view = {
+        side = "right",
+        signcolumn = "no",
         -- Fullscreen
         -- width = 100000,
     },
@@ -48,4 +39,3 @@ require("nvim-tree").setup {
         },
     },
 }
-
