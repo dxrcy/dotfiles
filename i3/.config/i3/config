@@ -296,17 +296,11 @@ for_window [tiling] border pixel 0
 set $sp-global floating enable, move scratchpad, border pixel 2
 
 # Terminal (kitty)
-# set $sp-kitty 'kitty --class "i3-sp-kitty"'
-# # sh -c "~/scripts/cmd/quote | title -w119 | lolcat && zsh"'
-# bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-kitty" $sp-kitty
-# for_window [class="i3-sp-kitty"] $sp-global resize set 500 300
-# exec --no-startup-id $sp-kitty
-
-# Email (mutt)
-# set $sp-mutt 'kitty --class "i3-sp-mutt" -o window_padding_width=0 mutt'
-# bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-mutt" $sp-mutt
-# for_window [class="i3-sp-mutt"] $sp-global resize set 1200 800
-# exec --no-startup-id $sp-mutt
+set $sp-kitty 'kitty --class "i3-sp-kitty"'
+# sh -c "~/scripts/cmd/quote | title -w119 | lolcat && zsh"'
+bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-kitty" $sp-kitty
+for_window [class="i3-sp-kitty"] $sp-global resize set 500 300
+exec --no-startup-id $sp-kitty
 
 # Email (thunderbird)
 set $sp-thunderbird 'thunderbird'
@@ -314,9 +308,6 @@ bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad 'thunderbird' $sp-th
 for_window [class="thunderbird"] floating enable, resize set 1100 750, border pixel 2
 for_window [instance="Mail"] move scratchpad, resize set 1300 900
 exec_always --no-startup-id $sp-thunderbird
-
-# bindsym $mod+F2 [class="thunderbird"] scratchpad show; move position center
-# for_window [class="thunderbird"] floating enable, resize set 1400 900, move scratchpad, border pixel 0
 
 # Spotify
 set $sp-spotify 'spotify'
