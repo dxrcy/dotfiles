@@ -23,8 +23,8 @@ local plugins = {
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
-        build = function ()
-            -- vim.cmd("TSUpdate") 
+        build = function()
+            -- vim.cmd("TSUpdate")
         end,
     },
     "nvim-treesitter/playground",
@@ -129,13 +129,13 @@ local plugins = {
 
     -----------------------------------
     -- Remove this stuff ? (i dont use)
-    
+
     -- Telescope
-    -- {
-    --     "nvim-telescope/telescope.nvim", 
-    --     version = "0.1.2",
-    --     dependencies = { { "nvim-lua/plenary.nvim" } },
-    -- },
+    {
+        "nvim-telescope/telescope.nvim",
+        version = "0.1.2",
+        dependencies = { { "nvim-lua/plenary.nvim" } },
+    },
 
     -- Git
     -- "tpope/vim-fugitive",
@@ -147,4 +147,3 @@ local plugins = {
 local opts = {}
 
 return require("lazy").setup(plugins, opts)
-
