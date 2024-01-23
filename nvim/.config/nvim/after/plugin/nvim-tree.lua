@@ -36,7 +36,7 @@ require("nvim-tree").setup {
     },
     view = {
         -- Fullscreen
-        width = 100000,
+        -- width = 100000,
     },
     filters = {
         dotfiles = true,
