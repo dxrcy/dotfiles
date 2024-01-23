@@ -24,7 +24,7 @@ local plugins = {
     {
         "nvim-treesitter/nvim-treesitter",
         build = function()
-            -- vim.cmd("TSUpdate")
+            vim.cmd("TSUpdate")
         end,
     },
     "nvim-treesitter/playground",
@@ -50,16 +50,9 @@ local plugins = {
             { "hrsh7th/vim-vsnip" },
         }
     },
-
-    -- ?
+    -- LSP Formatter
+    -- Idk if this is needed
     "lukas-reineke/lsp-format.nvim",
-
-    -- LSP Rename
-    -- {
-    --     'filipdutescu/renamer.nvim',
-    --     branch = 'master',
-    --     dependencies = { { 'nvim-lua/plenary.nvim' } }
-    -- },
 
     -- Toggle comments
     {
@@ -94,31 +87,8 @@ local plugins = {
     -- Save files with sudo
     "lambdalisue/suda.vim",
 
-    -- Neorg (markdown-like notes)
-    -- {
-    --     "nvim-neorg/neorg",
-    --     config = function()
-    --         require('neorg').setup {
-    --             load = {
-    --                 ["core.defaults"] = {}, -- Loads default behaviour
-    --                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-    --                 ["core.dirman"] = { -- Manages Neorg workspaces
-    --                     config = {
-    --                         workspaces = {
-    --                             notes = "~/docs/notes",
-    --                         },
-    --                     },
-    --                 },
-    --             },
-    --         }
-    --     end,
-    --     build = function()
-    --         vim.cmd(":Neorg sync-parsers")
-    --     end,
-    --     dependencies = "nvim-lua/plenary.nvim",
-    -- },
-
     -- Command aliases
+    -- For Esperanto aliases
     {
         "coot/cmdalias_vim",
         dependencies = { { "coot/CRDispatcher" } },
@@ -126,9 +96,6 @@ local plugins = {
 
     -- Git stuff
     "lewis6991/gitsigns.nvim",
-
-    -----------------------------------
-    -- Remove this stuff ? (i dont use)
 
     -- Telescope
     {
@@ -144,21 +111,9 @@ local plugins = {
         init = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
-        end,
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
+        end
     },
-
-    -- Git
-    -- "tpope/vim-fugitive",
-
-    -- Undo history
-    -- "mbbill/undotree",
 }
 
 local opts = {}
-
 return require("lazy").setup(plugins, opts)

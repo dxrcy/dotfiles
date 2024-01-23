@@ -5,9 +5,6 @@ local keymap = vim.keymap.set
 -- Leader space
 vim.g.mapleader = " "
 
--- Open file explorer
-keymap("n", "<leader>pv", vim.cmd.Ex)
-
 -- Esperanto keys
 vim.api.nvim_set_option('langmap', 'ĉx,ĝw,ĥ],ĵ[,ŝq,ŭy,ĈX,ĜW,Ĥ},Ĵ{,ŜQ,ŬY')
 
@@ -49,19 +46,10 @@ keymap("v", "p", '"_dP')
 -- Disable Shift+Q
 keymap("n", "Q", "<nop>")
 
--- Switch tmux projects
-keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
 -- Format
 keymap("n", "<leader>lf", function()
     vim.lsp.buf.format()
 end)
-
--- Quickfix ???
-keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
-keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
-keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
-keymap("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Select all
 keymap("n", "<leader>vv", "ggVG")
@@ -111,6 +99,8 @@ keymap("n", "<leader>ex", function()
     if first_line == "" or not first_line:match("^#!") then
         vim.fn.append(0, "#!/bin/sh")
         vim.fn.append(1, "")
+        vim.fn.append(1, "")
+        vim.cmd("norm k")
     end
     -- Save, make executable, and set filetype
     vim.cmd("w")
@@ -119,6 +109,7 @@ keymap("n", "<leader>ex", function()
 end, { noremap = true, silent = true })
 
 -- Don't of showing in command history, if `:q` is mistyped
+-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^--- Genious English Skills!
 keymap("n", "q:", ":")
 
 -- Window (vim panes) navigation
