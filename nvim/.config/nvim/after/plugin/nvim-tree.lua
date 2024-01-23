@@ -24,8 +24,7 @@ require("nvim-tree").setup {
         }
     },
     view = {
-        side = "right",
-        signcolumn = "no",
+        -- signcolumn = "no",
         -- Fullscreen
         -- width = 100000,
     },
