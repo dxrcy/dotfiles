@@ -422,7 +422,7 @@ bindsym $mod+Shift+Escape exec --no-startup-id xscreensaver-command --lock
 bindsym $mod+Escape exec --no-startup-id $i3_scripts/powermenu
 
 # Show playing song metadata in notification
-bindsym $mod+s exec --no-startup-id $i3_scripts/player-info
+bindsym $mod+s exec --no-startup-id $scripts/player-info $player 'notify'
 # Show date and time in notification
 bindsym $mod+Shift+s exec --no-startup-id dunstify -t 2000 "$(date '+%H:%M | %a %d %b')"
 
