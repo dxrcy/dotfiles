@@ -51,8 +51,8 @@ set $player 'spotify'
 bindsym XF86AudioPlay  exec --no-startup-id playerctl -p $player play-pause
 bindsym XF86AudioPause exec --no-startup-id playerctl -p $player play-pause
 # Custom media controls
+bindsym Control+Shift+backslash   exec --no-startup-id playerctl -a pause
 bindsym Control+backslash         exec --no-startup-id playerctl -p $player play-pause
-bindsym Control+Shift+backslash   exec --no-startup-id playerctl -p $player pause
 bindsym Control+Shift+braceleft   exec --no-startup-id playerctl -p $player previous
 bindsym Control+Shift+braceright  exec --no-startup-id playerctl -p $player next
 bindsym Control+Shift+jcircumflex exec --no-startup-id playerctl -p $player previous
