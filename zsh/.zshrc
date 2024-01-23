@@ -24,9 +24,15 @@
         && echo -ne "\e[1 q" \
         || echo -ne "\e[5 q"
     }; zle -N zle-keymap-select
-    zle-keymap-select
+    precmd() { echo -ne "\e[5 q" } # Narrow cursor on new prompt
     # Add missing keybinds
     bindkey -s -M vicmd '\_' '^'
+    # Yank to the system clipboard
+    function vi-yank-xclip {
+        zle vi-yank
+        echo "$CUTBUFFER" | xclip -selection clipboard
+    }; zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
 # Other keybinds
     bindkey -s '^Z' 'fg\n'
 # Change directory by typing name
