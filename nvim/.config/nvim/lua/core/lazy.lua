@@ -111,6 +111,15 @@ local plugins = {
         init = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
+        end,
+        opts = {},
+    },
+
+    -- Navigation
+    {
+        "ggandor/leap.nvim",
+        init = function()
+            require('leap').create_default_mappings()
         end
     },
 }

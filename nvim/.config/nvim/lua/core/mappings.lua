@@ -1,5 +1,5 @@
 -- Shorthands for this file
-local opts = { noremap = true, silent = true }
+-- local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 -- Leader space
@@ -71,7 +71,7 @@ keymap("n", "<leader>z", function()
 end)
 
 -- Stop highlighting searched text
-keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
+keymap('n', '<Esc>', ':noh<CR>')
 
 -- Start a new find-replace command without terms
 keymap("n", '?', ':%s/')
@@ -106,18 +106,22 @@ keymap("n", "<leader>ex", function()
     vim.cmd("w")
     vim.cmd("silent !chmod +x %")
     vim.cmd("set filetype=sh")
-end, { noremap = true, silent = true })
+end, { desc = "what" })
 
 -- Don't of showing in command history, if `:q` is mistyped
 -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^--- Genious English Skills!
 keymap("n", "q:", ":")
 
 -- Window (vim panes) navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<C-h>", "<C-w>h")
+keymap("n", "<C-j>", "<C-w>j")
+keymap("n", "<C-k>", "<C-w>k")
+keymap("n", "<C-l>", "<C-w>l")
 
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap("v", "<", "<gv")
+keymap("v", ">", ">gv")
+
+-- Keep cursor in middle of screen when moving up/down
+keymap("n", "<C-u>", "<C-u>zz")
+keymap("n", "<C-d>", "<C-d>zz")
