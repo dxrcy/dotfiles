@@ -14,3 +14,6 @@ customCommands:
     context: 'global'
     command: 'kill "$PPID"'
 
+os:
+  editPreset: 'nvim'
+
