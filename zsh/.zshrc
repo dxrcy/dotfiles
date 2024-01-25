@@ -236,8 +236,8 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     unset filepath package
     # Settings for packages
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
-    bindkey '^[[A' history-substring-search-up
-    bindkey '^[[B' history-substring-search-down
+    bindkey '^[[A'       history-substring-search-up
+    bindkey '^[[B'       history-substring-search-down
     bindkey -M vicmd 'k' history-substring-search-up
     bindkey -M vicmd 'j' history-substring-search-down
     HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
