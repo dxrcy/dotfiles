@@ -148,7 +148,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias d.z='cd ~/dotfiles/zsh                   && nvim .zshrc'
     alias d.v='cd ~/dotfiles/nvim/.config/nvim     && nvim .'
     alias d.t='cd ~/dotfiles/tmux/.config/tmux     && nvim tmux.conf'
-    alias d.r='cd ~/dotfiles/ranger/.config/ranger && nvim rc.conf'
+    # alias d.r='cd ~/dotfiles/ranger/.config/ranger && nvim rc.conf'
     alias d.i='cd ~/dotfiles/i3/.config/i3         && nvim config'
     alias d.k='cd ~/dotfiles/kitty/.config/kitty   && nvim kitty.conf'
     alias d.m='cd ~/dotfiles/mutt/.config/mutt     && nvim muttrc'
@@ -165,8 +165,8 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
     alias vhistory='v ~/.cache/zsh_history'
-    # Use ranger to `cd`, without spawning subshell
-    alias ranger='ranger --choosedir=/tmp/rangerdir; cd "$(cat /tmp/rangerdir)"'
+    # Use lf to `cd`, without spawning subshell
+    alias l='cd "$(lf -print-last-dir)"'
     # Undo last `cd`
     alias cd='LASTDIR="$(pwd)"; cd'      # Save working directory
     alias dc='_DIR=$LASTDIR; cd "$_DIR"' # Go back to previous directory
@@ -188,10 +188,8 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     }
 # Misc. Abbreviations / Mispellings
     alias j='just'
-    alias a='garf'
     alias G='garf'
     alias o='xdg-open'
-    alias r='ranger'
     alias :='abandon' # Script
     alias th='thunar'
     alias lw='librewolf'
