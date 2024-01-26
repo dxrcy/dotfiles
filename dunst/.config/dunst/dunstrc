@@ -1,8 +1,8 @@
 # See dunst(5) for all configuration options
 
-[rule]
-appname~NetworkManager
-ignore = true
+# [rule]
+# appname~NetworkManager
+# ignore = true
 
 [global]
     ### Display ###
