@@ -1,5 +1,7 @@
 local lspconfig = require('lspconfig')
 
+vim.g.zig_fmt_autosave = 0
+
 -- Defaults
 lspconfig.lua_ls.setup {
     settings = {
