@@ -205,6 +205,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
     alias pk='pkill'
     alias z='zi'
+    alias r="printf '\x1b[1muse lf\x1b[0m\n'"
 
 #========= PACKAGES
     # Autodownload packages
