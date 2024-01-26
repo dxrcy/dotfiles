@@ -95,7 +95,12 @@ local plugins = {
     },
 
     -- Git stuff
-    "lewis6991/gitsigns.nvim",
+    {
+        "lewis6991/gitsigns.nvim",
+        init = function()
+            require("gitsigns").setup()
+        end,
+    },
 
     -- Telescope
     {
