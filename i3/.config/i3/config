@@ -419,6 +419,9 @@ bindsym $mod+s exec --no-startup-id $scripts/player-info $player 'notify'
 # Show date and time in notification
 bindsym $mod+Shift+s exec --no-startup-id dunstify -t 2000 "$(date '+%H:%M | %a %d %b')"
 
+# Close all notifications
+bindsym $mod+Control+n exec --no-startup-id dunstctl close-all
+
 # Resize window (you can also use the mouse for that)
 mode "resize" {
     # Resize window
