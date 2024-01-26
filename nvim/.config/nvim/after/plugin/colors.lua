@@ -10,10 +10,11 @@ function Color(color)
     vim.api.nvim_set_hl(0, "NormalNC",    { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalSB",    { bg = "none" })
     -- For gitsigns plugin
-    vim.cmd([[highlight SignColumn     guibg=NONE]])
-    vim.cmd([[highlight GitSignsAdd    guibg=NONE]])
-    vim.cmd([[highlight GitSignsChange guibg=NONE]])
-    vim.cmd([[highlight GitSignsDelete guibg=NONE]])
+    -- ?? Makes gitsigns text color white
+    -- vim.cmd([[highlight SignColumn     guibg=NONE]])
+    -- vim.cmd([[highlight GitSignsAdd    guibg=NONE]])
+    -- vim.cmd([[highlight GitSignsChange guibg=NONE]])
+    -- vim.cmd([[highlight GitSignsDelete guibg=NONE]])
 end
 
 Color()
