@@ -143,15 +143,12 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
         cargo new "$*"            || return $?
         cd "$1"                   || return $?
     }
-# Dotfile editing
+# Common dotfile editing
     alias  d.='cd ~/dotfiles'
     alias d.z='cd ~/dotfiles/zsh                   && nvim .zshrc'
     alias d.v='cd ~/dotfiles/nvim/.config/nvim     && nvim .'
     alias d.t='cd ~/dotfiles/tmux/.config/tmux     && nvim tmux.conf'
-    # alias d.r='cd ~/dotfiles/ranger/.config/ranger && nvim rc.conf'
     alias d.i='cd ~/dotfiles/i3/.config/i3         && nvim config'
-    alias d.k='cd ~/dotfiles/kitty/.config/kitty   && nvim kitty.conf'
-    alias d.m='cd ~/dotfiles/mutt/.config/mutt     && nvim muttrc'
 # Misc. Programs
     alias cat='bat'
     alias ls='eza -l'
