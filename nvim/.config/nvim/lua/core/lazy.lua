@@ -55,12 +55,7 @@ local plugins = {
     "lukas-reineke/lsp-format.nvim",
 
     -- Toggle comments
-    {
-        "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup()
-        end
-    },
+    "terrortylor/nvim-comment",
 
     -- Autoclose brackets/quotes
     {
@@ -116,6 +111,12 @@ local plugins = {
         init = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
+            require("which-key").setup {
+                hidden = { "q" },
+                triggers_blacklist = {
+                    n = { "q" },
+                },
+            }
         end,
         opts = {},
     },
