@@ -24,10 +24,9 @@ require("nvim-tree").setup {
     filters = {
         dotfiles = true,
         custom = {
-            -- Hide object files and the like
-            "*.o", "*.so", "*.hi",
             -- Hide lock files
             "*.lock",
         },
+        binaries = true,
     },
 }
