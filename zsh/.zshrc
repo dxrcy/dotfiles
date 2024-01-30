@@ -186,7 +186,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     }
 # Misc. Abbreviations / Mispellings
     alias j='just'
-    alias G='garf'
+    alias a='garf'
     alias o='xdg-open'
     alias :='abandon' # Script
     alias th='thunar'
