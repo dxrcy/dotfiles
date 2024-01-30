@@ -54,6 +54,9 @@ local plugins = {
     -- Idk if this is needed
     "lukas-reineke/lsp-format.nvim",
 
+    -- Autocompletion in command line
+    { "hrsh7th/cmp-cmdline" },
+
     -- Toggle comments
     "terrortylor/nvim-comment",
 
@@ -129,7 +132,7 @@ local plugins = {
         end
     },
 
-    -- lazy.nvim
+    -- Fancy command line
     {
         "folke/noice.nvim",
         event = "VeryLazy",
