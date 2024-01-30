@@ -1,9 +1,9 @@
 [Desktop Entry]
 Version=1.0
 Name=LibreWolf
-GenericName=Web Browser, lw
+GenericName=Web Browser
 Comment=Browse the World Wide Web
-Keywords=Internet;WWW;Browser;Web;Explorer
+Keywords=lw;Internet;WWW;Browser;Web;Explorer
 Exec=/usr/lib/librewolf/librewolf -P main %u
 Icon=librewolf
 Terminal=false
