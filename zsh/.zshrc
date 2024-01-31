@@ -164,7 +164,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias sxiv='nsxiv'
     alias vhistory='v ~/.cache/zsh_history'
     # Use lf to `cd`, without spawning subshell
-    alias lf='cd "$(lf -print-last-dir)"'
+    alias lf='cd "$(\lf -print-last-dir)"'
     # Undo last `cd`
     alias cd='LASTDIR="$(pwd)"; cd'      # Save working directory
     alias dc='_DIR=$LASTDIR; cd "$_DIR"' # Go back to previous directory
