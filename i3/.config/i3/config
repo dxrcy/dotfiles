@@ -77,7 +77,7 @@ exec_always --no-startup-id clipcatd
 
 # Autostart browser on workspace
 # Same as `assign`, but only affects this window instance
-exec --no-startup-id sh -c "i3-msg 'workspace $ws2' && sleep 1 && librewolf"
+exec --no-startup-id $i3_scripts/exec-workspace $ws2 LibreWolf librewolf
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
