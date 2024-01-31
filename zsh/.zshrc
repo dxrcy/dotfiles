@@ -222,9 +222,9 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     for _filepath in $PACKAGES; do
         _package="${_filepath%/*}" # Remove filename from path
         if [[ ! -d "$_dir/$_package" ]]; then
-            printf "\x1b[2;33mInstalling '%s'...\x1b[0m\n" "$_package"
+            printf "\x1b[2;33mzsh: installing '%s'...\x1b[0m\n" "$_package"
             git clone --quiet "https://github.com/$_package" "$_dir/$_package" || {
-                printf "\x1b[31mSome packages failed to download.\x1b[0m\n"
+                printf "\x1b[31mzsh: some packages failed to download.\x1b[0m\n"
                 break
             }
         fi
