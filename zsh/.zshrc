@@ -54,6 +54,9 @@
     _exa() { eza }
 # Fix i3-msg
     unset I3SOCK
+# Misc. shorthand variables
+    GH='https://github.com'
+    GHU="$GH/darccyy"
 # Shell nesting
     [ -z $ZSH ] && ZSH=0 \
         || { [ -z $ZSH_NOINC ] && ZSH=$((ZSH + 1)); }
