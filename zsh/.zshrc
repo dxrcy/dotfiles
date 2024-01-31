@@ -214,7 +214,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     PACKAGES=(
         zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
-	    zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
+	    darccyy/zsh-history-substring-search/zsh-history-substring-search.zsh # Until PR merged
         hlissner/zsh-autopair/autopair.zsh
     )
     _dir="$HOME/.zsh" # Where to download packages to
