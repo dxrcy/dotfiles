@@ -4,16 +4,6 @@
 # -------------------------
 
 #========= MISC
-# Auto aliases
-    eval "$(zoxide init zsh)"
-# Preferred editor for local and remote sessions
-    [[ -n $SSH_CONNECTION ]] \
-        && export EDITOR='vim' \
-        || export EDITOR='nvim'
-# Override default browser
-    BROWSER='librewolf'
-# Add scripts to path
-    PATH="$HOME/scripts/cmd:$PATH"
 # Vi mode in prompt (best mode)
     bindkey -v
     export KEYTIMEOUT=1                  # Remove timeout for <Esc>
@@ -40,6 +30,16 @@
     alias   '...'='cd ../../'
     alias  '....'='cd ../../../'
     alias '.....'='cd ../../../../'
+# Add scripts to path
+    PATH="$HOME/scripts/cmd:$PATH"
+# Auto aliases
+    eval "$(zoxide init zsh)"
+# Preferred editor for local and remote sessions
+    [[ -n $SSH_CONNECTION ]] \
+        && export EDITOR='vim' \
+        || export EDITOR='nvim'
+# Override default browser
+    BROWSER='librewolf'
 # Persistant history
     HISTFILE=~/.cache/zsh_history
     HISTSIZE=1000
@@ -52,9 +52,6 @@
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Fix zsh tab completion when using `eza` package
     _exa() { eza }
-# Flyctl binary
-    export FLYCTL_INSTALL="/home/darcy/.fly"
-    export PATH="$FLYCTL_INSTALL/bin:$PATH"
 # Fix i3-msg
     unset I3SOCK
 # Shell nesting
@@ -85,7 +82,7 @@
     for _ in $(seq 1 $ZSH); do arrow="$arrow="; done
     [ $arrow ] && { arrow="$arrow> "; }
     # Make prompt
-export PS1="%F{cyan}$arrow%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~\$(git_branch)\$(git_status)\$(version)$exitc%(0?.. ·)
+    export PS1="%F{cyan}$arrow%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~\$(git_branch)\$(git_status)\$(version)$exitc%(0?.. ·)
 $jobsc%(1j.[%j].)$promptc❯$rc "
 
 #========= ALIASES
@@ -138,17 +135,17 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias  cip='cargo install --path .'
     alias  cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
     alias  ccl='cargo clippy'
-    cn() { # cargo new
+    cn() { # cargo new + cd
         [ ! "$*" ] && { cargo new || return $? }
         cargo new "$*"            || return $?
         cd "$1"                   || return $?
     }
 # Common dotfile editing
-    alias  d.='cd ~/dotfiles'
-    alias d.z='cd ~/dotfiles/zsh                   && nvim .zshrc'
-    alias d.v='cd ~/dotfiles/nvim/.config/nvim     && nvim .'
-    alias d.t='cd ~/dotfiles/tmux/.config/tmux     && nvim tmux.conf'
-    alias d.i='cd ~/dotfiles/i3/.config/i3         && nvim config'
+    alias .d='cd ~/dotfiles'
+    alias .z='cd ~/dotfiles/zsh                && nvim .zshrc'
+    alias .v='cd ~/dotfiles/nvim/.config/nvim  && nvim .'
+    alias .t='cd ~/dotfiles/tmux/.config/tmux  && nvim tmux.conf'
+    alias .i='cd ~/dotfiles/i3/.config/i3      && nvim config'
 # Misc. Programs
     alias cat='bat'
     alias ls='eza -l'
@@ -158,11 +155,9 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias mkdir='mkdir -p'
     alias cp='cp -r'
     alias grep='rg'
-    # alias grep='grep --color=auto'
-    # alias grepr='grep -R --exclude-dir .git --exclude-dir target'
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
-    alias vhistory='v ~/.cache/zsh_history'
+    alias zhistory='v ~/.cache/zsh_history'
     # Use lf to `cd`, without spawning subshell
     alias lf='cd "$(\lf -print-last-dir)"'
     # Undo last `cd`
@@ -170,10 +165,11 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias dc='_DIR=$LASTDIR; cd "$_DIR"' # Go back to previous directory
     # Make directory and cd
     mkd() {
-        mkdir -p "$*" &&\
-        cd "$*"
+        mkdir -p "$*" || return $?
+        cd "$*"       || return $?
     }
     # Garfeo
+    # https://github.com/darccyy/garfeo
     eo() {
         cd ~/code/garfeo &&\
         tmux split-window -h -c "#{pane_current_path}" 'killall basic-http-server; just; zsh' &&\
@@ -191,10 +187,9 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias :='abandon' # Script
     alias th='thunar'
     alias lw='librewolf'
-    alias lg='lazygit' # also in tmux
+    alias lg='lazygit' # Also in tmux
     alias clip='xclip -selection clipboard'
     alias scim='sc-im'
-    alias trs='tree-sitter'
     alias ol='ollama'
     alias olr='ollama run mistral'
     alias sy='systemctl'
@@ -202,11 +197,12 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias ping8='ping 8.8.8.8 -c 10'
     alias cal3='cal -3'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
-    alias sb='cd ~/code/sandbox && v src/main.rs'
+    alias sb='cd ~/code/sandbox'
     alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
     alias pk='pkill'
     alias z='zi'
     alias r='lf'
+    alias l='lf'
 
 #========= PACKAGES
     # Autodownload packages
@@ -228,7 +224,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
                 break
             }
         fi
-	source "$_dir/$_filepath"
+        source "$_dir/$_filepath"
     done
     unset _dir _filepath _package
     # Settings for packages
