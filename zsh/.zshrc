@@ -164,7 +164,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias sxiv='nsxiv'
     alias vhistory='v ~/.cache/zsh_history'
     # Use lf to `cd`, without spawning subshell
-    alias l='cd "$(lf -print-last-dir)"'
+    alias lf='cd "$(lf -print-last-dir)"'
     # Undo last `cd`
     alias cd='LASTDIR="$(pwd)"; cd'      # Save working directory
     alias dc='_DIR=$LASTDIR; cd "$_DIR"' # Go back to previous directory
@@ -206,7 +206,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
     alias pk='pkill'
     alias z='zi'
-    alias r="printf '\x1b[1muse lf\x1b[0m\n'"
+    alias r='lf'
 
 #========= PACKAGES
     # Autodownload packages
