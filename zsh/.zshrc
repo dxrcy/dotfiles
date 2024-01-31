@@ -32,7 +32,7 @@
         zle vi-yank
         echo "$CUTBUFFER" | xclip -selection clipboard
     }; zle -N vi-yank-xclip
-bindkey -M vicmd 'y' vi-yank-xclip
+    bindkey -M vicmd 'y' vi-yank-xclip
 # Other keybinds
     bindkey -s '^Z' 'fg\n'
 # Change directory by typing name
@@ -215,22 +215,22 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     PACKAGES=(
         zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
-	zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
+	    zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
         hlissner/zsh-autopair/autopair.zsh
     )
-    dir="$HOME/.zsh" # Where to download packages to
-    for filepath in $PACKAGES; do
-	package="${filepath%/*}" # Remove filename from path
-        if [[ ! -d "$dir/$package" ]]; then
-            printf "\x1b[2;33mInstalling '%s'...\x1b[0m\n" "$package"
-            git clone --quiet "https://github.com/$package" "$dir/$package" || {
+    _dir="$HOME/.zsh" # Where to download packages to
+    for _filepath in $PACKAGES; do
+        _package="${_filepath%/*}" # Remove filename from path
+        if [[ ! -d "$_dir/$_package" ]]; then
+            printf "\x1b[2;33mInstalling '%s'...\x1b[0m\n" "$_package"
+            git clone --quiet "https://github.com/$_package" "$_dir/$_package" || {
                 printf "\x1b[31mSome packages failed to download.\x1b[0m\n"
                 break
             }
         fi
-	source "$dir/$filepath"
+	source "$_dir/$_filepath"
     done
-    unset filepath package
+    unset _dir _filepath _package
     # Settings for packages
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
     bindkey '^[[A'       history-substring-search-up
