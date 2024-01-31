@@ -104,24 +104,27 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias  ZZ='exit'
 # Git (even tho lazygit is easier)
     alias    g='git'
+    alias   gs='git status'
     alias   ga='git add'
     alias   gc='git commit -m'
-    alias  gac='git add . && git commit -m'
+    alias  gac='git add -A && git commit -m'
     alias  gca='git commit --amend -m'
     alias   gp='git push'
     alias   gd='git diff'
     alias   gl='git log'
     alias   gr='git remote'
-    alias grao='git remote add origin'
-    alias grro='git remote remove origin'
+    alias grao='git remote add     origin'
+    alias grro='git remote remove  origin'
+    alias grso='git remote set-url origin'
+    alias grgo='git remote get-url origin'
     gcl() { # Git clone alias with URL shorthand
         url="$1"
         shift
         case "$url" in
-            '') git clone; return $? ;; # Empty
-            @*) url="$GH/${url:1}" ;;   # @user/repo
-            :*) url="$GHU/${url:1}" ;;  # :repo
-            *) ;;                       # Other
+            '') git clone; return $? ;; # Empty (error)
+            @*) url="$GH/${url:1}"   ;; # @user/repo
+            :*) url="$GHU/${url:1}"  ;; # :repo
+             *) ;;                      # Other
         esac
         git clone "$url" $* || return $?
     }
