@@ -55,7 +55,7 @@
 # Fix i3-msg
     unset I3SOCK
 # Misc. shorthand variables
-    GH='https://github.com'
+    GH='https://github.com' # See also: `gcl`
     GHU="$GH/darccyy"
 # Shell nesting
     [ -z $ZSH ] && ZSH=0 \
@@ -111,10 +111,20 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias   gp='git push'
     alias   gd='git diff'
     alias   gl='git log'
-    alias  gcl='git clone'
     alias   gr='git remote'
     alias grao='git remote add origin'
     alias grro='git remote remove origin'
+    gcl() { # Git clone alias with URL shorthand
+        url="$1"
+        shift
+        case "$url" in
+            '') git clone; return $? ;; # Empty
+            @*) url="$GH/${url:1}" ;;   # @user/repo
+            :*) url="$GHU/${url:1}" ;;  # :repo
+            *) ;;                       # Other
+        esac
+        git clone "$url" $* || return $?
+    }
 # Nvim
     # Open folder in nvim, instead of new buffer
     v() { [ "$*" ] && nvim $* || nvim . }
