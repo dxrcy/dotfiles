@@ -56,7 +56,7 @@
     unset I3SOCK
 # Misc. shorthand variables
     GH='https://github.com' # See also: `gcl`
-    GHU="$GH/darccyy"
+    GHU="$GH/dxrcy"
 # Shell nesting
     [ -z $ZSH ] && ZSH=0 \
         || { [ -z $ZSH_NOINC ] && ZSH=$((ZSH + 1)); }
