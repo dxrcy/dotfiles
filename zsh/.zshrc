@@ -171,6 +171,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias mkdir='mkdir -p'
     alias cp='cp -r'
     alias grep='rg'
+    alias grep='grep --ignore-file build --ignore-file target'
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
     alias zhistory='v ~/.cache/zsh_history'
