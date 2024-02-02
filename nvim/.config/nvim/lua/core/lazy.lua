@@ -76,7 +76,7 @@ local plugins = {
 
     -- Filetree
     {
-        'darccyy/nvim-tree.lua',
+        'dxrcy/nvim-tree.lua', -- until PR merged
         dependencies = {
             'nvim-tree/nvim-web-devicons', -- optional
         },

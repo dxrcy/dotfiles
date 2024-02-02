@@ -185,7 +185,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
         cd "$*"       || return $?
     }
     # Garfeo
-    # https://github.com/darccyy/garfeo
+    # https://github.com/dxrcy/garfeo
     eo() {
         cd ~/code/garfeo &&\
         tmux split-window -h -c "#{pane_current_path}" 'killall basic-http-server; just; zsh' &&\
@@ -227,7 +227,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     PACKAGES=(
         zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
-	    darccyy/zsh-history-substring-search/zsh-history-substring-search.zsh # Until PR merged
+	    dxrcy/zsh-history-substring-search/zsh-history-substring-search.zsh # Until PR merged
         hlissner/zsh-autopair/autopair.zsh
     )
     _dir="$HOME/.zsh" # Where to download packages to

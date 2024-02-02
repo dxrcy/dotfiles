@@ -36,7 +36,7 @@ textLiteral:	https://bruh.news
 textFile:	
 textProgram:	fortune
 # textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
-textURL:	https://darccyy.github.io/garfeo/rss.xml
+textURL:	https://dxrcy.github.io/garfeo/rss.xml
 dialogTheme:	default
 settingsGeom:	0,29 0,29
 
