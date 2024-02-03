@@ -94,10 +94,10 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     version()    { x=$(package-version); [ "$x" ] && echo "%F{green}\x1b[2m v$x\x1b[0m" }
 # Concat strings for PSx prompt
     _prompt() {
-        _PS="$_PS$Cr" # Reset
         for arg in $*; do
             _PS="$_PS$arg"
         done
+        _PS="$_PS$Cr" # Reset
     }
 # Make PS1
     _dot='·'
