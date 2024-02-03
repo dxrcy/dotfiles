@@ -30,6 +30,17 @@
     alias   '...'='cd ../../'
     alias  '....'='cd ../../../'
     alias '.....'='cd ../../../../'
+# Undo last `cd` with `dc`
+    alias cd='LASTDIR="$(pwd)"; cd'      # Save working directory
+    alias dc='_DIR=$LASTDIR; cd "$_DIR"' # Go back to previous directory
+    # Make work with `AUTOCD`
+    TRAPDEBUG() {
+        dir="${ZSH_DEBUG_CMD/#\~/$HOME}"
+        # If is a directory, and not a command
+        if [ -d "$dir" ] && ! type "$dir" >/dev/null; then
+            LASTDIR="$PWD"
+        fi
+    }
 # Add scripts to path
     PATH="$HOME/scripts/cmd:$PATH"
 # Auto aliases
@@ -174,19 +185,12 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
     alias zhistory='v ~/.cache/zsh_history'
-    # Use lf to `cd`, without spawning subshell
-    alias lf='cd "$(\lf -print-last-dir)"'
-    # Undo last `cd`
-    alias cd='LASTDIR="$(pwd)"; cd'      # Save working directory
-    alias dc='_DIR=$LASTDIR; cd "$_DIR"' # Go back to previous directory
-    # Make directory and cd
-    mkd() {
+    alias lf='cd "$(\lf -print-last-dir)"' # Use lf to `cd`, without spawning subshell
+    mkd() { # Make directory and cd
         mkdir -p "$*" || return $?
         cd "$*"       || return $?
     }
-    # Garfeo
-    # https://github.com/dxrcy/garfeo
-    eo() {
+    eo() { # Garfeo - https://github.com/dxrcy/garfeo
         cd ~/code/garfeo &&\
         tmux split-window -h -c "#{pane_current_path}" 'killall basic-http-server; just; zsh' &&\
         tmux resize-pane -R 40 &&\
@@ -200,7 +204,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias j='just'
     alias a='garf'
     alias o='xdg-open'
-    alias :='abandon' # Script
+    alias ,='abandon' # Script
     alias th='thunar'
     alias lw='librewolf'
     alias lg='lazygit' # Also in tmux
