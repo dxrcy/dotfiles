@@ -86,36 +86,34 @@
     setopt PROMPT_SUBST # Enable
     git_branch() { x=$(git-info -b);     [ "$x" ] && echo "%F{blue} $x" }
     git_status() { x=$(git-info);        [ "$x" ] && echo "%F{red} [$x]" }
-    version()    { x=$(package-version); [ "$x" ] && echo "%F{green}\x1b[2m v$x$Cr\x1b[0m" }
+    version()    { x=$(package-version); [ "$x" ] && echo "%F{green}\x1b[2m v$x\x1b[0m" }
 # Concat strings for PSx prompt
     _prompt() {
-        _ps="$_ps$Cr" # Reset
+        _PS="$_PS$Cr" # Reset
         for arg in $*; do
-            _ps="$_ps$arg"
+            _PS="$_PS$arg"
         done
     }
-# Make prompt
-    #       bold    color           value
-    _ps=''
-    _prompt         "%F{cyan}"      "$arrow"           # Shell nesting level
-    _prompt "%B"    "%F{yellow}"    "%n"               # Username
-    _prompt         "%F{green}"     "@"                # @
-    _prompt "%B"    "%F{blue}"      "%m"               # Hostname
-    _prompt                         ' '                # 
-    _prompt         "%F{magenta}"   "%3~"              # PWD (max 3 folders)
-    _prompt                         '$(git_branch)'    # 
-    _prompt                         '$(git_status)'    # 
-    _prompt                         '$(version)'       # 
-    _prompt         "%F{green}"     "%(0?.. ·)"        # Non-zero exit code = dot
-    _prompt                         "$EOL"             #
-    _prompt         "%F{cyan}"      "%(1j.[%j].)"      # Job count
-    _prompt         '%F{green}'     '❯ '               # 
-    export PS1="$_ps"
-    unset _ps _prompt
-
-    # export PS1="$PS1"
-    # export PS1="%F{cyan}$arrow%B$C_user%n%b$C_at@%B$C_host%m%b $C_dir%3~\$(git_branch)\$(git_status)\$(version)$C_exit%(0?.. ·)\
-# $C_jobs%(1j.[%j].)$C_prompt❯$C_r "
+# Make PS1
+    _dot='·'
+    _gt='❯'
+    #       BOLD    COLOR           VALUE
+    _PS=''
+    _prompt         "%F{cyan}"      "$arrow"        # Shell nesting level
+    _prompt "%B"    "%F{yellow}"    "%n"            # Username
+    _prompt         "%F{green}"     "@"             # @
+    _prompt "%B"    "%F{blue}"      "%m"            # Hostname
+    _prompt                         ' '             # 
+    _prompt         "%F{magenta}"   "%3~"           # Last 3 folders of PWD
+    _prompt                         '$(git_branch)' # Git: Branch
+    _prompt                         '$(git_status)' # Git: Status
+    _prompt                         '$(version)'    # Package version (also dim)
+    _prompt         "%F{cyan}"      "%(0?.. $_dot)" # Non-zero exit code = dot
+    _prompt                         "$EOL"          #
+    _prompt         "%F{cyan}"      "%(1j.[%j].)"   # Job count
+    _prompt         '%F{green}'     "$_gt "         # >
+    export PS1="$_PS"
+    unset _PS _prompt _dot _gt 
 
 #========= ALIASES
 # Tmux
