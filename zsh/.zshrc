@@ -87,32 +87,31 @@
     git_branch() { x=$(git-info -b);     [ "$x" ] && echo "%F{blue} $x" }
     git_status() { x=$(git-info);        [ "$x" ] && echo "%F{red} [$x]" }
     version()    { x=$(package-version); [ "$x" ] && echo "%F{green}\x1b[2m v$x$Cr\x1b[0m" }
-# Concat strings and export as PSx prompt
-    _make_prompt() {
-        name="$1"; shift
-        ps=''
+# Concat strings for PSx prompt
+    _prompt() {
+        _ps="$_ps$Cr" # Reset
         for arg in $*; do
-            ps="$ps$arg"
+            _ps="$_ps$arg"
         done
-        export $name=$ps
     }
 # Make prompt
     #       bold    color           value
-    _make_prompt PS1 \
-        $Cr         "%F{cyan}"      "$arrow"            \
-        $Cr "%B"    "%F{yellow}"    "%n"                \
-        $Cr         "%F{green}"     "@"                 \
-        $Cr "%B"    "%F{blue}"      "%m"                \
-        $Cr                         ' '                 \
-        $Cr         "%F{magenta}"   "%3~"               \
-        $Cr                         '$(git_branch)'     \
-        $Cr                         '$(git_status)'     \
-        $Cr                         '$(version)'        \
-        $Cr         "%F{green}"     "%(0?.. ·)"         \
-        $Cr                         "$EOL"              \
-        $Cr         "%F{cyan}"      "%(1j.[%j].)"       \
-        $Cr         '%F{green}'     '❯ '                \
-        $Cr
+    _ps=''
+    _prompt         "%F{cyan}"      "$arrow"           # Shell nesting level
+    _prompt "%B"    "%F{yellow}"    "%n"               # Username
+    _prompt         "%F{green}"     "@"                # @
+    _prompt "%B"    "%F{blue}"      "%m"               # Hostname
+    _prompt                         ' '                # 
+    _prompt         "%F{magenta}"   "%3~"              # PWD (max 3 folders)
+    _prompt                         '$(git_branch)'    # 
+    _prompt                         '$(git_status)'    # 
+    _prompt                         '$(version)'       # 
+    _prompt         "%F{green}"     "%(0?.. ·)"        # Non-zero exit code = dot
+    _prompt                         "$EOL"             #
+    _prompt         "%F{cyan}"      "%(1j.[%j].)"      # Job count
+    _prompt         '%F{green}'     '❯ '               # 
+    export PS1="$_ps"
+    unset _ps _prompt
 
     # export PS1="$PS1"
     # export PS1="%F{cyan}$arrow%B$C_user%n%b$C_at@%B$C_host%m%b $C_dir%3~\$(git_branch)\$(git_status)\$(version)$C_exit%(0?.. ·)\
