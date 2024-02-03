@@ -74,30 +74,49 @@
     export ZSH
 
 #========= PROMPT
-    # Colors
-    local       rc='%f%F{white}' # Reset
-    local    userc='%F{yellow}'  # Username
-    local      atc='%F{green}'   # @ symbol
-    local    hostc='%F{blue}'    # Hostname
-    local     dirc='%F{magenta}' # Directory
-    local    jobsc='%F{cyan}'    # Jobs count
-    local gbranchc='%F{blue}'    # Git branch
-    local   ginfoc='%F{red}'     # Git info
-    local versionc="%F{green}"   # Package version
-    local    exitc='%F{cyan}'    # Prompt symbol (exit 1)
-    local  promptc='%F{green}'   # Prompt symbol (exit 0)
-    # Wrap custom commands with color
-    setopt PROMPT_SUBST          # Allow functions in prompt
-    git_branch() { x=$(git-info -b);  [ "$x" ] && echo "$gbranchc $x" }
-    git_status() { x=$(git-info);     [ "$x" ] && echo "$ginfoc [$x]" }
-    version() { x=$(package-version); [ "$x" ] && echo "$versionc\x1b[2m v$x$rc\x1b[0m" }
-    # Shell nesting
+    Cr='%b%f%F{white}' # Reset color and formatting
+    EOL="
+"
+# Display shell nesting level
+    # Variable, not function (unlike below)
     local arrow=''
     for _ in $(seq 1 $ZSH); do arrow="$arrow="; done
     [ $arrow ] && { arrow="$arrow> "; }
-    # Make prompt
-    export PS1="%F{cyan}$arrow%B$userc%n%b$atc@%B$hostc%m%b $dirc%3~\$(git_branch)\$(git_status)\$(version)$exitc%(0?.. ·)
-$jobsc%(1j.[%j].)$promptc❯$rc "
+# Prompt substring functions
+    setopt PROMPT_SUBST # Enable
+    git_branch() { x=$(git-info -b);     [ "$x" ] && echo "%F{blue} $x" }
+    git_status() { x=$(git-info);        [ "$x" ] && echo "%F{red} [$x]" }
+    version()    { x=$(package-version); [ "$x" ] && echo "%F{green}\x1b[2m v$x$Cr\x1b[0m" }
+# Concat strings and export as PSx prompt
+    _make_prompt() {
+        name="$1"; shift
+        ps=''
+        for arg in $*; do
+            ps="$ps$arg"
+        done
+        export $name=$ps
+    }
+# Make prompt
+    #       bold    color           value
+    _make_prompt PS1 \
+        $Cr         "%F{cyan}"      "$arrow"            \
+        $Cr "%B"    "%F{yellow}"    "%n"                \
+        $Cr         "%F{green}"     "@"                 \
+        $Cr "%B"    "%F{blue}"      "%m"                \
+        $Cr                         ' '                 \
+        $Cr         "%F{magenta}"   "%3~"               \
+        $Cr                         '$(git_branch)'     \
+        $Cr                         '$(git_status)'     \
+        $Cr                         '$(version)'        \
+        $Cr         "%F{green}"     "%(0?.. ·)"         \
+        $Cr                         "$EOL"              \
+        $Cr         "%F{cyan}"      "%(1j.[%j].)"       \
+        $Cr         '%F{green}'     '❯ '                \
+        $Cr
+
+    # export PS1="$PS1"
+    # export PS1="%F{cyan}$arrow%B$C_user%n%b$C_at@%B$C_host%m%b $C_dir%3~\$(git_branch)\$(git_status)\$(version)$C_exit%(0?.. ·)\
+# $C_jobs%(1j.[%j].)$C_prompt❯$C_r "
 
 #========= ALIASES
 # Tmux
