@@ -9,11 +9,10 @@ require("telescope").setup({
         file_ignore_patterns = {
             -- Build and module directories
             "build", "target", "node_modules",
-            -- Object files and the like
-            "*.o", "*.so", "*.hi",
             -- Lock files
             "*.lock",
+            -- Object files and the like
+            "*.o", "*.so", "*.hi",
         },
     },
 })
-

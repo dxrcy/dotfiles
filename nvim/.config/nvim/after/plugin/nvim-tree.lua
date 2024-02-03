@@ -24,9 +24,14 @@ require("nvim-tree").setup {
     filters = {
         dotfiles = true,
         custom = {
-            -- Hide lock files
+            -- Lock files
             "*.lock",
+            -- Object files and the like
+            "*.o", "*.so", "*.hi",
+            -- Binaries/executables
+            function(path)
+                return vim.fn.executable(path) == 1
+            end,
         },
-        binaries = true,
     },
 }
