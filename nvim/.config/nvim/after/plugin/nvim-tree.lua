@@ -8,6 +8,24 @@ local function my_on_attach(bufnr)
 end
 vim.keymap.set("n", "T", api.tree.toggle)
 
+local function is_binary(path)
+    -- 4-byte 'magic number' for ELF
+    local magic_number = string.char(0x7f) .. "ELF"
+
+    local fd = vim.loop.fs_open(path, "r", 438)
+    if not fd then
+        return false
+    end
+    local stat = vim.loop.fs_fstat(fd)
+    if not stat then
+        return false
+    end
+    local data = vim.loop.fs_read(fd, 4, 0)
+    vim.loop.fs_close(fd)
+
+    return data == magic_number
+end
+
 -- pass to setup along with your other options
 require("nvim-tree").setup {
     on_attach = my_on_attach,
@@ -29,9 +47,7 @@ require("nvim-tree").setup {
             -- Object files and the like
             "*.o", "*.so", "*.hi",
             -- Binaries/executables
-            function(path)
-                return vim.fn.executable(path) == 1
-            end,
+            is_binary,
         },
     },
 }
