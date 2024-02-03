@@ -221,13 +221,12 @@
     alias a='garf'
     alias o='xdg-open'
     alias ,='abandon' # Script
+    alias z='zi'
+    alias r='lf'
+    alias l='lf'
     alias th='thunar'
     alias lw='librewolf'
-    alias lg='lazygit' # Also in tmux
     alias clip='xclip -selection clipboard'
-    alias scim='sc-im'
-    alias ol='ollama'
-    alias olr='ollama run mistral'
     alias sy='systemctl'
     alias syu='systemctl --user'
     alias ping8='ping 8.8.8.8 -c 10'
@@ -236,9 +235,6 @@
     alias sb='cd ~/code/sandbox'
     alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
     alias pk='pkill'
-    alias z='zi'
-    alias r='lf'
-    alias l='lf'
 
 #========= PACKAGES
     # Autodownload packages
