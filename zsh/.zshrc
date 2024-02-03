@@ -73,6 +73,11 @@
         || { [ -z $ZSH_NOINC ] && ZSH=$((ZSH + 1)); }
     export ZSH
 
+#========= IDK!
+zstyle ':completion:*' menu select # select completions with arrow keys
+zstyle ':completion:*' group-name '' # group results by category
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate #enable approximate matches for completion
+
 #========= PROMPT
     Cr='%b%f%F{white}' # Reset color and formatting
     EOL="
