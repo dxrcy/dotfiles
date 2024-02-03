@@ -175,7 +175,7 @@ $jobsc%(1j.[%j].)$promptc❯$rc "
     alias .i='cd ~/dotfiles/i3/.config/i3      && nvim config'
 # Misc. Programs
     alias cat='bat'
-    alias ls='eza -l'
+    alias ls='eza -l --group-directories-first'
     alias lsa='ls -a'
     alias tree='ls -T'
     alias treea='ls -T -a'
