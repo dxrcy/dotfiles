@@ -15,7 +15,7 @@
         || echo -ne "\e[5 q"
     }; zle -N zle-keymap-select
     precmd() { echo -ne "\e[5 q" } # Narrow cursor on new prompt
-    # Add missing keybinds
+    # Add missing vim keybinds
     bindkey -s -M vicmd '\_' '^'
     # Yank to the system clipboard
     function vi-yank-xclip {
@@ -97,12 +97,12 @@
 # Make PS1
     _dot='·'
     _gt='❯'
-    #       BOLD    COLOR           VALUE
+    #        BOLD     COLOR           VALUE
     _PS=''
     _prompt         "%F{cyan}"      "$arrow"        # Shell nesting level
-    _prompt "%B"    "%F{yellow}"    "%n"            # Username
+    _prompt  "%B"   "%F{yellow}"    "%n"            # Username
     _prompt         "%F{green}"     "@"             # @
-    _prompt "%B"    "%F{blue}"      "%m"            # Hostname
+    _prompt  "%B"   "%F{blue}"      "%m"            # Hostname
     _prompt                         ' '             # 
     _prompt         "%F{magenta}"   "%3~"           # Last 3 folders of PWD
     _prompt                         '$(git_branch)' # Git: Branch
