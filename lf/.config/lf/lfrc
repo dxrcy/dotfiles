@@ -1,0 +1,3 @@
+# Enter directory and quit
+map <enter> push lq
+
