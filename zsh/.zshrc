@@ -149,9 +149,9 @@
     alias grgo='git remote get-url origin'
     gcl() { # Git clone alias with URL shorthand
         url="$1"
+        [ -z "$url" ] && git clone; return $? # No url (error)
         shift
         case "$url" in
-            '') git clone; return $? ;; # Empty (error)
             @*) url="$GH/${url:1}"   ;; # @user/repo
             :*) url="$GHU/${url:1}"  ;; # :repo
              *) ;;                      # Other
