@@ -149,16 +149,24 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias grro='git remote remove  origin'
     alias grso='git remote set-url origin'
     alias grgo='git remote get-url origin'
-    gcl() { # Git clone alias with URL shorthand
+    gh-url() { # Git url shorthand
         url="$1"
-        [ -z "$url" ] && git clone; return $? # No url (error)
-        shift
         case "$url" in
-            @*) url="$GH/${url:1}"   ;; # @user/repo
-            :*) url="$GHU/${url:1}"  ;; # :repo
-             *) ;;                      # Other
-        esac
+            '') return 1 ;;
+            @*) echo "$GH/${url:1}" ;;
+            :*) echo "$GHU/${url:1}" ;;
+             *) echo "$url" ;;
+         esac
+    }
+    gcl() { # Git clone alias with URL shorthand
+        url="$(gh-url $1)" || { git clone ; return $?; }
+        shift
         git clone "$url" $* || return $?
+        dest="${url##*/}" # Does not support custom dest. dir
+    }
+    gclc() { # Git clone and cd
+        gcl $*
+        cd "$dest"
     }
 # Nvim
     # Open folder in nvim, instead of new buffer
