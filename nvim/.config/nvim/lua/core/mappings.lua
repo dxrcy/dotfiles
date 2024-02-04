@@ -28,8 +28,11 @@ end
 keymap("n", "<C-s>", save_file)
 keymap("i", "<C-s>", save_file)
 
--- Switch to previous buffer
+-- Navigate buffers
 -- See also: telescope.lua
+keymap("n", "tn", "<cmd>bnext<CR>");
+keymap("n", "tp", "<cmd>bprevious<CR>");
+-- Flip between 2 most recent buffers
 keymap("n", "tt", "<cmd>b#<CR>");
 
 -- Move selection up/down in visual mode
