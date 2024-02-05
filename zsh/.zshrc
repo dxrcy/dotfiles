@@ -215,6 +215,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias sxiv='nsxiv'
     alias zhistory='v ~/.cache/zsh_history'
     alias lf='cd "$(\lf -print-last-dir)"' # Use lf to `cd`, without spawning subshell
+    alias zig='~/.zvm/bin/zig'
     mkd() { # Make directory and cd
         mkdir -p "$*" || return $?
         cd "$*"       || return $?
