@@ -28,6 +28,13 @@ end
 
 -- pass to setup along with your other options
 require("nvim-tree").setup {
+    log = {
+        enable = true,
+        types = {
+            all = true,
+            dev = true,
+        },
+    },
     on_attach = my_on_attach,
     actions = {
         open_file = {
@@ -45,7 +52,7 @@ require("nvim-tree").setup {
             -- Lock files
             "*.lock",
             -- Object files and the like
-            "*.o", "*.so", "*.hi",
+            -- "*.o", "*.so", "*.hi",
             -- Binaries/executables
             is_binary,
         },
