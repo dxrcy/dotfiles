@@ -293,64 +293,59 @@ for_window [tiling] border pixel 0
 # - Run command on startup
 
 # Global window settings
-set $sp-global floating enable, move scratchpad, border pixel 2
+set $sp-minimal move scratchpad
+set $sp-default $sp-minimal floating enable, border pixel 2
 
 # Terminal (kitty)
 set $sp-kitty 'kitty --class "i3-sp-kitty" tmux'
 bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-kitty" $sp-kitty
-for_window [class="i3-sp-kitty"] $sp-global resize set 800 400
+for_window [class="i3-sp-kitty"] $sp-default resize set 800 400
 exec --no-startup-id $sp-kitty
 
 # Email (thunderbird)
 set $sp-thunderbird 'thunderbird'
 bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad 'thunderbird' $sp-thunderbird
 for_window [class="thunderbird"] floating enable, resize set 1100 750, border pixel 2
-for_window [instance="Mail"] move scratchpad, resize set 1300 900
+for_window [instance="Mail"] $sp-minimal resize set 1300 900
 exec_always --no-startup-id $sp-thunderbird
 
 # Spotify
 set $sp-spotify 'spotify'
 bindsym $mod+F3 exec --no-startup-id $i3_scripts/scratchpad "^spotify$" $sp-spotify
-for_window [class="Spotify"] $sp-global resize set 400 200
+for_window [class="Spotify"] $sp-default resize set 400 200
 exec --no-startup-id $sp-spotify
 
 # Spotify TUI
 set $sp-spotifytui 'kitty --class "i3-sp-spotifytui" ~/scripts/cmd/spt'
 bindsym $mod+Shift+F3 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-spotifytui" $sp-spotifytui
-for_window [class="i3-sp-spotifytui"] $sp-global resize set 800 600
+for_window [class="i3-sp-spotifytui"] $sp-default resize set 800 600
 exec --no-startup-id $sp-spotifytui
 
 # Btop
 set $sp-btop 'kitty --class "i3-sp-btop" btop'
 bindsym $mod+F4 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-btop" $sp-btop
-for_window [class="i3-sp-btop"] $sp-global resize set 1300 900
+for_window [class="i3-sp-btop"] $sp-default resize set 1300 900
 exec --no-startup-id $sp-btop
 
-# Telegram scratchpad
-# set $sp-telegram 'telegram-desktop'
-# bindsym $mod+f5 exec --no-startup-id $i3_scripts/scratchpad "telegram-desktop" $sp-telegram
-# for_window [class="telegram-desktop"] $sp-global resize set 400 600
-# exec --no-startup-id $sp-telegram
+# Windscribe
+set $sp-windscribe 'windscribe'
+bindsym $mod+F5 exec --no-startup-id $i3_scripts/scratchpad "windscribe" $sp-windscribe
+for_window [class="Windscribe2"] $sp-minimal
+exec --no-startup-id $sp-windscribe
 
-# Calculator scratchpad
+
+# Calculator
 set $sp-calc 'kitty --class "i3-sp-calc" -o window_padding_width=2 sh -c "title -w43 Calculator | lolcat && qalc"'
 bindsym F12 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-calc" $sp-calc
-for_window [class="i3-sp-calc"] $sp-global resize set 400 600
+for_window [class="i3-sp-calc"] $sp-default resize set 400 600
 exec_always --no-startup-id $sp-calc
-
-# Autoclicker script
-# bindsym $mod+m         exec --no-startup-id $scripts/autoclicker
-# bindsym $mod+Control+m exec --no-startup-id $scripts/autoclicker stop
 
 # /SCRATCHPADS
 # -------------------------------------------------
 
-# Telegram open/focus (like a scratchpad)
-# bindsym $mod+F5 exec --no-startup-id telegram-desktop
-
-# Windscribe
-bindsym $mod+Ctrl+w exec --no-startup-id windscribe
-bindsym $mod+Ctrl+gcircumflex exec --no-startup-id windscribe
+# Autoclicker script
+# bindsym $mod+m         exec --no-startup-id $scripts/autoclicker
+# bindsym $mod+Control+m exec --no-startup-id $scripts/autoclicker stop
 
 # Mount/unmount a drive, with gui
 bindsym $mod+m exec --no-startup-id $scripts/mount-gui --notify
