@@ -208,6 +208,8 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias lsa='ls -a'
     alias tree='ls -T'
     alias treea='ls -T -a'
+    alias find='fd'
+    alias finda='fd -HI'
     alias mkdir='mkdir -p'
     alias cp='cp -r'
     alias grep="rg"
