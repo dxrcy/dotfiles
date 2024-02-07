@@ -130,3 +130,25 @@ keymap("v", ">", ">gv")
 -- Keep cursor in middle of screen when moving up/down
 keymap("n", "<C-u>", "<C-u>zz")
 keymap("n", "<C-d>", "<C-d>zz")
+
+-- Html boilerplate
+keymap("n", "<leader>html",
+    [[
+i<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>  </title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="favicon.png">
+
+<link rel="stylesheet" href="style.css">
+<script src="main.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<Esc>13kf>la]]
+)
