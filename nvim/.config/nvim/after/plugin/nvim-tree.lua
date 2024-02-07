@@ -31,7 +31,6 @@ require("nvim-tree").setup {
     log = {
         enable = true,
         types = {
-            all = true,
             dev = true,
         },
     },
@@ -48,6 +47,8 @@ require("nvim-tree").setup {
     },
     filters = {
         dotfiles = true,
+        -- custom = is_binary,
+        -- custom = "*.txt",
         custom = {
             -- Lock files
             "*.lock",
@@ -55,6 +56,7 @@ require("nvim-tree").setup {
             -- "*.o", "*.so", "*.hi",
             -- Binaries/executables
             is_binary,
+            -- "*.txt",
         },
     },
 }
