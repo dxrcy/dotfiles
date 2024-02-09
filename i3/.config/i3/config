@@ -328,7 +328,7 @@ exec --no-startup-id $sp-btop
 
 # Windscribe
 set $sp-windscribe 'windscribe'
-bindsym $mod+F5 exec --no-startup-id $i3_scripts/scratchpad "windscribe" $sp-windscribe
+bindsym $mod+Control+w exec --no-startup-id $i3_scripts/scratchpad "windscribe" $sp-windscribe
 for_window [class="Windscribe2"] move scratchpad
 exec --no-startup-id $sp-windscribe
 
