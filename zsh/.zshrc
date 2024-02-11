@@ -83,9 +83,8 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
 "
 # Display shell nesting level
     # Variable, not function (unlike below)
-    local arrow=''
-    for _ in $(seq 1 $ZSH); do arrow="$arrow="; done
-    [ $arrow ] && { arrow="$arrow> "; }
+    for _ in $(seq 1 $ZSH); do _arrow="$_arrow="; done
+    [ $_arrow ] && { _arrow="$_arrow> "; }
 # Prompt substring functions
     setopt PROMPT_SUBST # Enable
     git_branch() { x=$(git-info -b);     [ "$x" ] && echo "%F{blue} $x" }
@@ -104,7 +103,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     _gt='❯'
     #        BOLD     COLOR           VALUE
     _PS=''
-    _prompt         "%F{cyan}"      "$arrow"        # Shell nesting level
+    _prompt         "%F{cyan}"      "$_arrow"       # Shell nesting level
     _prompt  "%B"   "%F{yellow}"    "%n"            # Username
     _prompt         "%F{green}"     "@"             # @
     _prompt  "%B"   "%F{blue}"      "%m"            # Hostname
@@ -118,7 +117,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     _prompt         "%F{cyan}"      "%(1j.[%j].)"   # Job count
     _prompt         '%F{green}'     "$_gt "         # >
     export PS1="$_PS"
-    unset _PS _prompt _dot _gt 
 
 #========= ALIASES
 # Tmux
@@ -149,6 +147,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias grro='git remote remove  origin'
     alias grso='git remote set-url origin'
     alias grgo='git remote get-url origin'
+    alias  gcl='git-clone-cd'
     gh-url() { # Git url shorthand
         url="$1"
         case "$url" in
@@ -158,7 +157,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
              *) echo "$url" ;;
          esac
     }
-    gcl() { # Git clone alias with URL shorthand
+    git-clone-cd() { # Git clone alias with URL shorthand, and cd
         url="$(gh-url $1)" || { git clone ; return $?; }
         shift
         git clone "$url" $* || return $?
@@ -187,7 +186,8 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias  cip='cargo install --path .'
     alias  cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
     alias  ccl='cargo clippy'
-    cn() { # cargo new + cd
+    alias   cn='cargo-new-cd'
+    cargo-new-cd() {
         [ ! "$*" ] && { cargo new || return $? }
         cargo new "$*"            || return $?
         cd "$1"                   || return $?
@@ -214,11 +214,13 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias zhistory='v ~/.cache/zsh_history'
     alias lf='cd "$(\lf -print-last-dir)"' # Use lf to `cd`, without spawning subshell
     alias zig='~/.zvm/bin/zig'
-    mkd() { # Make directory and cd
+    alias mkd='mkdir-cd'
+    alias eo='garfeo-mode'
+    mkdir-cd() { # Make directory and cd
         mkdir -p "$*" || return $?
         cd "$*"       || return $?
     }
-    eo() { # Garfeo - https://github.com/dxrcy/garfeo
+    garfeo-mode() { # https://github.com/dxrcy/garfeo
         cd ~/code/garfeo &&\
         tmux split-window -h -c "#{pane_current_path}" 'killall basic-http-server; just; zsh' &&\
         tmux resize-pane -R 40 &&\
@@ -271,7 +273,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
         fi
         source "$_dir/$_filepath"
     done
-    unset _dir _filepath _package
     # Settings for packages
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
     bindkey '^[[A'       history-substring-search-up
