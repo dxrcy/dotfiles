@@ -79,7 +79,6 @@ zstyle ':completion:*' group-name '' # group results by category
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate #enable approximate matches for completion
 
 #========= PROMPT
-    Cr='%b%f%F{white}' # Reset color and formatting
     EOL="
 "
 # Display shell nesting level
@@ -94,10 +93,11 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     version()    { x=$(package-version); [ "$x" ] && echo "%F{green}\x1b[2m v$x\x1b[0m" }
 # Concat strings for PSx prompt
     _prompt() {
+        local reset='%b%f%F{white}' # Reset color and formatting
         for arg in $*; do
             _PS="$_PS$arg"
         done
-        _PS="$_PS$Cr" # Reset
+        _PS="$_PS$reset"
     }
 # Make PS1
     _dot='·'
@@ -162,11 +162,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
         url="$(gh-url $1)" || { git clone ; return $?; }
         shift
         git clone "$url" $* || return $?
-        dest="${url##*/}" # Does not support custom dest. dir
-    }
-    gclc() { # Git clone and cd
-        gcl $*
-        cd "$dest"
+        cd "${url##*/}" # Does not support custom dest. dir
     }
 # Nvim
     # Open folder in nvim, instead of new buffer
