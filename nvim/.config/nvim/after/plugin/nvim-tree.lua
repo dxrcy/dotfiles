@@ -8,7 +8,7 @@ local function my_on_attach(bufnr)
 end
 vim.keymap.set("n", "T", api.tree.toggle)
 
-local function is_binary(path)
+local function is_elf_binary(path)
     -- 4-byte 'magic number' for ELF
     local magic_number = string.char(0x7f) .. "ELF"
 
@@ -24,6 +24,10 @@ local function is_binary(path)
     vim.loop.fs_close(fd)
 
     return data == magic_number
+end
+
+local function ends_with(str, ending)
+    return ending == "" or str:sub(- #ending) == ending
 end
 
 -- pass to setup along with your other options
@@ -46,17 +50,9 @@ require("nvim-tree").setup {
         -- width = 100000,
     },
     filters = {
-        dotfiles = true,
-        -- custom = is_binary,
-        -- custom = "*.txt",
-        custom = {
-            -- Lock files
-            "*.lock",
-            -- Object files and the like
-            -- "*.o", "*.so", "*.hi",
-            -- Binaries/executables
-            is_binary,
-            -- "*.txt",
-        },
-    },
+        custom = function(path)
+            return ends_with(path, ".lock") or is_elf_binary(path)
+        end
+
+    }
 }
