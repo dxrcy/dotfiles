@@ -258,7 +258,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     PACKAGES=(
         zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
-	    dxrcy/zsh-history-substring-search/zsh-history-substring-search.zsh # Until PR merged
+	    dxrcy/zsh-history-substring-search/zsh-history-substring-search.zsh # Open PR
         hlissner/zsh-autopair/autopair.zsh
     )
     _dir="$HOME/.zsh" # Where to download packages to
