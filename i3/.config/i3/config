@@ -93,6 +93,9 @@ bindsym $mod+Shift+r restart
 # Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+# Reload, only changing the active displays if changed (autodetect connnected monitors)
+bindsym $mod+Control+r exec --no-startup-id $scripts/monitors auto
+
 # Start a terminal WITH tmux
 bindsym $mod+Return exec --no-startup-id kitty tmux
 # Start terminal and attach to most recent tmux session
