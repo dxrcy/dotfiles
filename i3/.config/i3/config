@@ -40,9 +40,10 @@ set $refresh_i3status killall -SIGUSR1 i3status
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
 
 # Backlight
-bindsym XF86MonBrightnessUp exec --no-startup-id sh $i3_scripts/volume_brightness.sh brightness_up
+bindsym XF86MonBrightnessUp   exec --no-startup-id sh $i3_scripts/volume_brightness.sh brightness_up
 bindsym XF86MonBrightnessDown exec --no-startup-id sh $i3_scripts/volume_brightness.sh brightness_down
 # Volume
+bindsym XF86AudioMute        exec --no-startup-id $i3_scripts/volume_brightness.sh volume_mute
 bindsym XF86AudioRaiseVolume exec --no-startup-id $i3_scripts/volume_brightness.sh volume_up
 bindsym XF86AudioLowerVolume exec --no-startup-id $i3_scripts/volume_brightness.sh volume_down
 
