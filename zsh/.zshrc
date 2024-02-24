@@ -23,6 +23,12 @@
         echo "$CUTBUFFER" | xclip -selection clipboard
     }; zle -N vi-yank-xclip
     bindkey -M vicmd 'y' vi-yank-xclip
+    bindkey -M vicmd -s 'ŝ' 'q' # Remap Esperanto keys
+    bindkey -M vicmd -s 'ĝ' 'w'
+    bindkey -M vicmd -s 'ŭ' 'y'
+    bindkey -M vicmd -s 'ĵ' '['
+    bindkey -M vicmd -s 'ĥ' ']'
+    bindkey -M vicmd -s 'ĉ' 'x'
 # Other keybinds
     bindkey -s '^Z' 'fg\n'
 # Change directory by typing name
