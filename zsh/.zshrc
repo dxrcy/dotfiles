@@ -250,6 +250,8 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias sb='cd ~/code/sandbox'
     alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
     alias pk='pkill'
+    alias btc='bluetoothctl'
+    alias plc='bluetoothctl'
 
 #========= PACKAGES
     # Autodownload packages
