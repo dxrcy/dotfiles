@@ -258,6 +258,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias pk='pkill'
     alias btc='bluetoothctl'
     alias plc='bluetoothctl'
+    am() { garf make $* && exit }
 
 #========= PACKAGES
     # Autodownload packages
