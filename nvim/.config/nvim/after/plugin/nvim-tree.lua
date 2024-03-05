@@ -55,6 +55,7 @@ require("nvim-tree").setup {
             return is_elf_binary(path)
                 or ends_with(path, ".lock")
                 or ends_with(path, ".hi")
+                or ends_with(path, ".class")
         end
 
     }
