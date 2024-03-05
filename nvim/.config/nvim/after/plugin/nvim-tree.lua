@@ -52,7 +52,9 @@ require("nvim-tree").setup {
     filters = {
         dotfiles = true,
         custom = function(path)
-            return ends_with(path, ".lock") or is_elf_binary(path)
+            return is_elf_binary(path)
+                or ends_with(path, ".lock")
+                or ends_with(path, ".hi")
         end
 
     }
