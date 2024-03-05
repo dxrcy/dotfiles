@@ -193,6 +193,10 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias  cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
     alias  ccl='cargo clippy'
     alias   cn='cargo-new-cd'
+    hs() {
+        ghc -Wall -dynamic $* >/dev/null
+        ./${1%.hs}
+    }
     cargo-new-cd() {
         [ ! "$*" ] && { cargo new || return $? }
         cargo new "$*"            || return $?
