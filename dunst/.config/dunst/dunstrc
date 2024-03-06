@@ -1,11 +1,9 @@
 # See dunst(5) for all configuration options
 
-# [rule]
-# appname~NetworkManager
-# ignore = true
-
 [global]
     ### Display ###
+
+    enable_posix_regex = true
 
     # Which monitor should the notifications be displayed on.
     monitor = 0
@@ -461,3 +459,10 @@
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
+
+# Nextcloud
+[rule]
+    summary = "Network Error"
+    body = "Host .* not found"
+    skip_display = true
+
