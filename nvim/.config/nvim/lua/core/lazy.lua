@@ -147,7 +147,20 @@ local plugins = {
             --   If not available, we use `mini` as the fallback
             -- "rcarriga/nvim-notify",
         }
-    }
+    },
+
+    -- Screenshots
+    {
+        "michaelrommel/nvim-silicon",
+        lazy = true,
+        cmd = "Silicon",
+        config = function()
+            require("silicon").setup({
+                -- Configuration here, or leave empty to use defaults
+                font = "Source Code Pro=34;Noto Color Emoji=34"
+            })
+        end
+    },
 }
 
 local opts = {}
