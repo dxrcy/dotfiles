@@ -47,8 +47,9 @@
             LASTDIR="$PWD"
         fi
     }
-# Add scripts to path
+# Add scripts and binaries to path
     PATH="$HOME/scripts/cmd:$PATH"
+    PATH="$HOME/.local/bin:$PATH"
 # Auto aliases
     eval "$(zoxide init zsh)"
 # Preferred editor for local and remote sessions
