@@ -167,7 +167,9 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
         url="$(gh-url $1)" || { git clone ; return $?; }
         shift
         git clone "$url" $* || return $?
-        cd "${${url##*/}%.git}" # Does not support custom dest. dir
+        target="$1" # Target directory argument, or use URL path
+        [ -z "$target" ] && target="${${url##*/}%.git}" 
+        cd "$target"
     }
 # Nvim
     # Open folder in nvim, instead of new buffer
