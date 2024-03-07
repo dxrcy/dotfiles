@@ -465,4 +465,9 @@
     summary = "Network Error"
     body = "Host .* not found"
     skip_display = true
+[rule]
+    summary = "Network Error"
+    body = "Network timed out"
+    skip_display = true
+
 
