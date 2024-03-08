@@ -467,7 +467,7 @@
     skip_display = true
 [rule]
     summary = "Network Error"
-    body = "Network timed out"
+    body = "Connection timed out"
     skip_display = true
 
 
