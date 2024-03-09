@@ -205,6 +205,16 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
         cargo new "$*"            || return $?
         cd "$1"                   || return $?
     }
+# Common directories
+    alias     docs='cd ~/docs'
+    alias       dl='cd ~/dl'
+    alias     pics='cd ~/pics'
+    alias     vids='cd ~/vids'
+    alias    music='cd ~/music'
+    alias  scripts='cd ~/scripts'
+    alias dotfiles='cd ~/dotfiles'
+    alias     code='cd ~/code'
+    alias  sandbox='cd ~/code/sandbox'
 # Common dotfile editing
     alias .d='cd ~/dotfiles'
     alias .z='cd ~/dotfiles/zsh                && nvim .zshrc'
