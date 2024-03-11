@@ -152,3 +152,7 @@ i<!DOCTYPE html>
 </html>
 <Esc>13kf>la]]
 )
+
+-- Disable deleting lines above/below
+keymap("n", "dj", "j")
+keymap("n", "dk", "k")
