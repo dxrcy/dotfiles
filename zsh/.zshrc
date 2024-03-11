@@ -239,6 +239,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias zig='~/.zvm/bin/zig'
     alias mkd='mkdir-cd'
     alias eo='garfeo-mode'
+    alias ll='cd-last-command'
     mkdir-cd() { # Make directory and cd
         mkdir -p "$*" || return $?
         cd "$*"       || return $?
@@ -253,6 +254,9 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
         printf '\x1b[32m' &&\
         title 'Garfield' &&\
         printf '\x1b[0m'
+    }
+    cd-last-command() { # Same as `cd !!`
+        cd "$(fc -ln -1)" || return $?
     }
 # Misc. Abbreviations / Mispellings
     alias j='just'
