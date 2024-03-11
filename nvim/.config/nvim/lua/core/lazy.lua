@@ -161,6 +161,9 @@ local plugins = {
             })
         end
     },
+
+    -- Code completion
+    { 'Exafunction/codeium.vim' },
 }
 
 local opts = {}
