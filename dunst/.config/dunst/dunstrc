@@ -460,14 +460,20 @@
 #
 # vim: ft=cfg
 
-# Nextcloud
-[rule]
-    summary = "Network Error"
-    body = "Host .* not found"
-    skip_display = true
-[rule]
-    summary = "Network Error"
-    body = "Connection timed out"
+# Custom rules
+[nextcloud]
+    appname = "Nextcloud"
     skip_display = true
 
-
+# [rule2]
+#     summary = "Network Error"
+#     body = "Host .* not found"
+#     background = "#440044"
+#     # skip_display = true
+# [rule3]
+#     summary = "Network Error"
+#     # body = "Connection timed out"
+#     background = "#440000"
+#     # skip_display = true
+#
+#
