@@ -125,6 +125,8 @@ bindsym $mod+period exec --no-startup-id rofi -modi emoji -show emoji
 
 # Clipboard (clipcat-menu)
 bindsym $mod+v exec --no-startup-id clipcat-menu
+# Clear clipboard
+bindsym $mod+Mod1+v exec --no-startup-id clipcatctl clear
 
 # (Dmenu fallback)
 bindsym $mod+Mod1+d exec --no-startup-id dmenu_run -b
