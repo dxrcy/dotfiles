@@ -214,7 +214,13 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias  scripts='cd ~/scripts'
     alias dotfiles='cd ~/dotfiles'
     alias     code='cd ~/code'
-    alias  sandbox='cd ~/code/sandbox'
+    alias sb='sandbox-fzf'
+    sandbox-fzf() {
+        cd ~/code/sandbox || return $?
+        subdir=$(\ls | fzf --height=10 --layout=reverse) || return $?
+        cd "$subdir" || return $?
+        nvim .
+    }
 # Common dotfile editing
     alias .d='cd ~/dotfiles'
     alias .z='cd ~/dotfiles/zsh                && nvim .zshrc'
@@ -274,7 +280,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias ping8='ping 8.8.8.8 -c 10'
     alias cal3='cal -3'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
-    alias sb='cd ~/code/sandbox'
     alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
     alias pk='pkill'
     alias btc='bluetoothctl'
