@@ -197,7 +197,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias  ccl='cargo clippy'
     alias   cn='cargo-new-cd'
     hs() {
-        ghc -Wall -dynamic $* >/dev/null
+        ghc -Wall -dynamic $* >/dev/null || return $?
         ./${1%.hs}
     }
     cargo-new-cd() {
