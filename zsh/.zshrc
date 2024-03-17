@@ -214,7 +214,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias  scripts='cd ~/scripts'
     alias dotfiles='cd ~/dotfiles'
     alias     code='cd ~/code'
-    alias sb='sandbox-fzf'
+    alias s='sandbox-fzf'
     sandbox-fzf() {
         cd ~/code/sandbox || return $?
         subdir=$(\ls | fzf --height=10 --layout=reverse) || return $?
