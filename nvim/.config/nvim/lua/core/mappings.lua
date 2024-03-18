@@ -153,6 +153,9 @@ i<!DOCTYPE html>
 <Esc>13kf>la]]
 )
 
+-- Java! :(
+keymap("n", "<leader>jp", "iSystem.out.print();<Esc>3ha")
+
 -- Disable deleting lines above/below
 keymap("n", "dj", "j")
 keymap("n", "dk", "k")
