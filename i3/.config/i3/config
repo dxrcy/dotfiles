@@ -327,9 +327,15 @@ bindsym $mod+Shift+F3 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-spotify
 for_window [class="i3-sp-spotifytui"] $sp-default, resize set 800 600
 exec --no-startup-id $sp-spotifytui
 
+# Discord
+set $sp-discord 'discord'
+bindsym $mod+F4 exec --no-startup-id $i3_scripts/scratchpad "discord" $sp-discord
+for_window [class="discord"] $sp-default, resize set 1400 1000
+exec --no-startup-id $sp-discord
+
 # Btop
 set $sp-btop 'kitty --class "i3-sp-btop" btop'
-bindsym $mod+F4 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-btop" $sp-btop
+bindsym $mod+F5 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-btop" $sp-btop
 for_window [class="i3-sp-btop"] $sp-default, resize set 1300 900
 exec --no-startup-id $sp-btop
 
@@ -338,7 +344,6 @@ set $sp-windscribe 'windscribe'
 bindsym $mod+Control+w exec --no-startup-id $i3_scripts/scratchpad "windscribe" $sp-windscribe
 for_window [class="Windscribe2"] move scratchpad
 exec --no-startup-id $sp-windscribe
-
 
 # Calculator
 set $sp-calc 'kitty --class "i3-sp-calc" -o window_padding_width=2 sh -c "title -w43 Calculator | lolcat && qalc"'
