@@ -330,7 +330,7 @@ exec --no-startup-id $sp-spotifytui
 # Discord
 set $sp-discord 'discord'
 bindsym $mod+F4 exec --no-startup-id $i3_scripts/scratchpad "discord" $sp-discord
-for_window [class="discord"] $sp-default, resize set 1400 1000
+for_window [class="discord"] $sp-default, resize set 1400 950
 exec --no-startup-id $sp-discord
 
 # Btop
