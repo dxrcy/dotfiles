@@ -7,6 +7,10 @@ vim.cmd("au BufRead,BufNewFile *.gleam set tabstop=2")
 vim.cmd("au BufRead,BufNewFile *.gleam set softtabstop=2")
 vim.cmd("au BufRead,BufNewFile *.gleam set shiftwidth=2")
 
+-- Disable autocomplete for certain languages
+vim.cmd("au BufRead,BufNewFile *.java CodeiumDisable")
+vim.cmd("au BufRead,BufNewFile *.cpp CodeiumDisable")
+
 -- Phonet files
 vim.cmd("au BufRead,BufNewFile phonet set filetype=phonet")
 vim.cmd("au BufRead,BufNewFile *.phonet set filetype=phonet")
