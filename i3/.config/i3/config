@@ -395,8 +395,8 @@ bindsym $mod+b       exec --no-startup-id $scripts/bt connect
 bindsym $mod+Shift+b exec --no-startup-id $scripts/bt disconnect
 exec --no-startup-id 'sleep 2; $scripts/bt connect'
 
-# Conservation mode TLP toggle (gui)
-bindsym $mod+c exec --no-startup-id $scripts/consv gui
+# Conservation mode TLP toggle (rofi gui)
+bindsym $mod+c exec --no-startup-id $scripts/conservation gui
 
 # Garfield comic
 bindsym $mod+g exec --no-startup-id $scripts/garf show
