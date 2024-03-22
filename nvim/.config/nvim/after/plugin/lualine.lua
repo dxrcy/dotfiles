@@ -1,4 +1,12 @@
--- !!! default configs !!!
+local function codeium_status()
+    local status = vim.fn["codeium#GetStatusString"]()
+    if status == " ON" then
+        return ""
+    else
+        return ""
+    end
+end
+
 require('lualine').setup {
     options = {
         icons_enabled = true,
@@ -21,11 +29,11 @@ require('lualine').setup {
     sections = {
         -- Only show first character of mode
         lualine_a = { { 'mode', fmt = function(str) return str:sub(1, 1) end } },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_b = { 'branch', 'diff', 'diagnostics', codeium_status },
         lualine_c = { 'filename' },
         lualine_x = { 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        lualine_z = { 'location' },
     },
     inactive_sections = {
         lualine_a = {},
