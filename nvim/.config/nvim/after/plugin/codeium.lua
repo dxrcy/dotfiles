@@ -13,5 +13,5 @@ vim.keymap.set("i", "<C-k>", function() return vim.fn["codeium#CycleCompletions"
 -- Toggle
 vim.keymap.set("n", "<leader>ct", function()
     vim.fn["CodeiumToggle"]()
-    print("Toggled code completion")
+    print("Code completion: " .. vim.fn["codeium#GetStatusString"]())
 end)
