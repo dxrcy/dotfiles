@@ -1,9 +1,9 @@
 local function codeium_status()
     local status = vim.fn["codeium#GetStatusString"]()
-    if status == " ON" then
-        return ""
-    else
+    if status == "OFF" then
         return ""
+    else
+        return ""
     end
 end
 
