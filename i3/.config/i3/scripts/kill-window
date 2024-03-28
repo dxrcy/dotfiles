@@ -1,0 +1,21 @@
+#!/bin/sh
+
+fallback() {
+    xdotool getactivewindow windowkill
+}
+
+class="$(xdotool getactivewindow getwindowclassname)"
+
+case "$class" in
+    # Kill background process as well
+    # This program is a scratchpad
+    'discord')
+        fallback
+        killall 'Discord'
+        ;;
+
+    # Add custom rules here...
+
+    *) fallback ;;
+esac
+

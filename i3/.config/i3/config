@@ -134,9 +134,12 @@ bindsym $mod+Mod1+d exec --no-startup-id dmenu_run -b
 
 # -------------------------------------------------
 
-# Kill focused window
-bindsym $mod+q kill
-bindsym $mod+scircumflex kill
+# Kill focused window, with custom rules
+bindsym $mod+q exec --no-startup-id $i3_scripts/kill-window
+bindsym $mod+scircumflex exec --no-startup-id $i3_scripts/kill-window 
+# Kill without custom script
+bindsym $mod+Control+q kill
+bindsym $mod+Control+scircumflex kill
 
 # Change focus
 bindsym $mod+h focus left
@@ -482,7 +485,7 @@ set $grey               #a0a0a0
 # define colors for windows:
 #class                      border              bground             text        indicator       child_border
 client.focused              $darkgrey-full      $darkgrey-full      $white      $white          $mediumgrey
-client.unfocused            $darkgrey-trans     $darkgrey-trans     $grey       $darkgrey       $darkgrey
+client.unfocused            $darkgrey-trans     $darkgrey-trans     $grey       $darkgrey-full  $darkgrey-full
 client.focused_inactive     $darkgrey-half      $darkgrey-half      $grey       $black          $black
 client.urgent               $urgentred          $urgentred          $white      $yellowbrown    $yellowbrown
 # client.urgent               $darkblue           $darkblue           $grey       $darkgrey       $darkgrey
