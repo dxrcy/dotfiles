@@ -164,6 +164,15 @@ local plugins = {
 
     -- Code completion
     { "Exafunction/codeium.vim" },
+
+    -- Rust crate versions
+    {
+        'saecki/crates.nvim',
+        tag = 'stable',
+        config = function()
+            require('crates').setup()
+        end,
+    }
 }
 
 local opts = {}
