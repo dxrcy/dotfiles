@@ -357,6 +357,10 @@ exec_always --no-startup-id $sp-calc
 # /SCRATCHPADS
 # -------------------------------------------------
 
+# Sorting algorithm animation                                                                fullscreen, set size;    hide cursor;           read 1 char, without printing
+bindsym F11 exec --no-startup-id kitty --class "i3-sorting" -o window_padding_width=2 sh -c "sorting -fs 50 random && printf '\e[?25l' && timeout 1.5s sh -c 'read -rsn1'"
+for_window [class="i3-sorting"] floating enable, border pixel 2, resize set 917 470, move position center
+
 # Autoclicker script
 # bindsym $mod+m         exec --no-startup-id $scripts/autoclicker
 # bindsym $mod+Control+m exec --no-startup-id $scripts/autoclicker stop
