@@ -247,6 +247,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias mkd='mkdir-cd'
     alias eo='garfeo-mode'
     alias ll='cd-last-command'
+    alias pstree='pstree -U | less'
     mkdir-cd() { # Make directory and cd
         mkdir -p "$*" || return $?
         cd "$*"       || return $?
