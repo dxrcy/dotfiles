@@ -123,7 +123,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     _prompt                         "$EOL"          #
     _prompt         "%F{cyan}"      "%(1j.[%j].)"   # Job count
     _prompt         '%F{green}'     "$_gt "         # >
-    export PS1="$_PS"
+    PS1="$_PS"
 
 #========= ALIASES
 # Tmux
