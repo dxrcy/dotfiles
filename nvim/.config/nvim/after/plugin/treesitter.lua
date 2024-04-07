@@ -44,3 +44,9 @@ parser_config.transcript = {
         files = { "src/parser.c" },            -- note that some parsers also require src/scanner.c or src/scanner.cc
     },
 }
+parser_config.asmish = {
+    install_info = {
+        url = "~/code/tree-sitter-asmish", -- local path or git repo
+        files = { "src/parser.c" },        -- note that some parsers also require src/scanner.c or src/scanner.cc
+    },
+}
