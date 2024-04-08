@@ -155,23 +155,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias grso='git remote set-url origin'
     alias grgo='git remote get-url origin'
     alias  gcl='git-clone-cd'
-    gh-url() { # Git url shorthand
-        url="$1"
-        case "$url" in
-            '') return 1 ;;
-            @*) echo "$GH/${url:1}" ;;
-            :*) echo "$GHU/${url:1}" ;;
-             *) echo "$url" ;;
-         esac
-    }
-    git-clone-cd() { # Git clone alias with URL shorthand, and cd
-        url="$(gh-url $1)" || { git clone ; return $?; }
-        shift
-        git clone "$url" $* || return $?
-        target="$1" # Target directory argument, or use URL path
-        [ -z "$target" ] && target="${${url##*/}%.git}" 
-        cd "$target"
-    }
 # Nvim
     # Open folder in nvim, instead of new buffer
     v() { [ "$*" ] && nvim $* || nvim . }
@@ -197,15 +180,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias  cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
     alias  ccl='cargo clippy'
     alias   cn='cargo-new-cd'
-    hs() {
-        ghc -Wall -dynamic $* >/dev/null || return $?
-        ./${1%.hs}
-    }
-    cargo-new-cd() {
-        [ ! "$*" ] && { cargo new || return $? }
-        cargo new "$*"            || return $?
-        cd "$1"                   || return $?
-    }
 # Common directories
     alias     docs='cd ~/docs'
     alias       dl='cd ~/dl'
@@ -216,12 +190,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias dotfiles='cd ~/dotfiles'
     alias     code='cd ~/code'
     alias s='sandbox-fzf'
-    sandbox-fzf() {
-        cd ~/code/sandbox || return $?
-        subdir=$(\ls | fzf --height=10 --layout=reverse) || return $?
-        cd "$subdir" || return $?
-        nvim .
-    }
 # Common dotfile editing
     alias .d='cd ~/dotfiles'
     alias .z='cd ~/dotfiles/zsh                && nvim .zshrc'
@@ -248,24 +216,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias eo='garfeo-mode'
     alias ll='cd-last-command'
     alias pstree='pstree -U | less'
-    mkdir-cd() { # Make directory and cd
-        mkdir -p "$*" || return $?
-        cd "$*"       || return $?
-    }
-    garfeo-mode() { # https://github.com/dxrcy/garfeo
-        cd ~/code/garfeo &&\
-        tmux split-window -h -c "#{pane_current_path}" 'killall basic-http-server; just; zsh' &&\
-        tmux resize-pane -R 40 &&\
-        tmux select-pane -L &&\
-        ~/scripts/cmd/garf edit &&\
-        clear &&\
-        printf '\x1b[32m' &&\
-        title 'Garfield' &&\
-        printf '\x1b[0m'
-    }
-    cd-last-command() { # Same as `cd !!`
-        cd "$(fc -ln -1)" || return $?
-    }
 # Misc. Abbreviations / Mispellings
     alias j='just'
     alias a='garf'
@@ -288,6 +238,74 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias plc='bluetoothctl'
     alias bhs='basic-http-server'
     am() { garf make $* && exit }
+
+#========= LONGER FUNCTIONS (Aliased)
+    gh-url() { # Git url shorthand
+        url="$1"
+        case "$url" in
+            '') return 1 ;;
+            @*) echo "$GH/${url:1}" ;;
+            :*) echo "$GHU/${url:1}" ;;
+             *) echo "$url" ;;
+         esac
+    }
+    git-clone-cd() { # Git clone alias with URL shorthand, and cd
+        url="$(gh-url $1)" || { git clone ; return $?; }
+        shift
+        git clone "$url" $* || return $?
+        target="$1" # Target directory argument, or use URL path
+        [ -z "$target" ] && target="${${url##*/}%.git}" 
+        cd "$target"
+    }
+    hs() {
+        ghc -Wall -dynamic $* >/dev/null || return $?
+        ./${1%.hs}
+    }
+    cargo-new-cd() {
+        [ ! "$*" ] && { cargo new || return $? }
+        cargo new "$*"            || return $?
+        cd "$1"                   || return $?
+    }
+    sandbox-fzf() {
+        cd ~/code/sandbox || return $?
+        subdir=$(\ls | fzf --height=10 --layout=reverse) || return $?
+        cd "$subdir" || return $?
+        case "$subdir" in
+            'java')
+                tmux split-window -h -c "#{pane_current_path}" 'just run' &&\
+                tmux resize-pane -R 40 &&\
+                tmux split-window -v -c "#{pane_current_path}" 'just diff' &&\
+                tmux select-pane -L &&\
+                tmux split-window -v -c "#{pane_current_path}" 'nvim input' &&\
+                tmux split-window -h -c "#{pane_current_path}" 'nvim output' &&\
+                tmux resize-pane -D 10 &&\
+                tmux select-pane -L &&\
+                tmux select-pane -U &&\
+                nvim Main.java
+                ;;
+            *)
+                nvim .
+                ;;
+        esac
+    }
+    mkdir-cd() { # Make directory and cd
+        mkdir -p "$*" || return $?
+        cd "$*"       || return $?
+    }
+    garfeo-mode() { # https://github.com/dxrcy/garfeo
+        cd ~/code/garfeo &&\
+        tmux split-window -h -c "#{pane_current_path}" 'killall basic-http-server; just; zsh' &&\
+        tmux resize-pane -R 40 &&\
+        tmux select-pane -L &&\
+        ~/scripts/cmd/garf edit &&\
+        clear &&\
+        printf '\x1b[32m' &&\
+        title 'Garfield' &&\
+        printf '\x1b[0m'
+    }
+    cd-last-command() { # Same as `cd !!`
+        cd "$(fc -ln -1)" || return $?
+    }
 
 #========= PACKAGES
     # Autodownload packages
