@@ -268,20 +268,28 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     }
     sandbox-fzf() {
         cd ~/code/sandbox || return $?
-        subdir=$(\ls | fzf --height=10 --layout=reverse) || return $?
+        if [ -n "$1" ]; then
+            subdir="$1"
+        else
+            subdir=$(\ls | fzf --height=10 --layout=reverse) || return $?
+        fi
         cd "$subdir" || return $?
         case "$subdir" in
             'java')
-                tmux split-window -h -c "#{pane_current_path}" 'just run' &&\
+                tmux split-window -h -c "#{pane_current_path}" &&\
+                tmux send-keys 'just run' Enter &&\
+                tmux split-window -v -c "#{pane_current_path}" &&\
                 tmux resize-pane -R 40 &&\
-                tmux split-window -v -c "#{pane_current_path}" 'just diff' &&\
+                tmux send-keys 'just diff' Enter &&\
                 tmux select-pane -L &&\
-                tmux split-window -v -c "#{pane_current_path}" 'nvim input' &&\
-                tmux split-window -h -c "#{pane_current_path}" 'nvim output' &&\
-                tmux resize-pane -D 10 &&\
+                tmux split-window -v -c "#{pane_current_path}" &&\
+                tmux send-keys 'nvim input' Enter &&\
+                tmux split-window -h -c "#{pane_current_path}" &&\
+                tmux send-keys 'nvim output' Enter &&\
+                tmux resize-pane -D 15 &&\
                 tmux select-pane -L &&\
                 tmux select-pane -U &&\
-                nvim Main.java
+                nvim 'Main.java'
                 ;;
             *)
                 nvim .
