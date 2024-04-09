@@ -40,8 +40,8 @@ set $refresh_i3status killall -SIGUSR1 i3status
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
 
 # Backlight
-bindsym XF86MonBrightnessUp   exec --no-startup-id sh $i3_scripts/volume_brightness.sh brightness_up
-bindsym XF86MonBrightnessDown exec --no-startup-id sh $i3_scripts/volume_brightness.sh brightness_down
+bindsym XF86MonBrightnessUp   exec --no-startup-id $i3_scripts/volume_brightness.sh brightness_up
+bindsym XF86MonBrightnessDown exec --no-startup-id $i3_scripts/volume_brightness.sh brightness_down
 # Volume
 bindsym XF86AudioMute        exec --no-startup-id $i3_scripts/volume_brightness.sh volume_mute
 bindsym XF86AudioRaiseVolume exec --no-startup-id $i3_scripts/volume_brightness.sh volume_up
@@ -102,7 +102,7 @@ bindsym $mod+Return exec --no-startup-id kitty tmux
 # Start terminal and attach to most recent tmux session
 bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
 # Start terminal WITHOUT tmux
-bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\x1b[1m(No tmux)\n" && zsh'
+bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\033[1m(No tmux)\n" && zsh'
 
 # Kill unattached tmux sessions
 bindsym $mod+Mod1+Delete exec --no-startup-id $scripts/kill-orphans
@@ -414,9 +414,6 @@ bindsym $mod+g exec --no-startup-id $scripts/garf show
 
 # Open a quick note
 bindsym $mod+o exec --no-startup-id kitty tmux new 'cd ~/docs/notes && nvim $($scripts/notename) && zsh'
-# Open a quick language model (ollama)
-# set $ollama_model 'llama2'
-# bindsym $mod+p exec --no-startup-id kitty sh -c "title 'Hello $ollama_model' && ollama run $ollama_model:latest"
 
 # Screenshot
 # Always starts persistant daemon if not running
