@@ -196,10 +196,11 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias .v='cd ~/dotfiles/nvim/.config/nvim  && nvim .'
     alias .t='cd ~/dotfiles/tmux/.config/tmux  && nvim tmux.conf'
     alias .i='cd ~/dotfiles/i3/.config/i3      && nvim config'
-# Misc. Programs
+# Misc. Programs and options
     alias cat='bat'
     alias ls='eza -l --group-directories-first'
     alias lsa='ls -a'
+    alias lst='ls --total-size'
     alias tree='ls -T'
     alias treea='ls -T -a'
     alias find='fd'
@@ -208,13 +209,13 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias grep="rg"
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
+    alias zig='~/.zvm/bin/zig'
+    alias pstree='pstree -U | less'
     alias zhistory='v ~/.cache/zsh_history'
     alias lf='cd "$(\lf -print-last-dir)"' # Use lf to `cd`, without spawning subshell
-    alias zig='~/.zvm/bin/zig'
     alias mkd='mkdir-cd'
     alias eo='garfeo-mode'
     alias ll='cd-last-command'
-    alias pstree='pstree -U | less'
 # Misc. Abbreviations / Mispellings
     alias j='just'
     alias a='garf'
@@ -236,6 +237,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias btc='bluetoothctl'
     alias plc='bluetoothctl'
     alias bhs='basic-http-server'
+    alias rl='readlink'
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
