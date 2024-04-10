@@ -331,9 +331,9 @@ for_window [class="i3-sp-spotifytui"] $sp-default, resize set 800 600
 exec --no-startup-id $sp-spotifytui
 
 # Discord
-set $sp-discord 'discord'
-bindsym $mod+F4 exec --no-startup-id $i3_scripts/scratchpad "discord" $sp-discord
-for_window [class="discord"] $sp-default, resize set 1400 950
+set $sp-discord 'webcord'
+bindsym $mod+F4 exec --no-startup-id $i3_scripts/scratchpad "webcord" $sp-discord
+for_window [class="WebCord"] $sp-default, resize set 1400 950
 exec --no-startup-id $sp-discord
 
 # Btop
