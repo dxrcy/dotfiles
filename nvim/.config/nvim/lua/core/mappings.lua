@@ -57,7 +57,7 @@ keymap("n", "<leader>lf", function()
 end)
 
 -- Select all
-keymap("n", "<leader>vv", "ggVG")
+keymap("n", "<leader>v", "ggVG")
 
 -- Tree-sitter
 keymap("n", "<leader>tu", "<cmd>TSUpdate<CR>")
