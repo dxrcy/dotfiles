@@ -137,8 +137,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias   ŝ='exit'
     alias  :ŝ='exit'
     alias :ĝŝ='exit'
-    alias   Z='exit'
-    alias  ZZ='exit'
 # Git (even tho lazygit is easier)
     alias    g='git'
     alias   gs='git status'
