@@ -236,6 +236,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias plc='bluetoothctl'
     alias bhs='basic-http-server'
     alias rl='readlink'
+    alias pst='ps-tree'
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
