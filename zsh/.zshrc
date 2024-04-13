@@ -313,6 +313,15 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     cd-last-command() { # Same as `cd !!`
         cd "$(fc -ln -1)" || return $?
     }
+    ps-tree() { # Open process tree in Neovim
+        # Search argument, or jump to bottom
+        [ -n "$1" ] \
+            && arg="+/$1" \
+            || arg='+norm G'
+        file="/tmp/ps-tree.$$"
+        ps ax --forest -o 'cmd' > "$file" || return $?
+        nvim "$file" '+set nowrap' "$arg" || return $?
+    }
 
 #========= PACKAGES
     # Autodownload packages
