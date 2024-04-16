@@ -334,7 +334,7 @@ exec --no-startup-id $sp-spotifytui
 set $sp-discord 'webcord'
 bindsym $mod+F4 exec --no-startup-id $i3_scripts/scratchpad "webcord" $sp-discord
 for_window [class="WebCord"] $sp-default, resize set 1400 950
-exec --no-startup-id $sp-discord
+# exec --no-startup-id $sp-discord
 
 # Btop
 set $sp-btop 'kitty --class "i3-sp-btop" btop'
