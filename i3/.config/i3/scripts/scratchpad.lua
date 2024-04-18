@@ -1,23 +1,35 @@
 Apps = {
     {
+        name = "thunderbird",
+        title = "📧 Thunderbird",
+        command = "thunderbird",
+        class = "Mail",
+        size = { 1300, 900 },
+        config = {
+            "move scratchpad",
+            "move position center",
+            "border pixel 2",
+        },
+    },
+    {
         name = "spotify",
         title = "🎮 Spotify",
         command = "spotify",
-        class = "spotify",
+        instance = "spotify",
         size = { 400, 200 },
     },
     {
         name = "discord",
         title = "🎮 Discord",
         command = "webcord",
-        class = "webcord",
+        instance = "webcord",
         size = { 1400, 950 },
     },
     {
         name = "windscribe",
         title = "🌐 Windscribe",
         command = "windscribe",
-        class = "windscribe",
+        instance = "windscribe",
         config = {
             "move scratchpad",
         },
@@ -26,7 +38,7 @@ Apps = {
         name = "telegram",
         title = "💬 Telegram",
         command = "telegram-desktop",
-        class = "telegram-desktop",
+        instance = "telegram-desktop",
         size = { 1400, 950 },
     },
     {
@@ -34,7 +46,7 @@ Apps = {
         title = "🧮 Calculator",
         command =
         "kitty --class 'scratchpad-calculator' -o window_padding_width=2 sh -c 'title -w43 Calculator | lolcat && qalc'",
-        class = "scratchpad-calculator",
+        instance = "scratchpad-calculator",
         size = { 400, 600 }
     }
 }
@@ -74,19 +86,32 @@ end
 function InitConfig()
     for _, app in ipairs(Apps) do
         local config = app.config or {
-            "floating enable",
+            -- "floating enable",
             "move scratchpad",
             "move position center",
             "border pixel 2",
         }
+
         if app.size ~= nil then
             table.insert(config, "resize set " .. app.size[1] .. " " .. app.size[2])
         end
+
+        local selector_type = "instance"
+        local selector_value = app.instance
+        if app.class ~= nil then
+            selector_type = "class"
+            selector_value = app.class
+
+            if app.instance ~= nil then
+                print("WARNING: cannot use `class` with `instance`")
+            end
+        end
+
         if #config > 0 then
             os.execute(
                 "i3-msg" ..
                 " " ..
-                Quote("[instance=\"" .. app.class .. "\"]") ..
+                Quote("[" .. selector_type .. "=\"" .. selector_value .. "\"]") ..
                 " " ..
                 table.concat(config, ", ")
             )
@@ -130,7 +155,8 @@ function ChooseApp()
 end
 
 function ExecuteToggleCommand(app)
-    Execute(ToggleScriptFile, Quote(app.class), Quote(app.command));
+    -- TODO: Move selector type here
+    Execute(ToggleScriptFile, Quote(app.instance or app.class), Quote(app.command));
 end
 
 function Execute(command, ...)

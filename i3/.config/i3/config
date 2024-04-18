@@ -309,10 +309,14 @@ for_window [tiling] border pixel 0
 exec_always --no-startup-id lua $i3_scripts/scratchpad.lua init
 # Menu, and individual keybinds
 bindsym $mod+c         exec --no-startup-id lua $i3_scripts/scratchpad.lua choose
+bindsym $mod+F2        exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "thunderbird"
 bindsym $mod+F3        exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "spotify"
 bindsym $mod+F4        exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "discord"
 bindsym F12            exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "calculator"
 bindsym $mod+Control+w exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "windscribe"
+
+# Override for non-main window
+for_window [class="thunderbird"] floating enable, resize set 1100 750, border pixel 2
 
 # ---- Legacy config below...
 
@@ -324,19 +328,6 @@ set $sp-kitty 'kitty --class "i3-sp-kitty" tmux'
 bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad-toggle "i3-sp-kitty" $sp-kitty
 for_window [class="i3-sp-kitty"] $sp-default, resize set 800 400
 exec --no-startup-id $sp-kitty
-
-# Email (thunderbird)
-set $sp-thunderbird 'thunderbird'
-bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad-toggle 'thunderbird' $sp-thunderbird
-for_window [class="thunderbird"] floating enable, resize set 1100 750, border pixel 2
-for_window [instance="Mail"] move scratchpad, resize set 1300 900
-exec_always --no-startup-id $sp-thunderbird
-
-# Spotify TUI
-set $sp-spotifytui 'kitty --class "i3-sp-spotifytui" ~/scripts/cmd/spt'
-bindsym $mod+Shift+F3 exec --no-startup-id $i3_scripts/scratchpad-toggle "i3-sp-spotifytui" $sp-spotifytui
-for_window [class="i3-sp-spotifytui"] $sp-default, resize set 800 600
-exec --no-startup-id $sp-spotifytui
 
 # Btop
 set $sp-btop 'kitty --class "i3-sp-btop" btop'
