@@ -331,11 +331,6 @@ for_window [class="thunderbird"] floating enable, resize set 1100 750, border pi
 for_window [instance="Mail"] move scratchpad, resize set 1300 900
 exec_always --no-startup-id $sp-thunderbird
 
-# Spotify
-# set $sp-spotify 'spotify'
-# for_window [class="Spotify"] $sp-default, resize set 400 200
-# exec --no-startup-id $sp-spotify
-
 # Spotify TUI
 set $sp-spotifytui 'kitty --class "i3-sp-spotifytui" ~/scripts/cmd/spt'
 bindsym $mod+Shift+F3 exec --no-startup-id $i3_scripts/scratchpad-toggle "i3-sp-spotifytui" $sp-spotifytui

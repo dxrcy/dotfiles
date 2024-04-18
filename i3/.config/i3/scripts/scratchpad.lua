@@ -65,6 +65,7 @@ function InitConfig()
         local config = {
             "floating enable",
             "move scratchpad",
+            "move position center",
             "border pixel 2",
         }
         if app.size ~= nil then
@@ -116,7 +117,7 @@ function ChooseApp()
 end
 
 function ExecuteToggleCommand(app)
-    Execute(ToggleScriptFile, app.class, app.command);
+    Execute(ToggleScriptFile, Quote(app.class), Quote(app.command));
 end
 
 function Execute(command, ...)
