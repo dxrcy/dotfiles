@@ -303,8 +303,15 @@ for_window [tiling] border pixel 0
 # - Custom window options
 # - Run command on startup
 
-bindsym $mod+c exec --no-startup-id lua $i3_scripts/scratchpad.lua choose
+# Init settings
 exec_always --no-startup-id lua $i3_scripts/scratchpad.lua init
+# Menu
+bindsym $mod+c exec --no-startup-id lua $i3_scripts/scratchpad.lua choose
+# Individual keybinds
+bindsym $mod+F3 exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "spotify"
+bindsym $mod+F4 exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "discord"
+
+# ---- Legacy config below...
 
 # Global window settings
 set $sp-default floating enable, move scratchpad, border pixel 2
@@ -323,20 +330,15 @@ for_window [instance="Mail"] move scratchpad, resize set 1300 900
 exec_always --no-startup-id $sp-thunderbird
 
 # Spotify
-set $sp-spotify 'spotify'
-bindsym $mod+F3 exec --no-startup-id $i3_scripts/scratchpad-toggle "^spotify$" $sp-spotify
-for_window [class="Spotify"] $sp-default, resize set 400 200
-exec --no-startup-id $sp-spotify
+# set $sp-spotify 'spotify'
+# for_window [class="Spotify"] $sp-default, resize set 400 200
+# exec --no-startup-id $sp-spotify
 
 # Spotify TUI
 set $sp-spotifytui 'kitty --class "i3-sp-spotifytui" ~/scripts/cmd/spt'
 bindsym $mod+Shift+F3 exec --no-startup-id $i3_scripts/scratchpad-toggle "i3-sp-spotifytui" $sp-spotifytui
 for_window [class="i3-sp-spotifytui"] $sp-default, resize set 800 600
 exec --no-startup-id $sp-spotifytui
-
-# Discord
-bindsym $mod+F4 exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "discord"
-# for_window [class="WebCord"] $sp-default, resize set 1400 950
 
 # Btop
 set $sp-btop 'kitty --class "i3-sp-btop" btop'

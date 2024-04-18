@@ -1,5 +1,12 @@
 Apps = {
     {
+        name = "spotify",
+        title = "🎮 Spotify",
+        command = "spotify",
+        class = "spotify",
+        size = { 400, 200 },
+    },
+    {
         name = "discord",
         title = "🎮 Discord",
         command = "webcord",
@@ -50,14 +57,18 @@ end
 function InitConfig()
     for _, app in ipairs(Apps) do
         local config = {
+            "floating enable",
             "move scratchpad",
         }
         if app.size ~= nil then
             table.insert(config, "resize set " .. app.size[1] .. " " .. app.size[2])
         end
         if #config > 0 then
-            Execute("i3-msg",
-                Quote("[class=\"" .. app.class .. "\"]"),
+            os.execute(
+                "i3-msg" ..
+                " " ..
+                Quote("[class=\"" .. app.class .. "\"]") ..
+                " " ..
                 table.concat(config, ", ")
             )
         end
