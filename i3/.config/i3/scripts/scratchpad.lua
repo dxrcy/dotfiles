@@ -18,6 +18,9 @@ Apps = {
         title = "🌐 Windscribe",
         command = "windscribe",
         class = "windscribe",
+        config = {
+            "move scratchpad",
+        },
     },
     {
         name = "telegram",
@@ -26,6 +29,14 @@ Apps = {
         class = "telegram-desktop",
         size = { 1400, 950 },
     },
+    {
+        name = "calculator",
+        title = "🧮 Calculator",
+        command =
+        "kitty --class 'scratchpad-calculator' -o window_padding_width=2 sh -c 'title -w43 Calculator | lolcat && qalc'",
+        class = "scratchpad-calculator",
+        size = { 400, 600 }
+    }
 }
 
 ToggleScriptFile = "~/.config/i3/scripts/scratchpad-toggle"
@@ -62,7 +73,7 @@ end
 
 function InitConfig()
     for _, app in ipairs(Apps) do
-        local config = {
+        local config = app.config or {
             "floating enable",
             "move scratchpad",
             "move position center",
@@ -95,8 +106,10 @@ end
 function ChooseApp()
     local options = ""
     for i, app in ipairs(Apps) do
-        if i > 1 then options = options .. "\n" end
-        options = options .. app.title
+        if app.title ~= nil then
+            if i > 1 then options = options .. "\n" end
+            options = options .. app.title
+        end
     end
 
     local response = Execute("echo", Quote(options), "|", "rofi", "-dmenu", "-i")
@@ -135,7 +148,7 @@ function Execute(command, ...)
 end
 
 function Quote(string)
-    return "'" .. string .. "'"
+    return '"' .. string .. '"'
 end
 
 function FindAppFromName(name)
