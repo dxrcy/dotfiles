@@ -7,6 +7,7 @@ set $mod Mod4
 
 # Path for scripts
 set $i3_scripts ~/.config/i3/scripts
+set $scratchpads ~/.config/i3/scratchpads
 set $scripts ~/scripts/cmd
 
 # Font for window titles
@@ -302,55 +303,56 @@ for_window [tiling] border pixel 0
 # - Custom window options
 # - Run command on startup
 
+bindsym $mod+c exec --no-startup-id lua $i3_scripts/scratchpad.lua choose
+exec_always --no-startup-id lua $i3_scripts/scratchpad.lua init
+
 # Global window settings
 set $sp-default floating enable, move scratchpad, border pixel 2
 
 # Terminal (kitty)
 set $sp-kitty 'kitty --class "i3-sp-kitty" tmux'
-bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-kitty" $sp-kitty
+bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad-toggle "i3-sp-kitty" $sp-kitty
 for_window [class="i3-sp-kitty"] $sp-default, resize set 800 400
 exec --no-startup-id $sp-kitty
 
 # Email (thunderbird)
 set $sp-thunderbird 'thunderbird'
-bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad 'thunderbird' $sp-thunderbird
+bindsym $mod+F2 exec --no-startup-id $i3_scripts/scratchpad-toggle 'thunderbird' $sp-thunderbird
 for_window [class="thunderbird"] floating enable, resize set 1100 750, border pixel 2
 for_window [instance="Mail"] move scratchpad, resize set 1300 900
 exec_always --no-startup-id $sp-thunderbird
 
 # Spotify
 set $sp-spotify 'spotify'
-bindsym $mod+F3 exec --no-startup-id $i3_scripts/scratchpad "^spotify$" $sp-spotify
+bindsym $mod+F3 exec --no-startup-id $i3_scripts/scratchpad-toggle "^spotify$" $sp-spotify
 for_window [class="Spotify"] $sp-default, resize set 400 200
 exec --no-startup-id $sp-spotify
 
 # Spotify TUI
 set $sp-spotifytui 'kitty --class "i3-sp-spotifytui" ~/scripts/cmd/spt'
-bindsym $mod+Shift+F3 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-spotifytui" $sp-spotifytui
+bindsym $mod+Shift+F3 exec --no-startup-id $i3_scripts/scratchpad-toggle "i3-sp-spotifytui" $sp-spotifytui
 for_window [class="i3-sp-spotifytui"] $sp-default, resize set 800 600
 exec --no-startup-id $sp-spotifytui
 
 # Discord
-set $sp-discord 'webcord'
-bindsym $mod+F4 exec --no-startup-id $i3_scripts/scratchpad "webcord" $sp-discord
-for_window [class="WebCord"] $sp-default, resize set 1400 950
-# exec --no-startup-id $sp-discord
+bindsym $mod+F4 exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "discord"
+# for_window [class="WebCord"] $sp-default, resize set 1400 950
 
 # Btop
 set $sp-btop 'kitty --class "i3-sp-btop" btop'
-bindsym $mod+F5 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-btop" $sp-btop
+bindsym $mod+F5 exec --no-startup-id $i3_scripts/scratchpad-toggle "i3-sp-btop" $sp-btop
 for_window [class="i3-sp-btop"] $sp-default, resize set 1300 900
 exec --no-startup-id $sp-btop
 
 # Windscribe
 set $sp-windscribe 'windscribe'
-bindsym $mod+Control+w exec --no-startup-id $i3_scripts/scratchpad "windscribe" $sp-windscribe
-for_window [class="Windscribe2"] move scratchpad
+bindsym $mod+Control+w exec --no-startup-id $i3_scripts/scratchpad-toggle "windscribe" $sp-windscribe
+for_window [instance="windscribe"] move scratchpad
 exec --no-startup-id $sp-windscribe
 
 # Calculator
 set $sp-calc 'kitty --class "i3-sp-calc" -o window_padding_width=2 sh -c "title -w43 Calculator | lolcat && qalc"'
-bindsym F12 exec --no-startup-id $i3_scripts/scratchpad "i3-sp-calc" $sp-calc
+bindsym F12 exec --no-startup-id $i3_scripts/scratchpad-toggle "i3-sp-calc" $sp-calc
 for_window [class="i3-sp-calc"] $sp-default resize set 400 600
 exec_always --no-startup-id $sp-calc
 
@@ -407,7 +409,7 @@ bindsym $mod+Shift+b exec --no-startup-id $scripts/bt disconnect
 exec --no-startup-id 'sleep 2; $scripts/bt connect'
 
 # Conservation mode TLP toggle (rofi gui)
-bindsym $mod+c exec --no-startup-id $scripts/conservation gui
+bindsym $mod+Control+c exec --no-startup-id $scripts/conservation gui
 
 # Garfield comic
 bindsym $mod+g exec --no-startup-id $scripts/garf show
