@@ -320,18 +320,20 @@ for_window [class="thunderbird"] floating enable, resize set 1100 750, border pi
 
 # ---- Legacy config below...
 
+# for_window [instance="webcord"] floating enable, move position center, resize set 1400 950
+
 # Global window settings
 set $sp-default floating enable, move scratchpad, border pixel 2
 
 # Terminal (kitty)
 set $sp-kitty 'kitty --class "i3-sp-kitty" tmux'
-bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad-toggle "i3-sp-kitty" $sp-kitty
+bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad-toggle instance "i3-sp-kitty" $sp-kitty
 for_window [class="i3-sp-kitty"] $sp-default, resize set 800 400
 exec --no-startup-id $sp-kitty
 
 # Btop
 set $sp-btop 'kitty --class "i3-sp-btop" btop'
-bindsym $mod+F5 exec --no-startup-id $i3_scripts/scratchpad-toggle "i3-sp-btop" $sp-btop
+bindsym $mod+F5 exec --no-startup-id $i3_scripts/scratchpad-toggle instance "i3-sp-btop" $sp-btop
 for_window [class="i3-sp-btop"] $sp-default, resize set 1300 900
 exec --no-startup-id $sp-btop
 

@@ -3,7 +3,7 @@ Apps = {
         name = "thunderbird",
         title = "📧 Thunderbird",
         command = "thunderbird",
-        class = "Mail",
+        instance = "Mail",
         size = { 1300, 900 },
         config = {
             "move scratchpad",
@@ -102,6 +102,7 @@ function InitConfig()
             selector_type = "class"
             selector_value = app.class
 
+            -- TODO: Move to a CheckConfig function
             if app.instance ~= nil then
                 print("WARNING: cannot use `class` with `instance`")
             end
@@ -155,8 +156,11 @@ function ChooseApp()
 end
 
 function ExecuteToggleCommand(app)
-    -- TODO: Move selector type here
-    Execute(ToggleScriptFile, Quote(app.instance or app.class), Quote(app.command));
+    if app.instance ~= nil then
+        Execute(ToggleScriptFile, "instance", Quote(app.instance), Quote(app.command));
+    else
+        Execute(ToggleScriptFile, "class", Quote(app.class), Quote(app.command));
+    end
 end
 
 function Execute(command, ...)

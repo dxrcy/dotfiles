@@ -7,9 +7,13 @@
 
 ############# GLOBVAR/PREP ###############
 
-name="$1"
+selector="$1"
+name="$2"
+command="$3"
+
 Usage="\
   Usage: $(basename $0) <name> <command>
+  <selector> : 'instance' or 'class'
   <name>    : name the window has
   <command> : command used to launch window in case doesnt exist
   E.g.:  $(basename $0) terminal \"$TERMINAL --title=terminal\"
@@ -28,7 +32,7 @@ Usage="\
 
 ############## USGCHECKS #################
 
-if [[ $# -lt 1 || "$1" =~ ^(-h|--help)$ || $# -gt 2 ]]; then
+if [[ $# -lt 1 || "$1" =~ ^(-h|--help)$ || $# -gt 3 ]]; then
   echo "$Usage"
   exit 1
 fi
@@ -37,17 +41,11 @@ fi
 
 visible_wid="$(xdotool search --onlyvisible --classname "${name}" | tail -1 2> /dev/null)"
 
-# Use `class` for thunderbird
-if [ "$name" = 'thunderbird' ]; then
-    selector='class';
-else
-    selector='instance';
-fi
-
 if [[ -z "$visible_wid" ]]; then # If the scratchpad window is not visible
   wid="$(xdotool search --classname "${name}" | tail -1 2> /dev/null)"
+
   if [[ -z "$wid" ]]; then       # If the scratchpad window does not exist
-    if [[ $# -ne 2 ]]; then    # If a command to launch it was not provided
+    if [[ $# -ne 3 ]]; then    # If a command to launch it was not provided
       echo "${name} not found. A command was not provided to launch it."
       exit 2
     fi
@@ -55,8 +53,8 @@ if [[ -z "$visible_wid" ]]; then # If the scratchpad window is not visible
     # Program arguments are ignored
     # Forking process, so this script is not halted until program closes
     # This does not catch any errors! (I think)
-    echo "${name} not found. Executing: '${2}'."
-    eval "$2" &
+    echo "${name} not found. Executing: '$command'."
+    eval "$command" &
 
     # Constantly try to show newly spawned window
     # Much more reliable than waiting with `xdotool`
