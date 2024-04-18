@@ -153,25 +153,17 @@ function InitConfig()
             table.insert(config, "resize set " .. app.size[1] .. " " .. app.size[2])
         end
 
+        local selector = app.instance or app.class
         local selector_type = "instance"
-        local selector_value = app.instance
         if app.class ~= nil then
             selector_type = "class"
-            selector_value = app.class
-
-            -- TODO: Move to a CheckConfig function
-            if app.instance ~= nil then
-                print("WARNING: cannot use `class` with `instance`")
-            end
         end
 
         if #config > 0 then
-            os.execute(
-                "i3-msg" ..
-                " " ..
-                Quote("[" .. selector_type .. "=\"" .. selector_value .. "\"]") ..
-                " " ..
-                table.concat(config, ", ")
+            -- TODO: Convert to `Execute` call
+            os.execute("i3-msg" ..
+                " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
+                " " .. table.concat(config, ", ")
             )
         end
     end
@@ -214,11 +206,84 @@ end
 
 -- TODO: Don't use a script file, write logic in Lua
 function ExecuteToggleCommand(app)
-    if app.instance ~= nil then
-        Execute(ToggleScriptFile, "instance", Quote(app.instance), Quote(app.command));
-    else
-        Execute(ToggleScriptFile, "class", Quote(app.class), Quote(app.command));
+    local selector = app.instance or app.class
+    local selector_type = "instance"
+    if app.class ~= nil then
+        selector_type = "class"
     end
+
+    local visible_wid = GetWindowID(app, true)
+    if visible_wid == nil then
+        print("No window currently visible...")
+        local wid = GetWindowID(app, false)
+
+        -- No window found, spawn new
+        if wid == nil then
+            print("No window found...")
+            os.execute(app.command .. "&")
+
+            -- Continuously try to show
+            for _ = 0, 100 do
+                Sleep(0.1)
+
+                -- Apply normal config: set as scratchpad (hidden)
+                -- This must be done before trying to `scratchpad show`
+                InitConfig()
+                -- Show scratchpad
+                local exitcode = os.execute("i3-msg" ..
+                    " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
+                    " " .. "scratchpad show, move position center"
+                )
+
+                -- Try again if failed to show
+                -- Happens if window has not yet opened
+                if exitcode == true then
+                    print("Done.")
+                    return
+                end
+            end
+
+            -- Give up
+            local msg = "Failed to show scratchpad after many attempts."
+            print(msg)
+            Execute("notify-send", Quote(msg))
+            os.exit(4)
+        end
+    end
+
+    -- Hide or Show
+    print("Toggling visiblity...")
+    os.execute("i3-msg" ..
+        " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
+        " " .. "scratchpad show, move position center"
+    )
+end
+
+function GetWindowID(app, only_visible)
+    local selector = app.instance or app.class
+    local selector_type = "--classname" -- Instance
+    if app.class ~= nil then
+        selector_type = "--class"       -- Class
+    end
+
+    local visibility = ""
+    if only_visible then
+        visibility = "--onlyvisible"
+    end
+
+    local wid = Trim(Execute(
+        "xdotool", "search", visibility, selector_type, Quote(selector),
+        "|", "tail", "-1"
+    ))
+
+    if wid == "" then
+        return nil
+    end
+    return wid
+end
+
+function Sleep(time)
+    Execute("sleep", tonumber(time))
 end
 
 function Execute(command, ...)
@@ -226,13 +291,16 @@ function Execute(command, ...)
         command = command .. " " .. arg
     end
 
+    print(command)
+
     local handle = io.popen(command)
     if handle == nil then
         os.exit(99)
     end
     local result = handle:read("*a")
-    handle:close()
-    return result
+    local exitcode = handle:close()
+    print(exitcode)
+    return result, exitcode
 end
 
 function Quote(string)
