@@ -54,6 +54,8 @@ Apps = {
 ToggleScriptFile = "~/.config/i3/scripts/scratchpad-toggle"
 
 function Main()
+    CheckConfig()
+
     if #arg == 0 then
         PrintUsage()
         os.exit(0)
@@ -81,6 +83,61 @@ end
 
 function PrintUsage()
     print("Usage: idk...")
+end
+
+-- Type checking for `Apps`
+function CheckConfig()
+    for i, app in ipairs(Apps) do
+        -- name
+        if app.name == nil then
+            print("WARNING: app has no name [index " .. i .. "]")
+        elseif type(app.name) ~= "string" then
+            print("WARNING: app name is not a string [index " .. i .. "]")
+        else
+            -- title
+            if app.title == nil then
+                print("WARNING: app has no title [" .. app.name .. "]");
+            elseif type(app.title) ~= "string" then
+                print("WARNING: app title is not a string [" .. app.name .. "]");
+            end
+            -- command
+            if app.command == nil then
+                print("WARNING: app has no command [" .. app.name .. "]");
+            elseif type(app.command) ~= "string" then
+                print("WARNING: app command is not a string [" .. app.name .. "]");
+            end
+            -- instance, class
+            if app.instance ~= nil and app.class ~= nil then
+                print("WARNING: cannot use `instance` with `class` [" .. app.name .. "]")
+            elseif app.instance == nil and app.class == nil then
+                print("WARNING: neither `instance` nor `class` specified [" .. app.name .. "]")
+            elseif type(app.instance or app.class) ~= "string" then
+                print("WARNING: app instance or class is not a string [" .. app.name .. "]");
+            end
+            -- size
+            if app.size ~= nil then
+                if type(app.size) ~= "table" then
+                    print("WARNING: app size is not a table [" .. app.name .. "]");
+                elseif #app.size ~= 2 then
+                    print("WARNING: app size is not a 2 element table [" .. app.name .. "]");
+                elseif type(app.size[1]) ~= "number" or type(app.size[2]) ~= "number" then
+                    print("WARNING: app size is not a number table [" .. app.name .. "]");
+                end
+            end
+            -- config
+            if app.config ~= nil then
+                if type(app.config) ~= "table" then
+                    print("WARNING: app config is not a table [" .. app.name .. "]");
+                else
+                    for _, config in ipairs(app.config) do
+                        if type(config) ~= "string" then
+                            print("WARNING: app config is not a string table [" .. app.name .. "]");
+                        end
+                    end
+                end
+            end
+        end
+    end
 end
 
 function InitConfig()
@@ -155,6 +212,7 @@ function ChooseApp()
     ExecuteToggleCommand(app);
 end
 
+-- TODO: Don't use a script file, write logic in Lua
 function ExecuteToggleCommand(app)
     if app.instance ~= nil then
         Execute(ToggleScriptFile, "instance", Quote(app.instance), Quote(app.command));
