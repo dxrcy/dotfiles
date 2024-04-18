@@ -67,7 +67,7 @@ function InitConfig()
             os.execute(
                 "i3-msg" ..
                 " " ..
-                Quote("[class=\"" .. app.class .. "\"]") ..
+                Quote("[instance=\"" .. app.class .. "\"]") ..
                 " " ..
                 table.concat(config, ", ")
             )
