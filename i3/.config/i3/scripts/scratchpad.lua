@@ -19,6 +19,13 @@ Apps = {
         command = "windscribe",
         class = "windscribe",
     },
+    {
+        name = "telegram",
+        title = "💬 Telegram",
+        command = "telegram-desktop",
+        class = "telegram-desktop",
+        size = { 1400, 950 },
+    },
 }
 
 ToggleScriptFile = "~/.config/i3/scripts/scratchpad-toggle"
@@ -26,27 +33,26 @@ ToggleScriptFile = "~/.config/i3/scripts/scratchpad-toggle"
 function Main()
     if #arg == 0 then
         PrintUsage()
-        os.exit(1)
+        os.exit(0)
     end
 
     local subcommand = arg[1]
     if subcommand == "init" then
         InitConfig()
-    elseif
-        subcommand == "choose" then
-        ChooseApp()
     elseif subcommand == "toggle" then
         if #arg < 2 then
             PrintUsage()
             os.exit(1)
         end
         ToggleApp(arg[2])
+    elseif subcommand == "choose" then
+        ChooseApp()
     elseif subcommand == "hide-all" then
         print("NOT YET IMPLEMENTED")
-        os.exit(1)
+        os.exit(8)
     else
         PrintUsage()
-        os.exit(1)
+        os.exit(0)
     end
 end
 
@@ -59,6 +65,7 @@ function InitConfig()
         local config = {
             "floating enable",
             "move scratchpad",
+            "border pixel 2",
         }
         if app.size ~= nil then
             table.insert(config, "resize set " .. app.size[1] .. " " .. app.size[2])
@@ -73,6 +80,15 @@ function InitConfig()
             )
         end
     end
+end
+
+function ToggleApp(name)
+    local app = FindAppFromName(name)
+    if app == nil then
+        print("no app with that name")
+        os.exit(2)
+    end
+    ExecuteToggleCommand(app)
 end
 
 function ChooseApp()
@@ -93,19 +109,10 @@ function ChooseApp()
     local app = FindAppFromTitle(response)
     if app == nil then
         print("app not found! this is unexpected!")
-        os.exit(1)
+        os.exit(3)
     end
 
     ExecuteToggleCommand(app);
-end
-
-function ToggleApp(name)
-    local app = FindAppFromName(name)
-    if app == nil then
-        print("no app with that name")
-        os.exit(1)
-    end
-    ExecuteToggleCommand(app)
 end
 
 function ExecuteToggleCommand(app)
@@ -119,7 +126,7 @@ function Execute(command, ...)
 
     local handle = io.popen(command)
     if handle == nil then
-        os.exit(1)
+        os.exit(99)
     end
     local result = handle:read("*a")
     handle:close()

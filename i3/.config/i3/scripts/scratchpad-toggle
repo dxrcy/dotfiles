@@ -65,6 +65,10 @@ if [[ -z "$visible_wid" ]]; then # If the scratchpad window is not visible
     while [ "$attempts" -lt "$max_attempts" ]; do
         attempts=$((attempts+1))
         sleep 0.05;
+
+        # Re-apply window config
+        lua "$HOME/.config/i3/scripts/scratchpad.lua" init
+
         i3-msg "[$selector=\"${name}\"] scratchpad show; \
                 [$selector=\"${name}\"] move position center"
         if [ "$?" = 0 ]; then
