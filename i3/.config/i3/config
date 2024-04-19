@@ -6,9 +6,9 @@
 set $mod Mod4
 
 # Path for scripts
-set $i3_scripts ~/.config/i3/scripts
-set $scratchpads ~/.config/i3/scratchpads
-set $scripts ~/scripts/cmd
+set $scripts            ~/scripts/cmd
+set $i3_scripts         ~/.config/i3/scripts
+set $scratchpad_lua lua ~/.config/i3/scratchpad.lua
 
 # Font for window titles
 font pango: Noto Sans Regular 10
@@ -306,16 +306,16 @@ for_window [tiling] border pixel 0
 # - Run command on startup
 
 # Init settings (every reload)
-exec_always --no-startup-id lua $i3_scripts/scratchpad.lua apply
+exec_always --no-startup-id $scratchpad_lua apply
 # Autostart (only on startup)
-exec --no-startup-id lua $i3_scripts/scratchpad.lua autostart
+exec --no-startup-id $scratchpad_lua autostart
 # Menu, and individual keybinds
-bindsym $mod+c         exec --no-startup-id lua $i3_scripts/scratchpad.lua choose
-bindsym $mod+F2        exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "thunderbird"
-bindsym $mod+F3        exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "spotify"
-bindsym $mod+F4        exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "discord"
-bindsym F12            exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "calculator"
-bindsym $mod+Control+w exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "windscribe"
+bindsym $mod+c         exec --no-startup-id $scratchpad_lua choose
+bindsym $mod+F2        exec --no-startup-id $scratchpad_lua toggle "thunderbird"
+bindsym $mod+F3        exec --no-startup-id $scratchpad_lua toggle "spotify"
+bindsym $mod+F4        exec --no-startup-id $scratchpad_lua toggle "discord"
+bindsym F12            exec --no-startup-id $scratchpad_lua toggle "calculator"
+bindsym $mod+Control+w exec --no-startup-id $scratchpad_lua toggle "windscribe"
 
 # Override for non-main window
 for_window [class="thunderbird"] floating enable, resize set 1100 750, border pixel 2
