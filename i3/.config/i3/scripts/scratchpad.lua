@@ -35,6 +35,7 @@ Apps = {
         config = {
             "move scratchpad",
         },
+        autostart = true,
     },
     {
         name = "telegram",
@@ -52,8 +53,6 @@ Apps = {
         size = { 400, 600 }
     }
 }
-
-ToggleScriptFile = "~/.config/i3/scripts/scratchpad-toggle"
 
 -- TODO: Convert `os.execute` calls to `Execute` ?
 -- TODO: Document functions
@@ -82,9 +81,12 @@ function Main()
         ToggleApp(arg[2])
     elseif subcommand == "choose" then
         ChooseApp()
+    elseif subcommand == "hide" then
+        print("NOT YET IMPLEMENTED")
+        os.exit(88)
     elseif subcommand == "hide-all" then
         print("NOT YET IMPLEMENTED")
-        os.exit(8)
+        os.exit(88)
     else
         PrintUsage()
         os.exit(0)
@@ -92,7 +94,26 @@ function Main()
 end
 
 function PrintUsage()
-    print("Usage: idk...")
+    print("scratchpad.lua: A configured scratchpad manager for i3")
+    print()
+    print("USAGE:")
+    print("    lua scratchpad.lua [SUBCOMMAND]")
+    print()
+    print("SUBCOMMAND:")
+    print("    init")
+    print("        Reapply config for all apps")
+    print("    autostart")
+    print("        Autostart apps with `autostart = true`")
+    print("    toggle [APP]")
+    print("        Toggle visibility of an app")
+    print("    choose")
+    print("        Open dialog to choose an app to toggle")
+    print("    hide")
+    print("        Hide an app")
+    print("        (Not yet implemented)")
+    print("    hide-all")
+    print("        Hide all apps")
+    print("        (Not yet implemented)")
 end
 
 -- Type checking for `Apps`
