@@ -112,10 +112,10 @@ function Main()
             os.exit(1)
         end
         ToggleApp(arg[2])
+    elseif subcommand == "toggle-active" then
+        ToggleActiveApp()
     elseif subcommand == "choose" then
         ChooseApp()
-    elseif subcommand == "hide-active" then
-        HideActive()
     elseif subcommand == "hide-all" then
         print("NOT YET IMPLEMENTED")
         os.exit(88)
@@ -138,11 +138,10 @@ function PrintUsage()
     print("        Autostart apps with `autostart = true`")
     print("    toggle [APP]")
     print("        Toggle visibility of an app")
+    print("    toggle-active")
+    print("        Toggle visibility of focused or last focused app")
     print("    choose")
     print("        Open dialog to choose an app to toggle")
-    print("    hide-active")
-    print("        Hide focused app")
-    print("        (Not yet implemented)")
     print("    hide-all")
     print("        Hide all apps")
     print("        (Not yet implemented)")
@@ -300,7 +299,7 @@ function ChooseApp()
     ExecuteStartOrToggle(app);
 end
 
-function HideActive()
+function ToggleActiveApp()
     local line = Execute("xprop", "-id", "$(xdotool getactivewindow)", "|", "grep", " 'WM_CLASS'");
     if line == true then
         return
