@@ -56,6 +56,7 @@ Apps = {
 
 -- TODO: Convert `os.execute` calls to `Execute` ?
 -- TODO: Document functions
+-- TODO: Add more logging
 
 -- API
 ---------------------------
@@ -63,14 +64,18 @@ Apps = {
 function Main()
     CheckConfig()
 
-    if #arg == 0 then
+    local subcommand = arg[1]
+    if #arg == 0
+        or subcommand == "-h"
+        or subcommand == "--help"
+        or subcommand == "help"
+    then
         PrintUsage()
         os.exit(0)
     end
 
-    local subcommand = arg[1]
-    if subcommand == "init" then
-        InitAllConfig()
+    if subcommand == "apply" then
+        ApplyAllConfig()
     elseif subcommand == "autostart" then
         AutostartApps()
     elseif subcommand == "toggle" then
@@ -89,7 +94,7 @@ function Main()
         os.exit(88)
     else
         PrintUsage()
-        os.exit(0)
+        os.exit(1)
     end
 end
 
@@ -100,7 +105,7 @@ function PrintUsage()
     print("    lua scratchpad.lua [SUBCOMMAND]")
     print()
     print("SUBCOMMAND:")
-    print("    init")
+    print("    apply")
     print("        Reapply config for all apps")
     print("    autostart")
     print("        Autostart apps with `autostart = true`")
@@ -188,14 +193,13 @@ end
 -- API SUBCOMMANDS
 ---------------------------
 
-function InitAllConfig()
+function ApplyAllConfig()
     for _, app in ipairs(Apps) do
-        InitConfig(app)
+        ApplyConfig(app)
     end
 end
 
-function InitConfig(app)
-    print("INIT FOR: " .. app.name)
+function ApplyConfig(app)
     local config = app.config or {
         -- "floating enable",
         "move scratchpad",
@@ -274,7 +278,7 @@ function ExecuteStartAndWait(app, toggle_after_start)
 
         -- Apply normal config: set as scratchpad (hidden)
         -- This must be done before trying to `scratchpad show`
-        InitConfig(app)
+        ApplyConfig(app)
         -- Show scratchpad
         local exitcode = os.execute("i3-msg" ..
             " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..

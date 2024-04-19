@@ -306,7 +306,7 @@ for_window [tiling] border pixel 0
 # - Run command on startup
 
 # Init settings (every reload)
-exec_always --no-startup-id lua $i3_scripts/scratchpad.lua init
+exec_always --no-startup-id lua $i3_scripts/scratchpad.lua apply
 # Autostart (only on startup)
 exec --no-startup-id lua $i3_scripts/scratchpad.lua autostart
 # Menu, and individual keybinds
