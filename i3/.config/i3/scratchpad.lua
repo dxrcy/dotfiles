@@ -62,14 +62,14 @@ Apps = {
         autostart = true,
         in_menu = true,
     },
-    -- {
-    --     name = "telegram",
-    --     title = "💬 Telegram",
-    --     command = "telegram-desktop",
-    --     instance = "telegram-desktop",
-    --     size = { 1400, 950 },
-    --     in_menu = true,
-    -- },
+    {
+        name = "telegram",
+        title = "💬 Telegram",
+        command = "telegram-desktop",
+        instance = "telegram-desktop",
+        size = { 1400, 950 },
+        in_menu = true,
+    },
     {
         name = "btop",
         title = "📊 Btop",
@@ -79,6 +79,8 @@ Apps = {
         in_menu = true,
     },
 }
+
+RecentFilename = "/tmp/scratchpad.recent"
 
 -- TODO: Convert `os.execute` calls to `Execute` ? or other way around ?
 -- TODO: Document functions
@@ -308,30 +310,29 @@ function HideActive()
 
     local app = FindAppFromInstanceOrClass(instance, class);
     if app == nil then
-        print("App not found.")
+        ShowRecent()
         return
     end
 
     ExecuteToggleVisibility(app)
 end
 
-function ExtractInstanceAndClass(line)
-    local instance = ""
-    local class = ""
-
-    local parts = line:gmatch('"([^"]*)"')
-    local i = 0
-    for part in parts do
-        if i == 0 then
-            instance = part
-        elseif i == 1 then
-            class = part
-        else
-            break
-        end
-        i = i + 1
+function ShowRecent()
+    local line = io.open(RecentFilename, "r")
+    if line == nil then
+        return
     end
-    return instance, class
+    local name = line:read()
+    line:close()
+    if name == nil then
+        return
+    end
+    local app = FindAppFromName(name)
+    if app == nil then
+        print("App not found with that name")
+        return
+    end
+    ExecuteStartOrToggle(app)
 end
 
 -- SYSTEM INTERACTION
@@ -395,11 +396,13 @@ end
 function ExecuteToggleVisibility(app)
     local selector_type, selector = GetSelectorNameAndValue(app)
 
+    local file = io.open(RecentFilename, "w")
+    if file then
+        file:write(app.name)
+        file:close()
+    end
+
     print("Toggling visiblity...")
-    print("i3-msg" ..
-        " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
-        " " .. "scratchpad show, move position center"
-    )
     os.execute("i3-msg" ..
         " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
         " " .. "scratchpad show, move position center"
@@ -461,6 +464,25 @@ function GetSelectorNameAndValue(app, instance_key, class_key)
     else
         return nil, nil -- Checked by `CheckConfig`
     end
+end
+
+function ExtractInstanceAndClass(line)
+    local instance = ""
+    local class = ""
+
+    local parts = line:gmatch('"([^"]*)"')
+    local i = 0
+    for part in parts do
+        if i == 0 then
+            instance = part
+        elseif i == 1 then
+            class = part
+        else
+            break
+        end
+        i = i + 1
+    end
+    return instance, class
 end
 
 function FindAppFromName(name)
