@@ -62,14 +62,14 @@ Apps = {
         autostart = true,
         in_menu = true,
     },
-    {
-        name = "telegram",
-        title = "💬 Telegram",
-        command = "telegram-desktop",
-        instance = "telegram-desktop",
-        size = { 1400, 950 },
-        in_menu = true,
-    },
+    -- {
+    --     name = "telegram",
+    --     title = "💬 Telegram",
+    --     command = "telegram-desktop",
+    --     instance = "telegram-desktop",
+    --     size = { 1400, 950 },
+    --     in_menu = true,
+    -- },
     {
         name = "btop",
         title = "📊 Btop",
