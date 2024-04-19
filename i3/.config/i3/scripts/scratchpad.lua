@@ -14,7 +14,7 @@ Apps = {
     },
     {
         name = "spotify",
-        title = "🎮 Spotify",
+        title = "🎵 Spotify",
         command = "spotify",
         instance = "spotify",
         size = { 400, 200 },
