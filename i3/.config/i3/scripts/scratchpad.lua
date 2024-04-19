@@ -55,6 +55,12 @@ Apps = {
 
 ToggleScriptFile = "~/.config/i3/scripts/scratchpad-toggle"
 
+-- TODO: Convert `os.execute` calls to `Execute` ?
+-- TODO: Document functions
+
+-- API
+---------------------------
+
 function Main()
     CheckConfig()
 
@@ -65,7 +71,7 @@ function Main()
 
     local subcommand = arg[1]
     if subcommand == "init" then
-        InitConfig()
+        InitAllConfig()
     elseif subcommand == "autostart" then
         AutostartApps()
     elseif subcommand == "toggle" then
@@ -140,7 +146,7 @@ function CheckConfig()
                     end
                 end
             end
-            -- unknown key
+            -- Unknown key
             for key in pairs(app) do
                 if key ~= "name"
                     and key ~= "title"
@@ -158,39 +164,42 @@ function CheckConfig()
     end
 end
 
-function InitConfig()
+-- API SUBCOMMANDS
+---------------------------
+
+function InitAllConfig()
     for _, app in ipairs(Apps) do
-        local config = app.config or {
-            -- "floating enable",
-            "move scratchpad",
-            "move position center",
-            "border pixel 2",
-        }
+        InitConfig(app)
+    end
+end
 
-        if app.size ~= nil then
-            table.insert(config, "resize set " .. app.size[1] .. " " .. app.size[2])
-        end
+function InitConfig(app)
+    print("INIT FOR: " .. app.name)
+    local config = app.config or {
+        -- "floating enable",
+        "move scratchpad",
+        "move position center",
+        "border pixel 2",
+    }
 
-        local selector = app.instance or app.class
-        local selector_type = "instance"
-        if app.class ~= nil then
-            selector_type = "class"
-        end
+    if app.size ~= nil then
+        table.insert(config, "resize set " .. app.size[1] .. " " .. app.size[2])
+    end
 
-        if #config > 0 then
-            -- TODO: Convert to `Execute` call
-            os.execute("i3-msg" ..
-                " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
-                " " .. table.concat(config, ", ")
-            )
-        end
+    local selector_type, selector = GetSelectorNameAndValue(app)
+
+    if #config > 0 then
+        os.execute("i3-msg" ..
+            " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
+            " " .. table.concat(config, ", ")
+        )
     end
 end
 
 function AutostartApps()
     for _, app in ipairs(Apps) do
         if app.autostart then
-            ExecuteStart(app)
+            ExecuteStartAndWait(app, true)
         end
     end
 end
@@ -201,7 +210,7 @@ function ToggleApp(name)
         print("no app with that name")
         os.exit(2)
     end
-    ExecuteToggle(app)
+    ExecuteStartOrToggle(app)
 end
 
 function ChooseApp()
@@ -227,20 +236,50 @@ function ChooseApp()
         os.exit(3)
     end
 
-    ExecuteToggle(app);
+    ExecuteStartOrToggle(app);
 end
 
-function ExecuteStart(app)
+-- SYSTEM INTERACTION
+---------------------------
+
+function ExecuteStartAndWait(app, toggle_after_start)
+    local selector_type, selector = GetSelectorNameAndValue(app)
+
     os.execute(app.command .. "&")
-end
 
-function ExecuteToggle(app)
-    local selector = app.instance or app.class
-    local selector_type = "instance"
-    if app.class ~= nil then
-        selector_type = "class"
+    -- Continuously try to show
+    for _ = 0, 100 do
+        Sleep(0.1)
+
+        -- Apply normal config: set as scratchpad (hidden)
+        -- This must be done before trying to `scratchpad show`
+        InitConfig(app)
+        -- Show scratchpad
+        local exitcode = os.execute("i3-msg" ..
+            " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
+            " " .. "scratchpad show, move position center"
+        )
+
+        -- Try again if failed to show
+        -- Happens if window has not yet opened
+        if exitcode == true then
+            print("Done.")
+
+            if toggle_after_start then
+                ExecuteToggleVisibility(app)
+            end
+            return
+        end
     end
 
+    -- Give up
+    local msg = "Failed to show scratchpad after so many attempts."
+    print(msg)
+    Execute("notify-send", Quote(msg))
+    os.exit(4)
+end
+
+function ExecuteStartOrToggle(app)
     local visible_wid = GetWindowID(app, true)
     if visible_wid == nil then
         print("No window currently visible...")
@@ -249,39 +288,23 @@ function ExecuteToggle(app)
         -- No window found, spawn new
         if wid == nil then
             print("No window found...")
-            ExecuteStart(app)
-
-            -- Continuously try to show
-            for _ = 0, 100 do
-                Sleep(0.1)
-
-                -- Apply normal config: set as scratchpad (hidden)
-                -- This must be done before trying to `scratchpad show`
-                InitConfig()
-                -- Show scratchpad
-                local exitcode = os.execute("i3-msg" ..
-                    " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
-                    " " .. "scratchpad show, move position center"
-                )
-
-                -- Try again if failed to show
-                -- Happens if window has not yet opened
-                if exitcode == true then
-                    print("Done.")
-                    return
-                end
-            end
-
-            -- Give up
-            local msg = "Failed to show scratchpad after many attempts."
-            print(msg)
-            Execute("notify-send", Quote(msg))
-            os.exit(4)
+            ExecuteStartAndWait(app, false)
+            return
         end
     end
 
-    -- Hide or Show
+    ExecuteToggleVisibility(app)
+end
+
+-- Hide or Show
+function ExecuteToggleVisibility(app)
+    local selector_type, selector = GetSelectorNameAndValue(app)
+
     print("Toggling visiblity...")
+    print("i3-msg" ..
+        " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
+        " " .. "scratchpad show, move position center"
+    )
     os.execute("i3-msg" ..
         " " .. Quote("[" .. selector_type .. "=\"" .. selector .. "\"]") ..
         " " .. "scratchpad show, move position center"
@@ -289,11 +312,7 @@ function ExecuteToggle(app)
 end
 
 function GetWindowID(app, only_visible)
-    local selector = app.instance or app.class
-    local selector_type = "--classname" -- Instance
-    if app.class ~= nil then
-        selector_type = "--class"       -- Class
-    end
+    local selector_type, selector = GetSelectorNameAndValue(app, "--classname", "--class")
 
     local visibility = ""
     if only_visible then
@@ -311,9 +330,8 @@ function GetWindowID(app, only_visible)
     return wid
 end
 
-function Sleep(time)
-    Execute("sleep", tonumber(time))
-end
+-- HELPER FUNCTIONS
+---------------------------
 
 function Execute(command, ...)
     for _, arg in ipairs({ ... }) do
@@ -334,6 +352,20 @@ end
 
 function Quote(string)
     return '"' .. string .. '"'
+end
+
+function Sleep(time)
+    Execute("sleep", tonumber(time))
+end
+
+function GetSelectorNameAndValue(app, instance_key, class_key)
+    if app.instance ~= nil then
+        return instance_key or "instance", app.instance
+    elseif app.class ~= nil then
+        return class_key or "class", app.class
+    else
+        return nil, nil -- Checked by `CheckConfig`
+    end
 end
 
 function FindAppFromName(name)
