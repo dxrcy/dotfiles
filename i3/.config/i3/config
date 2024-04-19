@@ -298,12 +298,7 @@ for_window [tiling] border pixel 0
 
 # -------------------------------------------------
 # SCRATCHPADS
-
-# For each scratchpad:
-# - Command definition
-# - Keybind to open scratchpad (may rerun command)
-# - Custom window options
-# - Run command on startup
+# See ./scratchpad.lua
 
 # Init settings (every reload)
 exec_always --no-startup-id $scratchpad_lua apply
@@ -311,33 +306,16 @@ exec_always --no-startup-id $scratchpad_lua apply
 exec --no-startup-id $scratchpad_lua autostart
 # Menu, and individual keybinds
 bindsym $mod+c         exec --no-startup-id $scratchpad_lua choose
+bindsym $mod+F1        exec --no-startup-id $scratchpad_lua toggle "terminal"
 bindsym $mod+F2        exec --no-startup-id $scratchpad_lua toggle "thunderbird"
 bindsym $mod+F3        exec --no-startup-id $scratchpad_lua toggle "spotify"
 bindsym $mod+F4        exec --no-startup-id $scratchpad_lua toggle "discord"
+bindsym $mod+F5        exec --no-startup-id $scratchpad_lua toggle "teams"
 bindsym F12            exec --no-startup-id $scratchpad_lua toggle "calculator"
 bindsym $mod+Control+w exec --no-startup-id $scratchpad_lua toggle "windscribe"
 
 # Override for non-main window
 for_window [class="thunderbird"] floating enable, resize set 1100 750, border pixel 2
-
-# ---- Legacy config below...
-
-# for_window [instance="webcord"] floating enable, move position center, resize set 1400 950
-
-# Global window settings
-set $sp-default floating enable, move scratchpad, border pixel 2
-
-# Terminal (kitty)
-set $sp-kitty 'kitty --class "i3-sp-kitty" tmux'
-bindsym $mod+F1 exec --no-startup-id $i3_scripts/scratchpad-toggle instance "i3-sp-kitty" $sp-kitty
-for_window [class="i3-sp-kitty"] $sp-default, resize set 800 400
-exec --no-startup-id $sp-kitty
-
-# Btop
-set $sp-btop 'kitty --class "i3-sp-btop" btop'
-bindsym $mod+F5 exec --no-startup-id $i3_scripts/scratchpad-toggle instance "i3-sp-btop" $sp-btop
-for_window [class="i3-sp-btop"] $sp-default, resize set 1300 900
-exec --no-startup-id $sp-btop
 
 # /SCRATCHPADS
 # -------------------------------------------------

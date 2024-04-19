@@ -1,5 +1,12 @@
 Apps = {
     {
+        name = "terminal",
+        title = "🐚 Terminal",
+        command = 'kitty --class "scratchpad-terminal" tmux',
+        instance = "scratchpad-terminal",
+        size = { 800, 400 },
+    },
+    {
         name = "thunderbird",
         title = "📧 Thunderbird",
         command = "thunderbird",
@@ -28,6 +35,23 @@ Apps = {
         size = { 1400, 950 },
     },
     {
+        name = "teams",
+        title = "💼 Teams",
+        command = "teams",
+        instance = "microsoft teams - preview",
+        size = { 1400, 950 },
+    },
+
+    {
+        name = "calculator",
+        title = "🧮 Calculator",
+        command =
+        "kitty --class 'scratchpad-calculator' -o window_padding_width=2 sh -c 'title -w43 Calculator | lolcat && qalc'",
+        instance = "scratchpad-calculator",
+        size = { 400, 600 }
+    },
+
+    {
         name = "windscribe",
         title = "🌐 Windscribe",
         command = "windscribe",
@@ -36,6 +60,7 @@ Apps = {
             "move scratchpad",
         },
         autostart = true,
+        in_menu = true,
     },
     {
         name = "telegram",
@@ -43,15 +68,16 @@ Apps = {
         command = "telegram-desktop",
         instance = "telegram-desktop",
         size = { 1400, 950 },
+        in_menu = true,
     },
     {
-        name = "calculator",
-        title = "🧮 Calculator",
-        command =
-        "kitty --class 'scratchpad-calculator' -o window_padding_width=2 sh -c 'title -w43 Calculator | lolcat && qalc'",
-        instance = "scratchpad-calculator",
-        size = { 400, 600 }
-    }
+        name = "btop",
+        title = "📊 Btop",
+        command = 'kitty --class "scratchpad-btop" btop',
+        instance = "scratchpad-btop",
+        size = { 1300, 900 },
+        in_menu = true,
+    },
 }
 
 -- TODO: Convert `os.execute` calls to `Execute` ?
@@ -172,6 +198,14 @@ function CheckConfig()
                     end
                 end
             end
+            -- autostart
+            if app.autostart ~= nil and type(app.autostart) ~= "boolean" then
+                print("WARNING: app autostart is not a boolean [" .. app.name .. "]");
+            end
+            -- in_menu
+            if app.in_menu ~= nil and type(app.in_menu) ~= "boolean" then
+                print("WARNING: app in_menu is not a boolean [" .. app.name .. "]");
+            end
             -- Unknown key
             for key in pairs(app) do
                 if key ~= "name"
@@ -182,6 +216,7 @@ function CheckConfig()
                     and key ~= "size"
                     and key ~= "config"
                     and key ~= "autostart"
+                    and key ~= "in_menu"
                 then
                     print("WARNING: unknown key '" .. key .. "' in app [" .. app.name .. "]")
                 end
@@ -240,9 +275,9 @@ end
 
 function ChooseApp()
     local options = ""
-    for i, app in ipairs(Apps) do
-        if app.title ~= nil then
-            if i > 1 then options = options .. "\n" end
+    for _, app in ipairs(Apps) do
+        if app.title ~= nil and app.in_menu then
+            if options ~= "" then options = options .. "\n" end
             options = options .. app.title
         end
     end
@@ -376,7 +411,7 @@ function Execute(command, ...)
 end
 
 function Quote(string)
-    return '"' .. string .. '"'
+    return "'" .. string .. "'"
 end
 
 function Sleep(time)
