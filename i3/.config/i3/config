@@ -305,8 +305,10 @@ for_window [tiling] border pixel 0
 # - Custom window options
 # - Run command on startup
 
-# Init settings
+# Init settings (every reload)
 exec_always --no-startup-id lua $i3_scripts/scratchpad.lua init
+# Autostart (only on startup)
+exec --no-startup-id lua $i3_scripts/scratchpad.lua first-start
 # Menu, and individual keybinds
 bindsym $mod+c         exec --no-startup-id lua $i3_scripts/scratchpad.lua choose
 bindsym $mod+F2        exec --no-startup-id lua $i3_scripts/scratchpad.lua toggle "thunderbird"

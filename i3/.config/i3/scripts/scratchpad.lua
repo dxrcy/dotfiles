@@ -10,6 +10,7 @@ Apps = {
             "move position center",
             "border pixel 2",
         },
+        autostart = true,
     },
     {
         name = "spotify",
@@ -17,6 +18,7 @@ Apps = {
         command = "spotify",
         instance = "spotify",
         size = { 400, 200 },
+        autostart = true,
     },
     {
         name = "discord",
@@ -64,6 +66,8 @@ function Main()
     local subcommand = arg[1]
     if subcommand == "init" then
         InitConfig()
+    elseif subcommand == "autostart" then
+        AutostartApps()
     elseif subcommand == "toggle" then
         if #arg < 2 then
             PrintUsage()
@@ -136,6 +140,20 @@ function CheckConfig()
                     end
                 end
             end
+            -- unknown key
+            for key in pairs(app) do
+                if key ~= "name"
+                    and key ~= "title"
+                    and key ~= "command"
+                    and key ~= "instance"
+                    and key ~= "class"
+                    and key ~= "size"
+                    and key ~= "config"
+                    and key ~= "autostart"
+                then
+                    print("WARNING: unknown key '" .. key .. "' in app [" .. app.name .. "]")
+                end
+            end
         end
     end
 end
@@ -169,13 +187,21 @@ function InitConfig()
     end
 end
 
+function AutostartApps()
+    for _, app in ipairs(Apps) do
+        if app.autostart then
+            ExecuteStart(app)
+        end
+    end
+end
+
 function ToggleApp(name)
     local app = FindAppFromName(name)
     if app == nil then
         print("no app with that name")
         os.exit(2)
     end
-    ExecuteToggleCommand(app)
+    ExecuteToggle(app)
 end
 
 function ChooseApp()
@@ -201,11 +227,14 @@ function ChooseApp()
         os.exit(3)
     end
 
-    ExecuteToggleCommand(app);
+    ExecuteToggle(app);
 end
 
--- TODO: Don't use a script file, write logic in Lua
-function ExecuteToggleCommand(app)
+function ExecuteStart(app)
+    os.execute(app.command .. "&")
+end
+
+function ExecuteToggle(app)
     local selector = app.instance or app.class
     local selector_type = "instance"
     if app.class ~= nil then
@@ -220,7 +249,7 @@ function ExecuteToggleCommand(app)
         -- No window found, spawn new
         if wid == nil then
             print("No window found...")
-            os.execute(app.command .. "&")
+            ExecuteStart(app)
 
             -- Continuously try to show
             for _ = 0, 100 do
