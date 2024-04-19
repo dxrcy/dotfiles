@@ -304,8 +304,7 @@ for_window [tiling] border pixel 0
 exec_always --no-startup-id $scratchpad_lua apply
 # Autostart (only on startup)
 exec --no-startup-id $scratchpad_lua autostart
-# Menu, and individual keybinds
-bindsym $mod+c         exec --no-startup-id $scratchpad_lua choose
+# Individual keybinds
 bindsym $mod+F1        exec --no-startup-id $scratchpad_lua toggle "terminal"
 bindsym $mod+F2        exec --no-startup-id $scratchpad_lua toggle "thunderbird"
 bindsym $mod+F3        exec --no-startup-id $scratchpad_lua toggle "spotify"
@@ -313,6 +312,9 @@ bindsym $mod+F4        exec --no-startup-id $scratchpad_lua toggle "discord"
 bindsym $mod+F5        exec --no-startup-id $scratchpad_lua toggle "teams"
 bindsym F12            exec --no-startup-id $scratchpad_lua toggle "calculator"
 bindsym $mod+Control+w exec --no-startup-id $scratchpad_lua toggle "windscribe"
+# Hide active, menu
+bindsym $mod+grave     exec --no-startup-id $scratchpad_lua hide-active
+bindsym $mod+c         exec --no-startup-id $scratchpad_lua choose
 
 # Override for non-main window
 for_window [class="thunderbird"] floating enable, resize set 1100 750, border pixel 2

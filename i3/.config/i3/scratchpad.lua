@@ -80,7 +80,7 @@ Apps = {
     },
 }
 
--- TODO: Convert `os.execute` calls to `Execute` ?
+-- TODO: Convert `os.execute` calls to `Execute` ? or other way around ?
 -- TODO: Document functions
 -- TODO: Add more logging
 
@@ -112,9 +112,8 @@ function Main()
         ToggleApp(arg[2])
     elseif subcommand == "choose" then
         ChooseApp()
-    elseif subcommand == "hide" then
-        print("NOT YET IMPLEMENTED")
-        os.exit(88)
+    elseif subcommand == "hide-active" then
+        HideActive()
     elseif subcommand == "hide-all" then
         print("NOT YET IMPLEMENTED")
         os.exit(88)
@@ -139,8 +138,8 @@ function PrintUsage()
     print("        Toggle visibility of an app")
     print("    choose")
     print("        Open dialog to choose an app to toggle")
-    print("    hide")
-    print("        Hide an app")
+    print("    hide-active")
+    print("        Hide focused app")
     print("        (Not yet implemented)")
     print("    hide-all")
     print("        Hide all apps")
@@ -299,6 +298,42 @@ function ChooseApp()
     ExecuteStartOrToggle(app);
 end
 
+function HideActive()
+    local line = Execute("xprop", "-id", "$(xdotool getactivewindow)", "|", "grep", " 'WM_CLASS'");
+    if line == true then
+        return
+    end
+
+    local instance, class = ExtractInstanceAndClass(line)
+
+    local app = FindAppFromInstanceOrClass(instance, class);
+    if app == nil then
+        print("App not found.")
+        return
+    end
+
+    ExecuteToggleVisibility(app)
+end
+
+function ExtractInstanceAndClass(line)
+    local instance = ""
+    local class = ""
+
+    local parts = line:gmatch('"([^"]*)"')
+    local i = 0
+    for part in parts do
+        if i == 0 then
+            instance = part
+        elseif i == 1 then
+            class = part
+        else
+            break
+        end
+        i = i + 1
+    end
+    return instance, class
+end
+
 -- SYSTEM INTERACTION
 ---------------------------
 
@@ -440,6 +475,20 @@ end
 function FindAppFromTitle(title)
     for _, app in ipairs(Apps) do
         if app.title == title then
+            return app
+        end
+    end
+    return nil
+end
+
+function FindAppFromInstanceOrClass(instance, class)
+    for _, app in ipairs(Apps) do
+        if app.instance == instance then
+            return app
+        end
+    end
+    for _, app in ipairs(Apps) do
+        if app.class == class then
             return app
         end
     end
