@@ -7,9 +7,9 @@ Apps = {
         size = { 800, 400 },
     },
     {
-        name = "thunderbird",
-        title = "📧 Thunderbird",
-        command = "thunderbird",
+        name = "mail",
+        title = "📧 Mail",
+        command = "betterbird",
         instance = "Mail",
         size = { 1300, 900 },
         config = {

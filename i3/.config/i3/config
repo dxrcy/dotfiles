@@ -279,7 +279,7 @@ assign [class='i3-ws-9']  $ws9
 assign [class='i3-ws-10'] $ws10
 
 # Default window mode for workspaces
-for_window [workspace=$ws2] layout tabbed
+# for_window [workspace=$ws2] layout tabbed
 
 # Floating mode (and custom position)
 for_window [class="Windscribe2"] floating enable
@@ -306,7 +306,7 @@ exec_always --no-startup-id $scratchpad_lua apply
 exec --no-startup-id $scratchpad_lua autostart
 # Individual keybinds
 bindsym $mod+F1        exec --no-startup-id $scratchpad_lua toggle "terminal"
-bindsym $mod+F2        exec --no-startup-id $scratchpad_lua toggle "thunderbird"
+bindsym $mod+F2        exec --no-startup-id $scratchpad_lua toggle "mail"
 bindsym $mod+F3        exec --no-startup-id $scratchpad_lua toggle "spotify"
 bindsym $mod+F4        exec --no-startup-id $scratchpad_lua toggle "discord"
 bindsym $mod+F5        exec --no-startup-id $scratchpad_lua toggle "teams"
@@ -317,7 +317,7 @@ bindsym $mod+grave     exec --no-startup-id $scratchpad_lua toggle-active
 bindsym $mod+c         exec --no-startup-id $scratchpad_lua choose
 
 # Override for non-main window
-for_window [class="thunderbird"] floating enable, resize set 1100 750, border pixel 2
+for_window [class="betterbird"] floating enable, resize set 1100 750, border pixel 2
 
 # /SCRATCHPADS
 # -------------------------------------------------
