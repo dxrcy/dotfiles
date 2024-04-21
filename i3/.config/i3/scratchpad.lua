@@ -82,6 +82,7 @@ Apps = {
 
 RecentFilename = "/tmp/scratchpad.recent"
 
+-- TODO: Change `Apps` to be a key-value table
 -- TODO: Convert `os.execute` calls to `Execute` ? or other way around ?
 -- TODO: Document functions
 -- TODO: Add more logging
