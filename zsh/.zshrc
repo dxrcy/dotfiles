@@ -213,7 +213,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias grep="rg"
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
-    alias jupyter-notebook='jupyter-notebook -y --no-browser'
+    alias jupyter-lab='jupyter-lab -y --no-browser'
     alias zig='~/.zvm/bin/zig'
     alias pstree='pstree -U | less'
     alias zhistory='v ~/.cache/zsh_history'
@@ -244,7 +244,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias bhs='basic-http-server'
     alias rl='readlink'
     alias pst='ps-tree'
-    alias jp='jupyter-notebook'
+    alias jp='jupyter-lab'
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
