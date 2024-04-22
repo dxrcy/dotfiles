@@ -29,8 +29,12 @@
     bindkey -M vicmd -s 'ĵ' '['
     bindkey -M vicmd -s 'ĥ' ']'
     bindkey -M vicmd -s 'ĉ' 'x'
+# Open lf
+    bindkey -s '^R' 'lf\n'
+    bindkey -s -M vicmd '^R' 'ilf\n'
 # Other keybinds
-    bindkey -s '^Z' 'fg\n'
+    bindkey -s '^D' ''      # Disable Ctrl+D
+    bindkey -s '^Z' 'fg\n'  # Focus background task
 # Change directory by typing name
     setopt AUTOCD
     alias   '...'='cd ../../'
