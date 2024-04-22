@@ -245,6 +245,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias rl='readlink'
     alias pst='ps-tree'
     alias jp='jupyter-lab'
+    alias backup='backup-dir' # Script
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
