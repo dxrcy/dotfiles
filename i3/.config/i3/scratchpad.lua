@@ -35,11 +35,12 @@ Apps = {
         size = { 1400, 950 },
     },
     {
-        name = "teams",
-        title = "💼 Teams",
-        command = "teams",
-        instance = "microsoft teams - preview",
-        size = { 1400, 950 },
+        name = "btop",
+        title = "📊 Btop",
+        command = 'kitty --class "scratchpad-btop" btop',
+        instance = "scratchpad-btop",
+        size = { 1300, 900 },
+        in_menu = true,
     },
 
     {
@@ -71,12 +72,11 @@ Apps = {
         in_menu = true,
     },
     {
-        name = "btop",
-        title = "📊 Btop",
-        command = 'kitty --class "scratchpad-btop" btop',
-        instance = "scratchpad-btop",
-        size = { 1300, 900 },
-        in_menu = true,
+        name = "teams",
+        title = "💼 Teams",
+        command = "teams",
+        instance = "microsoft teams - preview",
+        size = { 1400, 950 },
     },
 }
 
