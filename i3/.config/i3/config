@@ -30,6 +30,9 @@ exec --no-startup-id setxkbmap -layout au
 # Set display mode and resolution from number of connected displays
 exec_always --no-startup-id $scripts/monitors auto
 
+# Enable touchpad while keys are pressed
+exec --no-startup-id xinput set-prop 12 358 0
+
 # ????
 set $refresh_i3status killall -SIGUSR1 i3status
 
@@ -327,7 +330,7 @@ for_window [class="betterbird"] floating enable, resize set 1100 750, border pix
 bindsym F11 exec --no-startup-id kitty --class "i3-sorting" \
     -o window_padding_width=2 \
     -o font_size=6 \
-    sh -c "sorting -fs 90 random \
+    sh -c "sorting -fs 90 shell \
         && printf '\e[?25l' && timeout 1.5s sh -c 'read -rsn1'"
 for_window [class="i3-sorting"] floating enable, resize set 906 461, move position center
 
