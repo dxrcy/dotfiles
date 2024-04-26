@@ -214,6 +214,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
     alias jupyter-lab='jupyter-lab -y --no-browser'
+    # alias jupyter-lab="jupyter-lab -y --no-browser --NotebookApp.token='' --NotebookApp.password=''"
     alias zig='~/.zvm/bin/zig'
     alias pstree='pstree -U | less'
     alias zhistory='v ~/.cache/zsh_history'
@@ -289,20 +290,20 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
         case "$subdir" in
             'java')
                 tmux split-window -h -c "#{pane_current_path}" &&\
-                tmux send-keys 'just run' Enter &&\
-                tmux split-window -v -c "#{pane_current_path}" &&\
                 tmux resize-pane -R 40 &&\
-                tmux send-keys 'just diff' Enter &&\
+                tmux send-keys 'just run' Enter &&\
                 tmux select-pane -L &&\
-                tmux split-window -v -c "#{pane_current_path}" &&\
-                tmux send-keys 'nvim input' Enter &&\
-                tmux split-window -h -c "#{pane_current_path}" &&\
-                tmux send-keys 'nvim output' Enter &&\
-                tmux resize-pane -D 15 &&\
-                tmux select-pane -L &&\
-                tmux select-pane -U &&\
                 nvim 'src/Main.java'
                 ;;
+                # tmux split-window -v -c "#{pane_current_path}" &&\
+                # tmux send-keys 'just diff' Enter &&\
+                # tmux select-pane -L &&\
+                # tmux split-window -v -c "#{pane_current_path}" &&\
+                # tmux send-keys 'nvim input' Enter &&\
+                # tmux split-window -h -c "#{pane_current_path}" &&\
+                # tmux send-keys 'nvim output' Enter &&\
+                # tmux resize-pane -D 15 &&\
+                # tmux select-pane -U &&\
             *)
                 nvim .
                 ;;
