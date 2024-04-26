@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Miro
+Exec=env WINEPREFIX="/home/darcy/.wine" wine C:\\\\users\\\\darcy\\\\AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\Start\\ Menu\\\\Programs\\\\Miro\\\\Miro.lnk
+Type=Application
+StartupNotify=true
+Comment=Miro desktop app
+Path=/home/darcy/.wine/dosdevices/c:/users/darcy/AppData/Local/RealtimeBoard/app-0.8.54
+Icon=BDA5_Miro.0
+StartupWMClass=miro.exe
