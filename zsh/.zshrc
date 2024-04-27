@@ -222,6 +222,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias mkd='mkdir-cd'
     alias eo='garfeo-mode'
     alias ll='cd-last-command'
+    alias mpv='mpv --script=~/.config/mpv/mpv-cheatsheet.js'
 # Misc. Abbreviations / Mispellings
     alias j='just'
     alias a='garf'
