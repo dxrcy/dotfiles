@@ -63,12 +63,9 @@ bindsym Control+Shift+braceright  exec --no-startup-id playerctl -p $player next
 bindsym Control+Shift+jcircumflex exec --no-startup-id playerctl -p $player previous
 bindsym Control+Shift+hcircumflex exec --no-startup-id playerctl -p $player next
 
-# Transparent windows
-# -G : something to do with GLX?
-# --shadow : something to do with client-side shadows?
-# --transparent-cliping : don't render windows below, in tabbed/stacked view
-# Kill and restart, to fix rendering issues
-exec_always --no-startup-id killall picom; picom -G --shadow --transparent-clipping
+# Picom (using script)
+exec_always         --no-startup-id $i3_scripts/picom-exec restart
+bindsym $mod+p exec --no-startup-id $i3_scripts/picom-exec toggle
 
 # Background
 exec --no-startup-id $scripts/bg-change --forever
