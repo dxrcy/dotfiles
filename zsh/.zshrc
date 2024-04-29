@@ -244,7 +244,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias bhs='basic-http-server'
     alias rl='readlink'
     alias pst='ps-tree'
-    alias backup='backup-dir' # Script
+    alias backup='backup-file' # Script
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
