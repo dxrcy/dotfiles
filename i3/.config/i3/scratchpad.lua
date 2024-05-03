@@ -71,14 +71,6 @@ Apps = {
         size = { 1400, 950 },
         in_menu = true,
     },
-    {
-        name = "teams",
-        title = "💼 Teams",
-        command = "teams",
-        instance = "microsoft teams - preview",
-        size = { 1400, 950 },
-        in_menu = true,
-    },
 }
 
 RecentFilename = "/tmp/scratchpad.recent"
