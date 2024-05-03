@@ -430,7 +430,6 @@ bindsym $mod+Shift+o resize grow width 10 px or 10 ppt
 
 # Define colors variables:
 set $darkbluetrans    #08052be6
-set $darkblue         #08052b
 set $lightblue        #5294e2
 set $urgentred        #280b10
 set $urgentred-bright #480b10
@@ -444,6 +443,7 @@ set $yellowbrown      #e1b700
 # Background
 # Transparency to match picom settings
 set $darkgrey-full      #080b10e2
+set $darkgrey-full2     #080b10
 set $darkgrey-half      #080b10c2
 set $darkgrey-trans     #080b10a2
 # Text
@@ -455,7 +455,7 @@ set $grey               #a0a0a0
 
 # define colors for windows:
 #class                      border              bground             text        indicator       child_border
-client.focused              $darkgrey-full      $darkgrey-full      $white      $white          $mediumgrey
+client.focused              $darkgrey-full2      $darkgrey-full2      $white      $white          $mediumgrey
 client.unfocused            $darkgrey-trans     $darkgrey-trans     $grey       $darkgrey-full  $darkgrey-full
 client.focused_inactive     $darkgrey-half      $darkgrey-half      $grey       $black          $black
 client.urgent               $urgentred          $urgentred          $white      $yellowbrown    $yellowbrown
