@@ -221,6 +221,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias eo='garfeo-mode'
     alias ll='cd-last-command'
     alias mpv='mpv --script=~/.config/mpv/mpv-cheatsheet.js'
+    alias gcc='gcc -Wall -Wextra -Wpedantic'
 # Misc. Abbreviations / Mispellings
     alias j='just'
     alias a='garf'
@@ -268,9 +269,14 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
         [ -z "$target" ] && target="${${url##*/}%.git}" 
         cd "$target"
     }
-    hs() {
+    ghcr() {
         ghc -Wall -dynamic $* >/dev/null || return $?
-        ./${1%.hs}
+        ./${1%%.hs}
+    }
+    gccr() {
+        out="${1%.c}"
+        gcc "$1" -o "$out" || return $?
+        ./"$out"
     }
     cargo-new-cd() {
         [ ! "$*" ] && { cargo new || return $? }
