@@ -271,12 +271,15 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     }
     ghcr() {
         ghc -Wall -dynamic $* >/dev/null || return $?
-        ./${1%%.hs}
+        ./"${1%%.hs}"
     }
     gccr() {
         out="${1%.c}"
         gcc "$1" -o "$out" || return $?
         ./"$out"
+        code="$?"
+        [ "$code" = 139 ] && echo "Segfault! lol."
+        return "$code"
     }
     cargo-new-cd() {
         [ ! "$*" ] && { cargo new || return $? }
