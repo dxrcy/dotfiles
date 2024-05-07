@@ -320,6 +320,15 @@ bindsym $mod+Control+c exec --no-startup-id $scratchpad_lua apply
 # Override for non-main window
 for_window [class="betterbird"] floating enable, resize set 1100 750, border pixel 2
 
+# Manually apply settings (stops flickering on open)
+for_window [instance="scratchpad-terminal"] move scratchpad
+for_window [class="betterbird"] move scratchpad
+for_window [instance="spotify"] move scratchpad
+for_window [instance="webcord"] move scratchpad
+for_window [instance="scratchpad-btop"] move scratchpad
+for_window [instance="scratchpad-calculator"] move scratchpad
+for_window [instance="telegram-desktop"] move scratchpad
+
 # /SCRATCHPADS
 # -------------------------------------------------
 
