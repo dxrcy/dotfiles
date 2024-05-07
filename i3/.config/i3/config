@@ -322,7 +322,7 @@ for_window [class="betterbird"] floating enable, resize set 1100 750, border pix
 
 # Manually apply settings (stops flickering on open)
 for_window [instance="scratchpad-terminal"] move scratchpad
-for_window [class="betterbird"] move scratchpad
+for_window [instance="Mail"] move scratchpad
 for_window [instance="spotify"] move scratchpad
 for_window [instance="webcord"] move scratchpad
 for_window [instance="scratchpad-btop"] move scratchpad
