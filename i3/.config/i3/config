@@ -327,7 +327,7 @@ for_window [instance="spotify"] move scratchpad
 for_window [instance="webcord"] move scratchpad
 for_window [instance="scratchpad-btop"] move scratchpad
 for_window [instance="scratchpad-calculator"] move scratchpad
-for_window [instance="telegram-desktop"] move scratchpad
+for_window [instance="telegram-desktop" title="^(?!Media viewer)$"] move scratchpad
 
 # /SCRATCHPADS
 # -------------------------------------------------
