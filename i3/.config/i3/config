@@ -31,7 +31,7 @@ exec --no-startup-id setxkbmap -layout au
 exec_always --no-startup-id $scripts/monitors auto
 
 # Enable touchpad while keys are pressed
-exec --no-startup-id xinput set-prop 12 358 0
+exec_always --no-startup-id xinput set-prop 12 358 0
 
 # ????
 set $refresh_i3status killall -SIGUSR1 i3status
