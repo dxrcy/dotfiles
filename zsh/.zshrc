@@ -91,8 +91,6 @@ zstyle ':completion:*' group-name '' # group results by category
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate #enable approximate matches for completion
 
 #========= PROMPT
-    EOL="
-"
 # Display shell nesting level
     # Variable, not function (unlike below)
     for _ in $(seq 1 $ZSH); do _arrow="$_arrow="; done
@@ -125,7 +123,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     _prompt                         '$(git_status)' # Git: Status
     _prompt                         '$(version)'    # Package version (also dim)
     _prompt         "%F{cyan}"      "%(0?.. $_dot)" # Non-zero exit code = dot
-    _prompt                         "$EOL"          #
+    _prompt                         $'\n'           #
     _prompt         "%F{cyan}"      "%(1j.[%j].)"   # Job count
     _prompt         '%F{green}'     "$_gt "         # >
     PS1="$_PS"
