@@ -246,6 +246,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias rl='readlink'
     alias pst='ps-tree'
     alias backup='backup-file' # Script
+    alias entra='entr-all'
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
@@ -280,6 +281,9 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
         code="$?"
         [ "$code" = 139 ] && echo "Segfault! lol."
         return "$code"
+    }
+    entr-all() {
+        find | entr -c zsh -i -c "$*"
     }
     cargo-new-cd() {
         [ ! "$*" ] && { cargo new || return $? }
