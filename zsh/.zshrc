@@ -245,6 +245,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias pst='ps-tree'
     alias backup='backup-file' # Script
     alias entra='entr-all'
+    alias ghs='gh auth switch'
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
