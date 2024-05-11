@@ -53,8 +53,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id $i3_scripts/volume_brightness.
 
 # Media control keybinds
 set $player 'spotify'
-bindsym XF86AudioPlay  exec --no-startup-id playerctl -p $player play-pause
-bindsym XF86AudioPause exec --no-startup-id playerctl -p $player play-pause
+# bindsym XF86AudioPlay  exec --no-startup-id playerctl -p $player play-pause
+# bindsym XF86AudioPause exec --no-startup-id playerctl -p $player play-pause
 # Custom media controls
 bindsym Control+Shift+backslash   exec --no-startup-id playerctl -a pause
 bindsym Control+backslash         exec --no-startup-id playerctl -p $player play-pause
