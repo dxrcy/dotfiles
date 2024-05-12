@@ -377,8 +377,9 @@ bindsym Mod1+Shift+hcircumflex exec --no-startup-id $i3_scripts/alt-key 'hcircum
 # -------------------------------------------------
 
 # Bluetooth toggle
-bindsym $mod+b       exec --no-startup-id $scripts/bt connect
-bindsym $mod+Shift+b exec --no-startup-id $scripts/bt disconnect
+bindsym $mod+b         exec --no-startup-id $scripts/bt connect
+bindsym $mod+Shift+b   exec --no-startup-id $scripts/bt disconnect
+bindsym $mod+Control+b exec --no-startup-id $scripts/bt reconnect
 exec --no-startup-id 'sleep 2; $scripts/bt connect'
 
 # Conservation mode TLP toggle (rofi gui)
