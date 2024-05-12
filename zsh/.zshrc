@@ -156,7 +156,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias grso='git remote set-url origin'
     alias grgo='git remote get-url origin'
     alias  gcl='git-clone-cd'
-    alias  ghu='gh-username'
 # Nvim
     # Open folder in nvim, instead of new buffer
     v() { [ "$*" ] && nvim $* || nvim . }
@@ -257,9 +256,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
             :*) echo "$GHU/${url:1}" ;;
              *) echo "$url" ;;
          esac
-    }
-    gh-username() {
-        gh auth status | grep --color=never -Po '(?<=Logged in to github.com account )[^\s]*'
     }
     git-clone-cd() { # Git clone alias with URL shorthand, and cd
         url="$(gh-url $1)" || { git clone ; return $?; }
