@@ -290,7 +290,7 @@ for_window [title="^Preferences -"] floating disable
 bindsym $mod+Tab workspace back_and_forth
 
 # Set inner and outer gaps
-gaps inner 10
+gaps inner 4
 gaps outer 0
 
 # Disable border for all tiling (non-floating) windows
