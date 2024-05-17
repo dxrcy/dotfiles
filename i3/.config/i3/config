@@ -312,6 +312,7 @@ bindsym $mod+F4        exec --no-startup-id $scratchpad_lua toggle "discord"
 bindsym $mod+F5        exec --no-startup-id $scratchpad_lua toggle "btop"
 bindsym F12            exec --no-startup-id $scratchpad_lua toggle "calculator"
 bindsym $mod+Control+w exec --no-startup-id $scratchpad_lua toggle "windscribe"
+bindsym $mod+Control+ĝ exec --no-startup-id $scratchpad_lua toggle "windscribe"
 # Other scratchpad keybinds
 bindsym $mod+grave     exec --no-startup-id $scratchpad_lua toggle-active
 bindsym $mod+c         exec --no-startup-id $scratchpad_lua choose
