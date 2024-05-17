@@ -182,16 +182,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias  cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
     alias  ccl='cargo clippy'
     alias   cn='cargo-new-cd'
-# Common directories
-    alias     docs='cd ~/docs'
-    alias       dl='cd ~/dl'
-    alias     pics='cd ~/pics'
-    alias     vids='cd ~/vids'
-    alias    music='cd ~/music'
-    alias  scripts='cd ~/scripts'
-    alias dotfiles='cd ~/dotfiles'
-    alias     code='cd ~/code'
-    alias s='sandbox-fzf'
 # Common dotfile editing
     alias .d='cd ~/dotfiles'
     alias .z='cd ~/dotfiles/zsh                && nvim .zshrc'
@@ -246,6 +236,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias backup='backup-file' # Script
     alias entra='entr-all'
     alias ghs='gh auth switch'
+    alias s='sandbox-fzf'
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
