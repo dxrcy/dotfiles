@@ -172,7 +172,14 @@ local plugins = {
         config = function()
             require('crates').setup()
         end,
-    }
+    },
+
+    {
+        "windwp/nvim-ts-autotag",
+        config = function()
+            require('nvim-ts-autotag').setup()
+        end,
+    },
 }
 
 local opts = {}
