@@ -41,6 +41,14 @@
     alias   '...'='cd ../../'
     alias  '....'='cd ../../../'
     alias '.....'='cd ../../../../'
+# Override `code` if in home
+    code() {
+        if [ "$PWD" = "$HOME" ]; then
+            cd 'code'
+        else
+            command code -r "$@"
+        fi
+    }
 # Undo last `cd` with `dc`
     alias cd='LASTDIR="$(pwd)"; cd'      # Save working directory
     alias dc='_DIR=$LASTDIR; cd "$_DIR"' # Go back to previous directory
