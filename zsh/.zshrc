@@ -29,10 +29,6 @@
     bindkey -M vicmd -s 'ĵ' '['
     bindkey -M vicmd -s 'ĥ' ']'
     bindkey -M vicmd -s 'ĉ' 'x'
-# Open lf
-    bindkey -s '^W' 'lf\n'
-    bindkey -s -M vicmd '^W' 'ilf\n'
-    bindkey -s -M vicmd 'T' 'ilf\n'
 # Other keybinds
     bindkey -s '^D' ''      # Disable Ctrl+D
     bindkey -s '^Z' 'fg\n'  # Focus background task
