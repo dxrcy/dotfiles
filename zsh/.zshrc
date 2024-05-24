@@ -208,7 +208,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias zig='~/.zvm/bin/zig'
     alias pstree='pstree -U | less'
     alias zhistory='v ~/.cache/zsh_history'
-    alias lf='cd "$(\lf -print-last-dir)"' # Use lf to `cd`, without spawning subshell
     alias mkd='mkdir-cd'
     alias eo='garfeo-mode'
     alias ll='cd-last-command'
@@ -241,9 +240,14 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias entra='entr-all'
     alias ghs='gh auth switch'
     alias s='sandbox-fzf'
+    alias lf='lf-cd' 
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
+    lf-cd() { # Use lf to `cd`, without spawning subshell
+        target="$(\lf -print-last-dir)"
+        [ -d "$target" ] && cd "$target"
+    }
     gh-url() { # Git url shorthand
         url="$1"
         case "$url" in
