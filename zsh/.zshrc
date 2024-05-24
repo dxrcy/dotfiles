@@ -247,6 +247,12 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     lf-cd() { # Use lf to `cd`, without spawning subshell
         target="$(\lf -print-last-dir)"
         [ -d "$target" ] && cd "$target"
+        # Also open file if triggered (see lfrc)
+        editfile='/tmp/lf-editfile'
+        if [ -f "$editfile" ]; then
+            nvim "$(cat "$editfile")"
+            rm "$editfile"
+        fi
     }
     gh-url() { # Git url shorthand
         url="$1"

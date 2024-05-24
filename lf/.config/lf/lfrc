@@ -1,3 +1,2 @@
-# Enter directory and quit
-map <enter> push lq
-
+# Close lf to edit file -- don't open in new window (see zshrc)
+map <enter> & if [ -f "$f" ]; then echo "$f" > /tmp/lf-editfile; lf -remote "send $id quit"; else lf -remote "send $id open"; fi
