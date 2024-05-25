@@ -160,7 +160,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias grso='git remote set-url origin'
     alias grgo='git remote get-url origin'
     alias  gcl='git-clone-cd'
-    alias  ghu='gh-user' # Script
+    alias  ghu='gh-url'
 # Nvim
     # Open folder in nvim, instead of new buffer
     v() { [ "$*" ] && nvim $* || nvim . }
