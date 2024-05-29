@@ -300,6 +300,9 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
         fi
         cd "$subdir" || return $?
         case "$subdir" in
+            'rust') nvim 'src/main.rs' ;;
+            'c') nvim 'main.c' ;;
+            'zig') nvim 'main.zig' ;;
             'java')
                 tmux split-window -h -c "#{pane_current_path}" &&\
                 tmux resize-pane -R 40 &&\
@@ -307,15 +310,6 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
                 tmux select-pane -L &&\
                 nvim 'src/Main.java'
                 ;;
-                # tmux split-window -v -c "#{pane_current_path}" &&\
-                # tmux send-keys 'just diff' Enter &&\
-                # tmux select-pane -L &&\
-                # tmux split-window -v -c "#{pane_current_path}" &&\
-                # tmux send-keys 'nvim input' Enter &&\
-                # tmux split-window -h -c "#{pane_current_path}" &&\
-                # tmux send-keys 'nvim output' Enter &&\
-                # tmux resize-pane -D 15 &&\
-                # tmux select-pane -U &&\
             *)
                 nvim .
                 ;;
