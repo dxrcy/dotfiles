@@ -45,17 +45,6 @@
             command code -r "$@"
         fi
     }
-# Undo last `cd` with `dc`
-    alias cd='LASTDIR="$(pwd)"; cd'      # Save working directory
-    alias dc='_DIR=$LASTDIR; cd "$_DIR"' # Go back to previous directory
-    # Make work with `AUTOCD`
-    TRAPDEBUG() {
-        dir="${ZSH_DEBUG_CMD/#\~/$HOME}"
-        # If is a directory, and not a command
-        if [ -d "$dir" ] && ! type "$dir" >/dev/null; then
-            LASTDIR="$PWD"
-        fi
-    }
 # Add scripts and binaries to path
     PATH="$HOME/scripts/cmd:$PATH"
     PATH="$HOME/.local/bin:$PATH"
@@ -214,6 +203,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
     alias mpv='mpv --script=~/.config/mpv/mpv-cheatsheet.js'
     alias gcc='gcc -Wall -Wpedantic'
 # Misc. Abbreviations / Mispellings
+    alias dc='cd - >/dev/null'
     alias j='just'
     alias a='garf'
     alias o='xdg-open'
