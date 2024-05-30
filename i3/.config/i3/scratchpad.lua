@@ -30,8 +30,8 @@ Apps = {
     {
         name = "discord",
         title = "🎮 Discord",
-        command = "webcord",
-        instance = "webcord",
+        command = "vesktop",
+        instance = "vesktop",
         size = { 1400, 950 },
     },
     {
