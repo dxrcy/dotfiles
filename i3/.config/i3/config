@@ -286,6 +286,9 @@ for_window [class="Windscribe2"] floating enable
 # Inkscape preferences
 for_window [title="^Preferences -"] floating disable
 
+# Tabbed layout for specific programs
+for_window [class="LibreWolf"] layout tabbed
+
 # Switch back and forth 2 most recent workspaces
 bindsym $mod+Tab workspace back_and_forth
 
