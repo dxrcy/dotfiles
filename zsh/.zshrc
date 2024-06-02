@@ -344,6 +344,20 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
         hlissner/zsh-autopair/autopair.zsh
     )
     _dir="$HOME/.zsh" # Where to download packages to
+    for _existing in $_dir/*/*; do
+        _package=${_existing#$_dir/}
+        unset _found
+        for _filepath in $PACKAGES; do
+            if [ "${_filepath%/*}" = "$_package" ]; then
+                _found=1
+                break
+            fi
+        done
+        if [ -z "$_found" ]; then
+            printf "\x1b[2;33mzsh: removing old package '%s'...\x1b[0m\n" "$_package"
+            rm -rf "$_existing"
+        fi
+    done
     for _filepath in $PACKAGES; do
         _package="${_filepath%/*}" # Remove filename from path
         if [[ ! -d "$_dir/$_package" ]]; then
