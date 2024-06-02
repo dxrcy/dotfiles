@@ -13,9 +13,9 @@ case "$class" in
         default
         killall 'Discord'
         ;;
-    'WebCord')
+    'vesktop')
         default
-        killall 'webcord'
+        killall 'electron'
         ;;
 
     # Add custom rules here...
