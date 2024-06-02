@@ -180,6 +180,11 @@ local plugins = {
             require('nvim-ts-autotag').setup()
         end,
     },
+
+    {
+        "ptzz/lf.vim",
+        dependencies = { "voldikss/vim-floaterm" },
+    }
 }
 
 local opts = {}
