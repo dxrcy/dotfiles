@@ -2,8 +2,8 @@
 vim.cmd("au BufRead,BufNewFile justfile set filetype=make")
 
 -- Disable autocomplete for certain languages
-vim.cmd("au BufRead,BufNewFile *.java CodeiumDisable")
-vim.cmd("au BufRead,BufNewFile *.cpp  CodeiumDisable")
+-- vim.cmd("au BufRead,BufNewFile *.java CodeiumDisable")
+-- vim.cmd("au BufRead,BufNewFile *.cpp  CodeiumDisable")
 
 -- Phonet files
 vim.cmd("au BufRead,BufNewFile phonet   set filetype=phonet")
