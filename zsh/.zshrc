@@ -79,7 +79,7 @@
     bindkey "^[[Z" reverse-menu-complete
 # Disable command-specific tab completions
     # Just list commands and files
-    zstyle ':completion:*' completer _command_names _files
+    zstyle ':completion:*' completer _files _command_names
 
 #========= THESE SHOULD BE REMOVED AT SOME POINT!
 # Fix zsh tab completion when using `eza` package
