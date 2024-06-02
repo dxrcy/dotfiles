@@ -66,8 +66,6 @@
 # Use case-insensitive autocompletions
     autoload -Uz compinit && compinit
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-# Fix zsh tab completion when using `eza` package
-    _exa() { eza }
 # Fix i3-msg
     unset I3SOCK
 # Misc. shorthand variables
@@ -77,11 +75,18 @@
     [ -z $ZSH ] && ZSH=0 \
         || { [ -z $ZSH_NOINC ] && ZSH=$((ZSH + 1)); }
     export ZSH
+# Bind shift-tab to cycle backwards in completion
+    bindkey "^[[Z" reverse-menu-complete
+# Disable command-specific tab completions
+    # Just list commands and files
+    zstyle ':completion:*' completer _command_names _files
 
-#========= IDK!
-zstyle ':completion:*' menu select # select completions with arrow keys
-zstyle ':completion:*' group-name '' # group results by category
-zstyle ':completion:::::' completer _expand _complete _ignored _approximate #enable approximate matches for completion
+#========= THESE SHOULD BE REMOVED AT SOME POINT!
+# Fix zsh tab completion when using `eza` package
+    # _exa() { eza }
+# zstyle ':completion:*' menu select # select completions with arrow keys
+# zstyle ':completion:*' group-name '' # group results by category
+# zstyle ':completion:::::' completer _expand _complete _ignored _approximate #enable approximate matches for completion
 
 #========= PROMPT
 # Display shell nesting level
