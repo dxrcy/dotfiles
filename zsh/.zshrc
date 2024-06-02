@@ -336,40 +336,44 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate #ena
 #========= PACKAGES
     # Autodownload packages
     # At end of file, so if git clone cancelled, above aliases still work
-    # Package list entry is zsh file of package, relative to ~/.zsh
-    PACKAGES=(
+    PKGDIR="$HOME/.zsh" # Where to download packages to
+    PACKAGES=( # Each item is the zsh entry file of package, relative to PKGDIR
         zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
 	    dxrcy/zsh-history-substring-search/zsh-history-substring-search.zsh # Open PR
         hlissner/zsh-autopair/autopair.zsh
     )
-    _dir="$HOME/.zsh" # Where to download packages to
-    for _existing in $_dir/*/*; do
-        _package=${_existing#$_dir/}
+    # Clean packages
+    for _dir_full in $PKGDIR/*/*(N); do # List all installed packages
+        _dir=${_dir#$PKGDIR/} # Remove pkgdir from path
         unset _found
-        for _filepath in $PACKAGES; do
-            if [ "${_filepath%/*}" = "$_package" ]; then
+        for _filepath in $PACKAGES; do # Check if package is in list
+            _package="${_filepath%/*}" # Remove filename from path
+            if [ "$package" = "$_dir" ]; then
                 _found=1
                 break
             fi
         done
-        if [ -z "$_found" ]; then
-            printf "\x1b[2;33mzsh: removing old package '%s'...\x1b[0m\n" "$_package"
-            rm -rf "$_existing"
+        if [ -z "$_found" ]; then # Remove if not in list
+            printf "\x1b[2;33mzsh: removing old package '%s'...\x1b[0m\n" "$_dir"
+            rm -rf "$_dir_full"
         fi
     done
+    # Install packages
     for _filepath in $PACKAGES; do
         _package="${_filepath%/*}" # Remove filename from path
-        if [[ ! -d "$_dir/$_package" ]]; then
+        if [[ ! -d "$PKGDIR/$_package" ]]; then # Check if not installed
             printf "\x1b[2;33mzsh: installing '%s'...\x1b[0m\n" "$_package"
-            git clone --quiet "https://github.com/$_package" "$_dir/$_package" || {
+            git clone --quiet "https://github.com/$_package" "$PKGDIR/$_package" || {
                 printf "\x1b[31mzsh: some packages failed to download.\x1b[0m\n"
                 break
             }
         fi
-        source "$_dir/$_filepath"
+        source "$PKGDIR/$_filepath" # Load package
     done
+
     # Settings for packages
+    # Will not be applied if package installation is interrupted
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
     bindkey '^[[A'       history-substring-search-up
     bindkey '^[[B'       history-substring-search-down
