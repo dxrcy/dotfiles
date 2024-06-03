@@ -10,9 +10,10 @@
     bindkey -v '^?' backward-delete-char # Fix backspace
     # Use narrow cursor for insert mode, block cursor for normal mode
     zle-keymap-select() {
-      [[ $KEYMAP == "vicmd" ]] \
-        && echo -ne "\e[1 q" \
-        || echo -ne "\e[5 q"
+      if [ $KEYMAP == "vicmd" ]
+          then echo -ne "\e[1 q"
+          else echo -ne "\e[5 q"
+      fi
     }; zle -N zle-keymap-select
     precmd() { echo -ne "\e[5 q" } # Narrow cursor on new prompt
     # Add missing vim keybinds
@@ -39,10 +40,9 @@
     alias '.....'='cd ../../../../'
 # Override `code` if in home
     code() {
-        if [ "$PWD" = "$HOME" ]; then
-            cd 'code'
-        else
-            command code -r "$@"
+        if [ "$PWD" = "$HOME" ];
+            then cd 'code'
+            else command code -r "$@"
         fi
     }
 # Add scripts and binaries to path
@@ -51,9 +51,10 @@
 # Auto aliases
     eval "$(zoxide init zsh)"
 # Preferred editor for local and remote sessions
-    [[ -n $SSH_CONNECTION ]] \
-        && export EDITOR='vim' \
-        || export EDITOR='nvim'
+    if [ -n $SSH_CONNECTION ];
+        then export EDITOR='vim'
+        else export EDITOR='nvim'
+    fi
 # Override default browser
     BROWSER='librewolf'
 # Persistant history
@@ -72,8 +73,10 @@
     GH='https://github.com' # See also: `gcl`
     GHU="$GH/dxrcy"
 # Shell nesting
-    [ -z $ZSH ] && ZSH=0 \
-        || { [ -z $ZSH_NOINC ] && ZSH=$((ZSH + 1)); }
+    if [ -z "$ZSH" ];
+        then ZSH=0
+        else [ -z "$ZSH_NOINC" ] && ZSH=$((ZSH + 1))
+    fi
     export ZSH
 # Bind shift-tab to cycle backwards in completion
     bindkey "^[[Z" reverse-menu-complete
@@ -91,8 +94,10 @@
 #========= PROMPT
 # Display shell nesting level
     # Variable, not function (unlike below)
-    for _ in $(seq 1 $ZSH); do _arrow="$_arrow="; done
-    [ $_arrow ] && { _arrow="$_arrow> "; }
+    for _ in $(seq 1 $ZSH); do
+        _arrow="$_arrow="
+    done
+    [ $_arrow ] && _arrow="$_arrow> "
 # Prompt substring functions
     setopt PROMPT_SUBST # Enable
     git_branch() { x=$(git-info -b);     [ "$x" ] && echo "%F{blue} $x" }
@@ -297,8 +302,8 @@
         cd "$subdir" || return $?
         case "$subdir" in
             'rust') nvim 'src/main.rs' ;;
-            'c') nvim 'main.c' ;;
-            'zig') nvim 'main.zig' ;;
+            'c')    nvim 'main.c' ;;
+            'zig')  nvim 'main.zig' ;;
             'java')
                 tmux split-window -h -c "#{pane_current_path}" &&\
                 tmux resize-pane -R 40 &&\
@@ -331,9 +336,10 @@
     }
     ps-tree() { # Open process tree in Neovim
         # Search argument, or jump to bottom
-        [ -n "$1" ] \
-            && arg="+/$1" \
-            || arg='+norm G'
+        if [ -n "$1" ]
+            then arg="+/$1"
+            else arg='+norm G'
+        fi
         file="/tmp/ps-tree.$$"
         ps ax --forest -o 'cmd' > "$file" || return $?
         nvim "$file" '+set nowrap' "$arg" || return $?
@@ -368,12 +374,12 @@
     # Install packages
     for _filepath in $PACKAGES; do
         _package="${_filepath%/*}" # Remove filename from path
-        if [[ ! -d "$PKGDIR/$_package" ]]; then # Check if not installed
+        if [ ! -d "$PKGDIR/$_package" ]; then # Check if not installed
             printf "\x1b[2;33mzsh: installing '%s'...\x1b[0m\n" "$_package"
-            git clone --quiet "https://github.com/$_package" "$PKGDIR/$_package" || {
+            if ! git clone --quiet "https://github.com/$_package" "$PKGDIR/$_package"; then
                 printf "\x1b[31mzsh: some packages failed to download.\x1b[0m\n"
                 break
-            }
+            fi
         fi
         source "$PKGDIR/$_filepath" # Load package
     done
