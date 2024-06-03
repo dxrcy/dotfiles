@@ -210,6 +210,7 @@
 # Misc. Abbreviations / Mispellings
     alias dc='cd - >/dev/null'
     alias j='just'
+    alias m='make'
     alias a='garf'
     alias o='xdg-open'
     alias ,='abandon' # Script
