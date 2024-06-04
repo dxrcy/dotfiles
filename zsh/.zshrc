@@ -206,7 +206,8 @@
     alias sxiv='nsxiv'
     alias zig='~/.zvm/bin/zig'
     alias pstree='pstree -U | less'
-    alias zhistory='v ~/.cache/zsh_history'
+    alias zh='vim + ~/.cache/zsh_history'
+    alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
     alias mkd='mkdir-cd'
     alias eo='garfeo-mode'
     alias ll='cd-last-command'
@@ -230,7 +231,6 @@
     alias ping8='ping 8.8.8.8 -c 10'
     alias cal3='cal -3'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
-    alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
     alias pk='pkill'
     alias btc='bluetoothctl'
     alias plc='bluetoothctl'
