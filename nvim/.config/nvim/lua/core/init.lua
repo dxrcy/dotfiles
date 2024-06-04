@@ -29,5 +29,7 @@ vim.opt.scrolloff = 8
 vim.cmd "au BufEnter * set noro"
 vim.cmd "au BufWritePost * set noro"
 
-vim.system({"git-autofetch"})
+-- Start git-autofetch script on startup
+-- Automatically replaces existing script running in same git repo
+vim.cmd "!git-autofetch"
 
