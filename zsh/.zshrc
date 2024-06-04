@@ -10,10 +10,10 @@
     bindkey -v '^?' backward-delete-char # Fix backspace
     # Use narrow cursor for insert mode, block cursor for normal mode
     zle-keymap-select() {
-      if [ $KEYMAP == "vicmd" ]
-          then echo -ne "\e[1 q"
-          else echo -ne "\e[5 q"
-      fi
+        if [ "$KEYMAP" = "vicmd" ]
+            then echo -ne "\e[1 q"
+            else echo -ne "\e[5 q"
+        fi
     }; zle -N zle-keymap-select
     precmd() { echo -ne "\e[5 q" } # Narrow cursor on new prompt
     # Add missing vim keybinds
