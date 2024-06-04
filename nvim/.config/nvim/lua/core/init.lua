@@ -28,3 +28,6 @@ vim.opt.scrolloff = 8
 -- See also: save_file in mappings.lua
 vim.cmd "au BufEnter * set noro"
 vim.cmd "au BufWritePost * set noro"
+
+vim.system({"git-autofetch"})
+
