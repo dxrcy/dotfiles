@@ -31,5 +31,6 @@ vim.cmd "au BufWritePost * set noro"
 
 -- Start git-autofetch script on startup
 -- Automatically replaces existing script running in same git repo
-vim.cmd "!git-autofetch"
+-- run silently and dont echo
+vim.cmd "au VimEnter * !git-autofetch &"
 
