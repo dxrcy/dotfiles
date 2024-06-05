@@ -15,7 +15,7 @@ customCommands:
     command: 'kill "$PPID"'
   - key: 'G'
     context: 'global'
-    command: 'gh auth switch'
+    command: 'zsh -ci gh-switch'
 
 os:
   editPreset: 'nvim'
