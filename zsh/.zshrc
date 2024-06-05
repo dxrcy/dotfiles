@@ -71,7 +71,9 @@
     unset I3SOCK
 # Misc. shorthand variables
     GH='https://github.com' # See also: `gcl`
-    GHU="$GH/dxrcy"
+    GH_MAIN='dxrcy'
+    GH_STUDENT='dyrcyuni'
+    GHU="$GH/$GH_MAIN"
 # Shell nesting
     if [ -z "$ZSH" ];
         then ZSH=0
@@ -271,6 +273,13 @@
         target="$1" # Target directory argument, or use URL path
         [ -z "$target" ] && target="${${url##*/}%.git}" 
         cd "$target"
+    }
+    gh-switch() {
+        if git config --get 'user.email' 'student' >/dev/null;
+            then account="$GH_STUDENT"
+            else account="$GH_MAIN"
+        fi
+        gh auth switch -u "$account"
     }
     ghcr() {
         ghc -Wall -dynamic $* >/dev/null || return $?
