@@ -75,11 +75,18 @@
     GH_STUDENT='dyrcyuni'
     GHU="$GH/$GH_MAIN"
 # Shell nesting
-    if [ -z "$ZSH" ];
-        then ZSH=0
-        else [ -z "$ZSH_NOINC" ] && ZSH=$((ZSH + 1))
+    # export ZSH_NOINC=once to disable for next child shell
+    # export ZSH_NOINC=all  to disable for all descendant shells
+    if [ -n "$ZSH_NOINC" ]; then
+        [ ! "$ZSH_NOINC" = 'all' ] \
+            && unset ZSH_NOINC
+    else
+        unset ZSH_NOINC
+        [ -n "$ZSH" ] && ZSH=$((ZSH + 1))
     fi
+    [ -n "$ZSH" ] || ZSH=0
     export ZSH
+    echo $ZSH
 # Bind shift-tab to cycle backwards in completion
     bindkey "^[[Z" reverse-menu-complete
 # Disable command-specific tab completions
