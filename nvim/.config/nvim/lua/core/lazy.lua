@@ -181,10 +181,10 @@ local plugins = {
         end,
     },
 
-    {
-        "ptzz/lf.vim",
-        dependencies = { "voldikss/vim-floaterm" },
-    },
+    -- {
+    --     "ptzz/lf.vim",
+    --     dependencies = { "voldikss/vim-floaterm" },
+    -- },
 
     {
         "mfussenegger/nvim-jdtls",

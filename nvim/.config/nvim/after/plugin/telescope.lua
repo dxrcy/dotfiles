@@ -4,11 +4,13 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+vim.keymap.set('n', '<leader>f<space>', builtin.resume, {})
+
 require("telescope").setup({
     defaults = {
         file_ignore_patterns = {
             -- Build and module directories
-            "build", "target", "node_modules",
+            "build/", "target/", "node_modules/",
             -- Lock files
             "*.lock",
             -- Object files and the like
