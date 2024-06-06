@@ -75,18 +75,24 @@
     GH_STUDENT='dyrcyuni'
     GHU="$GH/$GH_MAIN"
 # Shell nesting
-    # export ZSH_NOINC=once to disable for next child shell
-    # export ZSH_NOINC=all  to disable for all descendant shells
-    if [ -n "$ZSH_NOINC" ]; then
-        [ ! "$ZSH_NOINC" = 'all' ] \
-            && unset ZSH_NOINC
+    # export ZSHLVL_NOINC=once to disable for next child shell
+    # export ZSHLVL_NOINC=all  to disable for all descendant shells
+    # echo "$(date +%H:%M:%S)-$$=$ZSHLVL:$ZSHLVL_NOINC:$ZSHLVL_SET" >> ~/trace
+    # echo "ZSHLVL: $ZSHLVL"
+    # echo "ZSHLVL_NOINC: $ZSHLVL_NOINC"
+    # echo "ZSHLVL_SET: $ZSHLVL_SET"
+    if [ -n "$ZSHLVL_NOINC" ]; then
+        [ ! "$ZSHLVL_NOINC" = 'all' ] \
+            && unset ZSHLVL_NOINC
     else
-        unset ZSH_NOINC
-        [ -n "$ZSH" ] && ZSH=$((ZSH + 1))
+        unset ZSHLVL_NOINC
+        [ -n "$ZSHLVL" ] && ZSHLVL=$((ZSHLVL + 1))
     fi
-    [ -n "$ZSH" ] || ZSH=0
-    export ZSH
-    echo $ZSH
+    [ -n "$ZSHLVL" ] || ZSHLVL=0
+    # if [ -n "$ZSHLVL_SET" ]; then
+    #     ZSHLVL="$ZSHLVL_SET"
+    # fi
+    export ZSHLVL
 # Bind shift-tab to cycle backwards in completion
     bindkey "^[[Z" reverse-menu-complete
 # Disable command-specific tab completions
@@ -103,9 +109,10 @@
 #========= PROMPT
 # Display shell nesting level
     # Variable, not function (unlike below)
-    for _ in $(seq 1 $ZSH); do
-        _arrow="$_arrow="
-    done
+    [ -n "$ZSHLVL" ] && \
+        for _ in $(seq 1 $ZSHLVL); do
+            _arrow="$_arrow="
+        done
     [ $_arrow ] && _arrow="$_arrow> "
 # Prompt substring functions
     setopt PROMPT_SUBST # Enable
@@ -216,7 +223,7 @@
     alias zig='~/.zvm/bin/zig'
     alias pstree='pstree -U | less'
     alias zh='vim + ~/.cache/zsh_history'
-    alias zr='unalias -a; ZSH_NOINC=1 source ~/.zshrc'
+    alias zr='unalias -a; ZSHLVL_NOINC=1 source ~/.zshrc'
     alias mkd='mkdir-cd'
     alias eo='garfeo-mode'
     alias ll='cd-last-command'
