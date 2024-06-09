@@ -375,7 +375,7 @@
     PACKAGES=( # Each item is the zsh entry file of package, relative to PKGDIR
         zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
-	    dxrcy/zsh-history-substring-search/zsh-history-substring-search.zsh # Open PR
+	    zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
         hlissner/zsh-autopair/autopair.zsh
     )
     # Clean packages
