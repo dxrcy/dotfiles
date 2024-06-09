@@ -390,8 +390,14 @@
             fi
         done
         if [ -z "$_found" ]; then # Remove if not in list
-            printf "\x1b[2;33mzsh: removing old package '%s'...\x1b[0m\n" "$_dir"
+            printf "\x1b[2;31mzsh: removing old package '%s'...\x1b[0m\n" "$_dir"
             rm -rf "$_dir_full"
+        fi
+    done
+    # Clean package parent directories
+    for _author_full in $PKGDIR/*(N); do
+        if [ -z "$(ls "$_author_full")" ]; then
+            rm -r "$_author_full"
         fi
     done
     # Install packages
