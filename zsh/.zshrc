@@ -380,11 +380,11 @@
     )
     # Clean packages
     for _dir_full in $PKGDIR/*/*(N); do # List all installed packages
-        _dir=${_dir#$PKGDIR/} # Remove pkgdir from path
+        _dir=${_dir_full#$PKGDIR/} # Remove pkgdir from path
         unset _found
         for _filepath in $PACKAGES; do # Check if package is in list
             _package="${_filepath%/*}" # Remove filename from path
-            if [ "$package" = "$_dir" ]; then
+            if [ "$_package" = "$_dir" ]; then
                 _found=1
                 break
             fi
