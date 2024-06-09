@@ -132,7 +132,7 @@
     _gt='❯'
     #        BOLD     COLOR           VALUE
     _PS=''
-    _prompt         "%F{cyan}"      "$_arrow"       # Shell nesting level
+    # _prompt         "%F{cyan}"      "$_arrow"       # Shell nesting level
     _prompt  "%B"   "%F{yellow}"    "%n"            # Username
     _prompt         "%F{green}"     "@"             # @
     _prompt  "%B"   "%F{blue}"      "%m"            # Hostname
