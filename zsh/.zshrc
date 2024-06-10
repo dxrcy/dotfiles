@@ -215,9 +215,11 @@
     alias tree='ls -T -I target'
     alias treea='tree -a'
     alias find='fd'
+    alias finda='fd -HI'
+    alias grep="rg"
+    alias grepa="rg --hidden --no-ignore"
     alias mkdir='mkdir -p'
     alias cp='cp -r'
-    alias grep="rg"
     alias nsxiv='nsxiv -a'
     alias sxiv='nsxiv'
     alias zig='~/.zvm/bin/zig'
