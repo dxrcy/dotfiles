@@ -81,14 +81,13 @@
     # echo "ZSHLVL: $ZSHLVL"
     # echo "ZSHLVL_NOINC: $ZSHLVL_NOINC"
     # echo "ZSHLVL_SET: $ZSHLVL_SET"
-    [ -n "$ZSHLVL" ] || ZSHLVL=0
-    # if [ -n "$ZSHLVL_NOINC" ]; then
-    #     [ ! "$ZSHLVL_NOINC" = 'all' ] \
-    #         && unset ZSHLVL_NOINC
-    # else
-    #     unset ZSHLVL_NOINC
-    # fi
-        [ -n "$ZSHLVL" ] && ZSHLVL=$((ZSHLVL + 1))
+    if [ -z "$ZSHLVL" ]; then
+        ZSHLVL=1
+    elif [ -n "$ZSHLVL_NOINC" ]; then
+        [ "$ZSHLVL_NOINC" = 'all' ] || unset ZSHLVL_NOINC
+    else
+        ZSHLVL=$((ZSHLVL + 1))
+    fi
     # if [ -n "$ZSHLVL_SET" ]; then
     #     ZSHLVL="$ZSHLVL_SET"
     # fi
@@ -109,6 +108,7 @@
 #========= PROMPT
 # Display shell nesting level
     # Variable, not function (unlike below)
+    _arrow=''
     [ -n "$ZSHLVL" ] && \
         for _ in $(seq 2 $ZSHLVL); do
             _arrow="$_arrow="
