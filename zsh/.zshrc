@@ -81,14 +81,14 @@
     # echo "ZSHLVL: $ZSHLVL"
     # echo "ZSHLVL_NOINC: $ZSHLVL_NOINC"
     # echo "ZSHLVL_SET: $ZSHLVL_SET"
-    if [ -n "$ZSHLVL_NOINC" ]; then
-        [ ! "$ZSHLVL_NOINC" = 'all' ] \
-            && unset ZSHLVL_NOINC
-    else
-        unset ZSHLVL_NOINC
-        [ -n "$ZSHLVL" ] && ZSHLVL=$((ZSHLVL + 1))
-    fi
     [ -n "$ZSHLVL" ] || ZSHLVL=0
+    # if [ -n "$ZSHLVL_NOINC" ]; then
+    #     [ ! "$ZSHLVL_NOINC" = 'all' ] \
+    #         && unset ZSHLVL_NOINC
+    # else
+    #     unset ZSHLVL_NOINC
+    # fi
+        [ -n "$ZSHLVL" ] && ZSHLVL=$((ZSHLVL + 1))
     # if [ -n "$ZSHLVL_SET" ]; then
     #     ZSHLVL="$ZSHLVL_SET"
     # fi
@@ -110,7 +110,7 @@
 # Display shell nesting level
     # Variable, not function (unlike below)
     [ -n "$ZSHLVL" ] && \
-        for _ in $(seq 1 $ZSHLVL); do
+        for _ in $(seq 2 $ZSHLVL); do
             _arrow="$_arrow="
         done
     [ $_arrow ] && _arrow="$_arrow> "
@@ -132,7 +132,7 @@
     _gt='❯'
     #        BOLD     COLOR           VALUE
     _PS=''
-    # _prompt         "%F{cyan}"      "$_arrow"       # Shell nesting level
+    _prompt         "%F{cyan}"      "$_arrow"       # Shell nesting level
     _prompt  "%B"   "%F{yellow}"    "%n"            # Username
     _prompt         "%F{green}"     "@"             # @
     _prompt  "%B"   "%F{blue}"      "%m"            # Hostname
