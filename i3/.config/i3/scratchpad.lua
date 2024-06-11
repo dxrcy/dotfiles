@@ -66,8 +66,8 @@ Apps = {
     {
         name = "telegram",
         title = "💬 Telegram",
-        command = "telegram-desktop",
-        instance = "telegram-desktop",
+        command = "~/dl/apps/Telegram/Telegram",
+        instance = "Telegram",
         size = { 1400, 950 },
         in_menu = true,
     },
