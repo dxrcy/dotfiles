@@ -29,3 +29,4 @@ text/x-tex=nvim.desktop;
 text/xml=librewolf.desktop;
 x-scheme-handler/http=librewolf.desktop;
 x-scheme-handler/https=librewolf.desktop;
+x-scheme-handler/tg=org.telegram.desktop._9f4550e16e85e0236131fbda956f272a.desktop;
