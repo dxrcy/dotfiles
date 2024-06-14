@@ -398,7 +398,7 @@
     done
     # Clean package parent directories
     for _author_full in $PKGDIR/*(N); do
-        if [ -z "$(ls "$_author_full")" ]; then
+        if [ -z "$(\ls "$_author_full")" ]; then
             rm -r "$_author_full"
         fi
     done
