@@ -31,7 +31,9 @@ exec --no-startup-id setxkbmap -layout au
 exec_always --no-startup-id $scripts/monitors auto
 
 # Enable touchpad while keys are pressed
-exec_always --no-startup-id xinput --set-prop 12 'libinput Disable While Typing Enabled' 0
+exec_always --no-startup-id xinput set-prop 12 'libinput Disable While Typing Enabled' 0
+# Enable natural scrolling
+exec_always --no-startup-id xinput set-prop 12 'libinput Natural Scrolling Enabled'    1
 
 # ????
 set $refresh_i3status killall -SIGUSR1 i3status
