@@ -75,6 +75,19 @@ keymap("n", "<leader>z", function()
     end
 end)
 
+-- Toggle line width
+Linewidth = 80
+vim.opt.colorcolumn = "80"
+keymap("n", "<leader>x", function()
+    if vim.bo.textwidth == 0 then
+        vim.bo.textwidth = Linewidth
+        print("Line width is " .. Linewidth)
+    else
+        vim.bo.textwidth = 0
+        print("Line width is OFF")
+    end
+end)
+
 -- Stop highlighting searched text
 keymap('n', '<Esc>', ':noh<CR>')
 
