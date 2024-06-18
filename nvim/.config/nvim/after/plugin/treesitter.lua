@@ -34,19 +34,25 @@ local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 -- ln -s ~/code/tree-sitter-{name}/queries ~/.config/nvim/queries/{name}
 parser_config.phonet = {
     install_info = {
-        url = "~/code/tree-sitter-phonet", -- local path or git repo
+        url = "~/code/tree-sitter/tree-sitter-phonet", -- local path or git repo
         files = { "src/parser.c" },        -- note that some parsers also require src/scanner.c or src/scanner.cc
     },
 }
 parser_config.transcript = {
     install_info = {
-        url = "~/code/tree-sitter-transcript", -- local path or git repo
+        url = "~/code/tree-sitter/tree-sitter-transcript", -- local path or git repo
         files = { "src/parser.c" },            -- note that some parsers also require src/scanner.c or src/scanner.cc
     },
 }
 parser_config.asmish = {
     install_info = {
-        url = "~/code/tree-sitter-asmish", -- local path or git repo
+        url = "~/code/tree-sitter/tree-sitter-asmish", -- local path or git repo
+        files = { "src/parser.c" },        -- note that some parsers also require src/scanner.c or src/scanner.cc
+    },
+}
+parser_config.lispthing = {
+    install_info = {
+        url = "~/code/tree-sitter/tree-sitter-lispthing", -- local path or git repo
         files = { "src/parser.c" },        -- note that some parsers also require src/scanner.c or src/scanner.cc
     },
 }
