@@ -327,7 +327,7 @@ for_window [class="betterbird"] floating enable, resize set 1100 750, border pix
 for_window [instance="scratchpad-terminal"] move scratchpad
 for_window [instance="Mail"] move scratchpad
 for_window [instance="spotify"] move scratchpad
-for_window [instance="vesktop"] move scratchpad
+for_window [instance="vesktop"] move scratchpad, resize set 1400 950
 for_window [instance="scratchpad-btop"] move scratchpad
 for_window [instance="scratchpad-calculator"] move scratchpad
 for_window [instance="Telegram" title="^(?!Media viewer)$"] move scratchpad
