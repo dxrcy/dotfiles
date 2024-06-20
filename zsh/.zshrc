@@ -231,6 +231,7 @@
     alias ll='cd-last-command'
     alias mpv='mpv --script=~/.config/mpv/mpv-cheatsheet.js'
     alias gcc='gcc -Wall -Wpedantic'
+    alias wcl='wc -l'
 # Misc. Abbreviations / Mispellings
     alias dc='cd - >/dev/null'
     alias j='just'
