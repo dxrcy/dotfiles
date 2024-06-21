@@ -9,6 +9,8 @@ git:
   paging:
     pager: delta --dark --paging=never
 
+  disableForcePushing: true
+
 customCommands:
   - key: 'ŝ'
     context: 'global'
