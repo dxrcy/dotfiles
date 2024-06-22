@@ -246,6 +246,7 @@
     alias lw='librewolf'
     alias clip='xclip -selection clipboard'
     alias sy='systemctl'
+    alias ssy='sudo systemctl'
     alias syu='systemctl --user'
     alias ping1='ping 1.1.1.1 -c 10'
     alias cal3='cal -3'
