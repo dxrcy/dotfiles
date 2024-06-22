@@ -247,7 +247,7 @@
     alias clip='xclip -selection clipboard'
     alias sy='systemctl'
     alias syu='systemctl --user'
-    alias ping8='ping 8.8.8.8 -c 10'
+    alias ping1='ping 1.1.1.1 -c 10'
     alias cal3='cal -3'
     alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
     alias pk='pkill'
