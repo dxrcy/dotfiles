@@ -109,8 +109,8 @@ bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\033[1m(No
 # Kill unattached tmux sessions
 bindsym $mod+Mod1+Delete exec --no-startup-id $scripts/kill-orphans
 
-# Start thunar
-bindsym $mod+n exec --no-startup-id thunar
+# Start file explorer
+bindsym $mod+n exec --no-startup-id nemo
 
 # -------------------------------------------------
 # ROFI STUFF
