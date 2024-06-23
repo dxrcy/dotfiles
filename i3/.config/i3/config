@@ -369,12 +369,6 @@ bindsym Mod1+ubreve            exec --no-startup-id $i3_scripts/alt-key 'ubreve'
 bindsym Mod1+ccircumflex       exec --no-startup-id $i3_scripts/alt-key 'ccircumflex' 'x'
 bindsym Mod1+jcircumflex       exec --no-startup-id $i3_scripts/alt-key 'jcircumflex' 'bracketleft'
 bindsym Mod1+hcircumflex       exec --no-startup-id $i3_scripts/alt-key 'hcircumflex' 'bracketright'
-bindsym Mod1+Shift+scircumflex exec --no-startup-id $i3_scripts/alt-key 'scircumflex' 'Q'
-bindsym Mod1+Shift+gcircumflex exec --no-startup-id $i3_scripts/alt-key 'gcircumflex' 'W'
-bindsym Mod1+Shift+ubreve      exec --no-startup-id $i3_scripts/alt-key 'ubreve'      'Y'
-bindsym Mod1+Shift+ccircumflex exec --no-startup-id $i3_scripts/alt-key 'ccircumflex' 'X'
-bindsym Mod1+Shift+jcircumflex exec --no-startup-id $i3_scripts/alt-key 'jcircumflex' 'braceleft'
-bindsym Mod1+Shift+hcircumflex exec --no-startup-id $i3_scripts/alt-key 'hcircumflex' 'braceright'
 
 # /ESPERANTO STUFF
 # -------------------------------------------------
