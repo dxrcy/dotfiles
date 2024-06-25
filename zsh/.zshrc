@@ -58,9 +58,9 @@
 # Override default browser
     BROWSER='librewolf'
 # Persistant history
-    HISTFILE=~/.cache/zsh_history
-    HISTSIZE=2000
-    SAVEHIST=2000
+    export HISTFILE=~/.cache/zsh_history
+    export HISTSIZE=2000
+    export SAVEHIST=2000
     setopt SHARE_HISTORY        # Share history between terminals
     setopt HIST_IGNORE_ALL_DUPS # Duplicate history lines are ignored
     # See also: zsh-history-substring-search plugin
