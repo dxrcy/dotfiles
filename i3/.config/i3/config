@@ -110,7 +110,7 @@ bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\033[1m(No
 bindsym $mod+Mod1+Delete exec --no-startup-id $scripts/kill-orphans
 
 # Start file explorer
-bindsym $mod+n exec --no-startup-id nemo
+bindsym $mod+n exec --no-startup-id thunar
 
 # -------------------------------------------------
 # ROFI STUFF
