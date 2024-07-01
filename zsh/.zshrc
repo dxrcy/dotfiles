@@ -433,3 +433,11 @@
     bindkey -M vicmd 'j' history-substring-search-down
     HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
+#========= ASK TO RUN `startx` IN TTY1
+if [ -z "$DISPLAY" ] && [ "$TTY" = '/dev/tty1' ]; then
+    echo
+    printf '\x1b[1mstartx? \x1b[0m'
+    read -r _
+    startx
+fi
+
