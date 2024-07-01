@@ -99,6 +99,11 @@
     zstyle ':completion:*' completer _files _command_names
 # Move zcompdump file location
     compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+# XDG base directory aliases
+    XCONF="$XDG_CONFIG_HOME"
+    XCACHE="$XDG_CACHE_HOME"
+    XDATA="$XDG_DATA_HOME"
+    XSTATE="$XDG_STATE_HOME"
 
 #========= THESE SHOULD BE REMOVED AT SOME POINT!
 # Fix zsh tab completion when using `eza` package
