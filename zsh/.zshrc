@@ -55,8 +55,6 @@
         then export EDITOR='vim'
         else export EDITOR='nvim'
     fi
-# Override default browser
-    BROWSER='librewolf'
 # Persistant history
     export HISTFILE=~/.cache/zsh_history
     export HISTSIZE=2000

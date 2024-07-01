@@ -1,11 +1,7 @@
-# GTK_USE_PORTAL=1
-
 # Merge xresources if the file exists
 if [ -f ~/.Xresources ]; then
   xrdb -merge ~/.Xresources
 fi
-
-export TERMINAL=kitty
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -19,8 +15,22 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
 . "$CARGO_HOME/env"
 
-# export GTK_THEME=Adwaita:dark
+# Default applications
+export TERMINAL=kitty
+export EDITOR=nvim
+export BROWSER=librewolf
+
+# Theme
+# Idk if this even works...
 export GTK_THEME=Arc-Dark
+# export GTK_THEME=Adwaita:dark
+
+# Zig version manager
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
+
+# GTK_USE_PORTAL=1
 
 #----------------------------------------------------
 # If you're trying to set dark mode, try this command
@@ -41,9 +51,4 @@ export GTK_THEME=Arc-Dark
 # https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications#Flatpak_Qt_apps_do_not_use_Gnome_Adwaita_dark_theme
 # export QT_QPA_PLATFORMTHEME='gnome'
 # export QT_QPA_PLATFORMTHEME=gtk2
-
-# ZVM
-export ZVM_INSTALL="$HOME/.zvm/self"
-export PATH="$PATH:$HOME/.zvm/bin"
-export PATH="$PATH:$ZVM_INSTALL/"
 
