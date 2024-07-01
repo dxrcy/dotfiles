@@ -97,11 +97,6 @@
 # Disable command-specific tab completions
     # Just list commands and files
     zstyle ':completion:*' completer _files _command_names
-# XDG base directories
-    export XDG_CONFIG_HOME="$HOME/.config"
-    export XDG_CACHE_HOME="$HOME/.cache"
-    export XDG_DATA_HOME="$HOME/.local/share"
-    export XDG_STATE_HOME="$HOME/.local/state"
 # Move zcompdump file location
     compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 

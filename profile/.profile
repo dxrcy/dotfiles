@@ -1,4 +1,3 @@
-. "$HOME/.cargo/env"
 # GTK_USE_PORTAL=1
 
 # Merge xresources if the file exists
@@ -8,7 +7,17 @@ fi
 
 export TERMINAL=kitty
 
+# XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# Use XDG base directories
+export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+. "$CARGO_HOME/env"
 
 # export GTK_THEME=Adwaita:dark
 export GTK_THEME=Arc-Dark
@@ -37,8 +46,4 @@ export GTK_THEME=Arc-Dark
 export ZVM_INSTALL="$HOME/.zvm/self"
 export PATH="$PATH:$HOME/.zvm/bin"
 export PATH="$PATH:$ZVM_INSTALL/"
-
-# Use XDG base directories
-export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
