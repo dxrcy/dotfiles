@@ -74,12 +74,6 @@
     GH_STUDENT='dyrcyuni'
     GHU="$GH/$GH_MAIN"
 # Shell nesting
-    # export ZSHLVL_NOINC=once to disable for next child shell
-    # export ZSHLVL_NOINC=all  to disable for all descendant shells
-    # echo "$(date +%H:%M:%S)-$$=$ZSHLVL:$ZSHLVL_NOINC:$ZSHLVL_SET" >> ~/trace
-    # echo "ZSHLVL: $ZSHLVL"
-    # echo "ZSHLVL_NOINC: $ZSHLVL_NOINC"
-    # echo "ZSHLVL_SET: $ZSHLVL_SET"
     if [ -z "$ZSHLVL" ]; then
         ZSHLVL=1
     elif [ -n "$ZSHLVL_NOINC" ]; then
@@ -87,9 +81,6 @@
     else
         ZSHLVL=$((ZSHLVL + 1))
     fi
-    # if [ -n "$ZSHLVL_SET" ]; then
-    #     ZSHLVL="$ZSHLVL_SET"
-    # fi
     export ZSHLVL
 # Bind shift-tab to cycle backwards in completion
     bindkey "^[[Z" reverse-menu-complete
