@@ -4,7 +4,6 @@
 # -------------------------
 
 #========= MISC
-    source ~/.profile # Important.
 # Vi mode in prompt (best mode)
     bindkey -v
     export KEYTIMEOUT=1                  # Remove timeout for <Esc>
