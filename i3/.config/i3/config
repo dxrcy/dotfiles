@@ -102,9 +102,9 @@ bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed 
 bindsym $mod+Control+r exec --no-startup-id $scripts/monitors auto && $scratchpad_lua apply && $i3_scripts/picom-exec restart
 
 # Start a terminal WITH tmux
-bindsym $mod+Return exec --no-startup-id kitty tmux
+bindsym $mod+Return exec --no-startup-id kitty tmux -L FOO
 # Start terminal and attach to most recent tmux session
-bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux attach
+bindsym $mod+Mod1+Return exec --no-startup-id kitty tmux -L FOO attach
 # Start terminal WITHOUT tmux
 bindsym $mod+Control+Return exec --no-startup-id kitty sh -c 'printf "\033[1m(No tmux)\n" && zsh'
 
@@ -388,7 +388,7 @@ exec --no-startup-id 'sleep 2; $scripts/bt connect'
 bindsym $mod+g exec --no-startup-id $scripts/garf show
 
 # Open a quick note
-bindsym $mod+o exec --no-startup-id kitty tmux new 'cd ~/docs/notes && nvim $($scripts/notename) && zsh'
+bindsym $mod+o exec --no-startup-id kitty tmux -L FOO new 'cd ~/docs/notes && nvim $($scripts/notename) && zsh'
 
 # Screenshot
 # Always starts persistant daemon if not running
