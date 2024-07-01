@@ -102,6 +102,8 @@
     export XDG_CACHE_HOME="$HOME/.cache"
     export XDG_DATA_HOME="$HOME/.local/share"
     export XDG_STATE_HOME="$HOME/.local/state"
+# Move zcompdump file location
+    compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 
 #========= THESE SHOULD BE REMOVED AT SOME POINT!
 # Fix zsh tab completion when using `eza` package
