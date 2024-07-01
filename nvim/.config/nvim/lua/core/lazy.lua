@@ -85,13 +85,6 @@ local plugins = {
     -- Save files with sudo
     "lambdalisue/suda.vim",
 
-    -- Command aliases
-    -- For Esperanto aliases
-    {
-        "coot/cmdalias_vim",
-        dependencies = { { "coot/CRDispatcher" } },
-    },
-
     -- Git stuff
     {
         "lewis6991/gitsigns.nvim",
