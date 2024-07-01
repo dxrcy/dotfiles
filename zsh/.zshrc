@@ -217,6 +217,7 @@
     alias ls='eza -l --group-directories-first'
     alias lsa='ls -a'
     alias lst='eza -l --total-size --sort size --reverse'
+    alias lsta='lst -a'
     alias tree='ls -T -I target'
     alias treea='tree -a'
     alias find='fd'
