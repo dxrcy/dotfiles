@@ -216,7 +216,7 @@
     alias cat='bat'
     alias ls='eza -l --group-directories-first'
     alias lsa='ls -a'
-    alias lst='ls --total-size'
+    alias lst='eza -l --total-size --sort size --reverse'
     alias tree='ls -T -I target'
     alias treea='tree -a'
     alias find='fd'
