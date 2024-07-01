@@ -9,6 +9,7 @@ vim.g.mapleader = " "
 vim.api.nvim_set_option('langmap', 'ĉx,ĝw,ĥ],ĵ[,ŝq,ŭy,ĈX,ĜW,Ĥ},Ĵ{,ŜQ,ŬY')
 -- Manual Esperanto keybinds (for some reason)
 keymap("n", "cĝ", "cw")
+keymap("n", "dĝ", "dw")
 
 -- Save file
 -- Show nice error if file is readonly
