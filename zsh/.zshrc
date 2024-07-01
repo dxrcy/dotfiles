@@ -382,13 +382,14 @@
 #========= PACKAGES
     # Autodownload packages
     # At end of file, so if git clone cancelled, above aliases still work
-    PKGDIR="$HOME/.zsh" # Where to download packages to
+    PKGDIR="$XDG_DATA_HOME/zsh" # Where to download packages to
     PACKAGES=( # Each item is the zsh entry file of package, relative to PKGDIR
         zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
 	    zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
         hlissner/zsh-autopair/autopair.zsh
     )
+    [ -e "$PKGDIR" ] || mkdir -p "$PKGDIR"
     # Clean packages
     for _dir_full in $PKGDIR/*/*(N); do # List all installed packages
         _dir=${_dir_full#$PKGDIR/} # Remove pkgdir from path
