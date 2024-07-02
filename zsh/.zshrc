@@ -12,7 +12,7 @@
     fi
     # Ask to run `startx`
     # Runs at end of file
-    _startx_prompt() {
+    _startx-prompt() {
         if [ -n "$ISLOGIN" ]; then
             echo
             printf '\x1b[1mstartx? \x1b[0m'
@@ -390,7 +390,7 @@
 #========= PACKAGES
     # Autodownload packages
     # At end of file, so if git clone cancelled, above aliases still work
-    _install_packages() {
+    _install-packages() {
         PKGDIR="$XDG_DATA_HOME/zsh" # Where to download packages to
         PACKAGES=( # Each item is the zsh entry file of package, relative to PKGDIR
             zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -447,6 +447,6 @@
         HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
     }
 
-_install_packages
-_startx_prompt
+_install-packages
+_startx-prompt
 
