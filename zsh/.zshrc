@@ -3,6 +3,24 @@
 # Blazingly fast Zsh config
 # -------------------------
 
+#========= RUNNING IN PRIMARY TTY
+    # If shell is directly in primary tty
+    [ -z "$DISPLAY" ] && [ "$TTY" = "/dev/tty1" ] && ISLOGIN=1
+    # Source ~/.profile
+    if [ -n "$ISLOGIN" ]; then
+        [ -f "$HOME/.profile" ] && . "$HOME/.profile"
+    fi
+    # Ask to run `startx`
+    # Runs at end of file
+    _startx() {
+        if [ -n "$ISLOGIN" ]; then
+            echo
+            printf '\x1b[1mstartx? \x1b[0m'
+            read -r _
+            startx
+        fi
+    }
+
 #========= MISC
 # Vi mode in prompt (best mode)
     bindkey -v
@@ -424,11 +442,5 @@
     bindkey -M vicmd 'j' history-substring-search-down
     HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
-#========= ASK TO RUN `startx` IN TTY1
-if [ -z "$DISPLAY" ] && [ "$TTY" = '/dev/tty1' ]; then
-    echo
-    printf '\x1b[1mstartx? \x1b[0m'
-    read -r _
-    startx
-fi
+_startx
 
