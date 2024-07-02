@@ -12,7 +12,7 @@
     fi
     # Ask to run `startx`
     # Runs at end of file
-    _startx() {
+    _startx_prompt() {
         if [ -n "$ISLOGIN" ]; then
             echo
             printf '\x1b[1mstartx? \x1b[0m'
@@ -390,57 +390,63 @@
 #========= PACKAGES
     # Autodownload packages
     # At end of file, so if git clone cancelled, above aliases still work
-    PKGDIR="$XDG_DATA_HOME/zsh" # Where to download packages to
-    PACKAGES=( # Each item is the zsh entry file of package, relative to PKGDIR
-        zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-        zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
-	    zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
-        hlissner/zsh-autopair/autopair.zsh
-    )
-    [ -e "$PKGDIR" ] || mkdir -p "$PKGDIR"
-    # Clean packages
-    for _dir_full in $PKGDIR/*/*(N); do # List all installed packages
-        _dir=${_dir_full#$PKGDIR/} # Remove pkgdir from path
-        unset _found
-        for _filepath in $PACKAGES; do # Check if package is in list
-            _package="${_filepath%/*}" # Remove filename from path
-            if [ "$_package" = "$_dir" ]; then
-                _found=1
-                break
+    _install_packages() {
+        PKGDIR="$XDG_DATA_HOME/zsh" # Where to download packages to
+        PACKAGES=( # Each item is the zsh entry file of package, relative to PKGDIR
+            zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+            zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
+            zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
+            hlissner/zsh-autopair/autopair.zsh
+        )
+        [ -e "$PKGDIR" ] || mkdir -p "$PKGDIR"
+        if [ ! -d "$PKGDIR" ] || [ ! -w "$PKGDIR" ]; then
+            printf "\x1b[2;31mzsh: cannot access package directory at '%s'.\x1b[0m\n" "$PKGDIR"
+            return 1
+        fi
+        # Clean packages
+        for _dir_full in $PKGDIR/*/*(N); do # List all installed packages
+            _dir=${_dir_full#$PKGDIR/} # Remove pkgdir from path
+            unset _found
+            for _filepath in $PACKAGES; do # Check if package is in list
+                _package="${_filepath%/*}" # Remove filename from path
+                if [ "$_package" = "$_dir" ]; then
+                    _found=1
+                    break
+                fi
+            done
+            if [ -z "$_found" ]; then # Remove if not in list
+                printf "\x1b[2;31mzsh: removing old package '%s'...\x1b[0m\n" "$_dir"
+                rm -rf "$_dir_full"
             fi
         done
-        if [ -z "$_found" ]; then # Remove if not in list
-            printf "\x1b[2;31mzsh: removing old package '%s'...\x1b[0m\n" "$_dir"
-            rm -rf "$_dir_full"
-        fi
-    done
-    # Clean package parent directories
-    for _author_full in $PKGDIR/*(N); do
-        if [ -z "$(\ls "$_author_full")" ]; then
-            rm -r "$_author_full"
-        fi
-    done
-    # Install packages
-    for _filepath in $PACKAGES; do
-        _package="${_filepath%/*}" # Remove filename from path
-        if [ ! -d "$PKGDIR/$_package" ]; then # Check if not installed
-            printf "\x1b[2;33mzsh: installing '%s'...\x1b[0m\n" "$_package"
-            if ! git clone --quiet "https://github.com/$_package" "$PKGDIR/$_package"; then
-                printf "\x1b[31mzsh: some packages failed to download.\x1b[0m\n"
-                break
+        # Clean package parent directories
+        for _author_full in $PKGDIR/*(N); do
+            if [ -z "$(\ls "$_author_full")" ]; then
+                rm -r "$_author_full"
             fi
-        fi
-        source "$PKGDIR/$_filepath" # Load package
-    done
+        done
+        # Install packages
+        for _filepath in $PACKAGES; do
+            _package="${_filepath%/*}" # Remove filename from path
+            if [ ! -d "$PKGDIR/$_package" ]; then # Check if not installed
+                printf "\x1b[2;33mzsh: installing '%s'...\x1b[0m\n" "$_package"
+                if ! git clone --quiet "https://github.com/$_package" "$PKGDIR/$_package"; then
+                    printf "\x1b[31mzsh: failed to download package '%s'.\x1b[0m\n"
+                    continue
+                fi
+            fi
+            . "$PKGDIR/$_filepath" # Load package
+        done
+        # Settings for packages
+        # Will not be applied if package installation is interrupted
+        ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
+        bindkey '^[[A'       history-substring-search-up
+        bindkey '^[[B'       history-substring-search-down
+        bindkey -M vicmd 'k' history-substring-search-up
+        bindkey -M vicmd 'j' history-substring-search-down
+        HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+    }
 
-    # Settings for packages
-    # Will not be applied if package installation is interrupted
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
-    bindkey '^[[A'       history-substring-search-up
-    bindkey '^[[B'       history-substring-search-down
-    bindkey -M vicmd 'k' history-substring-search-up
-    bindkey -M vicmd 'j' history-substring-search-down
-    HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-
-_startx
+_install_packages
+_startx_prompt
 
