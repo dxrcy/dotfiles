@@ -247,6 +247,8 @@
     alias mpv='mpv --script=~/.config/mpv/mpv-cheatsheet.js'
     alias gcc='gcc -Wall -Wpedantic'
     alias wcl='wc -l'
+    alias journalctl='journalctl -e'
+    alias jnl='journalctl'
 # Misc. Abbreviations / Mispellings
     alias dc='cd - >/dev/null'
     alias j='just'
