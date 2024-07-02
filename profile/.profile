@@ -1,7 +1,7 @@
 # Merge xresources if the file exists
-if [ -f ~/.Xresources ]; then
-  xrdb -merge ~/.Xresources
-fi
+# if [ -f ~/.Xresources ]; then
+#   xrdb -merge ~/.Xresources
+# fi
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
