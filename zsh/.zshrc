@@ -4,16 +4,14 @@
 # -------------------------
 
 #========= RUNNING IN PRIMARY TTY
-    # If shell is directly in primary tty
-    [ -z "$DISPLAY" ] && [ "$TTY" = "/dev/tty1" ] && ISLOGIN=1
-    # Source ~/.profile
-    if [ -n "$ISLOGIN" ]; then
+    # Source ~/.profile in any tty
+    if [ -z "$DISPLAY" ]; then
         [ -f "$HOME/.profile" ] && . "$HOME/.profile"
     fi
     # Ask to run `startx`
     # Runs at end of file
     _startx-prompt() {
-        if [ -n "$ISLOGIN" ]; then
+        if [ -z "$DISPLAY" ] && [ "$TTY" = "/dev/tty1" ]; then
             echo
             printf '\x1b[1mstartx? \x1b[0m'
             read -r _
