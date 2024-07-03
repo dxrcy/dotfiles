@@ -56,3 +56,9 @@ parser_config.lispthing = {
         files = { "src/parser.c" },        -- note that some parsers also require src/scanner.c or src/scanner.cc
     },
 }
+parser_config.lure = {
+    install_info = {
+        url = "~/code/tree-sitter/tree-sitter-lure", -- local path or git repo
+        files = { "src/parser.c" },        -- note that some parsers also require src/scanner.c or src/scanner.cc
+    },
+}
