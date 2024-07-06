@@ -97,11 +97,11 @@
         ZSHLVL=$((ZSHLVL + 1))
     fi
     export ZSHLVL
+# Disable command-specific tab completions
+    # Only list commands and files
+    zstyle ':completion:*' completer _files _command_names
 # Bind shift-tab to cycle backwards in completion
     bindkey "^[[Z" reverse-menu-complete
-# Disable command-specific tab completions
-    # Just list commands and files
-    zstyle ':completion:*' completer _files _command_names
 # Move zcompdump file location
     compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 # XDG base directory aliases
@@ -109,13 +109,6 @@
     XCACHE="$XDG_CACHE_HOME"
     XDATA="$XDG_DATA_HOME"
     XSTATE="$XDG_STATE_HOME"
-
-#========= THESE SHOULD BE REMOVED AT SOME POINT!
-# Fix zsh tab completion when using `eza` package
-    # _exa() { eza }
-# zstyle ':completion:*' menu select # select completions with arrow keys
-# zstyle ':completion:*' group-name '' # group results by category
-# zstyle ':completion:::::' completer _expand _complete _ignored _approximate #enable approximate matches for completion
 
 #========= PROMPT
 # Display shell nesting level
@@ -284,12 +277,6 @@
         \yazi --cwd-file "$cdfile"
         target="$(cat "$cdfile")"
         [ -d "$target" ] && cd "$target"
-        # Also open file if triggered (see lfrc)
-        # editfile='/tmp/lf-editfile'
-        # if [ -f "$editfile" ]; then
-        #     nvim "$(cat "$editfile")"
-        #     rm "$editfile"
-        # fi
     }
     gh-url() { # Git url shorthand
         url="$1"
