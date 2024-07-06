@@ -272,11 +272,13 @@
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
-    yazi-cd() { # Use lf to `cd`, without spawning subshell
-        cdfile='/tmp/yazi-cdfile'
-        \yazi --cwd-file "$cdfile"
-        target="$(cat "$cdfile")"
-        [ -d "$target" ] && cd "$target"
+    yazi-cd() { # Use `yazi` to `cd`, without spawning subshell
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+        \yazi "$@" --cwd-file="$tmp"
+        if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+            cd -- "$cwd"
+        fi
+        rm -f -- "$tmp"
     }
     gh-url() { # Git url shorthand
         url="$1"
