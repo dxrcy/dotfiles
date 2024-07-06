@@ -255,8 +255,7 @@
     alias o='xdg-open'
     alias ,='abandon' # Script
     alias z='zi'
-    alias r='lf'
-    alias l='lf'
+    alias r='yazi'
     alias th='thunar'
     alias lw='librewolf'
     alias clip='xclip -selection clipboard'
@@ -276,19 +275,21 @@
     alias entra='entr-all'
     alias ghs='gh auth switch'
     alias s='sandbox-fzf'
-    alias lf='lf-cd' 
+    alias yazi='yazi-cd' 
     am() { garf make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
-    lf-cd() { # Use lf to `cd`, without spawning subshell
-        target="$(\lf -print-last-dir)"
+    yazi-cd() { # Use lf to `cd`, without spawning subshell
+        cdfile='/tmp/yazi-cdfile'
+        \yazi --cwd-file "$cdfile"
+        target="$(cat "$cdfile")"
         [ -d "$target" ] && cd "$target"
         # Also open file if triggered (see lfrc)
-        editfile='/tmp/lf-editfile'
-        if [ -f "$editfile" ]; then
-            nvim "$(cat "$editfile")"
-            rm "$editfile"
-        fi
+        # editfile='/tmp/lf-editfile'
+        # if [ -f "$editfile" ]; then
+        #     nvim "$(cat "$editfile")"
+        #     rm "$editfile"
+        # fi
     }
     gh-url() { # Git url shorthand
         url="$1"
