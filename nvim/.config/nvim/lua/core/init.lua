@@ -12,6 +12,9 @@ vim.opt.expandtab = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Highlight current line
+vim.opt.cursorline = true
+
 -- Use system clipboard
 vim.opt.clipboard = "unnamedplus"
 
