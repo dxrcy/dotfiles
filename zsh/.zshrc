@@ -354,10 +354,11 @@
     }
     garfeo-mode() { # https://github.com/dxrcy/garfeo
         cd ~/code/garfeo &&\
-        tmux split-window -h -c "#{pane_current_path}" 'killall basic-http-server; just; zsh' &&\
+        tmux split-window -h -c '#{pane_current_path}' 'killall basic-http-server; just; zsh' &&\
         tmux resize-pane -R 40 &&\
         tmux select-pane -L &&\
-        ~/scripts/cmd/garf edit &&\
+        tmux new-window -c ~/pics/eo 'yazi; zsh' &&\
+        tmux last-window &&\
         clear &&\
         printf '\x1b[32m' &&\
         title 'Garfield' &&\
