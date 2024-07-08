@@ -48,7 +48,17 @@
     bindkey -M vicmd -s 'ĉ' 'x'
 # Other keybinds
     bindkey -s '^D' ''      # Disable Ctrl+D
-    bindkey -s '^Z' 'fg\n'  # Focus background task
+    fg-keybind() {
+        [ -n "$(jobs)" ]\
+            || return 1 # No jobs running
+        printf '\033[1A' # Move cursor up
+        printf '\033[1G\033[2K' # Erase line
+        fg # Continue process
+        [ -n "$(jobs)" ]\
+            && printf '\033[4A' # Move cursor up 4 rows
+        zle reset-prompt
+    }; zle -N fg-keybind
+    bindkey '^Z' fg-keybind
 # Change directory by typing name
     setopt AUTOCD
     alias   '...'='cd ../../'
@@ -151,6 +161,7 @@
     _prompt         "%F{cyan}"      "%(1j.[%j].)"   # Job count
     _prompt         '%F{green}'     "$_gt "         # >
     PS1="$_PS"
+    _PS1="$PS1"
 
 #========= ALIASES
 # Tmux
