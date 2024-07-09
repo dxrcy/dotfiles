@@ -241,7 +241,6 @@
 # Rust (cargo)
     alias    c='cargo'
     alias   cr='cargo run'
-    alias   cb='cargo build'
     alias   cc='cargo check'
     alias   ct='cargo test'
     alias  crr='cargo run --release'
