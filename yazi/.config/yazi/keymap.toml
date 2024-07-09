@@ -1,4 +1,5 @@
 [manager]
 prepend_keymap = [
+    # Esperanto keys
     { on = [ "ŝ" ], run = "quit", desc = "Quit" },
 ]

@@ -5,8 +5,12 @@ nsxiv = [
 inkscape = [
     { run = 'inkscape "$@"', desc = "Open with Inkscape" },
 ]
+copy = [
+    { run = 'cb copy $@', desc = "Copy content to clipboard" },
+]
 
 [open]
 prepend_rules = [
-    { mime = "image/*", use = [ "nsxiv", "inkscape", "reveal" ] },
+    { mime = "image/*", use = [ "nsxiv", "inkscape", "copy", "reveal" ] },
 ]
+
