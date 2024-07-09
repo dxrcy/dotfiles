@@ -1,0 +1,12 @@
+[opener]
+nsxiv = [
+    { run = 'nsxiv "$@"', desc = "Open with Nsxiv" },
+]
+inkscape = [
+    { run = 'inkscape "$@"', desc = "Open with Inkscape" },
+]
+
+[open]
+prepend_rules = [
+    { mime = "image/*", use = [ "nsxiv", "inkscape", "reveal" ] },
+]
