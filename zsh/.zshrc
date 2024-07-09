@@ -48,14 +48,40 @@
     bindkey -M vicmd -s 'ĉ' 'x'
 # Other keybinds
     bindkey -s '^D' ''      # Disable Ctrl+D
+    # Continue background job with keybind
+    # Only works for 1 job at a time :-)
     fg-keybind() {
-        [ -n "$(jobs)" ]\
-            || return 1 # No jobs running
-        printf '\033[1A' # Move cursor up
-        printf '\033[1G\033[2K' # Erase line
-        fg # Continue process
-        [ -n "$(jobs)" ]\
-            && printf '\033[4A' # Move cursor up 4 rows
+        # Get number of LAST job CREATED
+        # Must use a temp file, `jobs` doesn't use a std stream
+        jobs > /tmp/jobs
+        job_count_prev="$(wc -l < /tmp/jobs)"
+        job_no="$(tail /tmp/jobs -n1 | sed 's/^\[\(.*\)\].*/\1/')"
+         # No jobs running
+        [ -n "$job_no" ] || return 1
+
+        # printf '\033[1A' # Move cursor up
+        # printf '\033[1G\033[2K' # Erase line
+       
+        # Continue process
+        fg "%$job_no"
+        # Job not found (shouldn't happen)
+        if [ $? -eq 127 ]; then 
+            return 1
+        fi
+
+        # Must use a temp file, `jobs` doesn't use a std stream
+        jobs > /tmp/jobs
+        job_count_new="$(wc -l < /tmp/jobs)"
+
+        # If same amount of jobs are still running
+        # i.e. Job was not killed
+        if [ "$job_count_new" -ge "$job_count_prev" ]; then
+            # Move cursor up 4 rows
+            printf '\033[4A'
+        fi
+
+        # Reset prompt
+        echo
         zle reset-prompt
     }; zle -N fg-keybind
     bindkey '^Z' fg-keybind
@@ -161,7 +187,6 @@
     _prompt         "%F{cyan}"      "%(1j.[%j].)"   # Job count
     _prompt         '%F{green}'     "$_gt "         # >
     PS1="$_PS"
-    _PS1="$PS1"
 
 #========= ALIASES
 # Tmux
