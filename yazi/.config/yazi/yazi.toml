@@ -5,6 +5,9 @@ nsxiv = [
 inkscape = [
     { run = 'inkscape "$@"', desc = "Open with Inkscape" },
 ]
+gimp = [
+    { run = 'gimp "$@"', desc = "Open with Gimp" },
+]
 copy-file = [
     { run = 'cb copy $@', desc = "Copy file to clipboard" },
 ]
@@ -15,7 +18,7 @@ copy-text = [
 [open]
 prepend_rules = [
     { mime = "image/svg*", use = [ "inkscape", "nsxiv", "copy-file", "reveal" ] },
-    { mime = "image/*", use = [ "nsxiv", "inkscape", "copy-file", "reveal" ] },
+    { mime = "image/*", use = [ "nsxiv", "inkscape", "gimp", "copy-file", "reveal" ] },
 
     { mime = "text/*", use = [ "edit", "copy-text", "reveal" ] },
 ]
