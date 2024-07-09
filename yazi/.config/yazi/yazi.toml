@@ -14,7 +14,9 @@ copy-text = [
 
 [open]
 prepend_rules = [
+    { mime = "image/svg*", use = [ "inkscape", "nsxiv", "copy-file", "reveal" ] },
     { mime = "image/*", use = [ "nsxiv", "inkscape", "copy-file", "reveal" ] },
+
     { mime = "text/*", use = [ "edit", "copy-text", "reveal" ] },
 ]
 
