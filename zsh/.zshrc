@@ -46,16 +46,18 @@
     bindkey -M vicmd -s 'ĵ' '['
     bindkey -M vicmd -s 'ĥ' ']'
     bindkey -M vicmd -s 'ĉ' 'x'
-# Other keybinds
-    bindkey -s '^D' ''      # Disable Ctrl+D
-    # Continue background job with keybind
+# Continue background job with keybind
     # Only works for 1 job at a time :-)
     fg-keybind() {
+        # Must use a temp file for `jobs` because it doesn't use a std stream
+        # Can be non-unique, bc read immediately after write
+        tmp='/tmp/jobs'
+
+        jobs > "$tmp"
+        job_count_prev="$(wc -l < "$tmp")"
         # Get number of LAST job CREATED
-        # Must use a temp file, `jobs` doesn't use a std stream
-        jobs > /tmp/jobs
-        job_count_prev="$(wc -l < /tmp/jobs)"
-        job_no="$(tail /tmp/jobs -n1 | sed 's/^\[\(.*\)\].*/\1/')"
+        job_no="$(tail "$tmp" -n1 | sed 's/^\[\(.*\)\].*/\1/')"
+
          # No jobs running
         [ -n "$job_no" ] || return 1
 
@@ -69,9 +71,8 @@
             return 1
         fi
 
-        # Must use a temp file, `jobs` doesn't use a std stream
-        jobs > /tmp/jobs
-        job_count_new="$(wc -l < /tmp/jobs)"
+        jobs > "$tmp"
+        job_count_new="$(wc -l < "$tmp")"
 
         # If same amount of jobs are still running
         # i.e. Job was not killed
@@ -85,6 +86,8 @@
         zle reset-prompt
     }; zle -N fg-keybind
     bindkey '^Z' fg-keybind
+# Other keybinds
+    bindkey -s '^D' ''      # Disable Ctrl+D
 # Change directory by typing name
     setopt AUTOCD
     alias   '...'='cd ../../'
