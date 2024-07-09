@@ -101,8 +101,19 @@
         fi
     }
 # Add scripts and binaries to path
-    PATH="$HOME/scripts/cmd:$PATH"
-    PATH="$HOME/.local/bin:$PATH"
+    prepend-path() {
+        dir="$1"
+        [ -d "$dir" ] || return 1
+        case "$PATH" in
+            "$dir") ;;      # Single item
+            "$dir:"*) ;;    # At start
+            *":$dir") ;;    # At end
+            *":$dir:"*) ;;  # In middle
+            (*) PATH="$dir:$PATH" ;;
+        esac
+    }
+    prepend-path "$HOME/scripts/cmd"
+    prepend-path "$HOME/.local/bin"
 # Auto aliases
     eval "$(zoxide init zsh)"
 # Preferred editor for local and remote sessions
