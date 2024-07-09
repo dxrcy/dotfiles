@@ -1,5 +1,6 @@
 [manager]
 prepend_keymap = [
     # Esperanto keys
-    { on = [ "ŝ" ], run = "quit", desc = "Quit" },
+    { on = [ "ŝ" ], run = "quit", desc = "Quit (eo)" },
+    { on = [ "ĉ" ], run = "yank --cut", desc = "Cut (eo)" },
 ]
