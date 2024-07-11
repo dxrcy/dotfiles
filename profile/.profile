@@ -4,6 +4,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# XDG user directories
+. "$XDG_CONFIG_HOME"/user-dirs.dirs
+
 # Use XDG base directories
 export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
