@@ -174,10 +174,35 @@ local plugins = {
         end,
     },
 
-    -- {
-    --     "ptzz/lf.vim",
-    --     dependencies = { "voldikss/vim-floaterm" },
-    -- },
+    {
+        "mikavilpas/yazi.nvim",
+        event = "VeryLazy",
+        keys = {
+            -- 👇 in this section, choose your own keymappings!
+            {
+                "<leader>-",
+                function()
+                    require("yazi").yazi()
+                end,
+                desc = "Open the file manager",
+            },
+            {
+                -- Open in the current working directory
+                "<leader>cw",
+                function()
+                    require("yazi").yazi(nil, vim.fn.getcwd())
+                end,
+                desc = "Open the file manager in nvim's working directory",
+            },
+        },
+        opts = {
+            open_for_directories = false,
+
+            floating_window_scaling_factor = 1.0,
+            yazi_floating_window_border = "none",
+
+        },
+    },
 
     {
         "mfussenegger/nvim-jdtls",
