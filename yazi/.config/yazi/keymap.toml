@@ -3,4 +3,8 @@ prepend_keymap = [
     # Esperanto keys
     { on = [ "ŝ" ], run = "quit", desc = "Quit (eo)" },
     { on = [ "ĉ" ], run = "yank --cut", desc = "Cut (eo)" },
+
+    # Shell
+    { on = [ ":" ], run = "plugin custom-shell", desc = "Run shell commmand (zsh)" },
 ]
+
