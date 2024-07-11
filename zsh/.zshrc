@@ -234,8 +234,15 @@
     alias  ghu='gh-url'
 # Nvim
     # Open folder in nvim, instead of new buffer
-    v() { [ "$*" ] && nvim $* || nvim . }
+    alias nvim='nvim-dir'
     alias vim='nvim'
+    alias v='nvim'
+    nvim-dir() {
+        if [ "$*" ];
+            then \nvim $*
+            else \nvim +'lua require("yazi").yazi()'
+        fi
+    }
 # Pacman wrapper script
     alias p='pacman-thing'
 # Rust (cargo)
