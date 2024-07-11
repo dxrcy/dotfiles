@@ -75,12 +75,12 @@ local plugins = {
     },
 
     -- Filetree
-    {
-        'nvim-tree/nvim-tree.lua',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons', -- optional
-        },
-    },
+    -- {
+    --     'nvim-tree/nvim-tree.lua',
+    --     dependencies = {
+    --         'nvim-tree/nvim-web-devicons', -- optional
+    --     },
+    -- },
 
     -- Save files with sudo
     "lambdalisue/suda.vim",
@@ -178,7 +178,13 @@ local plugins = {
         "mikavilpas/yazi.nvim",
         event = "VeryLazy",
         keys = {
-            -- 👇 in this section, choose your own keymappings!
+            { -- (Old keybind)
+                "T",
+                function()
+                    require("yazi").yazi()
+                end,
+                desc = "Open the file manager",
+            },
             {
                 "<leader>-",
                 function()
@@ -201,6 +207,9 @@ local plugins = {
             floating_window_scaling_factor = 1.0,
             yazi_floating_window_border = "none",
 
+            filesystem = {
+                hijack_netrw_behavior = "enabled",
+            },
         },
     },
 
