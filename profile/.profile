@@ -1,8 +1,3 @@
-# Merge xresources if the file exists
-# if [ -f ~/.Xresources ]; then
-#   xrdb -merge ~/.Xresources
-# fi
-
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -12,8 +7,14 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # Use XDG base directories
 export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
 . "$CARGO_HOME/env"
+
+# Merge xresources if the file exists
+if [ -f $XDG_CONFIG_HOME/x11/Xresources ]; then
+  xrdb -merge $XDG_CONFIG_HOME/x11/Xresources
+fi
 
 # Default applications
 export TERMINAL=kitty
