@@ -14,10 +14,8 @@ copy-file = [
 copy-text = [
     { run = 'cat $@ | cb copy', desc = "Copy text to clipboard" },
 ]
-nvim-dir = [
-    { run = """
-        nvim +'lua require("yazi").yazi()'
-    """, desc = "Open directory in Neovim", block = true }
+ignore = [
+    { run = 'true', desc = "(Do not open)" }
 ]
 
 [open]
@@ -25,6 +23,6 @@ prepend_rules = [
     { mime = "image/svg*", use = [ "inkscape", "nsxiv", "copy-file", "reveal" ] },
     { mime = "image/*", use = [ "nsxiv", "inkscape", "gimp", "copy-file", "reveal" ] },
 
-    { mime = "inode/directory", use = [ "nvim-dir" ] },
+    { mime = "inode/directory", use = [ "ignore" ] },
 ]
 
