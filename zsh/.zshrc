@@ -302,7 +302,7 @@
     alias j='just'
     alias m='make'
     alias a='garf'
-    alias o='xdg-open'
+    alias o='open' # Script
     alias ,='abandon' # Script
     alias z='zi'
     alias r='yazi'
