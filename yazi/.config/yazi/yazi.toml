@@ -1,4 +1,11 @@
 [opener]
+default = [
+    { run = '$HOME/scripts/cmd/open "$@"', desc = "Open with default program" }
+]
+ignore = [
+    { run = 'true', desc = "(Do not open)" }
+]
+
 nsxiv = [
     { run = 'nsxiv "$@"', desc = "Open with Nsxiv" },
 ]
@@ -8,21 +15,33 @@ inkscape = [
 gimp = [
     { run = 'gimp "$@"', desc = "Open with Gimp" },
 ]
+vlc = [
+    { run = 'vlc "$@"', desc = "Open with VLC" },
+]
+
 copy-file = [
     { run = 'cb copy $@', desc = "Copy file to clipboard" },
 ]
 copy-text = [
     { run = 'cat $@ | cb copy', desc = "Copy text to clipboard" },
 ]
-ignore = [
-    { run = 'true', desc = "(Do not open)" }
-]
 
 [open]
 prepend_rules = [
-    { mime = "image/svg*", use = [ "inkscape", "nsxiv", "copy-file", "reveal" ] },
-    { mime = "image/*", use = [ "nsxiv", "inkscape", "gimp", "copy-file", "reveal" ] },
+    # "edit" enters the file, instead of opening in new window, so prefer this
+    { mime = "text/*", use = [ "edit", "default", "copy-text" ] },
+
+    { mime = "image/svg*", use = [ "default", "nsxiv", "copy-file" ] },
+    { mime = "image/x-xcf", use = [ "default", "nsxiv", "copy-file" ] },
+    { mime = "image/*", use = [ "default", "inkscape", "gimp", "copy-file" ] },
+
+    { mime = "video/*", use = [ "default", "vlc" ] },
+    { mime = "audio/*", use = [ "default", "vlc" ] },
 
     { mime = "inode/directory", use = [ "ignore" ] },
+]
+
+append_rules = [
+    { name = "*", use = [ "default" ] }
 ]
 
