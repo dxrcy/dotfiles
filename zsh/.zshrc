@@ -351,8 +351,15 @@
         shift
         git clone "$url" $* || return $?
         target="$1" # Target directory argument, or use URL path
-        [ -z "$target" ] && target="${${url##*/}%.git}" 
-        cd "$target"
+        if [ -z "$target" ]; then
+            # Extract repository name from url
+            target="$(echo "$url" \
+                | sed 's|/$||' \
+                | sed 's|\.git$||' \
+                | sed 's|^.*/||'\
+            )"
+        fi
+        cd "./$target"
     }
     gh-switch() {
         if git config --get 'user.email' 'student' >/dev/null;
