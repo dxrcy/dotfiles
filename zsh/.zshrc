@@ -266,7 +266,7 @@
 # Common dotfile editing
     alias .d='cd ~/dotfiles'
     alias .z='cd ~/dotfiles/zsh                && nvim .zshrc'
-    alias .v='cd ~/dotfiles/nvim/.config/nvim  && nvim .'
+    alias .v='cd ~/dotfiles/nvim/.config/nvim  && nvim'
     alias .t='cd ~/dotfiles/tmux/.config/tmux  && nvim tmux.conf'
     alias .i='cd ~/dotfiles/i3/.config/i3      && nvim config'
 # Misc. Programs and options
