@@ -212,7 +212,7 @@ local plugins = {
             },
         },
         opts = {
-            open_for_directories = false,
+            open_for_directories = true,
 
             floating_window_scaling_factor = 1.0,
             yazi_floating_window_border = "none",
