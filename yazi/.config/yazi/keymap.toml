@@ -6,5 +6,9 @@ prepend_keymap = [
 
     # Shell
     { on = [ ":" ], run = "plugin custom-shell", desc = "Run shell commmand (zsh)" },
+
+    # Copy
+    { on = [ "c", "f" ], run = "shell --confirm --block 'cb copy $@'", desc = "Copy file to clipboard" },
+    { on = [ "c", "c" ], run = "shell --confirm --block 'cat $@ | cb copy'", desc = "Copy text to clipboard" },
 ]
 
