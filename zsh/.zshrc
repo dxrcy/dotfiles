@@ -368,13 +368,21 @@
         fi
         gh auth switch -u "$account"
     }
-    ghcr() {
+    ghcr() { # Haskell (ghc)
         ghc -Wall -dynamic $* >/dev/null || return $?
         ./"${1%%.hs}"
     }
-    gccr() {
+    gccr() { # C (gcc)
         out="${1%.c}"
         gcc "$1" -o "$out" || return $?
+        ./"$out"
+        code="$?"
+        [ "$code" = 139 ] && echo "Segfault! lol."
+        return "$code"
+    }
+    gppr() { # C++ (g++)
+        out="${1%.cpp}"
+        g++ "$1" -o "$out" || return $?
         ./"$out"
         code="$?"
         [ "$code" = 139 ] && echo "Segfault! lol."
