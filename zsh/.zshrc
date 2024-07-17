@@ -408,8 +408,18 @@
         case "$subdir" in
             'rust') nvim 'src/main.rs' ;;
             'c')    nvim 'main.c' ;;
-            'cpp')  nvim 'main.cpp' ;;
             'zig')  nvim 'main.zig' ;;
+            'cpp') 
+                tmux split-window -h -c "#{pane_current_path}" &&\
+                tmux resize-pane -R 40 &&\
+                tmux send-keys 'make' Enter &&\
+                tmux select-pane -L &&\
+                tmux split-window -v -c "#{pane_current_path}" &&\
+                tmux resize-pane -D 20 &&\
+                tmux send-keys 'nvim input' Enter &&\
+                tmux select-pane -U &&\
+                nvim 'main.cpp'
+                ;;
             'java')
                 tmux split-window -h -c "#{pane_current_path}" &&\
                 tmux resize-pane -R 40 &&\
