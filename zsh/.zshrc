@@ -408,6 +408,7 @@
         case "$subdir" in
             'rust') nvim 'src/main.rs' ;;
             'c')    nvim 'main.c' ;;
+            'cpp')  nvim 'main.cpp' ;;
             'zig')  nvim 'main.zig' ;;
             'java')
                 tmux split-window -h -c "#{pane_current_path}" &&\
