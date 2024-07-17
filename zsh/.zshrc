@@ -302,6 +302,7 @@
     alias j='just'
     alias m='make'
     alias a='garf'
+    alias d='devour'
     alias o='open' # Script
     alias ,='abandon' # Script
     alias z='zi'
