@@ -16,7 +16,7 @@ gimp = [
     { run = 'gimp "$@"', desc = "Open with Gimp" },
 ]
 vlc = [
-    { run = 'vlc "$@"', desc = "Open with VLC" },
+    { run = 'devour vlc "$@"', desc = "Open with VLC" },
 ]
 
 copy-file = [
@@ -33,7 +33,7 @@ prepend_rules = [
 
     { mime = "image/svg*", use = [ "default", "nsxiv", "copy-file" ] },
     { mime = "image/x-xcf", use = [ "default", "nsxiv", "copy-file" ] },
-    { mime = "image/*", use = [ "default", "inkscape", "gimp", "copy-file" ] },
+    { mime = "image/*", use = [ "nsxiv", "inkscape", "gimp", "copy-file" ] },
 
     { mime = "video/*", use = [ "default", "vlc" ] },
     { mime = "audio/*", use = [ "default", "vlc" ] },
