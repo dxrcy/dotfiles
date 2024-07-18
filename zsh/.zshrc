@@ -376,7 +376,8 @@
     gccr() { # C (gcc)
         out="${1%.c}"
         gcc "$1" -o "$out" || return $?
-        ./"$out"
+        shift
+        ./"$out" "$@"
         code="$?"
         [ "$code" = 139 ] && echo "Segfault! lol."
         return "$code"
