@@ -412,8 +412,8 @@
             'zig')  nvim 'main.zig' ;;
             'cpp') 
                 tmux split-window -h -c "#{pane_current_path}" &&\
-                tmux resize-pane -R 40 &&\
-                tmux send-keys 'make' Enter &&\
+                tmux resize-pane -R 30 &&\
+                tmux send-keys 'make watch' Enter &&\
                 tmux select-pane -L &&\
                 tmux split-window -v -c "#{pane_current_path}" &&\
                 tmux resize-pane -D 20 &&\
@@ -526,3 +526,11 @@
 _install-packages
 _startx-prompt
 
+
+# pnpm
+export PNPM_HOME="/home/darcy/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
