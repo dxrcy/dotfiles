@@ -27,7 +27,7 @@ local plugins = {
             vim.cmd("TSUpdate")
         end,
     },
-    "nvim-treesitter/playground",
+    -- "nvim-treesitter/playground",
 
     -- LSP
     {
@@ -52,7 +52,7 @@ local plugins = {
     },
     -- LSP Formatter
     -- Idk if this is needed
-    "lukas-reineke/lsp-format.nvim",
+    -- "lukas-reineke/lsp-format.nvim",
 
     -- Autocompletion in command line
     { "hrsh7th/cmp-cmdline" },
@@ -101,21 +101,21 @@ local plugins = {
     },
 
     -- Show possible key bindings
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require("which-key").setup {
-                hidden = { "q" },
-                triggers_blacklist = {
-                    n = { "q" },
-                },
-            }
-        end,
-        opts = {},
-    },
+    -- {
+    --     "folke/which-key.nvim",
+    --     event = "VeryLazy",
+    --     init = function()
+    --         vim.o.timeout = true
+    --         vim.o.timeoutlen = 300
+    --         require("which-key").setup {
+    --             hidden = { "q" },
+    --             triggers_blacklist = {
+    --                 n = { "q" },
+    --             },
+    --         }
+    --     end,
+    --     opts = {},
+    -- },
 
     -- Navigation
     {
@@ -158,14 +158,15 @@ local plugins = {
     },
 
     -- Rust crate versions
-    {
-        'saecki/crates.nvim',
-        tag = 'stable',
-        config = function()
-            require('crates').setup({})
-        end,
-    },
+    -- {
+    --     'saecki/crates.nvim',
+    --     tag = 'stable',
+    --     config = function()
+    --         require('crates').setup({})
+    --     end,
+    -- },
 
+    -- Autoclose html tags
     {
         "windwp/nvim-ts-autotag",
         config = function()
@@ -173,6 +174,7 @@ local plugins = {
         end,
     },
 
+    -- Integrate yazi file explorer
     {
         "mikavilpas/yazi.nvim",
         event = "VeryLazy",
@@ -212,6 +214,7 @@ local plugins = {
         },
     },
 
+    -- Idk if this is needed
     {
         "mfussenegger/nvim-jdtls",
     },
