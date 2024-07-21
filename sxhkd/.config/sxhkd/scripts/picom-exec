@@ -1,0 +1,35 @@
+#!/bin/sh
+
+start() {
+    # -G : something to do with GLX?
+    # --shadow : something to do with client-side shadows?
+    # --transparent-cliping : don't render windows below, in tabbed/stacked view
+    # Kill and restart, to fix rendering issues
+    picom -G --shadow --transparent-clipping
+}
+
+stop() {
+    killall picom
+}
+
+case "$1" in
+
+    'restart')
+        stop
+        start
+        ;;
+
+    'toggle')
+        if pgrep -x picom; then
+            stop
+        else
+            start
+        fi
+        ;;
+
+    *)
+        echo 'picom-exec: invalid subcommand'
+        ;;
+esac
+
+
