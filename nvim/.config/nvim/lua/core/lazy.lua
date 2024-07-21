@@ -142,31 +142,20 @@ local plugins = {
         }
     },
 
-    -- Screenshots
+    -- Code completion
     {
-        "michaelrommel/nvim-silicon",
-        lazy = true,
-        cmd = "Silicon",
+        "Exafunction/codeium.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+        },
         config = function()
-            require("silicon").setup({
-                -- Configuration here, or leave empty to use defaults
-                font = "Source Code Pro=34;Noto Color Emoji=34"
+            -- vim.system({ "notify-send", "123" })
+            require("codeium").setup({
+                enable_chat = true,
             })
         end
     },
-
-    -- Code completion
-    -- {
-    --     "Exafunction/codeium.nvim",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "hrsh7th/nvim-cmp",
-    --     },
-    --     config = function()
-    --         require("codeium").setup({
-    --         })
-    --     end
-    -- },
 
     -- Rust crate versions
     {
