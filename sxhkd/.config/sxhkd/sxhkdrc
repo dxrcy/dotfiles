@@ -16,6 +16,9 @@ XF86AudioRaiseVolume
 XF86AudioMute
     ~/.config/sxhkd/scripts/volume-brightness volume_mute
 
+super + shift + r
+    bspc wm --restart
+
 XF86AudioPlay
     playerctl -p 'spotify' play-pause
 XF86AudioPause
@@ -30,6 +33,8 @@ ctrl + shift + {braceleft,jcircumflex}
 ctrl + shift + {braceright,hcircumflex}
     playerctl -p 'spotify' next
 
+super + p
+    ~/.config/sxhkd/scripts/picom-exec toggle
 super + shift + p
     ~/scripts/cmd/bg-change
 
@@ -37,7 +42,7 @@ super + Return
     kitty tmux -L FOO
 super + alt + Return
     kitty tmux -L FOO attach
-super + controL + Return
+super + control + Return
     kitty sh -c 'printf "\033[1m(No tmux)\n" && zsh'
 
 super + alt + Delete
@@ -64,16 +69,16 @@ super + alt + v
 super + {q, scircumflex}
     ~/.config/sxhkd/scripts/kill-window
 super + control + {q, scircumflex}
-    i3-msg kill
+    xdo kill
 
-super + {h,j,k,l}
-    i3-msg focus {left,down,up,right}
+# super + {h,j,k,l}
+#     i3-msg focus {left,down,up,right}
 
-super + shift + {h,j,k,l}
-    i3-msg move {left,down,up,right}
+# super + shift + {h,j,k,l}
+#     i3-msg move {left,down,up,right}
 
-super + f
-    i3-msg fullscreen toggle
+# super + f
+#     i3-msg fullscreen toggle
 
 # TODO: Doesn't need Esperanto versions ?
 super + {w, gcircumflex}
@@ -91,7 +96,7 @@ super + shift + b
 super + ctrl + b
     ~/scripts/cmd/bt reconnect
 
-super + g
+super + shift + g
     ~/scripts/cmd/garf show
 
 super + o
@@ -137,6 +142,28 @@ alt + shift + F1
 # alt + hcircumflex
 #     ~/.config/sxhkd/scripts/alt-key 'hcircumflex' 'bracketright'
 
+super + alt + q
+    bspc quit
+
+super + f
+    bspc node -t fullscreen
+
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+super + {1-9,0}
+    bspc desktop --focus '^{1-9,10}'
+super + shift + {1-9,0}
+    bspc node --to-desktop '^{1-9,10}'
+
+super + alt + {h,j,k,l}
+    bspc node -z {right -20 0,bottom 0 20,bottom 0 -20,right 20 0}
+
+super + space
+    bspc node -t floating
+super + shift + space
+    bspc node -t tiled
+
 ###################################################
 # Everything below here is defaults for bspwm !!! #
 ###################################################
@@ -144,14 +171,6 @@ alt + shift + F1
 #
 # bspwm hotkeys
 #
-
-# quit/restart bspwm
-super + alt + {q,r}
-    bspc {quit,wm -r}
-
-# close and kill
-super + {_,shift + }w
-    bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
 super + m
@@ -162,8 +181,8 @@ super + y
     bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the biggest window
-super + g
-    bspc node -s biggest.window
+# super + g
+#    bspc node -s biggest.window
 
 #
 # state/flags
@@ -180,10 +199,6 @@ super + ctrl + {m,x,y,z}
 #
 # focus/swap
 #
-
-# focus the node in the given direction
-# super + {_,shift + }{h,j,k,l}
-#     bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
@@ -207,10 +222,6 @@ super + {o,i}
     bspc node {older,newer} -f; \
     bspc wm -h on
 
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
-
 #
 # preselect
 #
@@ -220,8 +231,8 @@ super + ctrl + {h,j,k,l}
     bspc node -p {west,south,north,east}
 
 # preselect the ratio
-super + ctrl + {1-9}
-    bspc node -o 0.{1-9}
+# super + ctrl + {1-9}
+#     bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + ctrl + space
@@ -234,10 +245,6 @@ super + ctrl + shift + space
 #
 # move/resize
 #
-
-# expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
-    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}

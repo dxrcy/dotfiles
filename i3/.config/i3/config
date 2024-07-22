@@ -72,7 +72,6 @@ exec --no-startup-id $scripts/bt status || pactl set-sink-volume @DEFAULT_SINK@ 
 
 # Picom (using script)
 exec_always         --no-startup-id $i3_scripts/picom-exec restart
-bindsym $mod+p exec --no-startup-id $i3_scripts/picom-exec toggle
 
 # Background
 exec --no-startup-id $scripts/bg-change 300
