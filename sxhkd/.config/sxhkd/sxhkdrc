@@ -52,7 +52,7 @@ super + control + d
 super + alt + d
     dmenu_run
 
-super + Period
+super + period
     ~/scripts/cmd/emoji-menu
 
 super + v
