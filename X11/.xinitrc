@@ -6,6 +6,8 @@ dunst &
 sxhkd &
 windscribe &
 
+touch "$HOME/.local/share/wm-init"
+
 # exec i3
 exec bspwm
 

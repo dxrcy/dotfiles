@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Set `init=1` if first reload since X11 was started
+# `wm-init` file created by xinit
+if [ -e "$HOME/.local/share/wm-init" ]; then
+    init=1
+    rm -f "$HOME/.local/share/wm-init"
+fi
+
 scripts="$HOME/scripts/cmd"
 sxhkd_scripts="$HOME/.config/sxhkd/scripts"
 
@@ -12,17 +19,17 @@ pgrep -x polybar > /dev/null || polybar &
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         2
-bspc config window_gap          12
+bspc config window_gap           4
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+bspc rule -a Windscribe desktop='^8' follow=off
+bspc rule -a vesktop desktop='^9' follow=off
+bspc rule -a Spotify desktop='^10' follow=off
+
+xsetroot -cursor_name left_ptr
 
 setxkbmap -layout au
 
@@ -35,7 +42,9 @@ xinput set-prop "$device_touchpad" 'libinput Natural Scrolling Enabled'    1
 
 monitors auto
 
-$scripts/bt status || pactl set-sink-volume @DEFAULT_SINK@ 0%
+if [ -n "$init" ]; then
+    $scripts/bt status || pactl set-sink-volume @DEFAULT_SINK@ 0%
+fi
 
 $sxhkd_scripts/picom-exec restart &
 
@@ -47,9 +56,10 @@ clipcatd &
 
 flameshot &
 
-bspc config window_gap 4 &
-
-bspc rule -a LibreWolf desktop='^2' follow=off -o
-pgrep -x librewolf > /dev/null || librewolf &
+if [ -n "$init" ]; then
+    bspc rule -a LibreWolf desktop='^2' follow=off --one-shot
+    pgrep -x librewolf > /dev/null || librewolf &
+    pgrep -x spotify   > /dev/null || spotify &
+fi
 
 
