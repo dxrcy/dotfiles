@@ -14,8 +14,7 @@ status = check_output(['acpi'], universal_newlines=True)
 
 if not status:
     # stands for no battery found
-    color = config.get("color_10", "red")
-    fulltext = "<span color='{}'><span font='FontAwesome'>\uf00d \uf240</span></span>".format(color)
+    fulltext = "%{F#FF0000} \uf240%{F-}"
     percentleft = 100
 else:
     # if there is more than one battery in one laptop, the percentage left is
@@ -53,16 +52,16 @@ else:
 
     # stands for charging
     color = config.get("color_charging", "yellow")
-    FA_LIGHTNING = "<span color='{}'><span font='FontAwesome'>\uf0e7</span></span>".format(color)
+    FA_LIGHTNING = "%{F#FFDD22}\uf0e7%{F-}"
 
     # stands for plugged in
-    FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
+    FA_PLUG = "\uf1e6"
 
     # stands for using battery
-    FA_BATTERY = "<span font='FontAwesome'>\uf240</span>"
+    FA_BATTERY = "\uf240"
 
     # stands for unknown status of battery
-    FA_QUESTION = "<span font='FontAwesome'>\uf128</span>"
+    FA_QUESTION = "\uf128"
 
 
     if state == "Discharging":
@@ -79,25 +78,25 @@ else:
     def color(percent):
         if percent < 10:
             # exit code 33 will turn background red
-            return config.get("color_10", "#FFFFFF")
+            return "%{F#ff0000}"
         if percent < 20:
-            return config.get("color_20", "#FF3300")
+            return "%{F#FF3300}"
         if percent < 30:
-            return config.get("color_30", "#FF6600")
+            return "%{F#FF6600}"
         if percent < 40:
-            return config.get("color_40", "#FF9900")
+            return "%{F#FF9900}"
         if percent < 50:
-            return config.get("color_50", "#FFCC00")
+            return "%{F#FFCC00}"
         if percent < 60:
-            return config.get("color_60", "#FFFF00")
+            return "%{F#FFFF00}"
         if percent < 70:
-            return config.get("color_70", "#FFFF33")
+            return "%{F#FFFF33}"
         if percent < 80:
-            return config.get("color_80", "#FFFF66")
-        return config.get("color_full", "#FFFFFF")
+            return "%{F#FFFF66}"
+        return "%{F#FFFFFF}"
 
-    form =  '<span color="{}">{}%</span>'
-    fulltext += form.format(color(percentleft), percentleft)
+    form =  '{}{}%'
+    fulltext += form.format(color(percentleft), percentleft) + "%{F-}"
     #fulltext += timeleft
 
 print(fulltext)
