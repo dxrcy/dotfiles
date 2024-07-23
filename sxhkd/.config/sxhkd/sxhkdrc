@@ -146,7 +146,7 @@ super + alt + q
     bspc quit
 
 super + f
-    bspc node -t fullscreen
+    bspc node -t '~fullscreen'
 
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
@@ -163,6 +163,21 @@ super + space
     bspc node -t floating
 super + shift + space
     bspc node -t tiled
+
+# add to tabbed container
+ctrl + alt + {Left,Down,Up,Right}
+    tabc attach $(bspc query -N -n) {$(bspc query -N -n west),$(bspc query -N -n south),$(bspc query -N -n north),$(bspc query -N -n east)}
+
+# create/remove from tabbed container
+super + z 
+    id=$(bspc query -N -n); \
+    [[ "$(tabc printclass $id)" == "tabbed" ]] \
+    && tabc detach $id \
+    || tabc create $id 
+
+# toggle autoattach in tabbed container
+super + shift + z 
+    tabc autoattach $(bspc query -N -n) 
 
 ###################################################
 # Everything below here is defaults for bspwm !!! #

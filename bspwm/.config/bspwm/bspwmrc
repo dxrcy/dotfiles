@@ -14,7 +14,10 @@ if pgrep -x sxhkd > /dev/null;
     then killall -SIGUSR1 sxhkd
     else sxhkd &
 fi
-pgrep -x polybar > /dev/null || polybar &
+if pgrep -x polybar > /dev/null;
+    then killall -SIGUSR1 polybar
+    else polybar &
+fi
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
@@ -25,7 +28,8 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Windscribe desktop='^8' follow=off
+bspc rule -a betterbird desktop='^7' follow=off
+bspc rule -a windscribe desktop='^8' follow=off
 bspc rule -a vesktop desktop='^9' follow=off
 bspc rule -a Spotify desktop='^10' follow=off
 
@@ -58,8 +62,9 @@ flameshot &
 
 if [ -n "$init" ]; then
     bspc rule -a LibreWolf desktop='^2' follow=off --one-shot
-    pgrep -x librewolf > /dev/null || librewolf &
-    pgrep -x spotify   > /dev/null || spotify &
+    pgrep -x librewolf  > /dev/null || librewolf &
+    pgrep -x betterbird > /dev/null || betterbird &
+    pgrep -x spotify    > /dev/null || spotify &
 fi
 
 
