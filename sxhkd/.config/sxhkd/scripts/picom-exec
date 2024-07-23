@@ -1,11 +1,10 @@
 #!/bin/sh
 
 start() {
-    # -G : something to do with GLX?
     # --shadow : something to do with client-side shadows?
     # --transparent-cliping : don't render windows below, in tabbed/stacked view
     # Kill and restart, to fix rendering issues
-    picom -G --shadow --transparent-clipping & disown
+    picom --shadow --transparent-clipping & disown
 }
 
 stop() {
