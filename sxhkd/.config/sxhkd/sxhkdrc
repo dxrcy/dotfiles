@@ -108,7 +108,7 @@ super + s
 super + shift + s
     dunstify -t 2000 "$(date '+%H:%M | %a %d %b')"
 
-mod + ctrl + n
+super + ctrl + n
     dunstctl close-all
 
 alt + F1
