@@ -183,25 +183,39 @@
         done
         _PS="$_PS$reset"
     }
-# Make PS1
+# Misc.
     _dot='·'
     _gt='❯'
+# Make PS1
+    PS1_GIT=1
+    ps1-git() { # Toggle Git information in PS1 (if running slow)
+        if [ -n "$PS1_GIT" ];
+            then unset PS1_GIT
+            else PS1_GIT=1
+        fi
+        _set_ps1
+    }
     #        BOLD     COLOR           VALUE
-    _PS=''
-    _prompt         "%F{cyan}"      "$_arrow"       # Shell nesting level
-    _prompt  "%B"   "%F{yellow}"    "%n"            # Username
-    _prompt         "%F{green}"     "@"             # @
-    _prompt  "%B"   "%F{blue}"      "%m"            # Hostname
-    _prompt                         ' '             # 
-    _prompt         "%F{magenta}"   "%3~"           # Last 3 folders of PWD
-    _prompt                         '$(git_branch)' # Git: Branch
-    _prompt                         '$(git_status)' # Git: Status
-    _prompt                         '$(version)'    # Package version (also dim)
-    _prompt         "%F{cyan}"      "%(0?.. $_dot)" # Non-zero exit code = dot
-    _prompt                         $'\n'           #
-    _prompt         "%F{cyan}"      "%(1j.[%j].)"   # Job count
-    _prompt         '%F{green}'     "$_gt "         # >
-    PS1="$_PS"
+    _set_ps1() {
+        _PS=''
+        _prompt         "%F{cyan}"      "$_arrow"       # Shell nesting level
+        _prompt  "%B"   "%F{yellow}"    "%n"            # Username
+        _prompt         "%F{green}"     "@"             # @
+        _prompt  "%B"   "%F{blue}"      "%m"            # Hostname
+        _prompt                         ' '             # 
+        _prompt         "%F{magenta}"   "%3~"           # Last 3 folders of PWD
+        if [ -n "$PS1_GIT" ]; then
+            _prompt                         '$(git_branch)' # Git: Branch
+            _prompt                         '$(git_status)' # Git: Status
+        fi
+        _prompt                         '$(version)'    # Package version (also dim)
+        _prompt         "%F{cyan}"      "%(0?.. $_dot)" # Non-zero exit code = dot
+        _prompt                         $'\n'           #
+        _prompt         "%F{cyan}"      "%(1j.[%j].)"   # Job count
+        _prompt         '%F{green}'     "$_gt "         # >
+        PS1="$_PS"
+    }
+    _set_ps1
 
 #========= ALIASES
 # Tmux
