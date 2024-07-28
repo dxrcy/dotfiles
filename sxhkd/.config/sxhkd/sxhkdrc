@@ -165,19 +165,29 @@ super + shift + space
     bspc node -t tiled
 
 # add to tabbed container
-ctrl + alt + {Left,Down,Up,Right}
-    tabc attach $(bspc query -N -n) {$(bspc query -N -n west),$(bspc query -N -n south),$(bspc query -N -n north),$(bspc query -N -n east)}
+# ctrl + alt + {Left,Down,Up,Right}
+#     tabc attach $(bspc query -N -n) {$(bspc query -N -n west),$(bspc query -N -n south),$(bspc query -N -n north),$(bspc query -N -n east)}
 
 # create/remove from tabbed container
-super + z 
-    id=$(bspc query -N -n); \
-    [[ "$(tabc printclass $id)" == "tabbed" ]] \
-    && tabc detach $id \
-    || tabc create $id 
+# super + z 
+#     id=$(bspc query -N -n); \
+#     [[ "$(tabc printclass $id)" == "tabbed" ]] \
+#     && tabc detach $id \
+#     || tabc create $id 
 
 # toggle autoattach in tabbed container
-super + shift + z 
-    tabc autoattach $(bspc query -N -n) 
+# super + shift + z 
+#     tabc autoattach $(bspc query -N -n) 
+
+super + t; Return
+    tabc create $(bspc query -N -n focused); \
+    tabc autoattach $(bspc query -N -n)
+
+super + t; {BackSpace,Delete}
+    tabc detach $(bspc query -N -n)
+
+super + t; {h,j,k,l}
+    tabc attach $(bspc query -N -n) $(bspc query -N -n {west,south,north,east})
 
 super + F1
     bspwm-toggle-visibility kitty-btop kitty --class 'kitty-btop' btop
@@ -191,9 +201,6 @@ super + F5
     bspwm-toggle-visibility TelegramDesktop telegram-desktop
 super + ctrl + {w,gcircumflex}
     bspwm-toggle-visibility Windscribe2 windscribe
-
-super + c
-    bspc node -v center
 
 ###################################################
 # Everything below here is defaults for bspwm !!! #
@@ -258,8 +265,8 @@ super + {o,i}
 #
 
 # preselect the direction
-super + ctrl + {h,j,k,l}
-    bspc node -p {west,south,north,east}
+# super + ctrl + {h,j,k,l}
+#     bspc node -p {west,south,north,east}
 
 # preselect the ratio
 # super + ctrl + {1-9}
