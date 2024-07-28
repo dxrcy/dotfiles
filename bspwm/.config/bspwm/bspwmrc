@@ -38,6 +38,8 @@ bspc rule -a vesktop         state=floating center=true rectangle="$rect_large"
 bspc rule -a TelegramDesktop state=floating center=true rectangle="$rect_large"
 bspc rule -a Windscribe2     state=floating center=true border=off
 
+bspc rule -a kitty border=off
+
 if [ -n "$init" ]; then
     betterbird &
     spotify &
