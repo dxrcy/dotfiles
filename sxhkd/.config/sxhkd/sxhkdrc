@@ -183,6 +183,9 @@ super + t; Return
     tabc create $(bspc query -N -n focused); \
     tabc autoattach $(bspc query -N -n)
 
+super + t; space
+    tabc autoattach $(bspc query -N -n)
+
 super + t; {BackSpace,Delete}
     tabc detach $(bspc query -N -n)
 
