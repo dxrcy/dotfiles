@@ -46,7 +46,9 @@ fi
 
 xsetroot -cursor_name left_ptr
 
-setxkbmap -layout au
+if [ -n "$init" ]; then
+    setxkbmap -layout au
+fi
 
 device_touchpad='MSFT0001:01 06CB:CE44 Touchpad'
 
