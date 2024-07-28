@@ -5,16 +5,16 @@ XF86AudioMicMute
     pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 XF86MonBrightnessDown
-    ~/.config/sxhkd/scripts/volume-brightness brightness_down
+    volume-brightness brightness_down
 XF86MonBrightnessUp
-    ~/.config/sxhkd/scripts/volume-brightness brightness_up
+    volume-brightness brightness_up
 
 XF86AudioLowerVolume
-    ~/.config/sxhkd/scripts/volume-brightness volume_down
+    volume-brightness volume_down
 XF86AudioRaiseVolume
-    ~/.config/sxhkd/scripts/volume-brightness volume_up
+    volume-brightness volume_up
 XF86AudioMute
-    ~/.config/sxhkd/scripts/volume-brightness volume_mute
+    volume-brightness volume_mute
 
 super + shift + r
     bspc wm --restart
@@ -34,7 +34,7 @@ ctrl + shift + {braceright,hcircumflex}
     playerctl -p 'spotify' next
 
 super + p
-    ~/.config/sxhkd/scripts/picom-exec toggle
+    picom-exec toggle
 super + shift + p
     ~/scripts/cmd/bg-change
 
@@ -67,7 +67,7 @@ super + alt + v
 
 # bspc node --kill
 super + {q, scircumflex}
-    ~/.config/sxhkd/scripts/kill-window
+    kill-window
 super + control + {q, scircumflex}
     xdo kill
 
@@ -180,17 +180,17 @@ super + shift + z
     tabc autoattach $(bspc query -N -n) 
 
 super + F1
-    ~/.config/sxhkd/scripts/bspwm-toggle-visibility kitty-btop kitty --class 'kitty-btop' btop
+    ~/scripts/cmd/bspwm-toggle-visibility kitty-btop kitty --class 'kitty-btop' btop
 super + F2
-    ~/.config/sxhkd/scripts/bspwm-toggle-visibility betterbird betterbird
+    ~/scripts/cmd/bspwm-toggle-visibility betterbird betterbird
 super + F3
-    ~/.config/sxhkd/scripts/bspwm-toggle-visibility Spotify spotify
+    ~/scripts/cmd/bspwm-toggle-visibility Spotify spotify
 super + F4
-    ~/.config/sxhkd/scripts/bspwm-toggle-visibility vesktop vesktop
+    ~/scripts/cmd/bspwm-toggle-visibility vesktop vesktop
 super + F5
-    ~/.config/sxhkd/scripts/bspwm-toggle-visibility TelegramDesktop telegram-desktop
+    ~/scripts/cmd/bspwm-toggle-visibility TelegramDesktop telegram-desktop
 super + ctrl + {w,gcircumflex}
-    ~/.config/sxhkd/scripts/bspwm-toggle-visibility Windscribe2 windscribe
+    ~/scripts/cmd/bspwm-toggle-visibility Windscribe2 windscribe
 
 super + c
     bspc node -v center
