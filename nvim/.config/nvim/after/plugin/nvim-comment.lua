@@ -13,6 +13,8 @@ require("nvim_comment").setup {
             vim.api.nvim_buf_set_option(0, "commentstring", "(# %s #)")
         elseif vim.api.nvim_buf_get_option(0, "filetype") == "lure" then
             vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
+        elseif vim.api.nvim_buf_get_option(0, "filetype") == "sxhkdrc" then
+            vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
         end
     end
 }
