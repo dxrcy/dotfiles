@@ -56,7 +56,7 @@ Apps = {
         name = "windscribe",
         title = "🌐 Windscribe",
         command = "windscribe",
-        instance = "windscribe",
+        instance = "Windscribe",
         config = {
             "move scratchpad",
         },
