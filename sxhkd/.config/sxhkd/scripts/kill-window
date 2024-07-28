@@ -17,6 +17,13 @@ case "$class" in
         default
         killall 'electron'
         ;;
+    'TelegramDesktop')
+        default
+        killall 'telegram-desktop'
+        ;;
+    'Windscribe2')
+        killall -KILL 'windscribe' # Close quickly (maybe this is bad?)
+        ;;
 
     # Add custom rules here...
 

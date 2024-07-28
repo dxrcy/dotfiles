@@ -179,6 +179,22 @@ super + z
 super + shift + z 
     tabc autoattach $(bspc query -N -n) 
 
+super + F1
+    ~/.config/sxhkd/scripts/bspwm-toggle-visibility kitty-btop kitty --class 'kitty-btop' btop
+super + F2
+    ~/.config/sxhkd/scripts/bspwm-toggle-visibility betterbird betterbird
+super + F3
+    ~/.config/sxhkd/scripts/bspwm-toggle-visibility Spotify spotify
+super + F4
+    ~/.config/sxhkd/scripts/bspwm-toggle-visibility vesktop vesktop
+super + F5
+    ~/.config/sxhkd/scripts/bspwm-toggle-visibility TelegramDesktop telegram-desktop
+super + ctrl + {w,gcircumflex}
+    ~/.config/sxhkd/scripts/bspwm-toggle-visibility Windscribe2 windscribe
+
+super + c
+    bspc node -v center
+
 ###################################################
 # Everything below here is defaults for bspwm !!! #
 ###################################################
