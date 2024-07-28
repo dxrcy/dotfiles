@@ -325,6 +325,7 @@
     alias r='yazi'
     alias th='thunar'
     alias lw='librewolf'
+    alias lg='lazygit'
     alias clip='xclip -selection clipboard'
     alias sy='systemctl'
     alias ssy='sudo systemctl'
