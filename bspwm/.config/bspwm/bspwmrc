@@ -8,7 +8,6 @@ if [ -e "$HOME/.local/share/wm-init" ]; then
 fi
 
 scripts="$HOME/scripts/cmd"
-sxhkd_scripts="$HOME/.config/sxhkd/scripts"
 
 if pgrep -x sxhkd > /dev/null;
     then killall -SIGUSR1 sxhkd
@@ -63,7 +62,7 @@ if [ -n "$init" ]; then
     $scripts/bt status || pactl set-sink-volume @DEFAULT_SINK@ 0%
 fi
 
-$sxhkd_scripts/picom-exec restart &
+$scripts/picom-exec restart &
 
 bg-change 300 &
 
