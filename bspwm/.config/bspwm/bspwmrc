@@ -73,6 +73,9 @@ clipcatd &
 
 flameshot &
 
+killall unclutter
+unclutter -idle 2 &
+
 if [ -n "$init" ]; then
     bspc rule -a LibreWolf desktop='^2' follow=off --one-shot
     librewolf &
