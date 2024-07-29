@@ -106,7 +106,7 @@ super + Escape
     powermenu
 
 super + s
-    player-info 'spotify' 'notify'
+    player-info notify
 super + shift + s
     dunstify -t 2000 "$(date '+%H:%M | %a %d %b')"
 
