@@ -39,9 +39,9 @@ bspc rule -a TelegramDesktop state=floating center=true rectangle="$rect_large"
 bspc rule -a Windscribe2     state=floating center=true border=off
 
 if [ -n "$init" ]; then
-    betterbird &
-    spotify &
-    windscribe &
+    bspc rule -a *:Mail      hidden=on --one-shot & betterbird &
+    bspc rule -a Spotify     hidden=on --one-shot & spotify &
+    bspc rule -a Windscribe2 hidden=on --one-shot & windscribe &
 fi
 
 xsetroot -cursor_name left_ptr
