@@ -36,14 +36,14 @@ super + shift + p
     bg-change
 
 super + Return
-    st tmux -L FOO
+    kitty tmux -L FOO
 super + alt + Return
-    st tmux -L FOO attach
+    kitty tmux -L FOO attach
 super + control + Return
-    st sh -c 'printf "\033[1m(No tmux)\n" && zsh'
+    kitty sh -c 'printf "\033[1m(No tmux)\n" && zsh'
 
 super + shift Return
-    kitty tmux -L FOO
+    st tmux -L FOO
 
 super + alt + Delete
     kill-orphans
