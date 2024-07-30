@@ -37,12 +37,15 @@ bspc rule -a vesktop         state=floating center=true rectangle="$rect_large"
 bspc rule -a TelegramDesktop state=floating center=true rectangle="$rect_large"
 bspc rule -a Windscribe2     state=floating center=true border=off
 
+hide_once() {
+    bspc rule -a "$1" hidden=on --one-shot
+}
 if [ -n "$init" ]; then
-    bspc rule -a *:Mail          hidden=on --one-shot & betterbird &
-    bspc rule -a Spotify         hidden=on --one-shot & spotify &
-    bspc rule -a vesktop         hidden=on --one-shot & vesktop &
-    bspc rule -a TelegramDesktop hidden=on --one-shot & telegram-desktop &
-    bspc rule -a Windscribe2     hidden=on --one-shot & windscribe &
+    hide_once *:Mail          & betterbird &
+    hide_once Spotify         & spotify &
+    hide_once vesktop & hide_once vesktop & vesktop &
+    hide_once TelegramDesktop & telegram-desktop &
+    hide_once Windscribe2     & windscribe &
 fi
 
 xsetroot -cursor_name left_ptr
