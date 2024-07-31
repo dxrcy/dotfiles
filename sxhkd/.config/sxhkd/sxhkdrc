@@ -151,10 +151,18 @@ super + f
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 
+# super + {1-9,0}
+#     bspc desktop --focus '^{1-9,10}'
+# super + shift + {1-9,0}
+#     bspc node --to-desktop '^{1-9,10}'
+
+super + {1,2,3,4,5,6,7,8,9,0}
+    bspc desktop --focus '{I,II,III,IV,V,VI,VII,VIII,IX,X}'
+super + shift + {1,2,3,4,5,6,7,8,9,0}
+    bspc node --to-desktop '{I,II,III,IV,V,VI,VII,VIII,IX,X}'
+
 super + {1-9,0}
     bspc desktop --focus '^{1-9,10}'
-super + shift + {1-9,0}
-    bspc node --to-desktop '^{1-9,10}'
 
 super + alt + {h,j,k,l}
     bspc node -z {right -20 0,bottom 0 20,bottom 0 -20,right 20 0}

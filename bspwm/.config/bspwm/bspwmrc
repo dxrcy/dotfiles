@@ -18,7 +18,8 @@ if pgrep -x polybar > /dev/null;
     else polybar &
 fi
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+# bspc monitor -d I II III IV V VI VII VIII IX X
+bspwm-monitors &
 
 bspc config window_gap 4
 if [ -n "$init" ]; then
