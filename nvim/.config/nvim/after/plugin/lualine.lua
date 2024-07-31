@@ -1,9 +1,8 @@
 local function codeium_status()
-    local status = vim.fn["codeium#GetStatusString"]()
-    if status == "OFF" then
-        return ""
-    else
+    if require("codeium.source"):is_codeium_enabled() then
         return ""
+    else
+        return ""
     end
 end
 
