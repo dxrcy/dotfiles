@@ -18,7 +18,7 @@ function Source:is_available()
     return enabled and self.server.is_healthy()
 end
 
-vim.api.nvim_set_keymap('n', '<leader>tc', '', {
+vim.api.nvim_set_keymap("n", "<leader>ct", "", {
     callback = function()
         local new_enabled = not Source:is_codeium_enabled()
         vim.b["codeium_enabled"] = new_enabled
@@ -28,5 +28,6 @@ vim.api.nvim_set_keymap('n', '<leader>tc', '', {
             vim.notify("Codeium disabled in buffer")
         end
     end,
-    noremap = true
+    noremap = true,
+    desc = "Toggle code completion"
 })

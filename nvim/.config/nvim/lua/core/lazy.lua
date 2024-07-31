@@ -101,21 +101,21 @@ local plugins = {
     },
 
     -- Show possible key bindings
-    -- {
-    --     "folke/which-key.nvim",
-    --     event = "VeryLazy",
-    --     init = function()
-    --         vim.o.timeout = true
-    --         vim.o.timeoutlen = 300
-    --         require("which-key").setup {
-    --             hidden = { "q" },
-    --             triggers_blacklist = {
-    --                 n = { "q" },
-    --             },
-    --         }
-    --     end,
-    --     opts = {},
-    -- },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 500
+            require("which-key").setup {
+                hidden = { "q" },
+                triggers_blacklist = {
+                    n = { "q" },
+                },
+            }
+        end,
+        opts = {},
+    },
 
     -- Navigation
     {
