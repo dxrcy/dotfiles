@@ -80,12 +80,6 @@ super + control + {q, scircumflex}
 # super + f
 #     i3-msg fullscreen toggle
 
-# TODO: Doesn't need Esperanto versions ?
-super + {w, gcircumflex}
-    i3-msg layout tabbed
-super + e
-    i3-msg layout toggle split
-
 super + shift + m
     mount-gui --notify
 
@@ -148,8 +142,8 @@ super + alt + q
 super + f
     bspc node -t '~fullscreen'
 
-# super + c
-#     bspc node -t '~fullscreen'
+super + {_,shift +}w
+    bsp-layout {next,previous} --layouts even,tall,grid
 
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
