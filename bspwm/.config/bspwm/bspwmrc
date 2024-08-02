@@ -21,6 +21,9 @@ fi
 # bspc monitor -d I II III IV V VI VII VIII IX X
 bspwm-monitors &
 
+# Disable top gap created by polybar for second monitor
+bspc config -m ^2 top_padding 0
+
 bspc config window_gap 4
 if [ -n "$init" ]; then
     bspc config border_width 2
