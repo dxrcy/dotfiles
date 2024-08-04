@@ -194,8 +194,7 @@ super + shift + space
 #     tabc autoattach $(bspc query -N -n) 
 
 super + t; Return
-    tabc create $(bspc query -N -n focused); \
-    tabc autoattach $(bspc query -N -n)
+    tabc create $(bspc query -N -n focused)
 
 super + t; space
     tabc autoattach $(bspc query -N -n)
