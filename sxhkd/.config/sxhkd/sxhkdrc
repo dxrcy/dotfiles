@@ -122,19 +122,19 @@ alt + shift + F1
 #     xdotool keyup 'gcircumflex'; xdotool key 'w'
 # ctrl + ubreve
 #     xdotool keyup 'ubreve'; xdotool key 'y'
-#
-# alt + scircumflex
-#     ~/.config/sxhkd/scripts/alt-key 'scircumflex' 'q'
-# alt + gcircumflex
-#     ~/.config/sxhkd/scripts/alt-key 'gcircumflex' 'w'
-# alt + ubreve
-#     ~/.config/sxhkd/scripts/alt-key 'ubreve' 'y'
-# alt + ccircumflex
-#     ~/.config/sxhkd/scripts/alt-key 'ccircumflex' 'x'
-# alt + jcircumflex
-#     ~/.config/sxhkd/scripts/alt-key 'jcircumflex' 'bracketleft'
-# alt + hcircumflex
-#     ~/.config/sxhkd/scripts/alt-key 'hcircumflex' 'bracketright'
+
+alt + q
+    ~/.config/sxhkd/scripts/alt-key 'scircumflex' 'q'
+alt + w
+    ~/.config/sxhkd/scripts/alt-key 'gcircumflex' 'w'
+alt + y
+    ~/.config/sxhkd/scripts/alt-key 'ubreve' 'y'
+alt + x
+    ~/.config/sxhkd/scripts/alt-key 'ccircumflex' 'x'
+alt + bracketleft
+    ~/.config/sxhkd/scripts/alt-key 'jcircumflex' 'bracketleft'
+alt + bracketright
+    ~/.config/sxhkd/scripts/alt-key 'hcircumflex' 'bracketright'
 
 super + alt + q
     bspc quit
