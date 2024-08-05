@@ -189,3 +189,8 @@ keymap("n", "yj", "j")
 keymap("n", "yk", "k")
 keymap("n", "dj", "j")
 keymap("n", "dk", "k")
+
+keymap("n", "<F1>", "", { noremap = true, silent = true })
+keymap("i", "<F1>", "", { noremap = true, silent = true })
+keymap("v", "<F1>", "", { noremap = true, silent = true })
+
