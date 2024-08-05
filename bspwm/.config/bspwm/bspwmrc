@@ -17,6 +17,9 @@ if pgrep -x polybar > /dev/null;
     then killall -SIGUSR1 polybar
     else polybar &
 fi
+if ! pgrep -x redshift > /dev/null; then
+    redshift &
+fi
 
 # bspc monitor -d I II III IV V VI VII VIII IX X
 bspwm-monitors &
