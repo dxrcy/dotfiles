@@ -218,11 +218,14 @@ super + F5
 super + ctrl + {w,gcircumflex}
     bspwm-toggle-visibility Windscribe2 windscribe
 
+super + grave
+    bspwm-toggle-visibility --recent
+
+super + Tab
+    bspc desktop -f last
+
 super + bracket{left,right}
     bspc desktop -f {prev,next}.local
-
-super + {grave,Tab}
-    bspc {node,desktop} -f last
 
 alt + {_,shift + }Tab
     bspc node -f {next,prev}.local.!hidden.window
