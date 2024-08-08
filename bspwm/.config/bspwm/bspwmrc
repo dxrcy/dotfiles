@@ -24,8 +24,15 @@ fi
 # bspc monitor -d I II III IV V VI VII VIII IX X
 bspwm-monitors &
 
+# Run a command after a delay
+after() {
+    sleep "$1"
+    shift
+    eval "$*"
+}
+
 # Disable top gap created by polybar for second monitor
-bspc config -m ^2 top_padding 0
+after 2 bspc config -m ^2 top_padding 0 &
 
 bspc config window_gap 4
 if [ -n "$init" ]; then
@@ -36,7 +43,8 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc config pointer_follows_focus true
+# bspc config pointer_follows_focus true
+bspc config focus_follows_pointer true
 bspc config pointer_follows_monitor true
 
 rect_large='1400x950+0+0'
@@ -48,12 +56,14 @@ bspc rule -a TelegramDesktop state=floating center=true rectangle="$rect_large"
 bspc rule -a Windscribe2     state=floating center=true border=off
 
 hide_once() {
+    notify-send 123
     bspc rule -a "$1" hidden=on --one-shot
 }
+
 if [ -n "$init" ]; then
-    hide_once *:Mail          & betterbird &
+    after 2 hide_once *:Mail  \; betterbird &
+    after 2 hide_once vesktop \; hide_once vesktop \; vesktop &
     hide_once Spotify         & spotify &
-    hide_once vesktop & hide_once vesktop & vesktop &
     hide_once TelegramDesktop & telegram-desktop &
     hide_once Windscribe2     & windscribe &
 fi
