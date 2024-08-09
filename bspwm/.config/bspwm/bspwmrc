@@ -56,7 +56,6 @@ bspc rule -a TelegramDesktop state=floating center=true rectangle="$rect_large"
 bspc rule -a Windscribe2     state=floating center=true border=off
 
 hide_once() {
-    notify-send 123
     bspc rule -a "$1" hidden=on --one-shot
 }
 
@@ -100,9 +99,27 @@ flameshot &
 killall unclutter
 unclutter -idle 2 &
 
-if [ -n "$init" ]; then
-    bspc rule -a LibreWolf desktop='II' follow=off --one-shot
+start_librewolf() {
+    get_wids() {
+        xdotool search --sync --onlyvisible --maxdepth 1 --class "$1"
+    }
+
     librewolf &
+    # sleep 0.1
+
+    tabc create $(get_wids 'LibreWolf' | head -n1)
+    parent=$(get_wids 'tabbed')
+
+    for wid in $(get_wids 'LibreWolf'); do
+        tabc attach "$wid" "$parent" 
+    done
+
+    bspc node "$parent" --to-desktop 'II'
+    bspc desktop -f '^1'
+}
+
+if [ -n "$init" ]; then
+    start_librewolf &
 fi
 
 
