@@ -67,6 +67,8 @@ if [ -n "$init" ]; then
     hide_once Windscribe2     & windscribe &
 fi
 
+bspc rule -a Localsend state=tiled
+
 xsetroot -cursor_name left_ptr
 
 if [ -n "$init" ]; then
