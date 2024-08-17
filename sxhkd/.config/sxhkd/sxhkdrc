@@ -80,7 +80,7 @@ super + control + {q, scircumflex}
 # super + f
 #     i3-msg fullscreen toggle
 
-super + shift + m
+super + control + m
     mount-gui --notify
 
 super + b
@@ -236,6 +236,11 @@ super + ctrl + space
 # cancel the preselection for the focused desktop
 super + ctrl + shift + space
     bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+super + m
+    autoclicker
+super + shift + m
+    autoclicker stop
 
 ###################################################
 # Everything below here is defaults for bspwm !!! #
