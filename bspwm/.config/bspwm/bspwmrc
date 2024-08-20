@@ -60,7 +60,7 @@ hide_once() {
 }
 
 if [ -n "$init" ]; then
-    after 2 hide_once *:Mail  \; betterbird &
+    # after 2 hide_once *:Mail  \; betterbird &
     # after 2 hide_once vesktop \; hide_once vesktop \; vesktop &
     hide_once Spotify         & spotify &
     hide_once TelegramDesktop & telegram-desktop &
