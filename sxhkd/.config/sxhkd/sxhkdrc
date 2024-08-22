@@ -208,7 +208,7 @@ super + t; {h,j,k,l}
 super + F1
     bspwm-toggle-visibility kitty-btop kitty --class 'kitty-btop' btop
 super + F2
-    bspwm-toggle-visibility betterbird betterbird
+    bspwm-toggle-visibility '*:Mail' betterbird
 super + F3
     bspwm-toggle-visibility Spotify spotify
 super + F4
