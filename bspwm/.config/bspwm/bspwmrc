@@ -117,6 +117,7 @@ start_librewolf() {
         tabc attach "$wid" "$parent" 
     done
 
+    sleep 1
     bspc node "$parent" --to-desktop 'II'
     bspc desktop -f '^1'
 }
