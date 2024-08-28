@@ -6,6 +6,10 @@ ignore = [
     { run = 'true', desc = "(Do not open)" }
 ]
 
+browser = [
+    { run = '$BROWSER "$@"', desc = "Open with browser" }
+]
+
 nsxiv = [
     { run = 'nsxiv "$@"', desc = "Open with Nsxiv" },
 ]
@@ -38,8 +42,9 @@ prepend_rules = [
     { mime = "video/*", use = [ "default", "vlc" ] },
     { mime = "audio/*", use = [ "default", "vlc" ] },
 
+    { mime = "application/pdf", use = [ "default", "browser" ] },
+
     { mime = "inode/directory", use = [ "ignore" ] },
-    { mime = "application/pdf", use = [ "default" ] },
     { mime = "application/*", use = [ "ignore" ] },
 ]
 
