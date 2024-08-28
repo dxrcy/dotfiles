@@ -39,6 +39,7 @@ prepend_rules = [
     { mime = "audio/*", use = [ "default", "vlc" ] },
 
     { mime = "inode/directory", use = [ "ignore" ] },
+    { mime = "application/pdf", use = [ "default" ] },
     { mime = "application/*", use = [ "ignore" ] },
 ]
 
