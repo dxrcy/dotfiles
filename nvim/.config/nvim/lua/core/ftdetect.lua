@@ -15,3 +15,4 @@ vim.cmd("au BufRead,BufNewFile garf-transcript-* set filetype=transcript")
 -- Other filetypes
 vim.cmd("au BufRead,BufNewFile *.asi   set filetype=asmish")
 vim.cmd("au BufRead,BufNewFile *.lur   set filetype=lure")
+vim.cmd("au BufRead,BufNewFile *.sca   set filetype=scasm")

@@ -35,30 +35,36 @@ local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.phonet = {
     install_info = {
         url = "~/code/tree-sitter/tree-sitter-phonet", -- local path or git repo
-        files = { "src/parser.c" },        -- note that some parsers also require src/scanner.c or src/scanner.cc
+        files = { "src/parser.c" },                    -- note that some parsers also require src/scanner.c or src/scanner.cc
     },
 }
 parser_config.transcript = {
     install_info = {
         url = "~/code/tree-sitter/tree-sitter-transcript", -- local path or git repo
-        files = { "src/parser.c" },            -- note that some parsers also require src/scanner.c or src/scanner.cc
+        files = { "src/parser.c" },                        -- note that some parsers also require src/scanner.c or src/scanner.cc
     },
 }
 parser_config.asmish = {
     install_info = {
         url = "~/code/tree-sitter/tree-sitter-asmish", -- local path or git repo
-        files = { "src/parser.c" },        -- note that some parsers also require src/scanner.c or src/scanner.cc
+        files = { "src/parser.c" },                    -- note that some parsers also require src/scanner.c or src/scanner.cc
     },
 }
 parser_config.lispthing = {
     install_info = {
         url = "~/code/tree-sitter/tree-sitter-lispthing", -- local path or git repo
-        files = { "src/parser.c" },        -- note that some parsers also require src/scanner.c or src/scanner.cc
+        files = { "src/parser.c" },                       -- note that some parsers also require src/scanner.c or src/scanner.cc
     },
 }
 parser_config.lure = {
     install_info = {
         url = "~/code/tree-sitter/tree-sitter-lure", -- local path or git repo
-        files = { "src/parser.c" },        -- note that some parsers also require src/scanner.c or src/scanner.cc
+        files = { "src/parser.c" },                  -- note that some parsers also require src/scanner.c or src/scanner.cc
+    },
+}
+parser_config.scasm = {
+    install_info = {
+        url = "~/code/tree-sitter/tree-sitter-scasm", -- local path or git repo
+        files = { "src/parser.c" },                   -- note that some parsers also require src/scanner.c or src/scanner.cc
     },
 }
