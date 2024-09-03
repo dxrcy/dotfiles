@@ -461,6 +461,7 @@
         tmux resize-pane -R 40 &&\
         tmux select-pane -L &&\
         tmux new-window -c ~/pics/eo 'yazi; zsh' &&\
+        sleep 0.1 &&\
         tmux last-window &&\
         clear &&\
         printf '\x1b[32m' &&\
