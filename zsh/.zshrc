@@ -128,6 +128,7 @@
     export SAVEHIST=2000
     setopt SHARE_HISTORY        # Share history between terminals
     setopt HIST_IGNORE_ALL_DUPS # Duplicate history lines are ignored
+    setopt HIST_IGNORE_SPACE    # Don't save commands that start with space
     # See also: zsh-history-substring-search plugin
 # Use case-insensitive autocompletions
     autoload -Uz compinit && compinit
