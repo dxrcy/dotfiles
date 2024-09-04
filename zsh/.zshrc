@@ -283,6 +283,7 @@
     alias .v='cd ~/dotfiles/nvim/.config/nvim   && nvim'
     alias .b='cd ~/dotfiles/bspwm/.config/bspwm && nvim bspwmrc'
     alias .s='cd ~/dotfiles/sxhkd/.config/sxhkd && nvim sxhkdrc'
+    alias sc='cd ~/scripts                      && nvim cmd'
 # Misc. Programs and options
     alias cat='bat'
     alias ls='eza -l --group-directories-first'
