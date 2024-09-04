@@ -281,8 +281,6 @@
     alias .d='cd ~/dotfiles'
     alias .z='cd ~/dotfiles/zsh                 && nvim .zshrc'
     alias .v='cd ~/dotfiles/nvim/.config/nvim   && nvim'
-    alias .t='cd ~/dotfiles/tmux/.config/tmux   && nvim tmux.conf'
-    alias .i='cd ~/dotfiles/i3/.config/i3       && nvim config'
     alias .b='cd ~/dotfiles/bspwm/.config/bspwm && nvim bspwmrc'
     alias .s='cd ~/dotfiles/sxhkd/.config/sxhkd && nvim sxhkdrc'
 # Misc. Programs and options
