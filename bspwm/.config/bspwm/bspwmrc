@@ -114,10 +114,10 @@ start_librewolf() {
     parent=$(get_wids 'tabbed')
 
     for wid in $(get_wids 'LibreWolf'); do
-        tabc attach "$wid" "$parent" 
+        tabc attach "$wid" "$parent"
     done
 
-    sleep 1
+    sleep 2
     bspc node "$parent" --to-desktop 'II'
     bspc desktop -f '^1'
 }
