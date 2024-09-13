@@ -22,6 +22,9 @@ gimp = [
 vlc = [
     { run = 'devour vlc "$@"', desc = "Open with VLC" },
 ]
+document = [
+    { run = 'devour libreoffice "$@"', desc = "Open with LibreOffice" },
+]
 
 copy-file = [
     { run = 'cb copy $@', desc = "Copy file to clipboard" },
@@ -45,7 +48,11 @@ prepend_rules = [
     { mime = "application/pdf", use = [ "default", "browser" ] },
 
     { mime = "inode/directory", use = [ "ignore" ] },
-    { mime = "application/*", use = [ "ignore" ] },
+
+    { mime = "application/*.document", use = [ "document", "default" ] },
+
+    # Executables
+    { mime = "application/x-pie-executable", use = [ "ignore" ] },
 ]
 
 append_rules = [
