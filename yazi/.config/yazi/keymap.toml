@@ -10,5 +10,8 @@ prepend_keymap = [
     # Copy
     { on = [ "c", "f" ], run = "shell --confirm 'cb copy $@'", desc = "Copy file to clipboard" },
     { on = [ "c", "c" ], run = "shell --confirm 'cat $@ | cb copy'", desc = "Copy text to clipboard" },
+
+    # Home
+    { on = [ "~" ], run = "cd ~" }
 ]
 
