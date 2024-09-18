@@ -23,6 +23,10 @@ vlc = [
     { run = 'devour vlc "$@"', desc = "Open with VLC" },
 ]
 
+wine = [
+    { run = 'wine "$@"', desc = "Run with WINE" },
+]
+
 copy-file = [
     { run = 'cb copy $@', desc = "Copy file to clipboard" },
 ]
@@ -48,6 +52,7 @@ prepend_rules = [
 
     # Executables
     { mime = "application/x-pie-executable", use = [ "ignore" ] },
+    { mime = "application/vnd.microsoft.portable-executable", use = [ "wine" ] },
 ]
 
 append_rules = [
