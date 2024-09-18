@@ -21,6 +21,8 @@ if ! pgrep -x redshift > /dev/null; then
     redshift &
 fi
 
+monitors auto
+
 # bspc monitor -d I II III IV V VI VII VIII IX X
 bspwm-monitors &
 
@@ -82,8 +84,6 @@ xinput set-prop "$device_touchpad" 'libinput Disable While Typing Enabled' 0
 # Enable natural scrolling
 xinput set-prop "$device_touchpad" 'libinput Natural Scrolling Enabled'    1
 
-monitors auto
-
 if [ -n "$init" ]; then
     $scripts/bt status || pactl set-sink-volume @DEFAULT_SINK@ 0%
 fi
@@ -117,9 +117,9 @@ start_librewolf() {
         tabc attach "$wid" "$parent"
     done
 
-    sleep 2
+    sleep 4
     bspc node "$parent" --to-desktop 'II'
-    bspc desktop -f '^1'
+    # bspc desktop -f '^1'
 }
 
 if [ -n "$init" ]; then
