@@ -432,10 +432,6 @@
                 tmux resize-pane -R 30 &&\
                 tmux send-keys 'make watch' Enter &&\
                 tmux select-pane -L &&\
-                tmux split-window -v -c "#{pane_current_path}" &&\
-                tmux resize-pane -D 20 &&\
-                tmux send-keys 'nvim input' Enter &&\
-                tmux select-pane -U &&\
                 nvim 'main.cpp'
                 ;;
             'java')
