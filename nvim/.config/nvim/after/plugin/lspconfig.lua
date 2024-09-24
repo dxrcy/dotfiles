@@ -29,3 +29,23 @@ lspconfig.lua_ls.setup {
         },
     },
 }
+
+require('lspconfig').clangd.setup {
+    cmd = { "clangd", "--compile-commands-dir=./build" }, -- Adjust if necessary
+    flags = {
+        debounce_text_changes = 150,
+    },
+    on_attach = function(client, bufnr)
+        -- Key mappings, autocompletion setup, etc.
+    end,
+    settings = {
+        clangd = {
+            -- Add your GCC flags here
+            args = {
+                "-Wall",   -- Show all warnings
+                "-Werror", -- Treat warnings as errors
+                "-Wextra", -- Extra warnings
+            }
+        }
+    }
+}
