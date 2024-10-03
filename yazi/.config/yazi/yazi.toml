@@ -27,6 +27,10 @@ wine = [
     { run = 'wine "$@"', desc = "Run with WINE" },
 ]
 
+musescore = [
+    { run = 'mscore "$@"', desc = "Open with MuseScore" },
+]
+
 copy-file = [
     { run = 'cb copy $@', desc = "Copy file to clipboard" },
 ]
@@ -49,6 +53,8 @@ prepend_rules = [
     { mime = "application/pdf", use = [ "default", "browser" ] },
 
     { mime = "inode/directory", use = [ "ignore" ] },
+
+    { name = "*.mscz", use = [ "musescore" ] },
 
     # Executables
     { mime = "application/x-pie-executable", use = [ "ignore" ] },
