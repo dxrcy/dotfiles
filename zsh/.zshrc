@@ -456,13 +456,11 @@
         tmux split-window -h -c '#{pane_current_path}' 'killall basic-http-server; just; zsh' &&\
         tmux resize-pane -R 40 &&\
         tmux select-pane -L &&\
-        tmux new-window -c ~/pics/eo 'yazi; zsh' &&\
-        sleep 0.1 &&\
-        tmux last-window &&\
         clear &&\
         printf '\x1b[32m' &&\
         title 'Garfield' &&\
-        printf '\x1b[0m'
+        printf '\x1b[0m' &&\
+        tmux new-window -c ~/pics/eo 'yazi; zsh'
     }
     cd-last-command() { # Same as `cd !!`
         cd "$(fc -ln -1)" || return $?
