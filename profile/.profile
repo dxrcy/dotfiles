@@ -22,7 +22,7 @@ fi
 # Default applications
 export TERMINAL=kitty
 export EDITOR=nvim
-export BROWSER=librewolf
+export BROWSER=floorp
 
 # Theme
 # Idk if this even works...
