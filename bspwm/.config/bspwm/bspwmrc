@@ -101,21 +101,23 @@ flameshot &
 killall unclutter
 unclutter -idle 2 &
 
-start_librewolf() {
-    get_wids() {
-        xdotool search --sync --onlyvisible --maxdepth 1 --class "$1"
-    }
+start_browser() {
+    # get_wids() {
+    #     xdotool search --sync --onlyvisible --maxdepth 1 --class "$1"
+    # }
+    #
+    # sleep 1
+    # librewolf &
+    # # sleep 0.1
+    #
+    # tabc create $(get_wids 'LibreWolf' | head -n1)
+    # parent=$(get_wids 'tabbed')
+    #
+    # for wid in $(get_wids 'LibreWolf'); do
+    #     tabc attach "$wid" "$parent"
+    # done
 
-    sleep 1
-    librewolf &
-    # sleep 0.1
-
-    tabc create $(get_wids 'LibreWolf' | head -n1)
-    parent=$(get_wids 'tabbed')
-
-    for wid in $(get_wids 'LibreWolf'); do
-        tabc attach "$wid" "$parent"
-    done
+    floorp &
 
     sleep 4
     bspc node "$parent" --to-desktop 'II'
@@ -123,7 +125,7 @@ start_librewolf() {
 }
 
 if [ -n "$init" ]; then
-    start_librewolf &
+    start_browser &
 fi
 
 
