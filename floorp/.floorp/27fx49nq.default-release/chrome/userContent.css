@@ -2,3 +2,19 @@
 
 @import url('CSS/dark-pdf-reader.css');
 
+@-moz-document domain("support.mozilla.org") {
+    body {
+        background-color: #121212 !important;
+        color: #e0e0e0 !important;
+    }
+
+    .article, .article-content, .sumo-nav--container {
+        background-color: #1c1c1c !important;
+        border-color: #333 !important;
+    }
+
+    .sumo-page-heading {
+        color: #c0c0c0; !important;
+    }
+}
+
