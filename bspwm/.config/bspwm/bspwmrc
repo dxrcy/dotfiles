@@ -62,7 +62,7 @@ hide_once() {
 }
 
 if [ -n "$init" ]; then
-    # after 2 hide_once *:Mail  \; betterbird &
+    # after 2 hide_once *:Mail  \; thunderbird &
     # after 2 hide_once vesktop \; hide_once vesktop \; vesktop &
     hide_once Spotify         & spotify &
     hide_once TelegramDesktop & telegram-desktop &
@@ -103,7 +103,7 @@ unclutter -idle 2 &
 
 start_browser() {
     zen-browser &
-    sleep 2
+    sleep 1
     bspc node --to-desktop 'II'
 }
 
@@ -111,4 +111,5 @@ if [ -n "$init" ]; then
     start_browser &
 fi
 
+export XDG_CURRENT_DESKTOP=GTK
 
