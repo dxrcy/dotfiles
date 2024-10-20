@@ -22,7 +22,7 @@ fi
 # Default applications
 export TERMINAL=kitty
 export EDITOR=nvim
-export BROWSER=floorp
+export BROWSER=zen-browser
 
 # Theme
 # Idk if this even works...
