@@ -102,7 +102,7 @@ killall unclutter
 unclutter -idle 2 &
 
 start_browser() {
-    floorp &
+    zen-browser &
     sleep 2
     bspc node --to-desktop 'II'
 }
