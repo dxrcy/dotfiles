@@ -63,7 +63,7 @@
 
         # printf '\033[1A' # Move cursor up
         # printf '\033[1G\033[2K' # Erase line
-       
+
         # Continue process
         fg "%$job_no"
         # Job not found (shouldn't happen)
@@ -86,6 +86,12 @@
         zle reset-prompt
     }; zle -N fg-keybind
     bindkey '^Z' fg-keybind
+# Zoxide keybind
+    zoxide-keybind() {
+        eval z
+        zle reset-prompt
+    }; zle -N zoxide-keybind
+    bindkey '^ ' zoxide-keybind
 # Other keybinds
     bindkey -s '^D' ''      # Disable Ctrl+D
 # Change directory by typing name
