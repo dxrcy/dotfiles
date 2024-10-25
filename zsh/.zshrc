@@ -433,6 +433,7 @@
             'rust') nvim 'src/main.rs' ;;
             'c')    nvim 'main.c' ;;
             'zig')  nvim 'main.zig' ;;
+            'roc')  nvim 'main.roc' ;;
             'cpp') 
                 tmux split-window -h -c "#{pane_current_path}" &&\
                 tmux resize-pane -R 30 &&\
