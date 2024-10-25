@@ -30,7 +30,7 @@ lspconfig.lua_ls.setup {
     },
 }
 
-require('lspconfig').clangd.setup {
+lspconfig.clangd.setup {
     cmd = { "clangd", "--compile-commands-dir=./build" }, -- Adjust if necessary
     flags = {
         debounce_text_changes = 150,
@@ -49,3 +49,5 @@ require('lspconfig').clangd.setup {
         }
     }
 }
+
+lspconfig.roc_ls.setup {}
