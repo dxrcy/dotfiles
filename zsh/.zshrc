@@ -547,6 +547,8 @@ _install-packages
 _startx-prompt
 
 
+# TODO: Move these things
+
 # pnpm
 export PNPM_HOME="/home/darcy/.local/share/pnpm"
 case ":$PATH:" in
@@ -554,3 +556,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+if [ -e /home/darcy/.nix-profile/etc/profile.d/nix.sh ]; then . /home/darcy/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
