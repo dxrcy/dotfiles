@@ -51,7 +51,7 @@ bspc config pointer_follows_monitor true
 
 rect_large='1400x950+0+0'
 bspc rule -a kitty-btop      state=floating center=true rectangle="$rect_large"
-bspc rule -a *:Mail          state=floating center=true rectangle="$rect_large"
+# bspc rule -a *:Mail          state=floating center=true rectangle="$rect_large"
 bspc rule -a Spotify         state=floating center=true rectangle=850x700+0+0
 bspc rule -a vesktop         state=floating center=true rectangle="$rect_large"
 bspc rule -a TelegramDesktop state=floating center=true rectangle="$rect_large"
