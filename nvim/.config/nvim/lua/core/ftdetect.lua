@@ -9,8 +9,7 @@ vim.cmd("au BufRead,BufNewFile phonet   set filetype=phonet")
 vim.cmd("au BufRead,BufNewFile *.phonet set filetype=phonet")
 
 -- Transcript files
-vim.cmd("au BufRead,BufNewFile transcript        set filetype=transcript")
-vim.cmd("au BufRead,BufNewFile garf-transcript-* set filetype=transcript")
+vim.cmd("au BufRead,BufNewFile transcript* set filetype=transcript")
 
 -- Other filetypes
 vim.cmd("au BufRead,BufNewFile *.asi   set filetype=asmish")
