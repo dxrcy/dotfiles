@@ -323,7 +323,8 @@
     alias dc='cd - >/dev/null'
     alias j='just'
     alias m='make'
-    alias a='garf'
+    alias a='garfutils'
+    alias aa='garf' # OLD! remove soon!
     alias d='devour'
     alias o='open' # Script
     alias ,='abandon' # Script
@@ -350,7 +351,7 @@
     alias ghs='gh auth switch'
     alias s='sandbox-fzf'
     alias yazi='yazi-cd' 
-    am() { garf make $* && exit }
+    am() { garfutils make $* && exit }
 
 #========= LONGER FUNCTIONS (Aliased)
     yazi-cd() { # Use `yazi` to `cd`, without spawning subshell
