@@ -91,7 +91,7 @@ super + ctrl + b
     bt reconnect
 
 super + shift + g
-    garf show
+    garfutils show
 
 super + o
     kitty tmux -L FOO new 'cd ~/docs/notes && nvim $(notename) && zsh'
