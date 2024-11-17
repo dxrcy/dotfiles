@@ -559,3 +559,5 @@ esac
 # pnpm end
 
 if [ -e /home/darcy/.nix-profile/etc/profile.d/nix.sh ]; then . /home/darcy/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# source /usr/share/nvm/init-nvm.sh
