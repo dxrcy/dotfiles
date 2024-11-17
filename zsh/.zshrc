@@ -324,7 +324,7 @@
     alias j='just'
     alias m='make'
     alias a='garfutils'
-    alias aa='garf' # OLD! remove soon!
+    alias aa='~/code/garf-old/garf' # OLD! remove soon!
     alias d='devour'
     alias o='open' # Script
     alias ,='abandon' # Script
