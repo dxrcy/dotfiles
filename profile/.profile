@@ -34,7 +34,8 @@ export ZVM_INSTALL="$HOME/.zvm/self"
 export PATH="$PATH:$HOME/.zvm/bin"
 export PATH="$PATH:$ZVM_INSTALL/"
 
-# GTK_USE_PORTAL=1
+export XDG_CURRENT_DESKTOP=GTK
+# export GTK_USE_PORTAL=1
 
 #----------------------------------------------------
 # If you're trying to set dark mode, try this command
