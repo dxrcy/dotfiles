@@ -57,3 +57,5 @@ export XDG_CURRENT_DESKTOP=GTK
 # export QT_QPA_PLATFORMTHEME='gnome'
 # export QT_QPA_PLATFORMTHEME=gtk2
 
+
+if [ -e /home/darcy/.nix-profile/etc/profile.d/nix.sh ]; then . /home/darcy/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
