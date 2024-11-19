@@ -57,6 +57,8 @@ bspc rule -a vesktop         state=floating center=true rectangle="$rect_large"
 bspc rule -a TelegramDesktop state=floating center=true rectangle="$rect_large"
 bspc rule -a Windscribe2     state=floating center=true border=off
 
+bspc rule -a Ferdium state=floating center=true rectangle="$rect_large"
+
 hide_once() {
     bspc rule -a "$1" hidden=on --one-shot
 }
