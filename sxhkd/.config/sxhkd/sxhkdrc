@@ -206,7 +206,8 @@ super + t; {h,j,k,l}
     tabc attach $(bspc query -N -n) $(bspc query -N -n {west,south,north,east})
 
 super + F1
-    bspwm-toggle-visibility kitty-btop kitty --class 'kitty-btop' btop
+    bspwm-scratchpad Ferdium ferdium
+    # bspwm-toggle-visibility kitty-btop kitty --class 'kitty-btop' btop
 super + F2
     thunderbird
     # bspwm-toggle-visibility ':Mail' thunderbird
