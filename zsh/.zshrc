@@ -37,7 +37,7 @@
     # Yank to the system clipboard
     function vi-yank-xclip {
         zle vi-yank
-        echo "$CUTBUFFER" | xclip -selection clipboard
+        echo "$CUTBUFFER" | wl-copy
     }; zle -N vi-yank-xclip
     bindkey -M vicmd 'y' vi-yank-xclip
     bindkey -M vicmd -s 'ŝ' 'q' # Remap Esperanto keys
