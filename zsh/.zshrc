@@ -286,11 +286,12 @@
     alias   cn='cargo-new-cd'
 # Common dotfile editing
     alias .d='cd ~/dotfiles'
-    alias .z='cd ~/dotfiles/zsh                 && nvim .zshrc'
-    alias .v='cd ~/dotfiles/nvim/.config/nvim   && nvim'
-    alias .b='cd ~/dotfiles/bspwm/.config/bspwm && nvim bspwmrc'
-    alias .s='cd ~/dotfiles/sxhkd/.config/sxhkd && nvim sxhkdrc'
-    alias sc='cd ~/scripts                      && nvim cmd'
+    alias .z='cd ~/dotfiles/zsh                     && nvim .zshrc'
+    alias .v='cd ~/dotfiles/nvim/.config/nvim       && nvim'
+    alias .b='cd ~/dotfiles/bspwm/.config/bspwm     && nvim bspwmrc'
+    alias .h='cd ~/dotfiles/hyprland/.config/hypr   && nvim hyprland.conf'
+    alias .s='cd ~/dotfiles/sxhkd/.config/sxhkd     && nvim sxhkdrc'
+    alias sc='cd ~/scripts                          && nvim cmd'
 # Misc. Programs and options
     alias cat='bat'
     alias ls='eza -l --group-directories-first'
