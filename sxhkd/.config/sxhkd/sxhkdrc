@@ -209,13 +209,13 @@ super + F1
     bspwm-toggle-visibility kitty-btop kitty --class 'kitty-btop' btop
 super + F2
     thunderbird
-    # bspwm-toggle-visibility '*:Mail' thunderbird
+    # bspwm-toggle-visibility ':Mail' thunderbird
 super + F3
-    bspwm-toggle-visibility Spotify spotify
+    bspwm-scratchpad Spotify spotify
 super + F4
-    bspwm-toggle-visibility vesktop vesktop
+    bspwm-scratchpad vesktop vesktop
 super + F5
-    bspwm-toggle-visibility TelegramDesktop telegram-desktop
+    bspwm-scratchpad TelegramDesktop telegram-desktop
 super + ctrl + {w,gcircumflex}
     bspwm-toggle-visibility Windscribe2 windscribe
 
