@@ -164,7 +164,7 @@
 # Bind shift-tab to cycle backwards in completion
     bindkey "^[[Z" reverse-menu-complete
 # Move zcompdump file location
-    compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+    compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
 # XDG base directory aliases
     XCONF="$XDG_CONFIG_HOME"
     XCACHE="$XDG_CACHE_HOME"
@@ -492,7 +492,7 @@
     # Autodownload packages
     # At end of file, so if git clone cancelled, above aliases still work
     _install-packages() {
-        PKGDIR="$XDG_DATA_HOME/zsh" # Where to download packages to
+        PKGDIR="$HOME/.local/share/zsh" # Where to download packages to
         PACKAGES=( # Each item is the zsh entry file of package, relative to PKGDIR
             zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
             zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
