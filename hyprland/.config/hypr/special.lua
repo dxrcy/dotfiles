@@ -24,6 +24,12 @@ Programs = {
         command = "ferdium",
         autostart = false,
     },
+    {
+        name = "vpn",
+        class = "Windscribe",
+        command = "windscribe",
+        autostart = true,
+    },
 }
 
 ---@return nil
