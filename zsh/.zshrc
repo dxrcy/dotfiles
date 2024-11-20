@@ -311,8 +311,9 @@
     alias grepa="rg --hidden --no-ignore"
     alias mkdir='mkdir -p'
     alias cp='cp -r'
-    alias nsxiv='nsxiv -a'
-    alias sxiv='nsxiv'
+    alias swiv='swiv -a -B #000000'
+    alias nsxiv='swiv'
+    alias sxiv='swiv'
     alias zig='~/.zvm/bin/zig'
     alias pstree='pstree -U | less'
     alias zh='vim + ~/.cache/zsh_history'
