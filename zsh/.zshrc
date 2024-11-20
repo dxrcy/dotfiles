@@ -7,7 +7,10 @@
     # Source ~/.profile in any tty
     if [ -z "$DISPLAY" ]; then
         [ -f "$HOME/.profile" ] && . "$HOME/.profile"
+        # Explicitly source XDG base directories (in case .profile fails)
+        [ -f "$HOME/.config/xdg-dirs" ] && . "$HOME/.config/xdg-dirs"
     fi
+
     # Ask to run display server (or `startx`)
     # Runs at end of file
     _display-server-prompt() {
@@ -16,8 +19,7 @@
             printf '\x1b[1mStart graphical session? \x1b[0m'
             read -r _
 
-            export ZSHLVL=0
-            [ -f "$HOME/.profile" ] && . "$HOME/.profile"
+            export ZSHLVL=0 # Reset shell nesting
             hyprland # WM/DE or `startx`
         fi
     }
