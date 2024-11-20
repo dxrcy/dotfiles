@@ -8,14 +8,17 @@
     if [ -z "$DISPLAY" ]; then
         [ -f "$HOME/.profile" ] && . "$HOME/.profile"
     fi
-    # Ask to run `startx`
+    # Ask to run display server (or `startx`)
     # Runs at end of file
-    _startx-prompt() {
+    _display-server-prompt() {
         if [ -z "$DISPLAY" ] && [ "$TTY" = "/dev/tty1" ]; then
             echo
-            printf '\x1b[1mstartx? \x1b[0m'
+            printf '\x1b[1mStart graphical session? \x1b[0m'
             read -r _
-            startx
+
+            export ZSHLVL=0
+            [ -f "$HOME/.profile" ] && . "$HOME/.profile"
+            hyprland # WM/DE or `startx`
         fi
     }
 
@@ -546,8 +549,7 @@
     }
 
 _install-packages
-_startx-prompt
-
+_display-server-prompt
 
 # TODO: Move these things
 
