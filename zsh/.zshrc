@@ -466,7 +466,9 @@
         cd "$*"       || return $?
     }
     garfeo-mode() { # https://github.com/dxrcy/garfeo
-        tabc create $(bspc query -N -n focused) &&\
+        # Set grouped if not already
+        [ "$(hyprctl activewindow -j | jq -r '.grouped | length')" -eq 0 ] \
+             && hyprctl dispatch togglegroup
         cd ~/code/garfeo &&\
         tmux split-window -h -c '#{pane_current_path}' 'killall basic-http-server; just; zsh' &&\
         tmux resize-pane -R 40 &&\
