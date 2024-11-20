@@ -354,7 +354,6 @@
     alias rl='readlink'
     alias pst='ps-tree'
     alias backup='backup-file' # Script
-    alias entra='entr-all'
     alias ghs='gh auth switch'
     alias s='sandbox-fzf'
     alias yazi='yazi-cd' 
@@ -421,9 +420,6 @@
         [ "$code" = 139 ] && echo "Segfault! lol."
         return "$code"
     }
-    entr-all() {
-        find | entr -c zsh -i -c "$*"
-    }
     cargo-install-path() { # Install package at current project root
         root=$(dirname "$(cargo locate-project | jq -r .root)")
         cargo install --path "$root"
@@ -449,14 +445,12 @@
             'cpp') 
                 tmux split-window -h -c "#{pane_current_path}" &&\
                 tmux resize-pane -R 30 &&\
-                tmux send-keys 'make watch' Enter &&\
                 tmux select-pane -L &&\
                 nvim 'main.cpp'
                 ;;
             'java')
                 tmux split-window -h -c "#{pane_current_path}" &&\
                 tmux resize-pane -R 40 &&\
-                tmux send-keys 'just run' Enter &&\
                 tmux select-pane -L &&\
                 nvim 'src/Main.java'
                 ;;
