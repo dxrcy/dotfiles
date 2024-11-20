@@ -285,7 +285,7 @@
     alias cwcl='cargo watch -x clippy -c'
     alias  cwt='cargo watch -x test -c'
     alias   ci='cargo install'
-    alias  cip='cargo install --path .'
+    alias  cip='cargo-install-path'
     alias  cex='cargo expand | nvim -Rc "set ft=rust"' # Expand macro, open in nvim
     alias  ccl='cargo clippy'
     alias   cn='cargo-new-cd'
@@ -423,6 +423,10 @@
     }
     entr-all() {
         find | entr -c zsh -i -c "$*"
+    }
+    cargo-install-path() { # Install package at current project root
+        root=$(dirname "$(cargo locate-project | jq -r .root)")
+        cargo install --path "$root"
     }
     cargo-new-cd() {
         [ ! "$*" ] && { cargo new || return $? }
