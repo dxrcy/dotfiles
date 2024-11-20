@@ -172,6 +172,8 @@
     XCACHE="$XDG_CACHE_HOME"
     XDATA="$XDG_DATA_HOME"
     XSTATE="$XDG_STATE_HOME"
+# Use neovim as man pager
+    export MANPAGER='nvim +Man!'
 
 #========= PROMPT
 # Display shell nesting level
