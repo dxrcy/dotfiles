@@ -563,6 +563,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# TODO(feat): `node` command, which lazily sources `nvm` script
+
 if [ -e /home/darcy/.nix-profile/etc/profile.d/nix.sh ]; then . /home/darcy/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # source /usr/share/nvm/init-nvm.sh
