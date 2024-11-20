@@ -12,12 +12,14 @@ export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
-. "$CARGO_HOME/env"
+export XRES_PATH=$XDG_CONFIG_HOME/x11/Xresources
 
 # Merge xresources if the file exists
-if [ -f $XDG_CONFIG_HOME/x11/Xresources ]; then
-  xrdb -merge $XDG_CONFIG_HOME/x11/Xresources
+if [ -f $XRES_PATH ]; then
+  xrdb -merge $XRES_PATH
 fi
+
+. "$CARGO_HOME/env"
 
 # Default applications
 export TERMINAL=kitty
