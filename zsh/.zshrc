@@ -8,7 +8,7 @@
     if [ -z "$DISPLAY" ]; then
         [ -f "$HOME/.profile" ] && . "$HOME/.profile"
         # Explicitly source XDG base directories (in case .profile fails)
-        [ -f "$HOME/.config/xdg-dirs" ] && . "$HOME/.config/xdg-dirs"
+        [ -f "$HOME/.config/user-dirs.dirs" ] && . "$HOME/.config/user-dirs.dirs"
     fi
 
     # Ask to run display server (or `startx`)
