@@ -10,8 +10,8 @@ browser = [
     { run = '$BROWSER "$@"', desc = "Open with browser" }
 ]
 
-nsxiv = [
-    { run = 'nsxiv "$@"', desc = "Open with Nsxiv" },
+swiv = [
+    { run = 'swiv -B "#000000" "$@"', desc = "Open with Swiv" },
 ]
 inkscape = [
     { run = 'inkscape "$@"', desc = "Open with Inkscape" },
@@ -43,9 +43,9 @@ prepend_rules = [
     # "edit" enters the file, instead of opening in new window, so prefer this
     { mime = "text/*", use = [ "edit", "default", "copy-text" ] },
 
-    { mime = "image/svg*", use = [ "default", "nsxiv", "copy-file" ] },
-    { mime = "image/x-xcf", use = [ "default", "nsxiv", "copy-file" ] },
-    { mime = "image/*", use = [ "nsxiv", "inkscape", "gimp", "copy-file" ] },
+    { mime = "image/svg*", use = [ "default", "swiv", "copy-file" ] },
+    { mime = "image/x-xcf", use = [ "default", "swiv", "copy-file" ] },
+    { mime = "image/*", use = [ "swiv", "inkscape", "gimp", "copy-file" ] },
 
     { mime = "video/*", use = [ "default", "vlc" ] },
     { mime = "audio/*", use = [ "default", "vlc" ] },
