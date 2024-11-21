@@ -32,15 +32,19 @@ Programs = {
     },
 }
 
+RecentFile = "/tmp/special.recent"
+
 ---@return nil
 function PrintUsage()
     print([[
 USAGE:
-    lua special.lua [<NAME> | --autostart | --repair]
+    lua special.lua [<NAME> | --recent | --autostart | --repair]
 
 OPTIONS:
     <NAME>
         Open a specific program
+    --recent
+        Open/close recent program
     --autostart
         Start programs silently
     --repair
@@ -58,6 +62,8 @@ local function main()
     elseif name:sub(1, 1) == "-" then
         if name == "--autostart" then
             AutostartPrograms()
+        elseif name == "--recent" then
+            ToggleRecentProgram()
         elseif name == "--repair" then
             Eprint("[unimplemented]")
             os.exit(1)
@@ -77,6 +83,46 @@ local function main()
             ToggleProgram(program)
         end
     end
+end
+
+---@return nil
+function ToggleRecentProgram()
+    local name = GetRecentProgramName()
+    local program = FindProgram(name)
+    if program == nil then
+        Eprint("No such program")
+        os.exit(2)
+    end
+    -- Assume already running
+    ToggleProgram(program)
+end
+
+---@return string
+function GetRecentProgramName()
+    local line = io.open(RecentFile, "r")
+    if line == nil then
+        Eprint("Failed to read recent file")
+        os.exit(2)
+    end
+    local name = line:read()
+    line:close()
+    if name == nil then
+        Eprint("Failed to read recent file")
+        os.exit(2)
+    end
+    return name
+end
+
+---@param program Program
+---@return nil
+function WriteRecentProgram(program)
+    local file = io.open(RecentFile, "w")
+    if file == nil then
+        Eprint("Failed to write recent file")
+        os.exit(2)
+    end
+    file:write(program.name)
+    file:close()
 end
 
 ---@param ...string|number
@@ -155,6 +201,7 @@ function ToggleProgram(program)
         Eprint("Failed to run command")
         os.exit(2)
     end
+    WriteRecentProgram(program)
 end
 
 main()

@@ -1,9 +1,0 @@
-#!/bin/sh
-
-
-hyprctl dispatch movetoworkspacesilent 'special:music','Spotify'
-hyprctl dispatch movetoworkspacesilent 'special:mail','thunderbird'
-hyprctl dispatch movetoworkspacesilent 'special:social','ferdium'
-
-
-
