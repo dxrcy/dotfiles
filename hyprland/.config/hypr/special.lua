@@ -38,15 +38,18 @@ RecentFile = "/tmp/special.recent"
 function PrintUsage()
     print([[
 USAGE:
-    lua special.lua [<NAME> | --recent | --autostart | --repair]
+    lua special.lua <NAME>
+    lua special.lua [--recent | --hide-all | --autostart | --repair]
 
 OPTIONS:
     <NAME>
-        Open a specific program
+        Show a specific program, starting it if necessary
     --recent
-        Open/close recent program
+        Show/hide most recently-interacted program
+    --hide-all
+        Hide all programs
     --autostart
-        Start programs silently
+        Start applicable programs, hidden
     --repair
         [unimplemented]
 ]])
@@ -60,10 +63,12 @@ local function main()
         PrintUsage()
         os.exit(1)
     elseif name:sub(1, 1) == "-" then
-        if name == "--autostart" then
-            AutostartPrograms()
-        elseif name == "--recent" then
+        if name == "--recent" then
             ToggleRecentProgram()
+        elseif name == "--hide-all" then
+            HideAllPrograms()
+        elseif name == "--autostart" then
+            AutostartPrograms()
         elseif name == "--repair" then
             Eprint("[unimplemented]")
             os.exit(1)
@@ -97,49 +102,9 @@ function ToggleRecentProgram()
     ToggleProgram(program)
 end
 
----@return string
-function GetRecentProgramName()
-    local line = io.open(RecentFile, "r")
-    if line == nil then
-        Eprint("Failed to read recent file")
-        os.exit(2)
-    end
-    local name = line:read()
-    line:close()
-    if name == nil then
-        Eprint("Failed to read recent file")
-        os.exit(2)
-    end
-    return name
-end
-
----@param program Program
 ---@return nil
-function WriteRecentProgram(program)
-    local file = io.open(RecentFile, "w")
-    if file == nil then
-        Eprint("Failed to write recent file")
-        os.exit(2)
-    end
-    file:write(program.name)
-    file:close()
-end
-
----@param ...string|number
-function Eprint(...)
-    io.stderr:write(...)
-    io.stderr:write("\n")
-end
-
----@param name string
----@return Program?
-function FindProgram(name)
-    for _, program in ipairs(Programs) do
-        if program.name == name then
-            return program
-        end
-    end
-    return nil
+function HideAllPrograms()
+    -- TODO
 end
 
 ---@return nil
@@ -202,6 +167,51 @@ function ToggleProgram(program)
         os.exit(2)
     end
     WriteRecentProgram(program)
+end
+
+---@return string
+function GetRecentProgramName()
+    local line = io.open(RecentFile, "r")
+    if line == nil then
+        Eprint("Failed to read recent file")
+        os.exit(2)
+    end
+    local name = line:read()
+    line:close()
+    if name == nil then
+        Eprint("Failed to read recent file")
+        os.exit(2)
+    end
+    return name
+end
+
+---@param program Program
+---@return nil
+function WriteRecentProgram(program)
+    local file = io.open(RecentFile, "w")
+    if file == nil then
+        Eprint("Failed to write recent file")
+        os.exit(2)
+    end
+    file:write(program.name)
+    file:close()
+end
+
+---@param name string
+---@return Program?
+function FindProgram(name)
+    for _, program in ipairs(Programs) do
+        if program.name == name then
+            return program
+        end
+    end
+    return nil
+end
+
+---@param ...string|number
+function Eprint(...)
+    io.stderr:write(...)
+    io.stderr:write("\n")
 end
 
 main()
