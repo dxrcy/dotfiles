@@ -8,8 +8,8 @@ prepend_keymap = [
     { on = [ ":" ], run = "plugin custom-shell", desc = "Run shell commmand (zsh)" },
 
     # Copy
-    { on = [ "c", "f" ], run = "shell --confirm 'cb copy $@'", desc = "Copy file to clipboard" },
-    { on = [ "c", "c" ], run = "shell --confirm 'cat $@ | cb copy'", desc = "Copy text to clipboard" },
+    # { on = [ "c", "f" ], run = "shell --confirm 'wl-copy $@'", desc = "Copy file to clipboard" },
+    { on = [ "c", "c" ], run = "shell --confirm 'cat $@ | wl-copy'", desc = "Copy text to clipboard" },
 
     # Home
     { on = [ "~" ], run = "cd ~" },
