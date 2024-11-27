@@ -104,7 +104,11 @@ end
 
 ---@return nil
 function HideAllPrograms()
-    -- TODO
+    -- I couldn't find a way to HIDE a special workspace (only TOGGLE visibility)
+    -- So we show a non-existant empty workspace, then hide it again
+    -- This has the same effect and is unnoticable
+    ToggleSpecialWorkspace("__TEMP")
+    ToggleSpecialWorkspace("__TEMP")
 end
 
 ---@return nil
@@ -158,15 +162,21 @@ end
 ---@param program Program
 ---@return nil
 function ToggleProgram(program)
+    ToggleSpecialWorkspace(program.name)
+    WriteRecentProgram(program)
+end
+
+---@param name string
+---@return nil
+function ToggleSpecialWorkspace(name)
     local success = os.execute(
         "hyprctl dispatch togglespecialworkspace " ..
-        "'" .. program.name .. "'"
+        "'" .. name .. "'"
     )
     if not success then
         Eprint("Failed to run command")
         os.exit(2)
     end
-    WriteRecentProgram(program)
 end
 
 ---@return string
