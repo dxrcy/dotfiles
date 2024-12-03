@@ -444,6 +444,7 @@
             'c')    nvim 'main.c' ;;
             'zig')  nvim 'main.zig' ;;
             'roc')  nvim 'main.roc' ;;
+            'lua')  nvim 'main.lua' ;;
             'cpp') 
                 tmux split-window -h -c "#{pane_current_path}" &&\
                 tmux resize-pane -R 30 &&\
