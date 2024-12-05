@@ -194,3 +194,7 @@ keymap("n", "<F1>", "", { noremap = true, silent = true })
 keymap("i", "<F1>", "", { noremap = true, silent = true })
 keymap("v", "<F1>", "", { noremap = true, silent = true })
 
+-- Show diagnostics (errors/warnings) in floating dialog
+keymap("n", "<C-k>", function()
+    vim.diagnostic.open_float({ scope = "line" })
+end)
