@@ -143,19 +143,19 @@ local plugins = {
     },
 
     -- Code completion
-    {
-        "Exafunction/codeium.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-        },
-        config = function()
-            -- vim.system({ "notify-send", "123" })
-            require("codeium").setup({
-                enable_chat = true,
-            })
-        end
-    },
+    -- {
+    --     "Exafunction/codeium.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "hrsh7th/nvim-cmp",
+    --     },
+    --     config = function()
+    --         -- vim.system({ "notify-send", "123" })
+    --         require("codeium").setup({
+    --             enable_chat = true,
+    --         })
+    --     end
+    -- },
 
     -- Rust crate versions
     -- {
