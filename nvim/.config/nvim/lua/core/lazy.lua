@@ -214,6 +214,8 @@ local plugins = {
         },
     },
 
+    "Jorengarenar/COBOl.vim",
+
     -- Idk if this is needed
     {
         "mfussenegger/nvim-jdtls",
