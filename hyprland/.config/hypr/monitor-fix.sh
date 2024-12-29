@@ -12,7 +12,7 @@ log() {
     $@ 2>&1 >> "$logfile"
 }
 
-log hyprctl keyword monitor disable
+log hyprctl keyword monitor eDP-1,disable
 
 sleep 1
 
