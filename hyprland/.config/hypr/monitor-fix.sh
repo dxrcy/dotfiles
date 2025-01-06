@@ -1,6 +1,7 @@
 #!/bin/sh
 
 logfile="$HOME/monitor-fix.log"
+delay=0.1
 
 echo >> "$logfile"
 printf '@@@ ' >> "$logfile"
@@ -14,15 +15,15 @@ log() {
 
 log hyprctl keyword monitor eDP-1,disable
 
-sleep 1
+sleep "$delay"
 
 log hyprctl keyword monitor eDP-1,preferred,auto,1.6666667
 
-sleep 1
+sleep "$delay"
 
 log hyprctl keyword monitor ,disable
 
-sleep 1
+sleep "$delay"
 
 log hyprctl keyword monitor ,enable
 
