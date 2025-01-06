@@ -1,7 +1,7 @@
 #!/bin/sh
 
 logfile="$HOME/monitor-fix.log"
-delay=0.1
+delay=1
 
 echo >> "$logfile"
 printf '@@@ ' >> "$logfile"
