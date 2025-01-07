@@ -19,6 +19,9 @@ inkscape = [
 gimp = [
     { run = 'gimp "$@"', desc = "Open with Gimp" },
 ]
+mpv = [
+    { run = 'mpv --force-window "$@"', desc = "Open with MPV" },
+]
 vlc = [
     { run = 'devour vlc "$@"', desc = "Open with VLC" },
 ]
@@ -47,8 +50,8 @@ prepend_rules = [
     { mime = "image/x-xcf", use = [ "default", "swiv", "copy-file" ] },
     { mime = "image/*", use = [ "swiv", "inkscape", "gimp", "copy-file" ] },
 
-    { mime = "video/*", use = [ "default", "vlc" ] },
-    { mime = "audio/*", use = [ "default", "vlc" ] },
+    { mime = "video/*", use = [ "mpv", "vlc" ] },
+    { mime = "audio/*", use = [ "mpv", "vlc" ] },
 
     { mime = "application/pdf", use = [ "default", "browser" ] },
 
