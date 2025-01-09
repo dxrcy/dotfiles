@@ -39,7 +39,7 @@ function PrintUsage()
     print([[
 USAGE:
     lua special.lua <NAME>
-    lua special.lua [--recent | --hide-all | --autostart | --repair]
+    lua special.lua <OPTION>
 
 OPTIONS:
     <NAME>
@@ -50,10 +50,17 @@ OPTIONS:
         Hide all programs
     --autostart
         Start applicable programs, hidden
-    --repair
-        [unimplemented]
+    --list
+        Display all program configuration
+    --list-json
+        Display all program configuration, as JSON
 ]])
 end
+
+EXIT_CLI = 1
+EXIT_COMMAND = 2
+EXIT_FILE = 3
+EXIT_NO_PROGRAM = 4
 
 ---@return nil
 local function main()
@@ -61,7 +68,7 @@ local function main()
 
     if name == nil then
         PrintUsage()
-        os.exit(1)
+        os.exit(EXIT_CLI)
     elseif name:sub(1, 1) == "-" then
         if name == "--recent" then
             ToggleRecentProgram()
@@ -69,18 +76,19 @@ local function main()
             HideAllPrograms()
         elseif name == "--autostart" then
             AutostartPrograms()
-        elseif name == "--repair" then
-            Eprint("--repair is unimplemented")
-            os.exit(1)
+        elseif name == "--list" then
+            ListPrograms(false)
+        elseif name == "--list-json" then
+            ListPrograms(true)
         else
             PrintUsage()
-            os.exit(1)
+            os.exit(EXIT_CLI)
         end
     else
         local program = FindProgram(name)
         if program == nil then
             EprintProgram(name, "no such program")
-            os.exit(1)
+            os.exit(EXIT_NO_PROGRAM)
         end
         if not IsProgramRunning(program) then
             StartProgram(program, 0, false)
@@ -96,7 +104,7 @@ function ToggleRecentProgram()
     local program = FindProgram(name)
     if program == nil then
         EprintProgram(name, "no such program (from recent)")
-        os.exit(2)
+        os.exit(EXIT_NO_PROGRAM)
     end
     -- Assume already running
     ToggleProgram(program)
@@ -120,6 +128,33 @@ function AutostartPrograms()
             and not IsProgramRunning(program)
         then
             StartProgram(program, program.autostart, true)
+        end
+    end
+end
+
+---@param json boolean
+---@return nil
+function ListPrograms(json)
+    if json then
+        io.write("[")
+        for i, program in ipairs(Programs) do
+            if i > 1 then
+                io.write(",")
+            end
+            print("{")
+            print('    "name": "' .. program.name .. '",')
+            print('    "class": "' .. program.class .. '",')
+            print('    "command": "' .. program.command .. '",')
+            print('    "autostart": ' .. program.autostart .. '')
+            io.write("}")
+        end
+        print("]")
+    else
+        for i, program in ipairs(Programs) do
+            print(program.name)
+            print("    class: " .. program.class)
+            print("    command: " .. program.command)
+            print("    autostart: " .. program.autostart)
         end
     end
 end
@@ -148,7 +183,7 @@ function StartProgram(program, delay, silent)
     local success = os.execute(command)
     if not success then
         EprintProgram(program.name, "failed to start program")
-        os.exit(2)
+        os.exit(EXIT_COMMAND)
     end
 end
 
@@ -163,7 +198,7 @@ function IsProgramRunning(program)
     )
     if handle == nil then
         EprintProgram(program.name, "failed to get running status")
-        os.exit(2)
+        os.exit(EXIT_COMMAND)
     end
     local output = handle:read("*a")
     return #output > 0
@@ -186,7 +221,7 @@ function ToggleSpecialWorkspace(name)
     )
     if not success then
         EprintProgram(name, "failed to toggle visibility")
-        os.exit(2)
+        os.exit(EXIT_COMMAND)
     end
 end
 
@@ -195,13 +230,13 @@ function GetRecentProgramName()
     local line = io.open(RecentFile, "r")
     if line == nil then
         Eprint("failed to read recent file")
-        os.exit(2)
+        os.exit(EXIT_FILE)
     end
     local name = line:read()
     line:close()
     if name == nil then
         Eprint("failed to read recent file")
-        os.exit(2)
+        os.exit(EXIT_FILE)
     end
     return name
 end
@@ -212,7 +247,7 @@ function WriteRecentProgram(program)
     local file = io.open(RecentFile, "w")
     if file == nil then
         Eprint("failed to write recent file")
-        os.exit(2)
+        os.exit(EXIT_FILE)
     end
     file:write(program.name)
     file:close()
@@ -246,9 +281,9 @@ end
 ---@param name string
 ---@param ...string|number
 function PrintProgram(name, ...)
-    io.stdout:write("[" .. name .. "] ")
-    io.stdout:write(...)
-    io.stdout:write("\n")
+    io.write("[" .. name .. "] ")
+    io.write(...)
+    io.write("\n")
 end
 
 main()
