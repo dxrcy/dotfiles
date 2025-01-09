@@ -2,7 +2,7 @@
 ---@field name string
 ---@field class string
 ---@field command string
----@field autostart boolean
+---@field autostart integer
 
 ---@type Program[]
 Programs = {
@@ -10,25 +10,25 @@ Programs = {
         name = "mail",
         class = "thunderbird",
         command = "thunderbird",
-        autostart = true,
+        autostart = 1,
     },
     {
         name = "music",
         class = "Spotify",
         command = "spotify",
-        autostart = true,
+        autostart = 0,
     },
     {
         name = "social",
         class = "Ferdium",
         command = "ferdium",
-        autostart = true,
+        autostart = 4,
     },
     {
         name = "vpn",
         class = "Windscribe",
         command = "windscribe",
-        autostart = true,
+        autostart = 0,
     },
 }
 
@@ -70,7 +70,7 @@ local function main()
         elseif name == "--autostart" then
             AutostartPrograms()
         elseif name == "--repair" then
-            Eprint("[unimplemented]")
+            Eprint("--repair is unimplemented")
             os.exit(1)
         else
             PrintUsage()
@@ -79,11 +79,11 @@ local function main()
     else
         local program = FindProgram(name)
         if program == nil then
-            Eprint("No such program")
+            EprintProgram(name, "no such program")
             os.exit(1)
         end
         if not IsProgramRunning(program) then
-            StartProgram(program, false)
+            StartProgram(program, 0, false)
         else
             ToggleProgram(program)
         end
@@ -95,7 +95,7 @@ function ToggleRecentProgram()
     local name = GetRecentProgramName()
     local program = FindProgram(name)
     if program == nil then
-        Eprint("No such program")
+        EprintProgram(name, "no such program (from recent)")
         os.exit(2)
     end
     -- Assume already running
@@ -107,37 +107,47 @@ function HideAllPrograms()
     -- I couldn't find a way to HIDE a special workspace (only TOGGLE visibility)
     -- So we show a non-existant empty workspace, then hide it again
     -- This has the same effect and is unnoticable
-    ToggleSpecialWorkspace("__TEMP")
-    ToggleSpecialWorkspace("__TEMP")
+    local temp_name = "__TEMP"
+    ToggleSpecialWorkspace(temp_name)
+    ToggleSpecialWorkspace(temp_name)
 end
 
 ---@return nil
 function AutostartPrograms()
     for _, program in ipairs(Programs) do
-        if program.autostart and not IsProgramRunning(program) then
-            StartProgram(program, true)
+        if
+            program.autostart >= 0
+            and not IsProgramRunning(program)
+        then
+            StartProgram(program, program.autostart, true)
         end
     end
 end
 
 ---@param program Program
+---@param delay integer
 ---@param silent boolean
 ---@return nil
-function StartProgram(program, silent)
+function StartProgram(program, delay, silent)
+    PrintProgram(program.name, "starting")
+
     local silent_option = ""
     if silent then
         silent_option = "silent"
     end
 
-    print("Executing...")
-    local success = os.execute(
-        "hyprctl dispatch exec "
-        .. "[workspace special:" .. program.name .. " " ..
-        silent_option .. "] '"
+    local command =
+        "{\n"
+        .. "sleep " .. delay .. ";\n"
+        .. "hyprctl dispatch exec "
+        .. "[workspace special:" .. program.name .. " "
+        .. silent_option .. "] '"
         .. program.command .. "'"
-    )
+        .. ";\n"
+        .. "} &"
+    local success = os.execute(command)
     if not success then
-        Eprint("Failed to run command")
+        EprintProgram(program.name, "failed to start program")
         os.exit(2)
     end
 end
@@ -152,7 +162,7 @@ function IsProgramRunning(program)
         .. "    | .address'"
     )
     if handle == nil then
-        Eprint("Failed to run command")
+        EprintProgram(program.name, "failed to get running status")
         os.exit(2)
     end
     local output = handle:read("*a")
@@ -162,6 +172,7 @@ end
 ---@param program Program
 ---@return nil
 function ToggleProgram(program)
+    PrintProgram(program.name, "toggling visibility")
     ToggleSpecialWorkspace(program.name)
     WriteRecentProgram(program)
 end
@@ -170,11 +181,11 @@ end
 ---@return nil
 function ToggleSpecialWorkspace(name)
     local success = os.execute(
-        "hyprctl dispatch togglespecialworkspace " ..
-        "'" .. name .. "'"
+        "hyprctl dispatch togglespecialworkspace "
+        .. "'" .. name .. "'"
     )
     if not success then
-        Eprint("Failed to run command")
+        EprintProgram(name, "failed to toggle visibility")
         os.exit(2)
     end
 end
@@ -183,13 +194,13 @@ end
 function GetRecentProgramName()
     local line = io.open(RecentFile, "r")
     if line == nil then
-        Eprint("Failed to read recent file")
+        Eprint("failed to read recent file")
         os.exit(2)
     end
     local name = line:read()
     line:close()
     if name == nil then
-        Eprint("Failed to read recent file")
+        Eprint("failed to read recent file")
         os.exit(2)
     end
     return name
@@ -200,7 +211,7 @@ end
 function WriteRecentProgram(program)
     local file = io.open(RecentFile, "w")
     if file == nil then
-        Eprint("Failed to write recent file")
+        Eprint("failed to write recent file")
         os.exit(2)
     end
     file:write(program.name)
@@ -222,6 +233,22 @@ end
 function Eprint(...)
     io.stderr:write(...)
     io.stderr:write("\n")
+end
+
+---@param name string
+---@param ...string|number
+function EprintProgram(name, ...)
+    io.stderr:write("[" .. name .. "] ")
+    io.stderr:write(...)
+    io.stderr:write("\n")
+end
+
+---@param name string
+---@param ...string|number
+function PrintProgram(name, ...)
+    io.stdout:write("[" .. name .. "] ")
+    io.stdout:write(...)
+    io.stdout:write("\n")
 end
 
 main()
