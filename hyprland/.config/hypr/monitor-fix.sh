@@ -1,6 +1,6 @@
 #!/bin/sh
 
-logfile="$HOME/monitor-fix.log"
+logfile="$HOME/.cache/monitor-fix.log"
 delay=1
 
 echo >> "$logfile"
