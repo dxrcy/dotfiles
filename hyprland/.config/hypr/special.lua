@@ -112,12 +112,9 @@ end
 
 ---@return nil
 function HideAllPrograms()
-    -- I couldn't find a way to HIDE a special workspace (only TOGGLE visibility)
-    -- So we show a non-existant empty workspace, then hide it again
-    -- This has the same effect and is unnoticable
-    local temp_name = "__TEMP"
-    ToggleSpecialWorkspace(temp_name)
-    ToggleSpecialWorkspace(temp_name)
+    for _, program in ipairs(GetVisiblePrograms()) do
+        ToggleProgram(program)
+    end
 end
 
 ---@return nil
@@ -150,7 +147,7 @@ function ListPrograms(json)
         end
         print("]")
     else
-        for i, program in ipairs(Programs) do
+        for _, program in ipairs(Programs) do
             print(program.name)
             print("    class: " .. program.class)
             print("    command: " .. program.command)
@@ -202,6 +199,38 @@ function IsProgramRunning(program)
     end
     local output = handle:read("*a")
     return #output > 0
+end
+
+---@return Program[]
+function GetVisiblePrograms()
+    local handle = io.popen(
+        "hyprctl monitors -j "
+        .. "| jq -r '.[]"
+        .. "    | .specialWorkspace.name'"
+    )
+    if handle == nil then
+        EprintProgram(program.name, "failed to get running status")
+        os.exit(EXIT_COMMAND)
+    end
+    -- Collect names without "special:" prefix
+    local names = {}
+    for line in handle:lines() do
+        local name = string.sub(line, 9, -1)
+        if #name > 0 then
+            table.insert(names, name)
+        end
+    end
+    -- Filter programs by name
+    local programs = {}
+    for _, program in ipairs(Programs) do
+        for _, name in ipairs(names) do
+            if name == program.name then
+                table.insert(programs, program)
+                break
+            end
+        end
+    end
+    return programs
 end
 
 ---@param program Program
