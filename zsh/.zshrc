@@ -135,8 +135,8 @@
     fi
 # Persistant history
     export HISTFILE=~/.cache/zsh_history
-    export HISTSIZE=2000
-    export SAVEHIST=2000
+    export HISTSIZE=5000
+    export SAVEHIST=5000
     setopt SHARE_HISTORY        # Share history between terminals
     setopt HIST_IGNORE_ALL_DUPS # Duplicate history lines are ignored
     setopt HIST_IGNORE_SPACE    # Don't save commands that start with space
