@@ -191,7 +191,8 @@ function IsProgramRunning(program)
         "hyprctl clients -j "
         .. "| jq -r '.[]"
         .. "    | select(.class == \"" .. program.class .. "\")"
-        .. "    | .address'"
+        .. "    | .address"
+        .. "'"
     )
     if handle == nil then
         EprintProgram(program.name, "failed to get running status")
@@ -206,10 +207,12 @@ function GetVisiblePrograms()
     local handle = io.popen(
         "hyprctl monitors -j "
         .. "| jq -r '.[]"
-        .. "    | .specialWorkspace.name'"
+        .. "    | select(.focused == true)"
+        .. "    | .specialWorkspace.name"
+        .. "'"
     )
     if handle == nil then
-        EprintProgram(program.name, "failed to get running status")
+        Eprint("failed to get visible special workspaces")
         os.exit(EXIT_COMMAND)
     end
     -- Collect names without "special:" prefix
