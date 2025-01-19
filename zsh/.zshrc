@@ -72,7 +72,7 @@
         # Continue process
         fg "%$job_no"
         # Job not found (shouldn't happen)
-        if [ $? -eq 127 ]; then 
+        if [ $? -eq 127 ]; then
             return 1
         fi
 
@@ -144,8 +144,6 @@
 # Use case-insensitive autocompletions
     autoload -Uz compinit && compinit
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-# Fix i3-msg
-    unset I3SOCK
 # Misc. shorthand variables
     GH='https://github.com' # See also: `gcl`
     GH_MAIN='dxrcy'
@@ -216,7 +214,7 @@
         _prompt  "%B"   "%F{yellow}"    "%n"            # Username
         _prompt         "%F{green}"     "@"             # @
         _prompt  "%B"   "%F{blue}"      "%m"            # Hostname
-        _prompt                         ' '             # 
+        _prompt                         ' '             #
         _prompt         "%F{magenta}"   "%3~"           # Last 3 folders of PWD
         if [ -n "$PS1_GIT" ]; then
             _prompt                         '$(git_branch)' # Git: Branch
@@ -260,19 +258,6 @@
     alias grgo='git remote get-url origin'
     alias  gcl='git-clone-cd'
     alias  ghu='gh-url'
-# Nvim
-    # Open folder in nvim, instead of new buffer
-    alias nvim='nvim-dir'
-    alias vim='nvim'
-    alias v='nvim'
-    nvim-dir() {
-        if [ "$*" ];
-            then \nvim $*
-            else \nvim +'lua require("yazi").yazi()'
-        fi
-    }
-# Pacman wrapper script
-    alias p='pacman-thing'
 # Rust (cargo)
     alias    c='cargo'
     alias   cr='cargo run'
@@ -295,9 +280,8 @@
     alias .d='cd ~/dotfiles'
     alias .z='cd ~/dotfiles/zsh                     && nvim .zshrc'
     alias .v='cd ~/dotfiles/nvim/.config/nvim       && nvim'
-    alias .b='cd ~/dotfiles/bspwm/.config/bspwm     && nvim bspwmrc'
     alias .h='cd ~/dotfiles/hyprland/.config/hypr   && nvim hyprland.conf'
-    alias .s='cd ~/dotfiles/sxhkd/.config/sxhkd     && nvim sxhkdrc'
+    alias .y='cd ~/dotfiles/hyprland/.config/hypr   && nvim hyprland.conf'
     alias sc='cd ~/scripts                          && nvim cmd'
 # Misc. Programs and options
     alias cat='bat'
@@ -314,33 +298,28 @@
     alias mkdir='mkdir -p'
     alias cp='cp -r'
     alias swiv='swiv -a -B #000000'
-    alias nsxiv='swiv'
     alias sxiv='swiv'
+    alias nsxiv='swiv'
     alias zig='~/.zvm/bin/zig'
     alias pstree='pstree -U | less'
     alias zh='vim + ~/.cache/zsh_history'
     alias zr='unalias -a; ZSHLVL_NOINC=1 source ~/.zshrc'
-    alias mkd='mkdir-cd'
-    alias eo='garfeo-mode'
-    alias ll='cd-last-command'
     alias mpv='mpv --script=~/.config/mpv/mpv-cheatsheet.js'
     alias gcc='gcc -Wall -Wpedantic'
     alias wcl='wc -l'
     alias journalctl='journalctl -e'
     alias jnl='journalctl'
-# Misc. Abbreviations / Mispellings
+# Misc. Abbreviations / mispellings
+    alias nvim='nvim-dir'
+    alias vim='nvim'
+    alias v='nvim'
     alias dc='cd - >/dev/null'
     alias j='just'
     alias m='make'
-    alias a='garfutils'
-    alias aa='~/code/garf-old/garf' # OLD! remove soon!
     alias d='devour'
-    alias o='open' # Script
-    alias ,='abandon' # Script
     alias z='zi'
     alias r='yazi'
     alias th='thunar'
-    # alias lw='librewolf'
     alias lg='lazygit'
     alias clip='xclip -selection clipboard'
     alias sy='systemctl'
@@ -348,20 +327,34 @@
     alias syu='systemctl --user'
     alias ping1='ping 1.1.1.1 -c 10'
     alias cal3='cal -3'
-    alias doas="echo -e \"\x1b[34mdoas I do:\x1b[0m \x1b[1msudo\x1b[0m\""
     alias pk='pkill'
     alias btc='bluetoothctl'
-    alias plc='bluetoothctl'
     alias bhs='basic-http-server'
     alias rl='readlink'
-    alias pst='ps-tree'
-    alias backup='backup-file' # Script
     alias ghs='gh auth switch'
+# Custom scripts and functions
+    alias p='pacman-thing'
+    alias a='garfutils' # deprecated
+    alias gu='garfutils'
+    alias o='open' # deprecated
+    alias ,='abandon' # deprecated TODO: Convert to shell function
+    alias backup='backup-file' # Script
     alias s='sandbox-fzf'
-    alias yazi='yazi-cd' 
+    alias yazi='yazi-cd'
+    alias mkd='mkdir-cd'
+    alias eo='garfeo-mode'
+    alias ll='cd-last-command'
+    alias pst='ps-tree'
     am() { garfutils make $* && exit }
+    # Alised elsewhere: `cargo-new-cd`, `nvim-dir`, `git-*`
 
 #========= LONGER FUNCTIONS (Aliased)
+    nvim-dir() { # Open folder in nvim, instead of new buffer
+        if [ "$*" ];
+            then \nvim $*
+            else \nvim +'lua require("yazi").yazi()'
+        fi
+    }
     yazi-cd() { # Use `yazi` to `cd`, without spawning subshell
         local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
         \yazi "$@" --cwd-file="$tmp"
@@ -445,7 +438,7 @@
             'zig')  nvim 'main.zig' ;;
             'roc')  nvim 'main.roc' ;;
             'lua')  nvim 'main.lua' ;;
-            'cpp') 
+            'cpp')
                 tmux split-window -h -c "#{pane_current_path}" &&\
                 tmux resize-pane -R 30 &&\
                 tmux select-pane -L &&\
