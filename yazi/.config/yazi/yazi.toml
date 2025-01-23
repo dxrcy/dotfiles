@@ -68,6 +68,6 @@ prepend_rules = [
 ]
 
 append_rules = [
-    { name = "*", use = [ "default" ] }
+    # { name = "*", use = [ "default" ] }
 ]
 
