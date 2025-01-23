@@ -62,6 +62,9 @@ prepend_rules = [
     # Executables
     { mime = "application/x-pie-executable", use = [ "ignore" ] },
     { mime = "application/vnd.microsoft.portable-executable", use = [ "wine" ] },
+
+    # TODO: Use mime type `application/x-subrip`
+    { name = "*.srt", use = [ "edit", "default", "copy-text" ] },
 ]
 
 append_rules = [
