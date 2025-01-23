@@ -281,7 +281,7 @@
     alias .z='cd ~/dotfiles/zsh                     && nvim .zshrc'
     alias .v='cd ~/dotfiles/nvim/.config/nvim       && nvim'
     alias .h='cd ~/dotfiles/hyprland/.config/hypr   && nvim hyprland.conf'
-    alias .y='cd ~/dotfiles/hyprland/.config/hypr   && nvim hyprland.conf'
+    alias .y='cd ~/dotfiles/yazi/.config/yazi       && nvim'
     alias sc='cd ~/scripts                          && nvim cmd'
 # Misc. Programs and options
     alias cat='bat'
