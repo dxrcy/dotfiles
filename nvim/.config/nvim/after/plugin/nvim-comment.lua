@@ -19,6 +19,8 @@ require("nvim_comment").setup {
             comment = "# %s"
         elseif filetype == "scasm" then
             comment = "; %s"
+        elseif filetype == "yuck" then
+            comment = "; %s"
         end
         if comment ~= nil then
             vim.api.nvim_buf_set_option(0, "commentstring", comment)
