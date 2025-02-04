@@ -7,21 +7,39 @@
         :height "25px"
         :anchor "top center"
     )
-    (box (
-        (date)
-        (time)
-    ))
+    (main)
 )
 
-(defwidget date [] "${date}")
-(defwidget time [] "${time}")
+(defwidget main []
+    (box
+        :class "main"
+        :space-evenly false
+        :halign "end"
 
-(defpoll date
-    :interval "30s"
-    "date +'%Y-%m-%d'"
+        (battery)
+            (divider)
+        (time)
+            (divider)
+        (date)
+    )
+)
+
+(defwidget divider [] (box :class "divider"))
+
+(defwidget battery [] (box :class "item" "${battery}"))
+(defwidget time    [] (box :class "item" "${time}"))
+(defwidget date    [] (box :class "item" "${date}"))
+
+(defpoll battery
+    :interval "20s"
+    "battery-info"
 )
 (defpoll time
     :interval "1s"
     "date +'%H:%M'"
+)
+(defpoll date
+    :interval "30s"
+    "date +'%Y-%m-%d'"
 )
 
