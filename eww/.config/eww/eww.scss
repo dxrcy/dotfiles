@@ -7,12 +7,23 @@
     color: #b0b4bc;
 }
 
-.divider {
-    margin: 2px 2;
-    border: 1px solid #333;
+.a {
+  background-color: red;
 }
 
 .item {
-    margin: 0 20px;
+    $padding: 25px;
+
+    margin-right: $padding;
+    font-family: monospace;
+
+    &:not(:first-child) {
+        border-left: 2px solid #222;
+        padding-left: $padding;
+    }
+
+    &.systray {
+        opacity: 0.75;
+    }
 }
 

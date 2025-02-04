@@ -1,0 +1,14 @@
+#!/bin/sh
+
+case "$(
+    hyprctl getoption input:kb_layout \
+        | grep '^str: ' \
+        | awk '{print $2}'
+    )" in
+
+    'epo') echo 'ᴇᴏ' ;;
+    'us')  echo 'ᴇɴ' ;;
+    *)     echo '??' ;;
+
+esac
+

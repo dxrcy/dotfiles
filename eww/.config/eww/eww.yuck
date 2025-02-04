@@ -16,19 +16,21 @@
         :space-evenly false
         :halign "end"
 
-        (battery)
-            (divider)
-        (time)
-            (divider)
-        (date)
+        (item :class "systray" (systray))
+        (item "${language}")
+        (item "${bluetooth-state} ${bluetooth-charge} ${media-state}")
+        (item "${volume}")
+        (item "${battery}")
+        (item "${time}")
+        (item "${date}")
     )
 )
 
-(defwidget divider [] (box :class "divider"))
-
-(defwidget battery [] (box :class "item" "${battery}"))
-(defwidget time    [] (box :class "item" "${time}"))
-(defwidget date    [] (box :class "item" "${date}"))
+(defwidget item [?class]
+    (box :class "item ${class}"
+        (children)
+    )
+)
 
 (defpoll battery
     :interval "20s"
@@ -41,5 +43,25 @@
 (defpoll date
     :interval "30s"
     "date +'%Y-%m-%d'"
+)
+(defpoll volume
+    :interval "0.5s"
+    "volume-brightness display-volume"
+)
+(defpoll media-state
+    :interval "1s"
+    "player-info brief"
+)
+(defpoll bluetooth-state
+    :interval "1s"
+    "bt display-status"
+)
+(defpoll bluetooth-charge
+    :interval "1s"
+    "bt display-charge"
+)
+(defpoll language
+    :interval "0.5s"
+    "~/.config/eww/scripts/language"
 )
 
