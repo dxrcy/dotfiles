@@ -5,18 +5,23 @@ require("nvim_comment").setup {
     create_mappings = false, -- manual keymaps
 
     hook = function()
-        if vim.api.nvim_buf_get_option(0, "filetype") == "gleam" then
-            vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
-        elseif vim.api.nvim_buf_get_option(0, "filetype") == "sxhkdrc" then
-            vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
-        elseif vim.api.nvim_buf_get_option(0, "filetype") == "asmish" then
-            vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
-        elseif vim.api.nvim_buf_get_option(0, "filetype") == "lispthing" then
-            vim.api.nvim_buf_set_option(0, "commentstring", "(# %s #)")
-        elseif vim.api.nvim_buf_get_option(0, "filetype") == "lure" then
-            vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
-        elseif vim.api.nvim_buf_get_option(0, "filetype") == "scasm" then
-            vim.api.nvim_buf_set_option(0, "commentstring", "; %s")
+        local filetype = vim.api.nvim_buf_get_option(0, "filetype")
+        local comment = nil
+        if filetype == "gleam" then
+            comment = "// %s"
+        elseif filetype == "sxhkdrc" then
+            comment = "# %s"
+        elseif filetype == "asmish" then
+            comment = "# %s"
+        elseif filetype == "lispthing" then
+            comment = "(# %s #)"
+        elseif filetype == "lure" then
+            comment = "# %s"
+        elseif filetype == "scasm" then
+            comment = "; %s"
+        end
+        if comment ~= nil then
+            vim.api.nvim_buf_set_option(0, "commentstring", comment)
         end
     end
 }
