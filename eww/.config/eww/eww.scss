@@ -3,6 +3,9 @@ $text-primary: #b0b4bc;
 $text-dim: #80848c;
 $text-bright: #e0e4ec;
 
+$workspace-padding: 15px;
+$item-padding: 25px;
+
 .bar {
     font-size: 14px;
     background-color: $background;
@@ -19,12 +22,14 @@ $text-bright: #e0e4ec;
         &.empty:not(.current) {
             opacity: 0;
         }
+
+        label {
+            padding-left: $workspace-padding;
+        }
     }
 }
 
 .item {
-    $item-padding: 25px;
-
     margin-right: $item-padding;
     font-family: monospace;
 

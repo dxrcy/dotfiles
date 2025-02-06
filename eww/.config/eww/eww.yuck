@@ -33,15 +33,14 @@
         (label :text "${workspace_list}${workspace_current}" :visible false)
 
         (for workspace in workspace_list
-            (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
-                (box
-                    :class "\
-                        entry \
-                        ${workspace.windows > 0 ? "occupied" : "empty"} \
-                        ${workspace.id == workspace_current ? "current" : ""} \
-                    "
-                    (label :text "${workspace.id}")
-                )
+            (eventbox
+                :onclick "hyprctl dispatch workspace ${workspace.id}"
+                :class "\
+                    entry \
+                    ${workspace.windows > 0 ? "occupied" : "empty"} \
+                    ${workspace.id == workspace_current ? "current" : ""} \
+                "
+                (label :text "${workspace.id}")
             )
         )
     )
