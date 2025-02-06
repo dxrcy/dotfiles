@@ -5,18 +5,27 @@
 }
 
 .item {
-    $padding: 25px;
+    $item-padding: 25px;
+    $tray-padding: 10px;
 
-    margin-right: $padding;
+    margin-right: $item-padding;
     font-family: monospace;
 
     &:not(:first-child) {
         border-left: 2px solid #222;
-        padding-left: $padding;
+        padding-left: $item-padding;
     }
 
     &.systray {
         opacity: 0.75;
+
+        & > .horizontal {
+            margin-right: -$tray-padding;
+            & > widget > image {
+                margin-right: $tray-padding;
+            }
+        }
     }
 }
+
 
