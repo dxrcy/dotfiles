@@ -6,7 +6,6 @@
 
 .item {
     $item-padding: 25px;
-    $tray-padding: 10px;
 
     margin-right: $item-padding;
     font-family: monospace;
@@ -18,13 +17,6 @@
 
     &.systray {
         opacity: 0.75;
-
-        & > .horizontal {
-            margin-right: -$tray-padding;
-            & > widget > image {
-                margin-right: $tray-padding;
-            }
-        }
     }
 }
 
