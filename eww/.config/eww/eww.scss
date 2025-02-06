@@ -1,7 +1,25 @@
+$background: #000;
+$text-primary: #b0b4bc;
+$text-dim: #80848c;
+$text-bright: #e0e4ec;
+
 .bar {
     font-size: 14px;
-    background-color: #000;
-    color: #b0b4bc;
+    background-color: $background;
+    color: $text-primary;
+}
+
+.workspaces {
+    & .entry {
+        color: $text-dim;
+        &.current {
+            color: $text-bright;
+        }
+
+        &.empty:not(.current) {
+            opacity: 0;
+        }
+    }
 }
 
 .item {

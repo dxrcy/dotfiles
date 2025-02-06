@@ -6,22 +6,44 @@
         :width "100%"
         :anchor "top center"
     )
-    (main)
+    (box
+        (box :class "left"
+            :space-evenly false
+            (workspaces)
+        )
+
+        (box :class "right"
+            :space-evenly false
+            :halign "end"
+
+            (item :class "systray" (systray :spacing 15 :icon-size 15))
+            (item "${language}")
+            (item "${bluetooth-state} ${bluetooth-charge} ${media-state}")
+            (item "${volume}")
+            (item "${battery}")
+            (item "${date}")
+            (item "${time}")
+        )
+    )
 )
 
-(defwidget main []
-    (box
-        :class "main"
-        :space-evenly false
-        :halign "end"
+(defwidget workspaces []
+    (box :class "workspaces"
+        ; Update listener
+        (label :text "${workspace_list}${workspace_current}" :visible false)
 
-        (item :class "systray" (systray :spacing 15 :icon-size 15))
-        (item "${language}")
-        (item "${bluetooth-state} ${bluetooth-charge} ${media-state}")
-        (item "${volume}")
-        (item "${battery}")
-        (item "${time}")
-        (item "${date}")
+        (for workspace in workspace_list
+            (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+                (box
+                    :class "\
+                        entry \
+                        ${workspace.windows > 0 ? "occupied" : "empty"} \
+                        ${workspace.id == workspace_current ? "current" : ""} \
+                    "
+                    (label :text "${workspace.id}")
+                )
+            )
+        )
     )
 )
 
@@ -31,36 +53,14 @@
     )
 )
 
-(defpoll battery
-    :interval "20s"
-    "battery-info"
-)
-(defpoll time
-    :interval "1s"
-    "date +'%H:%M'"
-)
-(defpoll date
-    :interval "30s"
-    "date +'%Y-%m-%d'"
-)
-(defpoll volume
-    :interval "0.5s"
-    "volume-brightness display-volume"
-)
-(defpoll media-state
-    :interval "1s"
-    "player-info brief"
-)
-(defpoll bluetooth-state
-    :interval "1s"
-    "bt display-status"
-)
-(defpoll bluetooth-charge
-    :interval "1s"
-    "bt display-charge"
-)
-(defpoll language
-    :interval "0.5s"
-    "~/.config/eww/scripts/language"
-)
+(deflisten workspace_list    :initial "[]" "~/.config/eww/scripts/workspace-list")
+(deflisten workspace_current :initial "1"  "~/.config/eww/scripts/workspace-current")
 
+(defpoll language         :interval "0.5s" "~/.config/eww/scripts/language")
+(defpoll bluetooth-state  :interval "1s"   "bt display-status")
+(defpoll bluetooth-charge :interval "1s"   "bt display-charge")
+(defpoll media-state      :interval "1s"   "player-info brief")
+(defpoll volume           :interval "0.5s" "volume-brightness display-volume")
+(defpoll battery          :interval "20s"  "battery-info")
+(defpoll date             :interval "30s"  "date +'%Y-%m-%d'")
+(defpoll time             :interval "1s"   "date +'%H:%M'")
