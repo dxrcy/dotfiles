@@ -40,6 +40,7 @@
     # Add missing vim keybinds
     bindkey -s -M vicmd '\_' '^'
     # Yank to the system clipboard
+    # TODO: Wayland
     function vi-yank-xclip {
         zle vi-yank
         echo "$CUTBUFFER" | wl-copy
@@ -321,7 +322,6 @@
     alias r='yazi'
     alias th='thunar'
     alias lg='lazygit'
-    alias clip='xclip -selection clipboard'
     alias sy='systemctl'
     alias ssy='sudo systemctl'
     alias syu='systemctl --user'
