@@ -8,8 +8,8 @@
 Programs = {
     {
         name = "mail",
-        class = "thunderbird",
-        command = "thunderbird",
+        class = "Mailspring",
+        command = "mailspring",
         autostart = 1,
     },
     {
