@@ -22,7 +22,7 @@ Programs = {
         name = "social",
         class = "Ferdium",
         command = "ferdium",
-        autostart = 4,
+        autostart = 8,
     },
     {
         name = "vpn",
