@@ -28,4 +28,5 @@ sleep "$delay"
 log hyprctl keyword monitor ,enable
 
 wpaperd -d
+eww open bar
 
