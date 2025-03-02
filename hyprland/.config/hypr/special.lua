@@ -2,7 +2,7 @@
 ---@field name string
 ---@field class string
 ---@field command string
----@field autostart integer
+---@field autostart integer|nil
 
 ---@type Program[]
 Programs = {
@@ -16,7 +16,7 @@ Programs = {
         name = "music",
         class = "Spotify",
         command = "spotify",
-        autostart = 0,
+        autostart = nil,
     },
     {
         name = "social",
@@ -28,13 +28,13 @@ Programs = {
         name = "teams",
         class = "Microsoft Teams - Preview",
         command = "teams",
-        autostart = 0,
+        autostart = nil,
     },
     {
         name = "vpn",
         class = "Windscribe",
         command = "windscribe",
-        autostart = 0,
+        autostart = nil,
     },
 }
 
@@ -127,7 +127,7 @@ end
 function AutostartPrograms()
     for _, program in ipairs(Programs) do
         if
-            program.autostart >= 0
+            program.autostart ~= nil
             and not IsProgramRunning(program)
         then
             StartProgram(program, program.autostart, true)
@@ -148,7 +148,7 @@ function ListPrograms(json)
             print('    "name": "' .. program.name .. '",')
             print('    "class": "' .. program.class .. '",')
             print('    "command": "' .. program.command .. '",')
-            print('    "autostart": ' .. program.autostart .. '')
+            print('    "autostart": ' .. ToStringOr(program.autostart, "null"))
             io.write("}")
         end
         print("]")
@@ -157,9 +157,20 @@ function ListPrograms(json)
             print(program.name)
             print("    class: " .. program.class)
             print("    command: " .. program.command)
-            print("    autostart: " .. program.autostart)
+            print('    autostart: ' .. ToStringOr(program.autostart, "none"))
         end
     end
+end
+
+---@generic T
+---@param value T
+---@param fallback string
+---@return string
+function ToStringOr(value, fallback)
+    if value == nil then
+        return fallback
+    end
+    return tostring(value)
 end
 
 ---@param program Program
