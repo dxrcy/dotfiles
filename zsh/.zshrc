@@ -264,6 +264,7 @@
     alias   cr='cargo run'
     alias   cc='cargo check'
     alias   ct='cargo test'
+    alias   cb='cargo build'
     alias  crr='cargo run --release'
     alias  cbr='cargo build --release'
     alias cdoc='cargo doc --no-deps --open'
