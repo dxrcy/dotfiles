@@ -16,7 +16,7 @@ Programs = {
         name = "music",
         class = "Spotify",
         command = "spotify",
-        autostart = nil,
+        autostart = 0,
     },
     {
         name = "social",
