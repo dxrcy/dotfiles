@@ -2,6 +2,16 @@ local lspconfig = require('lspconfig')
 
 vim.g.zig_fmt_autosave = 0
 
+lspconfig.rust_analyzer.setup {
+    settings = {
+        ["rust-analyzer"] = {
+            diagnostics = {
+                disabled = { "inactive-code" }
+            }
+        }
+    }
+}
+
 -- Defaults
 lspconfig.lua_ls.setup {
     settings = {
