@@ -1,6 +1,6 @@
 [opener]
 default = [
-    { run = '$HOME/scripts/cmd/open "$@"', desc = "Open with default program" }
+    { run = 'xdg-open "$@"', desc = "Open with default program" }
 ]
 ignore = [
     { run = 'true', desc = "(Do not open)" }
