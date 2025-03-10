@@ -25,16 +25,10 @@ Programs = {
         autostart = 8,
     },
     {
-        name = "teams",
-        class = "Microsoft Teams - Preview",
-        command = "teams",
-        autostart = nil,
-    },
-    {
         name = "vpn",
         class = "Windscribe",
         command = "windscribe",
-        autostart = nil,
+        autostart = 0,
     },
 }
 
