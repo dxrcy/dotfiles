@@ -447,7 +447,8 @@
                 ;;
             'java')
                 tmux split-window -h -c "#{pane_current_path}" &&\
-                tmux resize-pane -R 40 &&\
+                tmux resize-pane -R 20 &&\
+                tmux send-keys 'just run' 'Enter' &&\
                 tmux select-pane -L &&\
                 nvim 'src/Main.java'
                 ;;
