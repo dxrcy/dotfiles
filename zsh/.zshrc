@@ -270,6 +270,7 @@
     alias cdoc='cargo doc --no-deps --open'
     alias   cw='cargo watch -c'
     alias  cwr='cargo watch -x run -c'
+    alias  cwb='cargo watch -x build -c'
     alias  cwc='cargo watch -c'
     alias cwcl='cargo watch -x clippy -c'
     alias  cwt='cargo watch -x test -c'
