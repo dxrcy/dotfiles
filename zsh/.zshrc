@@ -334,6 +334,7 @@
     alias bhs='basic-http-server'
     alias rl='readlink'
     alias ghs='gh auth switch'
+    alias print='printf' # Prevent terrible problems!
 # Custom scripts and functions
     alias p='pacman-thing'
     alias a='garfutils' # deprecated
