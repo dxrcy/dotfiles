@@ -6,8 +6,19 @@ ignore = [
     { run = 'true', desc = "(Do not open)" }
 ]
 
+copy-file = [
+    { run = 'cb copy $@', desc = "Copy file to clipboard" },
+]
+copy-text = [
+    { run = 'cat $@ | cb copy', desc = "Copy text to clipboard" },
+]
+
 browser = [
-    { run = '$BROWSER "$@"', desc = "Open with browser" }
+    { run = '$BROWSER "$@"', desc = "Open in browser" }
+]
+
+wine = [
+    { run = 'wine "$@"', desc = "Run with WINE" },
 ]
 
 swiv = [
@@ -25,20 +36,8 @@ mpv = [
 vlc = [
     { run = 'devour vlc "$@"', desc = "Open with VLC" },
 ]
-
-wine = [
-    { run = 'wine "$@"', desc = "Run with WINE" },
-]
-
 musescore = [
     { run = 'mscore "$@"', desc = "Open with MuseScore" },
-]
-
-copy-file = [
-    { run = 'cb copy $@', desc = "Copy file to clipboard" },
-]
-copy-text = [
-    { run = 'cat $@ | cb copy', desc = "Copy text to clipboard" },
 ]
 
 [open]
