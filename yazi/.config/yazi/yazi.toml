@@ -39,9 +39,15 @@ vlc = [
 musescore = [
     { run = 'mscore "$@"', desc = "Open with MuseScore" },
 ]
+drawio = [
+    { run = 'drawio "$@"', desc = "Open with Drawio" },
+]
 
 [open]
 prepend_rules = [
+    # mime="text/*" overrides
+    { name = "*.drawio", use = [ "drawio", "edit", "default", "copy-text" ] },
+
     # "edit" enters the file, instead of opening in new window, so prefer this
     { mime = "text/*", use = [ "edit", "default", "copy-text" ] },
 
