@@ -27,7 +27,7 @@ local plugins = {
             vim.cmd("TSUpdate")
         end,
     },
-    "nvim-treesitter/playground",
+    -- "nvim-treesitter/playground",
 
     -- LSP
     {
