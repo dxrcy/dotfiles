@@ -60,8 +60,7 @@ keymap("v", "K", ":m '<-2<CR>gv=gv")
 keymap("n", "J", "mzJ`z")
 
 -- Override paste without copying deleted text
-keymap("v", "p", '"_dP')
--- keymap("v", "<leader>p", 'p')
+keymap("v", "p", "P")
 
 -- Disable Shift+Q
 keymap("n", "Q", "<nop>")
