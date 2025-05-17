@@ -300,9 +300,7 @@
     alias grepa="rg --hidden --no-ignore"
     alias mkdir='mkdir -p'
     alias cp='cp -r'
-    alias swiv='swiv -a -B #000000'
-    alias sxiv='swiv'
-    alias nsxiv='swiv'
+    alias swiv='swiv -a -B#000000'
     alias zig='~/.zvm/bin/zig'
     alias pstree='pstree -U | less'
     alias zh='vim + ~/.cache/zsh_history'
