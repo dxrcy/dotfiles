@@ -340,7 +340,7 @@
     alias a='garfutils' # deprecated
     alias gu='garfutils'
     alias o='open' # deprecated
-    alias ,='abandon' # deprecated TODO: Convert to shell function
+    alias ,='abandon'
     alias backup='backup-file' # Script
     alias s='sandbox-fzf'
     alias yazi='yazi-cd'
@@ -491,6 +491,9 @@
         file="/tmp/ps-tree.$$"
         ps ax --forest -o 'cmd' > "$file" || return $?
         nvim "$file" '+set nowrap' "$arg" || return $?
+    }
+    abandon(){
+        eval $* & disown
     }
 
 #========= PACKAGES
