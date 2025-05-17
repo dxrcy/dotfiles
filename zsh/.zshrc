@@ -339,6 +339,7 @@
     alias gu='garfutils'
     alias o='open' # deprecated
     alias ,='abandon'
+    alias ,,='abandon-exit'
     alias backup='backup-file' # Script
     alias s='sandbox-fzf'
     alias yazi='yazi-cd'
@@ -490,8 +491,12 @@
         ps ax --forest -o 'cmd' > "$file" || return $?
         nvim "$file" '+set nowrap' "$arg" || return $?
     }
-    abandon(){
+    abandon() {
         eval $* & disown
+    }
+    abandon-exit() {
+        abandon $*
+        exit
     }
 
 #========= PACKAGES
