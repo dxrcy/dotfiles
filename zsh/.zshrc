@@ -411,8 +411,10 @@
         return "$code"
     }
     gppr() { # C++ (g++)
-        out="${1%.cpp}"
-        g++ "$1" -o "$out" || return $?
+        in="$1"
+        out="${in%.cpp}"
+        shift
+        g++ "$in" -o "$out" $* || return $?
         ./"$out"
         code="$?"
         [ "$code" = 139 ] && echo "Segfault! lol."
