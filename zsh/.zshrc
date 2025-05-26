@@ -498,6 +498,40 @@
         abandon $*
         exit
     }
+    pdflatex-bibtex() {
+        file="$1"
+        pdflatex "$file.tex" || return $?
+        bibtex "$file" || return $?
+        pdflatex "$file.tex" || return $?
+        pdflatex "$file.tex" || return $?
+    }
+    pdflatex-watch() {
+        compile='pdflatex-bibtex'
+        file="$1"
+
+        "$compile" "$file"
+        if [ ! "$(lsof -Fc 'a2.pdf' | sed -n 's/^c//p')" = 'zathura' ]; then
+            zathura "$file.pdf" & disown
+        fi
+        printf "$file.tex\n$file.bib" \
+            | entr -np zsh -ci "$compile '$file'"
+    }
+    latex-clean() {
+        file="$1"
+        if [ -z "$file" ] || [ ! -f "$file.tex" ]; then
+            echo "latex-clean: no tex file found" >&2
+            return 1
+        fi
+        trash "$file-blx.bib" 2>/dev/null
+        trash "$file.aux"     2>/dev/null
+        trash "$file.bbl"     2>/dev/null
+        trash "$file.bcf"     2>/dev/null
+        trash "$file.blg"     2>/dev/null
+        trash "$file.blg"     2>/dev/null
+        trash "$file.log"     2>/dev/null
+        trash "$file.out"     2>/dev/null
+        trash "$file.run.xml" 2>/dev/null
+    }
 
 #========= PACKAGES
     # Autodownload packages
