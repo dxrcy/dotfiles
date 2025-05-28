@@ -9,7 +9,7 @@ Programs = {
     {
         name = "mail",
         class = "Mailspring",
-        command = "mailspring",
+        command = "mailspring --password-store=gnome-libsecret",
         autostart = 1,
     },
     {
