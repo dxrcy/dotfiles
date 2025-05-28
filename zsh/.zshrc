@@ -509,10 +509,15 @@
         compile='pdflatex-bibtex'
         file="$1"
 
+        try-open() {
+            if [ ! "$(lsof -Fc 'a2.pdf' | sed -n 's/^c//p')" = 'zathura' ]; then
+                zathura "$file.pdf" & disown
+            fi
+        }
+
+        try-open
         "$compile" "$file"
-        if [ ! "$(lsof -Fc 'a2.pdf' | sed -n 's/^c//p')" = 'zathura' ]; then
-            zathura "$file.pdf" & disown
-        fi
+        try-open
         printf "$file.tex\n$file.bib" \
             | entr -np zsh -ci "$compile '$file'"
     }
