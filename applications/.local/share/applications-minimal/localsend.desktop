@@ -1,0 +1,3 @@
+[Desktop Entry]
+Name=LocalSend
+Exec=localsend %U

@@ -1,0 +1,3 @@
+[Desktop Entry]
+Name=drawio
+Exec=/usr/bin/drawio %U

@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Shotcut
-Exec=/home/darcy/dl/appimage/shotcut-linux-x86_64-230614.AppImage %U
-Icon=/home/darcy/dl/appimage/icon/shotcut.png
-Terminal=false
-Type=Application
-Comment=Shotcut (APPIMAGE)
-
