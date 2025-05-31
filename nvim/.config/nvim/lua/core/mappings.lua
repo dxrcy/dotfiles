@@ -197,3 +197,7 @@ keymap("v", "<F1>", "", { noremap = true, silent = true })
 keymap("n", "<C-k>", function()
     vim.diagnostic.open_float({ scope = "line" })
 end)
+
+vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
+vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
+
