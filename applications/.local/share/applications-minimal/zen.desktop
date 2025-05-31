@@ -1,0 +1,3 @@
+[Desktop Entry]
+Name=Zen Browser
+Exec=/opt/zen-browser-bin/zen-bin %u
