@@ -1,0 +1,3 @@
+[Desktop Entry]
+Name=OBS Studio
+Exec=obs %U
