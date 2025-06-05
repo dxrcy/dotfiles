@@ -500,9 +500,11 @@
     }
     pdflatex-bibtex() {
         file="$1"
-        pdflatex "$file.tex" || return $?
-        bibtex "$file" || return $?
-        pdflatex "$file.tex" || return $?
+        if [ -f "$file.bib" ]; then
+            pdflatex -draftmode "$file.tex" || return $?
+            bibtex "$file" || return $?
+            pdflatex -draftmode "$file.tex" || return $?
+        fi
         pdflatex "$file.tex" || return $?
     }
     pdflatex-watch() {
@@ -510,7 +512,7 @@
         file="$1"
 
         try-open() {
-            if [ ! "$(lsof -Fc 'a2.pdf' | sed -n 's/^c//p')" = 'zathura' ]; then
+            if [ ! "$(lsof -Fc "$file.pdf" | sed -n 's/^c//p')" = 'zathura' ]; then
                 zathura "$file.pdf" & disown
             fi
         }
