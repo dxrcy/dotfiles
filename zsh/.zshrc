@@ -511,8 +511,13 @@
         compile='pdflatex-bibtex'
         file="$1"
 
+        if [ ! -f "$file.tex" ]; then
+            echo 'no file found'
+            return 1
+        fi
+
         try-open() {
-            if [ ! "$(lsof -Fc "$file.pdf" | sed -n 's/^c//p')" = 'zathura' ]; then
+            if [ -f "$file.pdf" ] && [ ! "$(lsof -Fc "$file.pdf" | sed -n 's/^c//p')" = 'zathura' ]; then
                 zathura "$file.pdf" & disown
             fi
         }
