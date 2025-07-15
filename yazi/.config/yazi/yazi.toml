@@ -51,7 +51,7 @@ prepend_rules = [
     # "edit" enters the file, instead of opening in new window, so prefer this
     { mime = "text/*", use = [ "edit", "default", "copy-text" ] },
 
-    { mime = "image/svg*", use = [ "default", "swiv", "copy-file" ] },
+    { mime = "image/svg*", use = [ "default", "inkscape", "swiv", "copy-file" ] },
     { mime = "image/x-xcf", use = [ "default", "swiv", "copy-file" ] },
     { mime = "image/*", use = [ "swiv", "inkscape", "gimp", "copy-file" ] },
 
