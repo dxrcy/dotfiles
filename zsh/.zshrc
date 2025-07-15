@@ -501,11 +501,11 @@
     pdflatex-bibtex() {
         file="$1"
         if [ -f "$file.bib" ]; then
-            pdflatex -draftmode "$file.tex" || return $?
+            pdflatex --shell-escape -draftmode "$file.tex" || return $?
             bibtex "$file" || return $?
-            pdflatex -draftmode "$file.tex" || return $?
+            pdflatex --shell-escape -draftmode "$file.tex" || return $?
         fi
-        pdflatex "$file.tex" || return $?
+        pdflatex --shell-escape "$file.tex" || return $?
     }
     pdflatex-watch() {
         compile='pdflatex-bibtex'
