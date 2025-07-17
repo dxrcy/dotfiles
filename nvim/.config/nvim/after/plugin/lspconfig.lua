@@ -60,4 +60,4 @@ lspconfig.clangd.setup {
     }
 }
 
-lspconfig.roc_ls.setup {}
+-- lspconfig.roc_ls.setup {}
