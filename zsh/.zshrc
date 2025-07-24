@@ -354,7 +354,8 @@
     nvim-dir() { # Open folder in nvim, instead of new buffer
         if [ "$*" ];
             then \nvim $*
-            else \nvim +'lua require("yazi").yazi()'
+            # else \nvim +'lua require("yazi").yazi()'
+            else \nvim +'Neotree'
         fi
     }
     yazi-cd() { # Use `yazi` to `cd`, without spawning subshell
