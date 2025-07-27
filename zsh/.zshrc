@@ -456,6 +456,13 @@
                 tmux select-pane -L &&\
                 nvim 'src/Main.java'
                 ;;
+            'latex')
+                tmux split-window -h -c "#{pane_current_path}" && \
+                tmux send-keys 'pdflatex-watch main' 'Enter' &&\
+                tmux select-pane -L &&\
+                tmux resize-pane -Z &&\
+                nvim 'main.tex'
+                ;;
             *)
                 nvim .
                 ;;
@@ -524,6 +531,7 @@
         }
 
         try-open
+        sleep 0.1
         "$compile" "$file"
         try-open
         printf "$file.tex\n$file.bib" \
