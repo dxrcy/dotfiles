@@ -15,4 +15,7 @@ background-opacity = 0.93
 background = #080b10
 
 maximize = true
+resize-overlay = never
+
+mouse-scroll-multiplier = 0.2
 
