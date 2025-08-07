@@ -19,3 +19,5 @@ resize-overlay = never
 
 mouse-scroll-multiplier = 0.2
 
+custom-shader = ./shaders/cursor_smear.glsl
+
