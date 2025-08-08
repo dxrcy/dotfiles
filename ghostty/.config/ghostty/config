@@ -14,6 +14,23 @@ background-opacity = 0.93
 
 background = #080b10
 
+palette = 0=#2f3439
+palette = 8=#1a1e23
+palette = 1=#cc6666
+palette = 9=#864343
+palette = 2=#b5bd68
+palette = 10=#777c44
+palette = 3=#f0c674
+palette = 11=#9e824c
+palette = 4=#81a2be
+palette = 12=#556a7d
+palette = 5=#b294bb
+palette = 13=#75617b
+palette = 6=#8abeb7
+palette = 14=#5b7d78
+palette = 7=#c5c8c6
+palette = 15=#828482
+
 maximize = true
 resize-overlay = never
 
