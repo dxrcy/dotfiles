@@ -348,6 +348,7 @@
     alias ll='cd-last-command'
     alias pst='ps-tree'
     am() { garfutils make $* && exit }
+    \$() { $* } # `$ command` runs `command`
     # Alised elsewhere: `cargo-new-cd`, `nvim-dir`, `git-*`
 
 #========= LONGER FUNCTIONS (Aliased)
