@@ -77,3 +77,8 @@ append_rules = [
     # { name = "*", use = [ "default" ] }
 ]
 
+[plugin]
+prepend_previewers = [
+    { mime = "image/*", run = "noop" },
+    { mime = "application/*", run = "noop" },
+]
