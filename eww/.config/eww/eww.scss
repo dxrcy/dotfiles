@@ -43,6 +43,10 @@ $item-padding: 25px;
     &.systray {
         opacity: 0.75;
     }
+
+    &.urgent {
+        color: red;
+    }
 }
 
 

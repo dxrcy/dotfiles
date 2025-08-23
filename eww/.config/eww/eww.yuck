@@ -20,7 +20,11 @@
             (item "${language}")
             (item "${bluetooth-state} ${bluetooth-charge} ${media-state}")
             (item "${volume} ${mic}")
-            (item "${battery}")
+            ; TODO: Use `EWW_BATTERY` for value and state (instead of script)
+            (item
+                :class "${EWW_BATTERY.BAT0.capacity <= 10 ? "urgent" : ""}"
+                "${battery}"
+            )
             (item "${date}")
             (item "${time}")
         )
