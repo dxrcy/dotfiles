@@ -22,7 +22,15 @@
             (item "${volume} ${mic}")
             ; TODO: Use `EWW_BATTERY` for value and state (instead of script)
             (item
-                :class "${EWW_BATTERY.BAT0.capacity <= 10 ? "urgent" : ""}"
+                :class "${
+                    EWW_BATTERY.BAT0.capacity <= 5
+                        ? "urgency-high"
+                    : EWW_BATTERY.BAT0.capacity <= 10
+                        ? "urgency-medium"
+                    : EWW_BATTERY.BAT0.capacity <= 20
+                        ? "urgency-low"
+                        : ""
+                }"
                 "${battery}"
             )
             (item "${date}")

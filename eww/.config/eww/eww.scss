@@ -1,7 +1,13 @@
-$background: #000;
+$background: #000000;
+
 $text-primary: #b0b4bc;
 $text-dim: #80848c;
 $text-bright: #e0e4ec;
+
+$urgency-low: #ffee66;
+$urgency-high: #ff4444;
+
+$item-separator: #222222;
 
 $workspace-padding: 10px;
 $item-padding: 25px;
@@ -36,7 +42,7 @@ $item-padding: 25px;
     font-family: monospace;
 
     &:not(:first-child) {
-        border-left: 2px solid #222;
+        border-left: 2px solid $item-separator;
         padding-left: $item-padding;
     }
 
@@ -44,9 +50,22 @@ $item-padding: 25px;
         opacity: 0.75;
     }
 
-    &.urgent {
-        color: red;
+    &.urgency-low {
+        color: $text-urgency-low;
+    }
+    &.urgency-medium {
+        color: $text-urgency-high;
+    }
+    &.urgency-high {
+        color: $text-urgency-high;
+        animation: flash 1s ease-out infinite;
+        @keyframes flash {
+            50% {
+                color: $text-urgency-low;
+            }
+        }
     }
 }
+
 
 
