@@ -46,14 +46,12 @@ $item-padding: 25px;
         padding-left: $item-padding;
     }
 
-    &.systray {
+    & .systray {
         opacity: 0.75;
     }
-}
 
-.indicators {
-    box {
-        //
+    & .indicators {
+        margin-right: 30px;
     }
 }
 
@@ -72,6 +70,4 @@ $item-padding: 25px;
         }
     }
 }
-
-
 

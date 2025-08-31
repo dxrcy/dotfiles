@@ -16,15 +16,19 @@
             :space-evenly false
             :halign "end"
 
-            (box :class "indicators"
-                (box
-                    :visible {idle-pid == ""}
-                    :class "urgency-low"
-                    ""
+            (item
+                (box :class "indicators"
+                    (box
+                        :visible {idle-pid == ""}
+                        :class "urgency-low"
+                        ""
+                    )
+                )
+                (box :class "systray"
+                    (systray :spacing 12 :icon-size 14)
                 )
             )
 
-            (item :class "systray" (systray :spacing 12 :icon-size 14))
             (item "${language}")
             (item "${bluetooth-state} ${bluetooth-charge} ${media-state}")
             (item "${volume} ${mic}")
@@ -75,7 +79,9 @@
 )
 
 (defwidget item [?class]
-    (box :class "item ${class}"
+    (box
+        :class "item ${class}"
+        :space-evenly false
         (children)
     )
 )
