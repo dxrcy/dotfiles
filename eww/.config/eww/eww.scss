@@ -13,11 +13,11 @@ $workspace-padding: 10px;
 $item-padding: 25px;
 
 .bar {
-    font-size: 13px;
-    background-color: $background;
-    color: $text-primary;
+    font-size: 12px;
     padding-bottom: 0.2rem;
     margin-top: -0.1rem;
+    background-color: $background;
+    color: $text-primary;
 }
 
 .workspaces {
