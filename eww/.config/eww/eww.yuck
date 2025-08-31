@@ -18,9 +18,10 @@
 
             (item
                 (box :class "indicators"
-                    (box
+                    (eventbox
                         :visible {idle-pid == ""}
                         :class "urgency-low"
+                        :onclick "hypridle & disown"
                         ""
                     )
                 )
