@@ -16,9 +16,16 @@
             :space-evenly false
             :halign "end"
 
+            (box :class "indicators"
+                (box
+                    :visible {idle-pid == ""}
+                    :class "urgency-low"
+                    ""
+                )
+            )
+
             (item :class "systray" (systray :spacing 15 :icon-size 15))
             (item "${language}")
-            (item "${idle-state}")
             (item "${bluetooth-state} ${bluetooth-charge} ${media-state}")
             (item "${volume} ${mic}")
             (item
@@ -84,12 +91,4 @@
 (defpoll mic              :interval "0.5s" "volume-brightness display-mic")
 (defpoll date             :interval "30s"  "date +'%Y-%m-%d'")
 (defpoll time             :interval "1s"   "date +'%H:%M'")
-
-(defpoll
-    idle-state
-    :interval "1s"
-    "if pgrep hypridle >/dev/null;
-        then echo ''
-        else echo ''
-    fi"
-)
+(defpoll idle-pid         :interval "1s"   "pgrep hypridle || echo ''")

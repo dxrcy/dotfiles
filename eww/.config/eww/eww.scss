@@ -49,20 +49,26 @@ $item-padding: 25px;
     &.systray {
         opacity: 0.75;
     }
+}
 
-    &.urgency-low {
-        color: $text-urgency-low;
+.indicators {
+    box {
+        //
     }
-    &.urgency-medium {
-        color: $text-urgency-high;
-    }
-    &.urgency-high {
-        color: $text-urgency-high;
-        animation: flash 1s ease-out infinite;
-        @keyframes flash {
-            50% {
-                color: $text-urgency-low;
-            }
+}
+
+.urgency-low {
+    color: $text-urgency-low;
+}
+.urgency-medium {
+    color: $text-urgency-high;
+}
+.urgency-high {
+    color: $text-urgency-high;
+    animation: flash 1s ease-out infinite;
+    @keyframes flash {
+        50% {
+            color: $text-urgency-low;
         }
     }
 }
