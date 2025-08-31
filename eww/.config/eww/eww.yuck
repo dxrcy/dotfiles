@@ -24,7 +24,7 @@
                 )
             )
 
-            (item :class "systray" (systray :spacing 15 :icon-size 15))
+            (item :class "systray" (systray :spacing 12 :icon-size 14))
             (item "${language}")
             (item "${bluetooth-state} ${bluetooth-charge} ${media-state}")
             (item "${volume} ${mic}")
