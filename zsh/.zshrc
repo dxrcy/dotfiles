@@ -331,7 +331,7 @@ alias pk='pkill'
 alias btc='bluetoothctl'
 alias bhs='basic-http-server'
 alias rl='readlink'
-alias ghs='gh auth switch'
+alias ghs='gh-switch'
 alias print='printf' # Prevent terrible problems!
 # Custom scripts and functions
 alias p='pacman-thing'
