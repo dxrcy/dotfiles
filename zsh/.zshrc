@@ -633,3 +633,12 @@ esac
 if [ -e /home/darcy/.nix-profile/etc/profile.d/nix.sh ]; then . /home/darcy/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # source /usr/share/nvm/init-nvm.sh
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/home/darcy/.opam/opam-init/init.zsh' ]] || source '/home/darcy/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration
