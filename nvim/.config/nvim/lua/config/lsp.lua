@@ -1,5 +1,6 @@
 vim.lsp.enable({
-    "clang"
+    "clang",
+    "zls",
 })
 
 vim.diagnostic.config({
