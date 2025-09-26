@@ -92,3 +92,9 @@ require("lazy").setup({
 	{ import = "plugins" },
 })
 
+-- lsp
+-------------------
+
+vim.lsp.enable({
+    "clang"
+})
