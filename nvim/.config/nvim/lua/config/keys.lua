@@ -32,3 +32,8 @@ vim.keymap.set("n", "yj", "j")
 vim.keymap.set("n", "yk", "k")
 vim.keymap.set("n", "dj", "j")
 vim.keymap.set("n", "dk", "k")
+
+-- Diagnostic float
+vim.keymap.set("n", "ge", vim.diagnostic.open_float)
+vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
+vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
