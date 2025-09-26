@@ -354,6 +354,7 @@ alias mkd='mkdir-cd'
 alias eo='garfeo-mode'
 alias ll='cd-last-command'
 alias pst='ps-tree'
+alias pj='cd $(fzf-project)'
 am() { garfutils make $* && exit }
 \$() { $* } # `$ command` runs `command`
 # Alised elsewhere: `cargo-new-cd`, `nvim-dir`, `git-*`
