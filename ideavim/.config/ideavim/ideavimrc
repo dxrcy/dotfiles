@@ -1,6 +1,0 @@
-set clipboard=unnamedplus
-
-let mapleader = " "
-
-nnoremap <leader>v ggVG
-
