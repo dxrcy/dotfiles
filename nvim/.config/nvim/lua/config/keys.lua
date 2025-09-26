@@ -26,3 +26,9 @@ vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
+
+-- Prevent accidently yanking/deleting lines above/below
+vim.keymap.set("n", "yj", "j")
+vim.keymap.set("n", "yk", "k")
+vim.keymap.set("n", "dj", "j")
+vim.keymap.set("n", "dk", "k")
