@@ -1,5 +1,5 @@
 return {
-    {
+    { -- Manage files in a tree
         "nvim-neo-tree/neo-tree.nvim",
         version = "*",
         dependencies = {
