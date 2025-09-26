@@ -174,6 +174,13 @@ XSTATE="$XDG_STATE_HOME"
 # Use neovim as man pager
 export MANPAGER='nvim +Man!'
 
+#========= FZF
+export FZF_DEFAULT_OPTS="
+    --bind=ctrl-h:backward-char,ctrl-l:forward-char
+    --bind=ctrl-j:down,ctrl-k:up
+    --bind=ctrl-u:half-page-up,ctrl-d:half-page-down
+"
+
 #========= PROMPT
 # Display shell nesting level
 # Variable, not function (unlike below)
