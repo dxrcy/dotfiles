@@ -15,3 +15,8 @@ vim.keymap.set("v", "p", "P")
 
 -- Clear search highlights
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- Stay in visual mode while changing indentation
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "=", "=gv")
