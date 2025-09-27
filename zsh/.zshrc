@@ -361,11 +361,10 @@ am() { garfutils make $* && exit }
 # Alised elsewhere: `cargo-new-cd`, `nvim-dir`, `git-*`
 
 #========= LONGER FUNCTIONS (Aliased)
-nvim-dir() { # Open folder in nvim, instead of new buffer
+nvim-dir() { # Open directory in nvim, instead of new buffer
     if [ "$*" ];
         then \nvim $*
-        # else \nvim +'lua require("yazi").yazi()'
-        else \nvim +'Neotree'
+        else \nvim '.'
     fi
 }
 yazi-cd() { # Use `yazi` to `cd`, without spawning subshell
