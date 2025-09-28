@@ -19,6 +19,10 @@ return {
                 -- For `init` function below
                 hijack_netrw_behavior = "open_current",
 
+                follow_current_file   = {
+                    enabled = true,
+                },
+
                 window = {
                     mappings = {
                         ["\\"] = "close_window",
