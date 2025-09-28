@@ -37,3 +37,24 @@ vim.keymap.set("n", "dk", "k")
 vim.keymap.set("n", "ge", vim.diagnostic.open_float)
 vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
+
+-- Cycle column limit
+vim.keymap.set("n", "<C-l>", function()
+    ---@param current number|nil
+    ---@return number|nil
+    local function next_column_limit(current)
+        local VALUES = { 80, 100, 120 }
+        if current == 0 or current == nil then
+            return VALUES[1]
+        end
+        for i = 1, #VALUES - 1 do
+            if current <= VALUES[i] then
+                return VALUES[i + 1]
+            end
+        end
+        return nil
+    end
+
+    local current = tonumber(vim.opt.colorcolumn:get()[1])
+    vim.opt.colorcolumn = tostring(next_column_limit(current) or "")
+end)
