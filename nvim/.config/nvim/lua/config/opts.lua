@@ -14,6 +14,9 @@ vim.opt.relativenumber = true
 -- Always show left column
 vim.opt.signcolumn = "yes"
 
+-- Don't show the mode, since it's already in the status line
+vim.opt.showmode = false
+
 -- Highlight cursor line
 vim.opt.cursorline = true
 
