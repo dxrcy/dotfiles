@@ -340,6 +340,7 @@ alias bhs='basic-http-server'
 alias rl='readlink'
 alias ghs='gh-switch'
 alias print='printf' # Prevent terrible problems!
+alias wlc='wl-copy'
 # Custom scripts and functions
 alias p='pacman-thing'
 alias a='garfutils' # deprecated
