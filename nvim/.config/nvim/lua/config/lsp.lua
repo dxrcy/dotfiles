@@ -2,6 +2,7 @@ vim.lsp.enable({
     "cpp",
     "zig",
     "lua",
+    "rust",
 })
 
 vim.diagnostic.config({
