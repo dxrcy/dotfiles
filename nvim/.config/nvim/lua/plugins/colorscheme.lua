@@ -5,5 +5,8 @@ return {
         init = function()
             vim.cmd.colorscheme("kanso-zen")
         end,
+        opts = {
+            transparent = true,
+        },
     },
 }
