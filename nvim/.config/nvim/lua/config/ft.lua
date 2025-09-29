@@ -9,7 +9,24 @@ local function ft_config(filetype, callback)
 end
 
 ft_config("tex", function()
-    vim.bo.textwidth = 80
-    vim.opt.colorcolumn = "80"
     vim.bo.indentexpr = ""
 end)
+
+local textwidths = {
+    c = 80,
+    cpp = 100,
+    zig = 80,
+    rust = 100,
+    lua = 80,
+    sh = 80,
+    zsh = 80,
+    bash = 80,
+    tex = 80,
+}
+
+for filetype, textwidth in pairs(textwidths) do
+    ft_config(filetype, function()
+        vim.bo.textwidth = textwidth
+        vim.opt.colorcolumn = tostring(textwidth)
+    end)
+end
