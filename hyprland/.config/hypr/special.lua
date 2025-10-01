@@ -23,6 +23,11 @@ Programs = {
         class = "Ferdium",
         command = "ferdium",
         autostart = 8,
+    {
+        name = "calculator",
+        class = "terminal-calculator",
+        command = "kitty --app-id terminal-calculator -o font_size=12 qalc",
+        autostart = nil,
     },
     {
         name = "vpn",
