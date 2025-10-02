@@ -83,3 +83,12 @@ else
 fi
 export ZSHLVL
 
+
+#-------------------------------------------------------------------------------
+# Custom source scripts for programs
+
+# opam (ocaml)
+if [ -r '/home/darcy/.opam/opam-init/init.zsh' ]; then
+    source '/home/darcy/.opam/opam-init/init.zsh' >/dev/null 2>&1
+fi
+
