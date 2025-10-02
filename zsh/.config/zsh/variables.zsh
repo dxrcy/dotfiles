@@ -1,10 +1,11 @@
 DESKTOP=hyprland
 DESKTOP_TTY=/dev/tty1
 
-# Misc. shorthand variables
+# GitHub shorthand variables
 GH='https://github.com'
-GH_USER='dxrcy'
-GHU="$GH/$GH_USER"
+GH_MAIN='dxrcy'
+GH_STUDENT='dyrcyuni'
+GHU="$GH/$GH_MAIN"
 
 # XDG base directory abbreviations
 XCONF="$XDG_CONFIG_HOME"
