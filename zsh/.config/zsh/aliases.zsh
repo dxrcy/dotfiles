@@ -89,14 +89,8 @@ alias .z='cd ~/dotfiles/zsh                   && nvim .zshrc'
 alias .v='cd ~/dotfiles/nvim/.config/nvim     && nvim .'
 alias .h='cd ~/dotfiles/hyprland/.config/hypr && nvim hyprland.conf'
 
-# Alias `...` (n+1 of `.`) to `cd ../../` (n of `../`)
-for i in $(seq 5); do
-    local short='.'
-    local long='cd '
-    for _ in $(seq "$i"); do
-        short="$short"'.'
-        long="$long"'../'
-    done
-    alias "$short"="$long"
-done
+# Matches AUTOCD
+alias   ...='cd ../../'
+alias  ....='cd ../../../'
+alias .....='cd ../../../../'
 
