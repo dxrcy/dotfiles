@@ -7,7 +7,7 @@ ZSH_PLUGINS=(
     zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
     zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
-    hlissner/zsh-autopair/zsh-autopair.plugin.zsh
+    # hlissner/zsh-autopair/zsh-autopair.plugin.zsh
 )
 
 _zsh_warn()  { _zsh_diagnostic '2;33' $* }
