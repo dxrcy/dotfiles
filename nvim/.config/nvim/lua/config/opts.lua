@@ -46,9 +46,10 @@ vim.opt.inccommand = "split"
 -- Render whitespace characters
 vim.opt.list = true
 vim.opt.listchars = {
-    tab = "▏ ",
+    tab = "𜰊  ",
     trail = "~",
+    lead = "⸱",
     nbsp = "␣",
-    extends = ">",
-    precedes = "<",
+    extends = "",
+    precedes = "",
 }
