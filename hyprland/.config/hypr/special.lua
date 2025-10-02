@@ -22,7 +22,8 @@ Programs = {
         name = "social",
         class = "Ferdium",
         command = "ferdium",
-        autostart = 8,
+        autostart = 20,
+    },
     {
         name = "calculator",
         class = "terminal-calculator",
