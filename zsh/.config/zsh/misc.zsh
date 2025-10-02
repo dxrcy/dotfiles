@@ -57,17 +57,20 @@ fi
 # Auto aliases
 eval "$(zoxide init zsh)"
 
+# Don't call `compinit` for every shell
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+    compinit
+done
+compinit -C
+
 # See also: zsh-history-substring-search plugin
 # Use case-insensitive autocompletions
-autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Disable command-specific tab completions
 # Only list commands and files
 zstyle ':completion:*' completer _files _command_names
-
-# Move zcompdump file location
-compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
 
 # Use neovim as man pager
 export MANPAGER='nvim +Man!'
