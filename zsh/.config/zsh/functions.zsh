@@ -48,9 +48,23 @@ yazi-cd() {
 	rm -f -- "$tmp"
 }
 
+#-------------------------------------------------------------------------------
+# Navigation - fzf to locations
+
+fzf-cd-setup() {
+    local dir=$(fzf-project $*)
+    [ -n "$dir" ] || return
+    cd -- "$dir"
+    project-setup
+}
+
 project-cd() {
     # TODO: Move directory definition
-    cd -- $(fzf-project 2 ~/.projects)
+    fzf-cd-setup 2 ~/.projects
+}
+sandbox-fzf() {
+    # TODO: Move directory definition
+    fzf-cd-setup 1 ~/code/sandbox
 }
 
 #-------------------------------------------------------------------------------
@@ -92,17 +106,6 @@ gh-switch() {
         else account="$GH_MAIN"
     fi
     gh auth switch -u "$account"
-}
-
-#-------------------------------------------------------------------------------
-# Code sandbox
-
-sandbox-fzf() {
-    # TODO: Move directory definition
-    local dir=$(fzf-project 1 ~/code/sandbox)
-    [ -n "$dir" ] || return
-    cd -- "$dir"
-    project-setup
 }
 
 #-------------------------------------------------------------------------------
