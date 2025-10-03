@@ -38,14 +38,14 @@ Programs = {
     },
 }
 
-RecentFile = "/tmp/special.recent"
+RecentFile = "/tmp/sw.recent"
 
 ---@return nil
 function PrintUsage()
     print([[
 USAGE:
-    lua special.lua <NAME>
-    lua special.lua <OPTION>
+    lua sw.lua <NAME>
+    lua sw.lua <OPTION>
 
 OPTIONS:
     <NAME>
