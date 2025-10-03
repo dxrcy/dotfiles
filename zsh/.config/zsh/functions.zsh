@@ -58,11 +58,11 @@ fzf-cd-setup() {
     project-setup
 }
 
-project-cd() {
+fzf-project() {
     # TODO: Move directory definition
     fzf-cd-setup 2 ~/.projects
 }
-sandbox-fzf() {
+fzf-sandbox() {
     # TODO: Move directory definition
     fzf-cd-setup 1 ~/code/sandbox
 }
