@@ -3,6 +3,7 @@ vim.lsp.enable({
     "zig",
     "lua",
     "rust",
+    "python",
 })
 
 vim.diagnostic.config({
