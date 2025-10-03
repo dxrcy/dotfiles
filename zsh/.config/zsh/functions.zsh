@@ -105,36 +105,7 @@ sandbox-fzf() {
         subdir=$(\ls | fzf --height=10 --layout=reverse) || return $?
     fi
     cd "$subdir" || return $?
-    case "$subdir" in
-        'rust') nvim 'src/main.rs' ;;
-        'c')    nvim 'main.c' ;;
-        'zig')  nvim 'main.zig' ;;
-        'roc')  nvim 'main.roc' ;;
-        'lua')  nvim 'main.lua' ;;
-        'cpp')
-            tmux split-window -h -c "#{pane_current_path}" &&\
-            tmux resize-pane -R 30 &&\
-            tmux select-pane -L &&\
-            nvim 'main.cpp'
-            ;;
-        'java')
-            tmux split-window -h -c "#{pane_current_path}" &&\
-            tmux resize-pane -R 20 &&\
-            tmux send-keys 'just run' 'Enter' &&\
-            tmux select-pane -L &&\
-            nvim 'src/Main.java'
-            ;;
-        'latex')
-            tmux split-window -h -c "#{pane_current_path}" && \
-            tmux send-keys 'pdflatex-watch main' 'Enter' &&\
-            tmux select-pane -L &&\
-            tmux resize-pane -Z &&\
-            nvim 'main.tex'
-            ;;
-        *)
-            nvim .
-            ;;
-    esac
+    project-setup "$subdir"
 }
 
 #-------------------------------------------------------------------------------
