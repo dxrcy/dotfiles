@@ -52,7 +52,7 @@ yazi-cd() {
 # Navigation - fzf to locations
 
 fzf-cd-setup() {
-    local dir=$(fzf-project $*)
+    local dir=$(fzf-dir $*)
     [ -n "$dir" ] || return
     cd -- "$dir"
     project-setup
