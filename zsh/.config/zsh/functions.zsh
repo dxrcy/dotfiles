@@ -98,15 +98,11 @@ gh-switch() {
 # Code sandbox
 
 sandbox-fzf() {
-    cd ~/code/sandbox || return $?
-    local subdir
-    if [ -n "$1" ]; then
-        subdir="$1"
-    else
-        subdir=$(\ls | fzf --height=10 --layout=reverse) || return $?
-    fi
-    cd "$subdir" || return $?
-    project-setup "$subdir"
+    # TODO: Move directory definition
+    local dir=$(fzf-project 1 ~/code/sandbox)
+    [ -n "$dir" ] || return
+    cd -- "$dir"
+    project-setup
 }
 
 #-------------------------------------------------------------------------------
