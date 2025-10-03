@@ -49,7 +49,8 @@ yazi-cd() {
 }
 
 project-cd() {
-    cd -- $(fzf-project)
+    # TODO: Move directory definition
+    cd -- $(fzf-project 2 ~/.projects)
 }
 
 #-------------------------------------------------------------------------------
