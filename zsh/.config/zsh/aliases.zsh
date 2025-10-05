@@ -41,7 +41,6 @@ alias lsa='ls -a'
 alias lst='ls --total-size --sort size --reverse'
 
 # Open in pager/editor
-alias pstree='pstree -U | less'
 alias zh='vim + ~/.cache/zsh_history'
 
 #-------------------------------------------------------------------------------
