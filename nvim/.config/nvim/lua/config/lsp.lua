@@ -28,3 +28,10 @@ vim.diagnostic.config({
         },
     },
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(e)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition,
+            { buffer = e.buf, desc = "Go to definition" })
+    end
+})
