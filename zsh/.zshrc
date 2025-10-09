@@ -26,3 +26,5 @@ source "$ZSH_CONFIG_DIR/plugins.zsh"
 zsh-plugins-init # plugins.zsh
 zsh-start-desktop # misc.zsh
 
+true # Reset $? for prompt
+
