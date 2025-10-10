@@ -51,11 +51,7 @@ ps1-git() { # Toggle Git information in PS1 (if running slow)
 _set_ps1() {
     _PS=''
     _prompt         "%F{cyan}"      "$_arrow"       # Shell nesting level
-    _prompt  "%B"   "%F{yellow}"    "%n"            # Username
-    _prompt         "%F{green}"     "@"             # @
-    _prompt  "%B"   "%F{blue}"      "%m"            # Hostname
-    _prompt                         ' '             #
-    _prompt         "%F{magenta}"   "%3~"           # Last 3 folders of PWD
+    _prompt  "%B"   "%F{yellow}"    "%3~"           # Last 3 folders of PWD
     if [ -n "$PS1_GIT" ]; then
         _prompt                     '$(git_branch)' # Git: Branch
         _prompt                     '$(git_status)' # Git: Status
@@ -64,7 +60,7 @@ _set_ps1() {
     _prompt         "%F{cyan}"      "%(0?.. $_dot)" # Non-zero exit code = dot
     _prompt                         $'\n'           #
     _prompt         "%F{cyan}"      "%(1j.[%j].)"   # Job count
-    _prompt         '%F{green}'     "$_gt "         # >
+    _prompt         '%F{yellow}'    "$_gt "         # >
     PS1="$_PS"
 }
 _set_ps1
