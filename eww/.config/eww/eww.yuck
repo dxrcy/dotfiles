@@ -39,6 +39,8 @@
                     ? (
                         EWW_BATTERY.BAT0.capacity <= 20
                             ? "urgency-low"
+                        : EWW_BATTERY.BAT0.capacity >= 80
+                            ? "urgency-alt"
                             : ""
                     ) : (
                         EWW_BATTERY.BAT0.capacity <= 5

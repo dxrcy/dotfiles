@@ -6,6 +6,7 @@ $text-bright: #e0e4ec;
 
 $text-urgency-low: #ffee66;
 $text-urgency-high: #ff4444;
+$text-urgency-alt: #44ff44;
 
 $item-separator: #222222;
 
@@ -70,4 +71,6 @@ $item-padding: 25px;
         }
     }
 }
-
+.urgency-alt {
+    color: $text-urgency-alt;
+}
