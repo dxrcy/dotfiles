@@ -112,7 +112,11 @@ gh-switch() {
 # Latex
 
 pdflatex-bibtex() {
+    local custom='./compile.sh'
     local file="$1"
+    if [ -f "$custom" ]; then
+        "$custom" || return $?
+    fi
     if [ -f "$file.bib" ]; then
         pdflatex --shell-escape -draftmode "$file.tex" || return $?
         bibtex "$file" || return $?
@@ -140,8 +144,10 @@ pdflatex-watch() {
     sleep 0.1
     "$compile" "$file"
     try-open
-    printf "$file.tex\n$file.bib" \
-        | entr -np zsh -ci "$compile '$file'"
+    {
+        printf "$file.tex\n$file.bib"
+        \find assets
+    } | entr -np zsh -ci "$compile '$file'"
 }
 
 latex-clean() {
