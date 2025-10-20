@@ -53,3 +53,5 @@ vim.opt.listchars = {
     extends = "",
     precedes = "",
 }
+
+vim.opt.termguicolors = true
