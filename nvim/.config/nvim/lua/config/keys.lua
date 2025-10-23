@@ -41,6 +41,6 @@ vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
 
 -- Change line width / column limit
-vim.keymap.set("n", "<C-l>", commands.cycle_column_limit)
+vim.keymap.set("n", "<leader>l", commands.cycle_column_limit)
 
 vim.keymap.set("n", "<leader>v", "ggVG", { desc = "Select entire buffer" })
