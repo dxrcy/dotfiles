@@ -50,6 +50,7 @@ ps1-git() { # Toggle Git information in PS1 (if running slow)
 #            BOLD   COLOR           VALUE
 _set_ps1() {
     _PS=''
+    _prompt "$(printf "\033[?25h")" # Always show cursor
     _prompt         "%F{cyan}"      "$_arrow"       # Shell nesting level
     _prompt  "%B"   "%F{yellow}"    "%3~"           # Last 3 folders of PWD
     if [ -n "$PS1_GIT" ]; then
