@@ -1,16 +1,13 @@
 gui:
   theme:
     selectedLineBgColor:
-        - underline
+      - underline
     selectedRangeBgColor:
-        - underline
-
+      - underline
 git:
-  paging:
-    pager: delta --dark --paging=never
-
+  pagers:
+    - pager: delta --dark --paging=never
   disableForcePushing: true
-
 customCommands:
   - key: 'ŝ'
     context: 'global'
@@ -18,7 +15,5 @@ customCommands:
   - key: 'G'
     context: 'global'
     command: 'zsh -ci gh-switch'
-
 os:
   editPreset: 'nvim'
-
