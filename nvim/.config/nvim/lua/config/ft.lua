@@ -22,6 +22,7 @@ local textwidths = {
     zsh = 80,
     bash = 80,
     tex = 80,
+    md = 80,
 }
 
 for filetype, textwidth in pairs(textwidths) do
