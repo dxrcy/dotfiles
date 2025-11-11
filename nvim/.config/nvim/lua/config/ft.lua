@@ -12,6 +12,10 @@ ft_config("tex", function()
     vim.bo.indentexpr = ""
 end)
 
+ft_config("superhtml", function()
+    vim.opt.commentstring = "<!-- %s -->"
+end)
+
 local textwidths = {
     c = 80,
     cpp = 100,
