@@ -4,6 +4,9 @@ vim.lsp.enable({
     "lua",
     "rust",
     "python",
+    "ziggy",
+    "ziggy-schema",
+    "superhtml",
 })
 
 vim.diagnostic.config({
