@@ -47,3 +47,6 @@ vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>l", commands.cycle_column_limit)
 
 vim.keymap.set("n", "<leader>v", "ggVG", { desc = "Select entire buffer" })
+
+vim.keymap.set("n", "<leader>q", [[<cmd>.!qalc -t $(cat)<CR>]],
+    { desc = "Evaluate line with libqalculate" })
