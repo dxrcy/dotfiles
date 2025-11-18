@@ -15,6 +15,9 @@ vim.keymap.set("v", "<C-_>", "gc", { desc = "Toggle comment", remap = true })
 -- Override paste without copying deleted text
 vim.keymap.set("v", "p", "P")
 
+-- Concatenate lines without adding whitespace
+vim.keymap.set("n", "<M-J>", "gJ")
+
 -- Clear search highlights
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
