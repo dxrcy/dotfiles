@@ -31,13 +31,19 @@ zsh-prepend-path "$HOME/.local/bin"
 # Change directory by typing name
 setopt AUTOCD
 
-# Override AUTOCD for `~/code`
-code() {
-    if [ "$PWD" = "$HOME" ];
-        then cd 'code'
-        else command code -r "$@"
-    fi
-}
+# For certain directory names, don't autocd if directory exists in cwd
+NO_AUTOCD_DIRS=(code example)
+for dir in $NO_AUTOCD_DIRS; do
+    eval $(cat << EOF
+        $dir() {
+            if [ -d '$dir' ];
+                then cd '$dir';
+                else command '$dir' -r \"\$@\";
+            fi;
+        }
+EOF
+    )
+done
 
 # Persistant history
 export HISTFILE=$XDG_CACHE_HOME/zsh_history
