@@ -92,9 +92,17 @@ alias zig = ~/.zvm/bin/zig
 #-------------------------------------------------------------------------------
 # PROMPT
 
+def pwd_last_parts [] {
+    pwd | str replace $env.HOME "~"
+        | path split
+        | last 3
+        | str join "/"
+        | str replace -r "/+" "/"
+}
+
 def prompt_left [] {
     print -n (ansi yellow_bold)
-    print -n (pwd | path split | last 3 | str join "/")
+    print -n (pwd_last_parts)
     print ""
 }
 
