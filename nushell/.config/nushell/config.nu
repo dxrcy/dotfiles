@@ -45,13 +45,13 @@ def --wrapped nvim_dir [...args] {
 }
 
 def --env mkdir_cd [dir] {
-    mkdir $dir
+    ^mkdir $dir
     cd $dir
 }
 
 def --env yazi_cd [...args] {
     let tmp = (mktemp -t "yazi-cwd.XXXXXX")
-    yazi ...$args --cwd-file $tmp
+    ^yazi ...$args --cwd-file $tmp
     let cwd = (open $tmp)
     if $cwd != "" and $cwd != $env.PWD {
         cd $cwd
