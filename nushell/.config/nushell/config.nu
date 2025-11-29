@@ -119,8 +119,20 @@ def pwd_last_parts [] {
 }
 
 def prompt_left [] {
-    print -n (ansi yellow_bold)
-    print -n (pwd_last_parts)
+    let cwd = (pwd_last_parts)
+    let git_branch = (git-info --branch)
+    let git_info = (git-info)
+
+    print -n $"(ansi yellow_bold)($cwd)"
+    if $git_branch != "" {
+        print -n $" (ansi blue)($git_branch)"
+    }
+    if $git_info != "" {
+        print -n $" (ansi red)($git_info)"
+    }
+    if $env.LAST_EXIT_CODE != 0 {
+        print -n $"(ansi cyan) ·"
+    }
     print ""
 }
 
