@@ -59,6 +59,23 @@ def --env yazi_cd [...args] {
     rm -fp $tmp
 }
 
+def --env project_setup [] {
+    let file = '.project-setup'
+    if ($file | path exists) {
+        sh $file
+    }
+}
+
+def --env fzf_cd_setup [...args] {
+    let dir = (sh fzf-dir ...$args)
+    cd $dir
+    project_setup
+}
+
+def --env fzf_sandbox [] {
+    fzf_cd_setup 1 $"($env.HOME)/code/sandbox"
+}
+
 #-------------------------------------------------------------------------------
 # ALIASES
 
@@ -67,6 +84,7 @@ alias grep = rg
 alias nvim = nvim_dir
 alias mkd = mkdir_cd
 alias yazi = yazi_cd
+alias s = fzf_sandbox
 
 alias p = pacman-thing
 
