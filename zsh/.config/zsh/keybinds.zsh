@@ -98,6 +98,9 @@ bindkey -M vicmd -s 'ĉ' 'x'
 # Disable Ctrl+D
 bindkey -s '^D' ''
 
+# Enable Ctrl+C in raw terminal mode
+bindkey '^C' send-break
+
 # Custom function keybinds
 bindkey '^Z' fg-keybind
 
