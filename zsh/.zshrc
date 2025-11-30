@@ -29,5 +29,7 @@ zsh-start-desktop # misc.zsh
 true # Reset $? for prompt
 
 # TEMPORARY
-exec nu
+if [ -z "$NO_NU" ]; then
+    exec nu
+fi
 
