@@ -6,6 +6,9 @@ alias mkd = mkdir_cd
 alias yazi = yazi_cd
 alias s = fzf_sandbox
 alias z = zi
+alias ghu = github_url
+alias gcl = git_clone_cd
+alias ghs = github_switch
 
 alias p = pacman-thing
 

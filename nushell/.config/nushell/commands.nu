@@ -38,3 +38,40 @@ def --env fzf_sandbox [] {
     fzf_cd_setup 1 $"($env.HOME)/code/sandbox"
 }
 
+def github_url [name] {
+    let prefix = ($name | str substring 0..0)
+    let rest = ($name | str substring 1..)
+    match $prefix {
+        : => $"($GHU)/($rest)"
+        @ => $"($GH)/($rest)"
+        _ => $name
+    }
+}
+
+def extract_url_repo_name [url] {
+    $url
+        | path split
+        | last
+        | str replace --regex '\.git$' ""
+}
+
+def --env --wrapped git_clone_cd [name, target?, ...options] {
+    let url = (github_url $name)
+    let target = if $target != null { $target } else {
+        (extract_url_repo_name $url)
+    }
+
+    git clone $url $target ...$options
+    cd $target
+}
+
+def github_switch [] {
+    let result = (git config --get "user.email" "student" | complete)
+    let account = if $result.exit_code == 0 {
+        $GH_STUDENT
+    } else {
+        $GH_MAIN
+    }
+    gh auth switch -u $account
+}
+
