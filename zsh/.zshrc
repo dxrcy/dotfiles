@@ -28,3 +28,6 @@ zsh-start-desktop # misc.zsh
 
 true # Reset $? for prompt
 
+# TEMPORARY
+exec nu
+
