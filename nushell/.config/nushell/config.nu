@@ -8,5 +8,5 @@ source aliases.nu
 source keybinds.nu
 source prompt.nu
 
-source ~/.zoxide.nu
+source $"($nu.cache-dir)/zoxide.nu"
 
