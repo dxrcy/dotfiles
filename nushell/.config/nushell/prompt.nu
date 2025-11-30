@@ -11,7 +11,7 @@ def prompt_left [] {
     let git_branch = (git-info --branch)
     let git_info = (git-info)
 
-    print -n $"(ansi yellow_bold)($cwd)"
+    print -n $"(ansi yellow_bold)($cwd)(ansi reset)"
     if $git_branch != "" {
         print -n $" (ansi blue)($git_branch)"
     }
