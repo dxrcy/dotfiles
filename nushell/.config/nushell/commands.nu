@@ -7,6 +7,7 @@ def --wrapped nvim_dir [...args] {
 }
 
 def --env mkdir_cd [dir] {
+    let dir = ($dir | into string)
     ^mkdir $dir
     cd $dir
 }
