@@ -36,6 +36,9 @@ mpv = [
 vlc = [
     { run = 'devour vlc "$@"', desc = "Open with VLC" },
 ]
+neothesia = [
+    { run = 'neothesia "$@"', desc = "Open with Neothesia" },
+]
 musescore = [
     { run = 'mscore "$@"', desc = "Open with MuseScore" },
 ]
@@ -57,6 +60,8 @@ prepend_rules = [
 
     { mime = "video/*", use = [ "mpv", "vlc" ] },
     { mime = "audio/*", use = [ "mpv", "vlc" ] },
+
+    { mime = "audio/midi", use = [ "neothesia" ] },
 
     { mime = "application/pdf", use = [ "default", "browser" ] },
     { mime = "application/epub*", use = [ "default", "browser" ] },
