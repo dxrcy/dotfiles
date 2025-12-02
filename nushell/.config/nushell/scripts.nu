@@ -53,19 +53,23 @@ def colors [] {
 def latex_compile [file: string] {
     # --shell-escape is required for some packages:
     # https://tex.stackexchange.com/questions/598818/how-can-i-enable-shell-escape
-    pdflatex --shell-escape $"($file).tex"
+    echo | pdflatex --shell-escape $"($file).tex"
 }
 
 def latex_watch [file: string] {
     let compile = {||
-        latex_compile $file
+        let result = (latex_compile $file | complete)
+        print $result.stdout
+        if $result.exit_code != 0 {
+            print $"(ansi red)--- FAILED ---(ansi reset)"
+        }
     }
 
     if not ($"($file).tex" | path exists) {
         return
     }
 
-    def try_open [] {
+    def try_open_pdf [] {
         if not ($"($file).tex" | path exists) {
             return
         }
@@ -74,13 +78,10 @@ def latex_watch [file: string] {
         }
     }
 
-    try_open
+    try_open_pdf
     sleep 0.1sec
     do $compile
-    try_open
+    try_open_pdf
 
-    echo $"($file).tex"
-        | entr -np env NO_NU=1 zsh -ci $"pdflatex-bibtex '($file)'"
-
-    # watch -g $"($file).tex" . $compile
+    watch --quiet --glob $"($file).tex" . $compile
 }
