@@ -12,6 +12,10 @@ ft_config("tex", function()
     vim.bo.indentexpr = ""
 end)
 
+ft_config("typst", function()
+    vim.bo.shiftwidth = 4
+end)
+
 local textwidths = {
     c = 80,
     cpp = 100,
@@ -23,6 +27,7 @@ local textwidths = {
     bash = 80,
     tex = 80,
     md = 80,
+    typst = 80,
 }
 
 for filetype, textwidth in pairs(textwidths) do
