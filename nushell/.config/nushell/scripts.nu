@@ -49,3 +49,38 @@ def colors [] {
     print -n (ansi reset)
     print ""
 }
+
+def latex_compile [file: string] {
+    # --shell-escape is required for some packages:
+    # https://tex.stackexchange.com/questions/598818/how-can-i-enable-shell-escape
+    pdflatex --shell-escape $"($file).tex"
+}
+
+def latex_watch [file: string] {
+    let compile = {||
+        latex_compile $file
+    }
+
+    if not ($"($file).tex" | path exists) {
+        return
+    }
+
+    def try_open [] {
+        if not ($"($file).tex" | path exists) {
+            return
+        }
+        if (lsof -Fc $"($file).pdf" | sed -n 's/^c//p') != "zathura" {
+            sh -c $"zathura '($file).pdf' >/dev/null 2>&1 &"
+        }
+    }
+
+    try_open
+    sleep 0.1sec
+    do $compile
+    try_open
+
+    echo $"($file).tex"
+        | entr -np env NO_NU=1 zsh -ci $"pdflatex-bibtex '($file)'"
+
+    # watch -g $"($file).tex" . $compile
+}
