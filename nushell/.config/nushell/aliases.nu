@@ -31,3 +31,5 @@ alias dc = cd -
 
 alias zig = ~/.zvm/bin/zig
 
+alias zsh = env NO_NU=1 zsh
+
