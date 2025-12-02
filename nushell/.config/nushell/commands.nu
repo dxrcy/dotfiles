@@ -1,3 +1,14 @@
+# Terrible hack
+def --wrapped abandon [--quiet (-q), cmd, ...args] {
+    let cmdline = $cmd + " " + ($args | str join " ")
+    let redirect = if $quiet {
+        $" o+e> /dev/null"
+    } else {
+        ""
+    }
+    sh -c $"nu -c '($cmdline) ($redirect)' & disown"
+}
+
 def --wrapped nvim_dir [...args] {
     if ($args | length) > 0 {
         ^nvim ...$args
