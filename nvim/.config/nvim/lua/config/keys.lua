@@ -4,6 +4,26 @@ local commands = require("config.commands")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Esperanto keys
+vim.api.nvim_set_option('langmap', 'ĉx,ĝw,ĥ],ĵ[,ŝq,ŭy,ĈX,ĜW,Ĥ},Ĵ{,ŜQ,ŬY')
+-- Manual Esperanto keybinds (for some reason)
+vim.keymap.set("n", "cĝ", "cw")
+vim.keymap.set("n", "dĝ", "dw")
+-- For Esperanto keyboard, or uppercase misspellings
+vim.cmd([[cabbrev W w]]) -- w
+vim.cmd([[cabbrev ĝ w]])
+vim.cmd([[cabbrev Ĝ w]])
+vim.cmd([[cabbrev Q q]]) -- q (also covers q!)
+vim.cmd([[cabbrev ŝ q]])
+vim.cmd([[cabbrev Ŝ q]])
+vim.cmd([[cabbrev ĝŝ wq]]) -- wq
+vim.cmd([[cabbrev ĜŜ wq]])
+vim.cmd([[cabbrev ĝŜ wq]])
+vim.cmd([[cabbrev Ĝŝ wq]])
+vim.cmd([[cabbrev Wq wq]])
+vim.cmd([[cabbrev WQ wq]])
+vim.cmd([[cabbrev wQ wq]])
+
 -- Save file
 vim.keymap.set("n", "<C-s>", vim.cmd.write, { desc = "Save file" })
 vim.keymap.set("i", "<C-s>", vim.cmd.write, { desc = "Save file" })
