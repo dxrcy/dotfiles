@@ -17,3 +17,6 @@ customCommands:
     command: 'zsh -ci gh-switch'
 os:
   editPreset: 'nvim'
+
+promptToReturnFromSubprocess: false
+
