@@ -1,4 +1,4 @@
-def pwd_last_parts [] {
+def pwd_last_parts []: nothing -> string {
     pwd | str replace $env.HOME "~"
         | path split
         | last 3
@@ -6,7 +6,7 @@ def pwd_last_parts [] {
         | str replace -r "/+" "/"
 }
 
-def prompt_left [] {
+def prompt_left []: nothing -> nothing {
     let cwd = (pwd_last_parts)
     let git_branch = (git-info --branch)
     let git_info = (git-info)

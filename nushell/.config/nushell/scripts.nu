@@ -1,4 +1,4 @@
-def colors [] {
+def colors []: nothing -> nothing {
     let bgs1 = [ 49 40 41 42 43 44 45 46 47 ]
     let bgs2 = [    40 41 42 43 44 45 46 47 ]
     let fgs  = [    30 31 32 33 34 35 36 37 ]
@@ -50,13 +50,13 @@ def colors [] {
     print ""
 }
 
-def latex_compile [file: string] {
+def latex_compile [file: string]: nothing -> nothing {
     # --shell-escape is required for some packages:
     # https://tex.stackexchange.com/questions/598818/how-can-i-enable-shell-escape
     echo | pdflatex --shell-escape $"($file).tex"
 }
 
-def latex_watch [file: string] {
+def latex_watch [file: string]: nothing -> nothing {
     let compile = {||
         let result = (latex_compile $file | complete)
         print $result.stdout
