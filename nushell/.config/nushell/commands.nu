@@ -50,14 +50,25 @@ def --env fzf_sandbox []: nothing -> nothing {
     fzf_cd_setup 1 $"($env.HOME)/code/sandbox"
 }
 
-def github_url [name]: nothing -> string {
+def git_provider_url [
+    domain: string,
+    user: string,
+    name: string,
+]: nothing -> string {
     let prefix = ($name | str substring 0..0)
     let rest = ($name | str substring 1..)
     match $prefix {
-        : => $"($GHU)/($rest)"
-        @ => $"($GH)/($rest)"
+        : => $"($domain)/($user)/($rest)"
+        @ => $"($domain)/($rest)"
         _ => $name
     }
+}
+
+def github_url [name: string]: nothing -> string {
+    git_provider_url $GH $GH_MAIN $name
+}
+def codeberg_url [name: string]: nothing -> string {
+    git_provider_url $CB $CB_MAIN $name
 }
 
 def extract_url_repo_name [url]: nothing -> string {
