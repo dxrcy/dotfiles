@@ -30,8 +30,12 @@ vim.diagnostic.config({
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(e)
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition,
-            { buffer = e.buf, desc = "Go to definition" })
+    callback = function(event)
+        local map = function(keys, func, desc, mode)
+            mode = mode or "n"
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+        end
+
+        map("gd", vim.lsp.buf.definition, "[G]o to [D]efinition")
     end
 })
