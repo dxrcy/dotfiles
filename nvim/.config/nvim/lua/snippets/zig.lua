@@ -1,4 +1,5 @@
 local ls = require("luasnip")
+local fmt = require("luasnip.extras.fmt").fmt
 
 --- Reuse text from node.
 local function recall_node(index)
@@ -12,31 +13,27 @@ ls.add_snippets("all", {
         ls.text_node([[const std = @import("std");]]),
     }),
 
-    ls.snippet("importfile", {
-        ls.text_node([[const ]]),
-        ls.insert_node(1),
-        ls.text_node([[ = @import("]]),
-        recall_node(1),
-        ls.text_node([[.zig");]]),
-    }),
+    ls.snippet("importfile",
+        fmt([[const {} = @import("{}.zig");]], {
+            recall_node(1),
+            ls.insert_node(1),
+        })
+    ),
 
-    ls.snippet("importchild", {
-        ls.text_node([[const ]]),
-        ls.insert_node(1),
-        ls.text_node([[ = ]]),
-        ls.insert_node(2),
-        ls.text_node([[.]]),
-        recall_node(1),
-        ls.text_node([[;]]),
-    }),
+    ls.snippet("importchild",
+        fmt([[const {} = {}.{};]], {
+            recall_node(2),
+            ls.insert_node(1),
+            ls.insert_node(2),
+        })
+    ),
 
-    ls.snippet("debugprint", {
-        ls.text_node([[std.debug.print("]]),
-        ls.insert_node(1),
-        ls.text_node([[\n", .{]]),
-        ls.insert_node(2),
-        ls.text_node([[});]]),
-    }),
+    ls.snippet("debugprint",
+        fmt([[std.debug.print("{}", .{{{}}});]], {
+            ls.insert_node(2),
+            ls.insert_node(1),
+        })
+    ),
 
     ls.snippet("debugallocator", {
         ls.text_node({
