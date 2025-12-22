@@ -1,42 +1,45 @@
 local ls = require("luasnip")
+local snippet = ls.snippet
+local insert = ls.insert_node
+local text = ls.text_node
 local fmt = require("luasnip.extras.fmt").fmt
 
 --- Reuse text from node.
-local function recall_node(index)
+local function recall(index)
     return ls.function_node(function(args)
         return args[1][1]
     end, { index }, {})
 end
 
 ls.add_snippets("all", {
-    ls.snippet("importstd", {
-        ls.text_node([[const std = @import("std");]]),
+    snippet("importstd", {
+        text([[const std = @import("std");]]),
     }),
 
-    ls.snippet("importfile",
+    snippet("importfile",
         fmt([[const {} = @import("{}.zig");]], {
-            recall_node(1),
-            ls.insert_node(1),
+            recall(1),
+            insert(1),
         })
     ),
 
-    ls.snippet("importchild",
+    snippet("importchild",
         fmt([[const {} = {}.{};]], {
-            recall_node(2),
-            ls.insert_node(1),
-            ls.insert_node(2),
+            recall(2),
+            insert(1),
+            insert(2),
         })
     ),
 
-    ls.snippet("debugprint",
+    snippet("debugprint",
         fmt([[std.debug.print("{}", .{{{}}});]], {
-            ls.insert_node(2),
-            ls.insert_node(1),
+            insert(2),
+            insert(1),
         })
     ),
 
-    ls.snippet("debugallocator", {
-        ls.text_node({
+    snippet("debugallocator", {
+        text({
             [[var gpa = std.heap.DebugAllocator(.{}){};]],
             [[defer _ = gpa.deinit();]],
             [[const allocator = gpa.allocator();]],
