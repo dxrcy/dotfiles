@@ -61,9 +61,11 @@ def git_provider_url [
 ]: nothing -> string {
     let prefix = ($name | str substring 0..0)
     let rest = ($name | str substring 1..)
+    # HTTP vs SSH format
+    let delim = if ($domain | str starts-with "http") { "/" } else { ":" }
     match $prefix {
-        : => $"($domain)/($user)/($rest)"
-        @ => $"($domain)/($rest)"
+        : => $"($domain)($delim)($user)/($rest)"
+        @ => $"($domain)($delim)($rest)"
         _ => $name
     }
 }

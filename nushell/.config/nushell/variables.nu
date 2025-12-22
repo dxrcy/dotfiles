@@ -15,7 +15,7 @@ let GH_MAIN = "dxrcy"
 let GH_STUDENT = "dyrcyuni"
 let GHU = $"($GH)/($GH_MAIN)"
 # Codeberg shorthand variables
-let CB = "https://codeberg.org"
+let CB = "git@codeberg.org"
 let CB_MAIN = "dxrcy"
 let CBU = $"($CB)/($CB_MAIN)"
 
