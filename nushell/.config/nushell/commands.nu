@@ -1,5 +1,9 @@
 # Terrible hack
-def --wrapped abandon [--quiet (-q), cmd, ...args]: nothing -> nothing {
+def --wrapped abandon [
+    --quiet (-q),
+    cmd: string,
+    ...args: string,
+]: nothing -> nothing {
     let cmdline = $cmd + " " + ($args | str join " ")
     let redirect = if $quiet {
         $" o+e> /dev/null"
@@ -9,7 +13,7 @@ def --wrapped abandon [--quiet (-q), cmd, ...args]: nothing -> nothing {
     sh -c $"nu -c '($cmdline) ($redirect)' & disown"
 }
 
-def --wrapped nvim_dir [...args]: nothing -> nothing {
+def --wrapped nvim_dir [...args: string]: nothing -> nothing {
     if ($args | length) > 0 {
         ^nvim ...$args
     } else {
@@ -17,13 +21,13 @@ def --wrapped nvim_dir [...args]: nothing -> nothing {
     }
 }
 
-def --env mkdir_cd [dir]: nothing -> nothing {
+def --env mkdir_cd [dir: string]: nothing -> nothing {
     let dir = ($dir | into string)
     ^mkdir $dir
     cd $dir
 }
 
-def --env yazi_cd [...args]: nothing -> nothing {
+def --env yazi_cd [...args: string]: nothing -> nothing {
     let tmp = (mktemp -t "yazi-cwd.XXXXXX")
     ^yazi ...$args --cwd-file $tmp
     let cwd = (open $tmp)
@@ -40,7 +44,7 @@ def --env project_setup []: nothing -> nothing {
     }
 }
 
-def --env fzf_cd_setup [...args]: nothing -> nothing {
+def --env fzf_cd_setup [...args: string]: nothing -> nothing {
     let dir = (sh fzf-dir ...$args)
     cd $dir
     project_setup
@@ -71,14 +75,18 @@ def codeberg_url [name: string]: nothing -> string {
     git_provider_url $CB $CB_MAIN $name
 }
 
-def extract_url_repo_name [url]: nothing -> string {
+def extract_url_repo_name [url: string]: nothing -> string {
     $url
         | path split
         | last
         | str replace --regex '\.git$' ""
 }
 
-def --env --wrapped git_clone_cd [name, target?, ...options]: nothing -> nothing {
+def --env --wrapped git_clone_cd [
+    name: string,
+    target?: string,
+    ...options: string,
+]: nothing -> nothing {
     let url = (github_url $name)
     let target = if $target != null { $target } else {
         (extract_url_repo_name $url)
