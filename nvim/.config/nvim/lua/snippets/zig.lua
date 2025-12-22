@@ -18,23 +18,23 @@ ls.add_snippets("all", {
 
     snippet("importfile",
         fmt([[const {} = @import("{}.zig");]], {
-            recall(1),
             insert(1),
+            recall(1),
         })
     ),
 
     snippet("importchild",
         fmt([[const {} = {}.{};]], {
-            recall(2),
             insert(1),
             insert(2),
+            recall(1),
         })
     ),
 
     snippet("debugprint",
         fmt([[std.debug.print("{}", .{{{}}});]], {
-            insert(2),
             insert(1),
+            insert(2),
         })
     ),
 
