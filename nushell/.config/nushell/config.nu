@@ -6,8 +6,11 @@ source $"($nu.cache-dir)/zoxide.nu"
 
 source variables.nu
 source commands.nu
-source scripts.nu
 source aliases.nu
 source keybinds.nu
 source prompt.nu
+
+source scripts/backup.nu
+source scripts/colors.nu
+source scripts/latex.nu
 
