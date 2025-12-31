@@ -9,6 +9,9 @@ $env.config.cursor_shape.vi_normal = "block"
 $env.DESKTOP = "hyprland"
 $env.DESKTOP_TTY = "/dev/tty1"
 
+# https://github.com/nushell/nushell/issues/17265
+try { $env.config.auto_cd_always = true }
+
 # GitHub shorthand variables
 let GH = "https://github.com"
 let GH_MAIN = "dxrcy"
