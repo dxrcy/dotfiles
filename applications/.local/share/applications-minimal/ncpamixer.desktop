@@ -1,0 +1,3 @@
+[Desktop Entry]
+Name=ncpamixer
+Exec=kitty ncpamixer
