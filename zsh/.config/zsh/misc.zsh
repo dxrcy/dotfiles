@@ -9,7 +9,7 @@ zsh-start-desktop() {
     printf '\n\x1b[1mStart desktop? \x1b[0m'
     read -r _ # ^C returns
     export ZSHLVL=0
-    hyprland # From `variables.zsh`
+    start-hyprland
 }
 
 # Add scripts and binaries to path
