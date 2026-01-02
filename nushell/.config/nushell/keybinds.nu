@@ -13,3 +13,10 @@ $env.config.keybindings ++= [ {
     event: null
 } ]
 
+$env.config.keybindings ++= [ {
+    modifier: CONTROL
+    keycode: Char_z
+    mode: [emacs, vi_insert, vi_normal]
+    event: { send: ExecuteHostCommand cmd: "job unfreeze" }
+} ]
+
