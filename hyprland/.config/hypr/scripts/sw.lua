@@ -16,7 +16,7 @@ Programs = {
         name = "music",
         class = "spotify",
         command = "spotify",
-        autostart = 0,
+        autostart = 1,
     },
     {
         name = "social",
