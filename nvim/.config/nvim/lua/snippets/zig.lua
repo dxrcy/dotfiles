@@ -45,4 +45,9 @@ ls.add_snippets("all", {
             [[const allocator = gpa.allocator();]],
         }),
     }),
+
+    snippet("selfthis", {
+        text([[const Self = @This();]]),
+        text([[]]),
+    }),
 })
