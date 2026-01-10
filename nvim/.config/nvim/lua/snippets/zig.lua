@@ -17,9 +17,11 @@ ls.add_snippets("all", {
     }),
 
     snippet("importfile",
-        fmt([[const {} = @import("{}.zig");]], {
+        fmt([[const {} = @import("{}{}.zig"){};]], {
             insert(1),
+            insert(2),
             recall(1),
+            insert(3),
         })
     ),
 
