@@ -52,4 +52,10 @@ ls.add_snippets("all", {
         text([[const Self = @This();]]),
         text([[]]),
     }),
+
+    snippet("logscoped",
+        fmt([[const log = std.log.scoped(.{});]], {
+            insert(1),
+        })
+    ),
 })
