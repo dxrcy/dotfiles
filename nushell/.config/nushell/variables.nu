@@ -6,6 +6,8 @@ $env.config.edit_mode = "vi"
 $env.config.cursor_shape.vi_insert = "line"
 $env.config.cursor_shape.vi_normal = "block"
 
+$env.config.history.sync_on_enter = false
+
 $env.DESKTOP = "hyprland"
 $env.DESKTOP_TTY = "/dev/tty1"
 
