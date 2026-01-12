@@ -46,6 +46,11 @@ return { -- Manage files in a tree
             last_modified = { enabled = false },
             created = { enabled = false },
         },
+
+        -- Sort directories and files together
+        sort_function = function(a, b)
+            return a.path > b.path
+        end
     },
 
     -- If directory is open (eg. `nvim .`), run neotree in current buffer (fullscreen not panel)
