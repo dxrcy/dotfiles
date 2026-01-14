@@ -49,7 +49,7 @@ return { -- Manage files in a tree
 
         -- Sort directories and files together
         sort_function = function(a, b)
-            return a.path > b.path
+            return a.path < b.path
         end
     },
 
