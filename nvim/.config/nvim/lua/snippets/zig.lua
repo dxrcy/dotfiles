@@ -12,6 +12,20 @@ local function recall(index)
 end
 
 ls.add_snippets("all", {
+    snippet("mainskeleton", {
+        text({
+            [[const std = @import("std");]],
+            [[]],
+            [[pub fn main() !void {]],
+            [[    ]]
+        }),
+        insert(1, [[//]]),
+        text({
+            [[]],
+            [[}]],
+        }),
+    }),
+
     snippet("importstd", {
         text([[const std = @import("std");]]),
     }),
