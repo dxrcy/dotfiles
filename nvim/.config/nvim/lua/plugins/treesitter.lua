@@ -1,5 +1,6 @@
 return { -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
+    branch = "v0.10.0",
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
     opts = {
