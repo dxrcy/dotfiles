@@ -3,9 +3,6 @@ return { -- Snippets
     version = "v2.*",
     build = "make install_jsregexp",
 
-    -- Optional premade snippets
-    dependencies = { "rafamadriz/friendly-snippets" },
-
     config = function()
         require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets/" })
 
