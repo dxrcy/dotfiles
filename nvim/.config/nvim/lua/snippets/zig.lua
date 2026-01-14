@@ -48,8 +48,8 @@ ls.add_snippets("all", {
     ),
 
     snippet("debugprint",
-        fmt([[std.debug.print("{}", .{{{}}});]], {
-            insert(1),
+        fmt([[std.debug.print("{}\n", .{{{}}});]], {
+            insert(1, [[{}]]),
             insert(2),
         })
     ),
@@ -63,8 +63,10 @@ ls.add_snippets("all", {
     }),
 
     snippet("selfthis", {
-        text([[const Self = @This();]]),
-        text([[]]),
+        text({
+            [[const Self = @This();]],
+            [[]],
+        }),
     }),
 
     snippet("logscoped",
