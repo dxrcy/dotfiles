@@ -29,6 +29,9 @@ vim.keymap.set("n", "<C-s>", vim.cmd.write, { desc = "Save file" })
 vim.keymap.set("i", "<C-s>", vim.cmd.write, { desc = "Save file" })
 
 -- Comment line
+vim.keymap.set("n", "<C-/>", "gcc", { desc = "Toggle comment", remap = true })
+vim.keymap.set("v", "<C-/>", "gc", { desc = "Toggle comment", remap = true })
+-- (Tmux is weird)
 vim.keymap.set("n", "<C-_>", "gcc", { desc = "Toggle comment", remap = true })
 vim.keymap.set("v", "<C-_>", "gc", { desc = "Toggle comment", remap = true })
 
