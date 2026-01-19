@@ -25,6 +25,7 @@ alias v = nvim
 alias r = yazi
 alias wcl = wc -l
 alias wlc = wl-copy
+alias lg = lazygit
 
 # Vim exit :)
 alias    q = exit
