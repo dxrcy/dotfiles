@@ -173,6 +173,9 @@ keybinds clear-defaults=true {
 
         bind "Alt Tab" { ToggleTab; }
         bind "Alt w" { ToggleFloatingPanes; }
+
+        bind "Alt [" { PreviousSwapLayout; }
+        bind "Alt ]" { NextSwapLayout; }
     }
 
     shared_except "tab" "locked" {
