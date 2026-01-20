@@ -86,7 +86,7 @@ keybinds clear-defaults=true {
     }
 
     session {
-        bind "Ctrl n" { SwitchToMode "Normal"; }
+        bind "Ctrl f" { SwitchToMode "Normal"; }
 
         bind "w" {
             LaunchOrFocusPlugin "zellij:session-manager" {
@@ -170,7 +170,7 @@ keybinds clear-defaults=true {
         bind "Ctrl U" { SwitchToMode "scroll"; }
     }
     shared_except "session" "locked" {
-        bind "Ctrl n" { SwitchToMode "session"; }
+        bind "Ctrl f" { SwitchToMode "session"; }
     }
     shared_except "scroll" "search" "tmux" "locked" {
         bind "Ctrl b" { SwitchToMode "tmux"; }
