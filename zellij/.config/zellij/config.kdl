@@ -31,7 +31,8 @@ keybinds clear-defaults=true {
     tab {
         bind "Ctrl t" { SwitchToMode "normal"; }
 
-        bind "n" { NewTab; SwitchToMode "normal"; }
+        bind "n" { NewTab { cwd ""; }; SwitchToMode "normal"; }
+        bind "N" { NewTab; SwitchToMode "normal"; }
 
         bind "x" { CloseTab; SwitchToMode "normal"; }
 
