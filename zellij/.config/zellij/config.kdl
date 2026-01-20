@@ -87,12 +87,24 @@ keybinds clear-defaults=true {
 
     session {
         bind "Ctrl n" { SwitchToMode "Normal"; }
+
         bind "w" {
             LaunchOrFocusPlugin "zellij:session-manager" {
                 floating true
                 move_to_focused_tab true
             };
             SwitchToMode "Normal"
+        }
+
+        bind "g" {
+            Run "sh" "-c" "lazygit; zellij action close-pane"{
+                floating true
+                x "0"
+                y "0"
+                width "100%"
+                height "100%"
+            };
+            SwitchToMode "normal";
         }
     }
 
