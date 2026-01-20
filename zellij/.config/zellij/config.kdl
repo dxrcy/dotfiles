@@ -63,6 +63,23 @@ keybinds clear-defaults=true {
         bind "l" { MovePane "Right"; }
     }
 
+    resize {
+        bind "Ctrl n" { SwitchToMode "normal"; }
+
+        bind "h" { Resize "Increase Left"; }
+        bind "j" { Resize "Increase Down"; }
+        bind "k" { Resize "Increase Up"; }
+        bind "l" { Resize "Increase Right"; }
+
+        bind "H" { Resize "Decrease Left"; }
+        bind "J" { Resize "Decrease Down"; }
+        bind "K" { Resize "Decrease Up"; }
+        bind "L" { Resize "Decrease Right"; }
+
+        bind "=" "+" { Resize "Increase"; }
+        bind "-" "_" { Resize "Decrease"; }
+    }
+
     scroll {
         bind "Ctrl U" { SwitchToMode "normal"; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "normal"; }
@@ -165,6 +182,9 @@ keybinds clear-defaults=true {
     }
     shared_except "move" "locked" {
         bind "Ctrl h" { SwitchToMode "move"; }
+    }
+    shared_except "resize" "locked" {
+        bind "Ctrl n" { SwitchToMode "Resize"; }
     }
     shared_except "scroll" "locked" {
         bind "Ctrl U" { SwitchToMode "scroll"; }
