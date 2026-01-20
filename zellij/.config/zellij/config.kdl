@@ -115,7 +115,8 @@ keybinds clear-defaults=true {
         }
 
         bind "g" {
-            Run "sh" "-c" "lazygit; zellij action close-pane"{
+            Run "lazygit" {
+                close_on_exit true
                 floating true
                 x "0"
                 y "0"
