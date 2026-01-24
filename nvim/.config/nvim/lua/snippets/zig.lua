@@ -16,10 +16,10 @@ ls.add_snippets("all", {
         text({
             [[const std = @import("std");]],
             [[]],
-            [[pub fn main() !void {]],
+            [[pub fn main(init: std.process.Init) !void {]],
             [[    ]]
         }),
-        insert(1, [[//]]),
+        insert(1, [[_ = init;]]),
         text({
             [[]],
             [[}]],
