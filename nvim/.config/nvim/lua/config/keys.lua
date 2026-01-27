@@ -73,3 +73,5 @@ vim.keymap.set("n", "<leader>v", "ggVG", { desc = "Select entire buffer" })
 
 vim.keymap.set("n", "<leader>q", [[<cmd>.!qalc -t $(cat)<CR>]],
     { desc = "Evaluate line with libqalculate" })
+
+vim.keymap.set("n", "<leader>ex", commands.chmod_executable, { desc = "chmod +x" })
