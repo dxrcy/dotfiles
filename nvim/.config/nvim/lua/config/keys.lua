@@ -66,12 +66,13 @@ vim.keymap.set("n", "ge", vim.diagnostic.open_float)
 vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
 
--- Change line width / column limit
-vim.keymap.set("n", "<leader>l", commands.cycle_column_limit)
-
 vim.keymap.set("n", "<leader>v", "ggVG", { desc = "Select entire buffer" })
 
 vim.keymap.set("n", "<leader>q", [[<cmd>.!qalc -t $(cat)<CR>]],
     { desc = "Evaluate line with libqalculate" })
 
-vim.keymap.set("n", "<leader>ex", commands.chmod_executable, { desc = "chmod +x" })
+vim.keymap.set("n", "<leader>l", commands.cycle_column_limit,
+    { desc = "Change line width / column limit" })
+
+vim.keymap.set("n", "<leader>ex", commands.chmod_executable,
+    { desc = "Make current file an executable script" })
