@@ -28,6 +28,7 @@ local textwidths = {
     tex = 80,
     md = 80,
     typst = 80,
+    nu = 80,
 }
 
 for filetype, textwidth in pairs(textwidths) do
