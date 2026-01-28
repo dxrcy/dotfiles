@@ -1,9 +1,9 @@
-# Alternative programs
+# Alternative programs and options
 alias cat = bat
 alias grep = rg
-
-# Program options
+alias ls = eza -l --group-directories-first
 alias lsa = ls -a
+alias lst = ls --total-size --sort size --reverse
 
 # Custom nushell functions
 alias nvim = nvim_dir
