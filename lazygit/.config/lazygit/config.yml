@@ -8,6 +8,8 @@ git:
   pagers:
     - pager: delta --dark --paging=never
   disableForcePushing: true
+  overrideGpg: true
+
 customCommands:
   - key: 'ŝ'
     context: 'global'
