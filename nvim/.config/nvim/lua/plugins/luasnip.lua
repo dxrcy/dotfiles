@@ -3,6 +3,12 @@ return { -- Snippets
     version = "v2.*",
     build = "make install_jsregexp",
 
+    opts = {
+        history = true,
+        region_check_events = "InsertEnter",
+        delete_check_events = "TextChanged",
+    },
+
     config = function()
         require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets/" })
 
