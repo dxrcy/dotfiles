@@ -19,7 +19,7 @@ end)
 local textwidths = {
     c = 80,
     cpp = 100,
-    zig = 80,
+    zig = 100,
     rust = 100,
     lua = 80,
     sh = 80,
