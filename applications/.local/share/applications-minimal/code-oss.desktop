@@ -1,0 +1,3 @@
+[Desktop Entry]
+Name=VSCode
+Exec=code-oss %F
