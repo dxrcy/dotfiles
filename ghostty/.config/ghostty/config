@@ -3,33 +3,37 @@ font-family-bold        = "Fira Code Bold"
 font-family-italic      = "Source Code Pro Italic"
 font-family-bold-italic = "Source Code Pro Bold Italic"
 
-font-size = 11
+font-size = 10.5
 
 window-padding-x = 8
 window-padding-y = 8
 
 confirm-close-surface = false
 
-background-opacity = 0.93
+background-opacity = 0.85
 
-background = #080b10
+cursor-color = #FFDD22
+background = #000000
+foreground = #b7bcb9
+selection-background = #1e1f22
+selection-foreground = #161718
 
-palette = 0=#2f3439
-palette = 8=#1a1e23
-palette = 1=#cc6666
-palette = 9=#864343
-palette = 2=#b5bd68
-palette = 10=#777c44
-palette = 3=#f0c674
-palette = 11=#9e824c
-palette = 4=#81a2be
-palette = 12=#556a7d
-palette = 5=#b294bb
-palette = 13=#75617b
-palette = 6=#8abeb7
-palette = 14=#5b7d78
-palette = 7=#c5c8c6
-palette = 15=#828482
+palette = 0=#2a2e33
+palette = 8=#1d1e21
+palette = 1=#b74d50
+palette = 9=#8c2d32
+palette = 2=#b3be5a
+palette = 10=#788331
+palette = 3=#e3b55e
+palette = 11=#e5894f
+palette = 4=#6d90b0
+palette = 12=#4b6b88
+palette = 5=#a07eab
+palette = 13=#6e4f79
+palette = 6=#7fbeb3
+palette = 14=#4d7b73
+palette = 7=#b5b8b6
+palette = 15=#5a6169
 
 maximize = true
 resize-overlay = never
