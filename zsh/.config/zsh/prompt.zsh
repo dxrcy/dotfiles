@@ -2,7 +2,6 @@
 
 # Misc.
 _dot='·'
-_gt='❯'
 
 # Display shell nesting level
 # Variable, not function (unlike below)
@@ -61,7 +60,7 @@ _set_ps1() {
     _prompt         "%F{cyan}"      "%(0?.. $_dot)" # Non-zero exit code = dot
     _prompt                         $'\n'           #
     _prompt         "%F{cyan}"      "%(1j.[%j].)"   # Job count
-    _prompt         '%F{yellow}'    "$_gt "         # >
+    _prompt         '%F{yellow}'    ": "            #
     PS1="$_PS"
 }
 _set_ps1
