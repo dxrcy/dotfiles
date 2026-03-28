@@ -4,6 +4,8 @@ gui:
       - underline
     selectedRangeBgColor:
       - underline
+  mainPanelSplitMode: horizontal
+
 git:
   pagers:
     - pager: delta --dark --paging=never
