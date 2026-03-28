@@ -4,7 +4,6 @@
 
 # Misc. alternative programs
 alias cat='bat'
-alias find='fd'
 alias grep="rg"
 alias z='zi'
 
