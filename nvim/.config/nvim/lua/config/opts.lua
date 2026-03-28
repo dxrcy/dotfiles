@@ -9,7 +9,7 @@ vim.opt.breakindent = true
 
 -- Line numbers
 vim.opt.number = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 -- Always show left column
 vim.opt.signcolumn = "yes"
