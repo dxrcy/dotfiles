@@ -56,4 +56,10 @@ M.chmod_executable = function()
     vim.cmd("set filetype=sh")
 end
 
+M.toggle_diagnostics = function()
+    local enabled = vim.diagnostic.is_enabled()
+    vim.diagnostic.enable(not enabled)
+    print("Diagnostics: " .. (not enabled and "ON" or "OFF"))
+end
+
 return M

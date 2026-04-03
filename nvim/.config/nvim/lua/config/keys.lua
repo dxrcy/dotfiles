@@ -76,3 +76,6 @@ vim.keymap.set("n", "<leader>l", commands.cycle_column_limit,
 
 vim.keymap.set("n", "<leader>ex", commands.chmod_executable,
     { desc = "Make current file an executable script" })
+
+vim.keymap.set("n", "<leader>td", commands.toggle_diagnostics,
+    { desc = "Toggle LSP diagnostics visibility" })
