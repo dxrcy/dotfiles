@@ -16,6 +16,10 @@ ft_config("typst", function()
     vim.bo.shiftwidth = 4
 end)
 
+ft_config("lc3", function()
+    vim.bo.commentstring = "; %s"
+end)
+
 local textwidths = {
     c = 80,
     cpp = 100,
