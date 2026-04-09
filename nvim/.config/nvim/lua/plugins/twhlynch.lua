@@ -1,12 +1,13 @@
 return {
     "twhlynch/nvim-plugins",
-    commit = "9b6a74f",
+    commit = "fd64c52",
 
     opts = {
         notebook = {
             enabled = true,
             keybind_prefix = "<leader>c",
             max_output_lines = 10,
+            cell_gap = 1,
             custom_plot_theme = true,
             custom_theme_colors = { "#4878CF", "#6ACC65", "#D65F5F", "#B47CC7", "#C4AD66", "#77BEDB" },
             debug = false,
@@ -29,6 +30,8 @@ return {
 
                 open_image = "gx",
                 show_output = "<CR>",
+
+                split_cell = "s",
             },
 
             hl = {
@@ -40,7 +43,7 @@ return {
 
             strings = {
                 new_cell = { "# " },
-                new_code_cell = { "# " },
+                new_code_cell = { "" },
 
                 output_border = "┃   ",
                 cell_border = "─",

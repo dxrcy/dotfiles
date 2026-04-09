@@ -9,7 +9,7 @@
   "mini.statusline": { "branch": "main", "commit": "14919901649d20d020e659c63c03baa75cd94f33" },
   "neo-tree.nvim": { "branch": "main", "commit": "84c75e7a7e443586f60508d12fc50f90d9aee14e" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
-  "nvim-plugins": { "branch": "main", "commit": "9b6a74fda3b2c0beba86ca17e17cbe21389e4b75" },
+  "nvim-plugins": { "branch": "main", "commit": "fd64c5201820856232720c5e4dcb4b0c2bad54ab" },
   "nvim-scrollbar": { "branch": "main", "commit": "f8e87b96cd6362ef8579be456afee3b38fd7e2a8" },
   "nvim-treesitter": { "branch": "main", "commit": "4916d6592ede8c07973490d9322f187e07dfefac" },
   "nvim-web-devicons": { "branch": "master", "commit": "6e76c5e47e957fbf080b1fdac165c66dbd2e7cfb" },
