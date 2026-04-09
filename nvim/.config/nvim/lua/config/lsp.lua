@@ -4,7 +4,6 @@ vim.lsp.enable({
     "lua",
     "rust",
     "python",
-    "lc3",
 })
 
 vim.diagnostic.config({
