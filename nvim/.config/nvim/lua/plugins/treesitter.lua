@@ -8,6 +8,21 @@ return { -- Highlight, edit, and navigate code
         -- Manual version of "ensure_installed" and "auto_install" for 'main' branch rewrite
         require("nvim-treesitter").install({
             "zig",
+            "rust",
+            "bash",
+            "python",
+            "cpp",
+            "c",
+            "diff",
+            "html",
+            "css",
+            "lua",
+            "luadoc",
+            "markdown",
+            "markdown_inline",
+            "query",
+            "vim",
+            "vimdoc",
         })
 
         -- Manual version of "highlight = {enabled = true}" and "indent = {enabled = true}"
