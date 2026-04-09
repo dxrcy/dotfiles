@@ -36,22 +36,13 @@ return { -- Highlight, edit, and navigate code
             end,
         })
 
-        -- TODO:
+        require("nvim-treesitter.parsers").lc3 = {
+            install_info = {
+                path = "~/code/tree-sitter/tree-sitter-lc3",
+            },
+        }
 
-        -- require("nvim-treesitter.parsers").lc3 = {
-        --     filetype = "lc3",
-        --     install_info = {
-        --         url = "~/code/tree-sitter/tree-sitter-lc3",
-        --         files = { "src/parser.c" },
-        --     },
-        -- }
-        --
-        -- vim.filetype.add {
-        --     extension = {
-        --         asm = "lc3",
-        --         lc3 = "lc3",
-        --     },
-        -- }
+        vim.filetype.add({ extension = { asm = "lc3" } })
     end
 
 }
