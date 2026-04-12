@@ -1,6 +1,5 @@
 return {
     "twhlynch/nvim-plugins",
-    commit = "fd64c52",
 
     opts = {
         notebook = {
@@ -42,7 +41,7 @@ return {
             },
 
             strings = {
-                new_cell = { "# " },
+                new_cell = { "" },
                 new_code_cell = { "" },
 
                 output_border = "┃   ",
