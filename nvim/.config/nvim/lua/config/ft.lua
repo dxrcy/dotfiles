@@ -20,6 +20,10 @@ ft_config("lc3", function()
     vim.bo.commentstring = "; %s"
 end)
 
+ft_config("python", function()
+    vim.diagnostic.enable(false)
+end)
+
 local textwidths = {
     c = 80,
     cpp = 100,
@@ -33,6 +37,7 @@ local textwidths = {
     md = 80,
     typst = 80,
     nu = 80,
+    python = 80,
 }
 
 for filetype, textwidth in pairs(textwidths) do
