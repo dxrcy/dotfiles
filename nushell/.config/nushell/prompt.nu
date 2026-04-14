@@ -26,7 +26,7 @@ def prompt_left []: nothing -> nothing {
 
 $env.PROMPT_COMMAND = { prompt_left }
 $env.PROMPT_COMMAND_RIGHT = { null }
-$env.PROMPT_INDICATOR           = $"(ansi yellow)> "
-$env.PROMPT_INDICATOR_VI_INSERT = $"(ansi yellow): "
-$env.PROMPT_INDICATOR_VI_NORMAL = $"(ansi yellow)> "
+$env.PROMPT_INDICATOR           = $"(ansi yellow)~> "
+$env.PROMPT_INDICATOR_VI_INSERT = $"(ansi yellow)~: "
+$env.PROMPT_INDICATOR_VI_NORMAL = $"(ansi yellow)~> "
 
