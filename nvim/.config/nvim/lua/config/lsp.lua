@@ -5,6 +5,7 @@ vim.lsp.enable({
     "rust",
     "python",
     "asp",
+    "typst",
 })
 
 vim.diagnostic.config({
