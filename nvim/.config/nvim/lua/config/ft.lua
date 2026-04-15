@@ -1,3 +1,6 @@
+vim.filetype.add({ extension = { lp = "clingo" } })
+vim.filetype.add({ extension = { asm = "lc3" } })
+
 ---@param filetype string
 ---@param callback function
 ---@return nil
@@ -22,6 +25,11 @@ end)
 
 ft_config("python", function()
     vim.diagnostic.enable(false)
+end)
+
+ft_config("clingo", function()
+    vim.bo.commentstring = "% %s"
+    vim.bo.comments = ":%"
 end)
 
 local textwidths = {

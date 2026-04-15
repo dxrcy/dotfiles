@@ -4,7 +4,25 @@ return { -- Highlight, edit, and navigate code
     build = ":TSUpdate",
 
     config = function()
-        require("nvim-treesitter").setup()
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "TSUpdate",
+            callback = function()
+                -- Custom parsers go here
+                local parsers = require("nvim-treesitter.parsers")
+                parsers.clingo = {
+                    install_info = {
+                        url = "https://github.com/potassco/tree-sitter-clingo",
+                        queries = "queries",
+                    },
+                }
+                parsers.lc3 = {
+                    install_info = {
+                        path = "~/code/tree-sitter/tree-sitter-lc3",
+                        queries = "queries",
+                    },
+                }
+            end,
+        })
 
         -- Manual version of "ensure_installed" and "auto_install" for 'main' branch rewrite
         require("nvim-treesitter").install({
@@ -24,6 +42,8 @@ return { -- Highlight, edit, and navigate code
             "query",
             "vim",
             "vimdoc",
+            "clingo",
+            "lc3",
         })
 
         -- Manual version of "highlight = {enabled = true}" and "indent = {enabled = true}"
@@ -35,14 +55,6 @@ return { -- Highlight, edit, and navigate code
                 -- vim.bo.indentexpr = "v:lua require('nvim-treesitter').indentexpr()"
             end,
         })
-
-        require("nvim-treesitter.parsers").lc3 = {
-            install_info = {
-                path = "~/code/tree-sitter/tree-sitter-lc3",
-            },
-        }
-
-        vim.filetype.add({ extension = { asm = "lc3" } })
     end
 
 }
