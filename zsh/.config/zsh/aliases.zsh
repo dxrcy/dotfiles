@@ -57,6 +57,7 @@ alias syu='systemctl --user'
 alias btc='bluetoothctl'
 alias bhs='basic-http-server'
 alias wlc='wl-copy'
+alias gp='git push'
 alias print='printf' # Prevent terrible problems!
 
 # Exit (vim habit)
