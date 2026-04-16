@@ -55,3 +55,5 @@ vim.opt.listchars = {
 }
 
 vim.opt.termguicolors = true
+
+vim.opt.winborder = "rounded"
