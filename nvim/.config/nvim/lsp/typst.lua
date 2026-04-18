@@ -6,4 +6,8 @@ return {
     filetypes = {
         "typst",
     },
+    settings = {
+        formatterMode = "disable",
+        exportPdf = "onSave",
+    },
 }
