@@ -53,7 +53,7 @@
                     )
                 }"
                 { EWW_BATTERY.BAT0.status == "Charging"
-                    ? "  " : "  " }
+                    ? "  " : (conservation == "enabled" ? " " : " ") }
                 "${ EWW_BATTERY.BAT0.capacity }%"
             )
             (item "${date}")
@@ -98,6 +98,7 @@
 (defpoll media-state      :interval "1s"   "player-info brief")
 (defpoll volume           :interval "0.5s" "volume-brightness display-volume")
 (defpoll mic              :interval "0.5s" "volume-brightness display-mic")
+(defpoll conservation     :interval "2s"   "conservation status")
 (defpoll date             :interval "30s"  "date +'%Y-%m-%d'")
 (defpoll time             :interval "1s"   "date +'%H:%M'")
 (defpoll idle-pid         :interval "1s"   "pgrep hypridle || echo ''")
