@@ -22,7 +22,7 @@ wine = [
 ]
 
 swiv = [
-    { run = 'swiv -B "#000000" "$@"', desc = "Open with Swiv" },
+    { run = 'swiv -a -B "#000000" "$@"', desc = "Open with Swiv" },
 ]
 inkscape = [
     { run = 'inkscape "$@"', desc = "Open with Inkscape" },
