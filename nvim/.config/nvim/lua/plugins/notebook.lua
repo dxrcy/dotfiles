@@ -10,6 +10,8 @@ return {
             "#B47CC7", "#C4AD66", "#77BEDB",
         },
         cell_gap = 0,
+        write_output = true,
+        new_cell_cmd = "normal! A\nstartinsert!",
 
         keys = {
             run_cell           = "r",
@@ -19,11 +21,14 @@ return {
 
             next_cell          = "]c",
             previous_cell      = "[c",
+            textobject_cell    = "ic",
 
             insert_markdown    = "m",
             insert_code        = "c",
             split_cell         = "s",
             remove_cell        = "X",
+            move_cell_up       = "k",
+            move_cell_down     = "j",
 
             clear_all_output   = "x",
             refresh_all_output = "R",
@@ -46,6 +51,10 @@ return {
 
             output_border    = "┃   ",
             cell_border      = "─",
+            code_label       = " λ ",
+            markdown_label   = " ¶ ",
+            output_label     = " ⇒ ",
+
             cell_executed    = "[ ✓ Done ]",
             cell_running     = "[ Running... ]",
             truncated_output = "<Enter> %s more lines",
