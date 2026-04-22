@@ -6,6 +6,10 @@ GH='https://github.com'
 GH_MAIN='dxrcy'
 GH_STUDENT='dyrcyuni'
 GHU="$GH/$GH_MAIN"
+# Codeberg shorthand variables
+CB='git@codeberg.org'
+CB_MAIN='dxrcy'
+CBU="$CB:$CB_MAIN"
 
 # XDG base directory abbreviations
 XCONF="$XDG_CONFIG_HOME"
