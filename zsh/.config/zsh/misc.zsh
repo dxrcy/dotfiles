@@ -38,7 +38,7 @@ for dir in $NO_AUTOCD_DIRS; do
         $dir() {
             if [ -d '$dir' ];
                 then cd '$dir';
-                else command '$dir' -r \"\$@\";
+                else command '$dir' \$@;
             fi;
         }
 EOF
