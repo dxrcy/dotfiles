@@ -1,5 +1,4 @@
 [user]
-    email = acednes@gmail.com
     name = darcy
 	signingKey = /home/darcy/.ssh/id_ed25519_codeberg.pub
 [credential "https://github.com"]
