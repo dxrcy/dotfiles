@@ -13,6 +13,10 @@ return { -- Formatter
         },
     },
     opts = {
-        notify_on_error = false,
+        formatters_by_ft = {
+            javascript = { "prettier" },
+            typescript = { "prettier" },
+            json = { "prettier" },
+        },
     },
 }
