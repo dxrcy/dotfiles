@@ -3,7 +3,7 @@ return {
 
     opts = {
         keybind_prefix = "<leader>c",
-        max_output_lines = 10,
+        max_output_lines = 6,
         custom_plot_theme = true,
         custom_theme_colors = {
             "#4878CF", "#6ACC65", "#D65F5F",
@@ -35,7 +35,7 @@ return {
 
             open_image         = "gx",
             show_output        = "<CR>",
-            dump_images        = "D",
+            -- dump_images        = "D",
         },
 
         hl = {
@@ -49,16 +49,16 @@ return {
             new_cell         = { "# " },
             new_code_cell    = { "" },
 
-            output_border    = "┃   ",
+            output_border    = " ┃    ",
             cell_border      = "─",
-            code_label       = " λ ",
-            markdown_label   = " ¶ ",
-            output_label     = " ⇒ ",
+            code_label       = "  ",
+            markdown_label   = "  ",
+            output_label     = "  ",
 
-            cell_executed    = "[ ✓ Done ]",
-            cell_running     = "[ Running... ]",
-            truncated_output = "<Enter> %s more lines",
-            image_output     = "<gx> %s × image",
+            cell_executed    = "",
+            cell_running     = "",
+            truncated_output = "%s more lines",
+            image_output     = " × image",
         },
     },
 }
