@@ -55,10 +55,10 @@ return {
             markdown_label   = "  ",
             output_label     = "  ",
 
-            cell_executed    = "",
-            cell_running     = "",
+            cell_executed    = " ",
+            cell_running     = " Loading",
             truncated_output = "%s more lines",
-            image_output     = " × image",
+            image_output     = "  × %s",
         },
     },
 }
