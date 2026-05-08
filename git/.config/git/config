@@ -10,6 +10,7 @@
 
 [core]
     pager = delta
+    attributesfile = ~/.config/git/attributes
 
 [interactive]
     diffFilter = delta --color-only --features=interactive
@@ -29,7 +30,8 @@
     hunk-header-line-number-style = "#067a00"
     hunk-header-style = file line-number syntax
 
-
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff --ignore-outputs
 
 [http]
 	postBuffer = 524288000
