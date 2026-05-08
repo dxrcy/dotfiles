@@ -1,12 +1,12 @@
 [user]
     name = darcy
-	signingKey = /home/darcy/.ssh/id_ed25519_codeberg.pub
+    signingKey = /home/darcy/.ssh/id_ed25519_codeberg.pub
 [credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+    helper = 
+    helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+    helper = 
+    helper = !/usr/bin/gh auth git-credential
 
 [core]
     pager = delta
@@ -31,11 +31,11 @@
     hunk-header-style = file line-number syntax
 
 [diff "jupyternotebook"]
-	command = git-nbdiffdriver diff --ignore-outputs
+    command = git-nbdiffdriver diff --ignore-outputs
 
 [http]
-	postBuffer = 524288000
+    postBuffer = 524288000
 [gpg]
-	format = ssh
+    format = ssh
 [commit]
-	gpgSign = true
+    gpgSign = true
