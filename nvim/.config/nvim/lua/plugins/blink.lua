@@ -18,7 +18,8 @@ return { -- Autocompletion
         },
 
         sources = {
-            default = { "lsp", "path", "snippets", "buffer" },
+            default = { "lsp", "path", "snippets", "buffer", "elk" },
+            providers = { elk = { module = "elk.cmp" } },
         },
 
         fuzzy = { implementation = "prefer_rust_with_warning" },
