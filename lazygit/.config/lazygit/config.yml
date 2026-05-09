@@ -8,7 +8,8 @@ gui:
 
 git:
   pagers:
-    - pager: delta --dark --paging=never
+    - useExternalDiffGitConfig: true
+    # - pager: delta --dark --paging=never
   disableForcePushing: true
   overrideGpg: true
 
