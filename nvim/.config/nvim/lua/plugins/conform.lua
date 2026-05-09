@@ -17,6 +17,7 @@ return { -- Formatter
             javascript = { "prettier" },
             typescript = { "prettier" },
             json = { "prettier" },
+            python = { "black" },
         },
     },
 }
