@@ -45,7 +45,7 @@ return { -- Git integration for buffers
 				gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 			end, { desc = "Reset hunk", noremap = true })
 
-			map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Preview hunk", noremap = true })
+			map("n", "<leader>hp", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline", noremap = true })
 
 			map({ "n", "v" }, "<leader>ht", function()
 				gitsigns.toggle_linehl()
