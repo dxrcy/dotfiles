@@ -52,7 +52,7 @@ okular = [
 [open]
 prepend_rules = [
     # mime="text/*" overrides
-    { name = "*.drawio", use = [ "drawio", "edit", "default", "copy-text" ] },
+    { url = "*.drawio", use = [ "drawio", "edit", "default", "copy-text" ] },
 
     # "edit" enters the file, instead of opening in new window, so prefer this
     { mime = "text/*", use = [ "edit", "default", "copy-text" ] },
@@ -71,14 +71,14 @@ prepend_rules = [
 
     { mime = "inode/directory", use = [ "ignore" ] },
 
-    { name = "*.mscz", use = [ "musescore" ] },
+    { url = "*.mscz", use = [ "musescore" ] },
 
     # Executables
     { mime = "application/x-pie-executable", use = [ "ignore" ] },
     { mime = "application/vnd.microsoft.portable-executable", use = [ "wine" ] },
 
     # TODO: Use mime type `application/x-subrip`
-    { name = "*.srt", use = [ "edit", "default", "copy-text" ] },
+    { url = "*.srt", use = [ "edit", "default", "copy-text" ] },
 ]
 
 append_rules = [
