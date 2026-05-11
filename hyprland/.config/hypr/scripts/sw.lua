@@ -8,8 +8,8 @@
 Programs = {
     {
         name = "mail",
-        class = "org.mozilla.Thunderbird",
-        command = "thunderbird",
+        class = "Mailspring",
+        command = "mailspring --password-store=gnome-libsecret",
         autostart = 5,
     },
     {
