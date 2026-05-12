@@ -25,6 +25,8 @@ return {
 
             insert_markdown    = "m",
             insert_code        = "c",
+            output_to_md       = "im",
+            output_to_md_all   = "ia",
             split_cell         = "s",
             remove_cell        = "X",
             move_cell_up       = "k",
@@ -32,6 +34,9 @@ return {
 
             clear_all_output   = "x",
             refresh_all_output = "R",
+            format_cell        = "f",
+            toggle_cell_type   = "S",
+            go_to_running_cell = "g",
 
             open_image         = "gx",
             show_output        = "<CR>",
@@ -55,8 +60,9 @@ return {
             markdown_label   = "  ",
             output_label     = "  ",
 
-            cell_executed    = " ",
-            cell_running     = " Loading",
+            cell_executed    = "  ",
+            cell_running     = " Loading ",
+            cell_pending     = " Pending...",
             truncated_output = "%s more lines",
             image_output     = "  × %s",
         },
