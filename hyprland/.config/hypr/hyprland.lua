@@ -6,14 +6,18 @@
 -- TODO: Add comments
 -- TODO: Esperanto keyboard equivalent binds
 -- TODO: Call scripts directly from lua
+-- TODO: Change initial workspace to 2
+
+local fancy = true
+local weird = true
 
 local mod = "SUPER"
+local monitor1 = "eDP-1"
+
 local terminal = "kitty"
 local shell = "zsh"
 local browser = "$BROWSER"
 local player = "spotify"
-
-local monitor1 = "eDP-1"
 
 local scripts = "~/.config/hypr/scripts/"
 local sw = "lua " .. scripts .. "sw.lua"
@@ -27,20 +31,30 @@ hl.monitor { output = monitor1, mode = "preferred", position = "auto", scale = "
 --------------------------------------------------------------------------------
 -- Autostart
 
+-- PERF: Maybe add some sleeps between exec_cmd calls ?
 hl.on("hyprland.start", function()
     hl.exec_cmd("nm-applet")
     hl.exec_cmd("dunst")
     hl.exec_cmd("clipse -listen")
+
     hl.exec_cmd("killall hypridle; hypridle")
-    hl.exec_cmd("sleep 1; hyprpm reload")
+
+    -- FIXME: This crashes hyprland on start
+    -- hl.exec_cmd("sleep 1; hyprpm reload")
+
     hl.exec_cmd("wpaperd")
     hl.exec_cmd("hyprsunset")
     hl.exec_cmd("eww daemon & eww open bar")
     hl.exec_cmd("wvkbd-mobintl --hidden -L 250")
+
     hl.exec_cmd("sleep 1; bt mute-if-disconnected")
     hl.exec_cmd("sleep 1; volume-brightness.nu microphones disable")
+
     -- TODO: Set workspace
     hl.exec_cmd(browser)
+    -- TODO: Enable this once special programs are started silently
+    -- hl.exec_cmd(sw .. " --autostart")
+
     hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland \
         & sleep 2 & /usr/lib/xdg-desktop-portal")
 end)
@@ -77,15 +91,15 @@ hl.config {
         rounding = 4,
 
         blur = {
-            -- enabled = false,
+            enabled = fancy,
         },
         shadow = {
-            -- enabled = false,
+            enabled = fancy,
         },
     },
 
     animations = {
-        -- enabled = false,
+        enabled = fancy,
     },
 
     input = {
@@ -96,13 +110,13 @@ hl.config {
             disable_while_typing = false,
             natural_scroll = true,
             drag_lock = true,
-            flip_x = true,
-            flip_y = true,
+            flip_x = weird,
+            flip_y = weird,
         },
     },
 
     misc = {
-        -- disable_hyprland_logo = true,
+        disable_hyprland_logo = true,
 
         enable_swallow = true,
         -- TODO: Specify terminal class,
@@ -126,13 +140,17 @@ hl.config {
         no_update_news = true,
         no_donation_nag = true,
     },
+
+    debug = {
+        disable_logs = false,
+    },
 }
 
 --------------------------------------------------------------------------------
 -- Animations
 
 hl.curve("rubber", { type = "spring", mass = 0.6, stiffness = 100, dampening = 20 })
-hl.animation { leaf = "global", enabled = true, speed = 0.5, spring = "rubber" }
+hl.animation { leaf = "global", enabled = true, speed = 0.4, spring = "rubber" }
 
 --------------------------------------------------------------------------------
 -- Keybinds - Windows
@@ -190,7 +208,7 @@ hl.bind(mod .. " + ALT + Return", hl.dsp.exec_cmd(terminal .. " sh -c 'zellij at
 hl.bind(mod .. " + CTRL + Return",
     hl.dsp.exec_cmd(terminal .. " sh -c 'printf \"\\033[1m(no multiplexer)\\n\" && " .. shell .. "'"))
 
-hl.bind(mod .. " + O", hl.dsp.exec_cmd(terminal .. "sh -c 'cd ~/docs/notes && nvim $(notename)'"))
+hl.bind(mod .. " + O", hl.dsp.exec_cmd(terminal .. " sh -c 'cd ~/docs/notes && nvim $(notename)'"))
 
 --------------------------------------------------------------------------------
 -- Keybinds - Popups
@@ -220,7 +238,7 @@ hl.bind(mod .. " + SHIFT + B", hl.dsp.exec_cmd('bt disconnect'))
 hl.bind(mod .. " + S", hl.dsp.exec_cmd('player-info notify'))
 hl.bind(mod .. " + SHIFT + S",
     hl.dsp.exec_cmd('dunstify -t 2000 --replace 8428 "$(date \'+%T\')" "$(date +\'%A %-d %B\\n%FT%T%z\')"'))
-hl.bind(mod .. " + CTRL + N", hl.dsp.exec_cmd('dunstify close-all'))
+hl.bind(mod .. " + CTRL + N", hl.dsp.exec_cmd('dunstctl close-all'))
 
 hl.bind(mod .. " + U", hl.dsp.exec_cmd(scripts .. "/hypridle-toggle.sh"))
 
