@@ -7,7 +7,6 @@ return {
         "lua",
     },
     root_markers = {
-        ".git",
         ".luacheckrc",
         ".luarc.json",
         ".luarc.jsonc",
@@ -15,16 +14,9 @@ return {
         "selene.toml",
         "selene.yml",
         "stylua.toml",
+        ".git",
     },
 
     single_file_support = true,
     log_level = vim.lsp.protocol.MessageType.Warning,
-
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" },
-            },
-        },
-    },
 }
