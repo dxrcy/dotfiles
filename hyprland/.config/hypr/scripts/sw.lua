@@ -185,15 +185,19 @@ function StartProgram(program, delay, silent)
         silent_option = "silent"
     end
 
+    -- TODO: Silent option !
+
     local command =
         "{\n"
         .. "sleep " .. delay .. ";\n"
-        .. "hyprctl dispatch exec "
-        .. "[workspace special:" .. program.name .. " "
-        .. silent_option .. "] '"
-        .. program.command .. "'"
+        .. "hyprctl dispatch 'hl.dsp.exec_cmd(\""
+        .. program.command
+        .. "\", { workspace = \"special:"
+        .. program.name
+        .. "\" })'"
         .. ";\n"
         .. "} &"
+    print(command)
     local success = os.execute(command)
     if not success then
         EprintProgram(program.name, "failed to start program")
@@ -265,8 +269,9 @@ end
 ---@return nil
 function ToggleSpecialWorkspace(name)
     local success = os.execute(
-        "hyprctl dispatch togglespecialworkspace "
-        .. "'" .. name .. "'"
+        "hyprctl dispatch 'hl.dsp.workspace.toggle_special(\""
+        .. name
+        .. "\")'"
     )
     if not success then
         EprintProgram(name, "failed to toggle visibility")
