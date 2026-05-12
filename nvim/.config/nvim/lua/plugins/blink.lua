@@ -4,8 +4,6 @@ return { -- Autocompletion
     version = "1.*",
     dependencies = { "L3MON4D3/LuaSnip" },
 
-    --- @module "blink.cmp"
-    --- @type blink.cmp.Config
     opts = {
         keymap = { preset = "default" },
 
