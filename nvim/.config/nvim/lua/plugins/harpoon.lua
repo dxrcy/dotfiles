@@ -11,7 +11,7 @@ return { -- Buffer navigation
             function() harpoon:list():add() end,
             { desc = "Harpoon add" }
         )
-        vim.keymap.set("n", "<leader>h",
+        vim.keymap.set("n", "<leader>o",
             function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
             { desc = "Harpoon open menu" }
         )
