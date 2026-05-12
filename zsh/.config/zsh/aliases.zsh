@@ -33,6 +33,7 @@ alias cp='cp -r'
 alias swiv='swiv -a -B#000000'
 alias gcc='gcc -Wall -Wpedantic'
 alias journalctl='journalctl -e'
+alias slop='opencode . -c'
 
 # ls (eza) options
 alias ls='eza -l --group-directories-first'
