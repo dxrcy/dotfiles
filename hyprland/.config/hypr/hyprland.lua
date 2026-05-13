@@ -149,8 +149,8 @@ hl.config {
 --------------------------------------------------------------------------------
 -- Animations
 
-hl.curve("rubber", { type = "spring", mass = 0.6, stiffness = 100, dampening = 20 })
-hl.animation { leaf = "global", enabled = true, speed = 0.4, spring = "rubber" }
+hl.curve("rubber", { type = "spring", mass = 0.6, stiffness = 200, dampening = 20 })
+hl.animation { leaf = "global", enabled = true, speed = 1, spring = "rubber" }
 
 --------------------------------------------------------------------------------
 -- Keybinds - Windows
