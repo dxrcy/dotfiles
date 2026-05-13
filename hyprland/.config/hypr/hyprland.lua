@@ -323,3 +323,31 @@ hl.window_rule {
     match = { class = "Minecraft\\*.*" },
     tile = true,
 }
+
+hl.window_rule {
+    name = "ferdium",
+    match = { class = "Ferdium" },
+    fullscreen_state = 0,
+}
+
+-- TODO: Move to sw.lua
+hl.window_rule {
+    name = "special:mail",
+    match = { class = "Mailspring" },
+    workspace = "special:mail",
+}
+hl.window_rule {
+    name = "special:spotify",
+    match = { class = "Spotify" },
+    workspace = "special:music",
+}
+hl.window_rule {
+    name = "special:social",
+    match = { class = "Ferdium" },
+    workspace = "special:social",
+}
+hl.window_rule {
+    name = "special:vpn",
+    match = { class = "Windscribe" },
+    workspace = "special:vpn",
+}
