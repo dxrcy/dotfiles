@@ -157,7 +157,11 @@ hl.animation { leaf = "global", enabled = true, speed = 1, spring = "rubber" }
 
 hl.bind(mod .. " + Q", hl.dsp.window.close())
 
-hl.bind(mod .. " + space", hl.dsp.window.float { action = "toggle" })
+hl.bind(mod .. " + space", function()
+    -- Hack to stop windows becoming massive after enabling float
+    hl.dispatch(hl.dsp.window.float { action = "toggle" })
+    hl.dispatch(hl.dsp.window.resize { x = 1200, y = 800 })
+end)
 
 -- TODO: Resize in master layout
 
