@@ -51,8 +51,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("sleep 1; volume-brightness.nu microphones disable")
 
     hl.exec_cmd(browser, { workspace = "1 silent" })
-    -- TODO: Enable this once special programs are started silently
-    -- hl.exec_cmd(sw .. " --autostart")
+    hl.exec_cmd(sw .. " --autostart")
 
     hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland \
         & sleep 2 & /usr/lib/xdg-desktop-portal")
