@@ -162,6 +162,7 @@ hl.bind(mod .. " + space", function()
     hl.dispatch(hl.dsp.window.float { action = "toggle" })
     hl.dispatch(hl.dsp.window.resize { x = 1200, y = 800 })
 end)
+hl.bind(mod .. " + F", hl.dsp.window.fullscreen())
 
 -- TODO: Resize in master layout
 
@@ -169,9 +170,6 @@ hl.bind(mod .. " + CTRL + H", hl.dsp.focus { monitor = 0 })
 hl.bind(mod .. " + CTRL + L", hl.dsp.focus { monitor = 1 })
 
 hl.bind(mod .. " + P", hl.dsp.window.pin())
-
---------------------------------------------------------------------------------
--- Keybinds - Workspaces
 
 hl.bind(mod .. " + L", hl.dsp.focus { direction = "right" })
 hl.bind(mod .. " + H", hl.dsp.focus { direction = "left" })
@@ -183,6 +181,9 @@ hl.bind(mod .. " + SHIFT + H", hl.dsp.window.move { direction = "left" })
 hl.bind(mod .. " + SHIFT + K", hl.dsp.window.move { direction = "up" })
 hl.bind(mod .. " + SHIFT + J", hl.dsp.window.move { direction = "down" })
 
+--------------------------------------------------------------------------------
+-- Keybinds - Workspaces
+
 hl.bind(mod .. " + tab", hl.dsp.focus { workspace = "previous" })
 
 for i = 1, 10 do
@@ -193,6 +194,8 @@ end
 
 --------------------------------------------------------------------------------
 -- Keybinds - Special workspaces
+
+hl.bind(mod .. " + grave", hl.dsp.exec_cmd(sw .. " --recent"))
 
 hl.bind(mod .. " + F2", hl.dsp.exec_cmd(sw .. " mail"))
 hl.bind(mod .. " + F3", hl.dsp.exec_cmd(sw .. " music"))
