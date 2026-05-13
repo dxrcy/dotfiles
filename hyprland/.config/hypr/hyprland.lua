@@ -56,6 +56,8 @@ hl.on("hyprland.start", function()
 
     hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland \
         & sleep 2 & /usr/lib/xdg-desktop-portal")
+
+    hl.dispatch(hl.dsp.focus { workspace = 2 })
 end)
 
 --------------------------------------------------------------------------------
