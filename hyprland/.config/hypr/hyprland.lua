@@ -50,8 +50,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("sleep 1; bt mute-if-disconnected")
     hl.exec_cmd("sleep 1; volume-brightness.nu microphones disable")
 
-    -- TODO: Set workspace
-    hl.exec_cmd(browser)
+    hl.exec_cmd(browser, { workspace = "1 silent" })
     -- TODO: Enable this once special programs are started silently
     -- hl.exec_cmd(sw .. " --autostart")
 
