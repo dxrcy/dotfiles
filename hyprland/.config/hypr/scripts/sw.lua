@@ -182,10 +182,8 @@ function StartProgram(program, delay, silent)
 
     local silent_option = ""
     if silent then
-        silent_option = "silent"
+        silent_option = " silent"
     end
-
-    -- TODO: Silent option !
 
     local command =
         "{\n"
@@ -194,6 +192,7 @@ function StartProgram(program, delay, silent)
         .. program.command
         .. "\", { workspace = \"special:"
         .. program.name
+        .. silent_option
         .. "\" })'"
         .. ";\n"
         .. "} &"
