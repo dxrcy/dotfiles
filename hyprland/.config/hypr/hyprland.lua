@@ -8,6 +8,8 @@
 -- TODO: Call scripts directly from lua
 -- TODO: Change initial workspace to 2
 
+local sw = require("scripts.sw")
+
 local fancy = true
 local weird = true
 
@@ -20,7 +22,6 @@ local browser = "$BROWSER"
 local player = "spotify"
 
 local scripts = "~/.config/hypr/scripts/"
-local sw = "lua " .. scripts .. "sw.lua"
 
 --------------------------------------------------------------------------------
 -- Monitors
@@ -51,12 +52,13 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("sleep 1; volume-brightness.nu microphones disable")
 
     hl.exec_cmd(browser, { workspace = "1 silent" })
-    hl.exec_cmd(sw .. " --autostart")
 
     hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland \
         & sleep 2 & /usr/lib/xdg-desktop-portal")
 
     hl.dispatch(hl.dsp.focus { workspace = 2 })
+
+    sw.autostart_programs()
 end)
 
 --------------------------------------------------------------------------------
@@ -195,12 +197,12 @@ end
 --------------------------------------------------------------------------------
 -- Keybinds - Special workspaces
 
-hl.bind(mod .. " + grave", hl.dsp.exec_cmd(sw .. " --recent"))
+hl.bind(mod .. " + grave", sw.toggle_recent())
 
-hl.bind(mod .. " + F2", hl.dsp.exec_cmd(sw .. " mail"))
-hl.bind(mod .. " + F3", hl.dsp.exec_cmd(sw .. " music"))
-hl.bind(mod .. " + F4", hl.dsp.exec_cmd(sw .. " social"))
-hl.bind(mod .. " + CTRL + W", hl.dsp.exec_cmd(sw .. " vpn"))
+hl.bind(mod .. " + F2", sw.toggle("mail"))
+hl.bind(mod .. " + F3", sw.toggle("music"))
+hl.bind(mod .. " + F4", sw.toggle("social"))
+hl.bind(mod .. " + CTRL + W", sw.toggle("vpn"))
 
 hl.bind(mod .. " + SHIFT + F2", hl.dsp.window.move { workspace = "special:mail" })
 hl.bind(mod .. " + SHIFT + F3", hl.dsp.window.move { workspace = "special:music" })
