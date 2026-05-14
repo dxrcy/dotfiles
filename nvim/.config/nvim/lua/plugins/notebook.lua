@@ -24,7 +24,7 @@ return {
             textobject_cell    = "ic",
 
             insert_markdown    = "m",
-            insert_code        = "c",
+            insert_code        = "p",
             output_to_md       = "im",
             output_to_md_all   = "ia",
             split_cell         = "s",
@@ -67,4 +67,10 @@ return {
             image_output     = "  × %s",
         },
     },
+
+    init = function()
+        vim.keymap.set("n", "<leader>cc", function()
+            vim.api.nvim_feedkeys(vim.keycode("<leader>cr]c"), "mt", false)
+        end, { desc = "Run cell then next" })
+    end
 }
