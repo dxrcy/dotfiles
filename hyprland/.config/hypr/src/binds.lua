@@ -93,7 +93,8 @@ hl.bind(root.mod .. " + CTRL + N", hl.dsp.exec_cmd('dunstctl close-all'))
 
 hl.bind(root.mod .. " + U", hl.dsp.exec_cmd(root.scripts .. "/hypridle-toggle.sh"))
 
--- TODO: Mouse dragging
+hl.bind(root.mod .. " + mouse:272", hl.dsp.window.drag())
+hl.bind(root.mod .. " + mouse:273", hl.dsp.window.resize())
 
 hl.bind("XF86PowerOff", hl.dsp.exec_cmd("hyprlock"))
 
