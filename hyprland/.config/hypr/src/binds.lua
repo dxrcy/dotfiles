@@ -86,7 +86,7 @@ hl.bind("SHIFT + print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 hl.bind(root.mod .. " + B", hl.dsp.exec_cmd('bt connect'))
 hl.bind(root.mod .. " + SHIFT + B", hl.dsp.exec_cmd('bt disconnect'))
 
-hl.bind(root.mod .. " + S", hl.dsp.exec_cmd('config.player-info notify'))
+hl.bind(root.mod .. " + S", hl.dsp.exec_cmd('player-info notify'))
 hl.bind(root.mod .. " + SHIFT + S",
     hl.dsp.exec_cmd('dunstify -t 2000 --replace 8428 "$(date \'+%T\')" "$(date +\'%A %-d %B\\n%FT%T%z\')"'))
 hl.bind(root.mod .. " + CTRL + N", hl.dsp.exec_cmd('dunstctl close-all'))
