@@ -18,13 +18,14 @@ return {
             run_cells_all      = "a",
             run_cells_up       = "u",
             run_cells_down     = "d",
+            run_then_next      = "c",
 
             next_cell          = "]c",
             previous_cell      = "[c",
             textobject_cell    = "ic",
 
             insert_markdown    = "m",
-            insert_code        = "p",
+            insert_code        = "n",
             output_to_md       = "im",
             output_to_md_all   = "ia",
             split_cell         = "s",
@@ -67,10 +68,4 @@ return {
             image_output     = "  × %s",
         },
     },
-
-    init = function()
-        vim.keymap.set("n", "<leader>cc", function()
-            vim.api.nvim_feedkeys(vim.keycode("<leader>cr]c"), "mt", false)
-        end, { desc = "Run cell then next" })
-    end
 }
