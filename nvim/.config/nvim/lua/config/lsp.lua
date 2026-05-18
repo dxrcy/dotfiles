@@ -6,6 +6,7 @@ vim.lsp.enable({
     "python",
     "asp",
     "typst",
+    "java",
 })
 
 vim.diagnostic.config({
