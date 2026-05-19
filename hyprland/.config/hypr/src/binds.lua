@@ -12,7 +12,10 @@ hl.bind(root.mod .. " + space", function()
 end)
 hl.bind(root.mod .. " + F", hl.dsp.window.fullscreen())
 
--- TODO: Resize in master layout
+hl.bind(root.mod .. " + ALT + H", hl.dsp.layout("mfact -0.08"))
+hl.bind(root.mod .. " + ALT + L", hl.dsp.layout("mfact +0.08"))
+hl.bind(root.mod .. " + ALT + SHIFT + H", hl.dsp.layout("mfact -0.01"))
+hl.bind(root.mod .. " + ALT + SHIFT + L", hl.dsp.layout("mfact +0.01"))
 
 hl.bind(root.mod .. " + CTRL + H", hl.dsp.focus { monitor = 0 })
 hl.bind(root.mod .. " + CTRL + L", hl.dsp.focus { monitor = 1 })
