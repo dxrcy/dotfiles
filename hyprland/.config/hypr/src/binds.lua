@@ -1,103 +1,113 @@
 local root = require("src")
 local sw = root.sw
 
+---@param keys string[]
+---@param dispatcher (fun(): nil) | HL.Dispatcher
+---@return nil
+local function bind(keys, dispatcher)
+    local keys_string = root.mod
+    for _, key in ipairs(keys) do
+        keys_string  = keys_string .. " + " .. key
+    end
+
+    hl.bind(keys_string, dispatcher)
+end
+
 -- Windows
 
-hl.bind(root.mod .. " + Q", hl.dsp.window.close())
+bind({"Q"}, hl.dsp.window.close())
 
-hl.bind(root.mod .. " + space", function()
+bind({"space"}, function()
     -- Hack to stop windows becoming massive after enabling float
     hl.dispatch(hl.dsp.window.float { action = "toggle" })
     hl.dispatch(hl.dsp.window.resize { x = 1200, y = 800 })
 end)
-hl.bind(root.mod .. " + F", hl.dsp.window.fullscreen())
+bind({"F"}, hl.dsp.window.fullscreen())
 
-hl.bind(root.mod .. " + ALT + H", hl.dsp.layout("mfact -0.08"))
-hl.bind(root.mod .. " + ALT + L", hl.dsp.layout("mfact +0.08"))
-hl.bind(root.mod .. " + ALT + SHIFT + H", hl.dsp.layout("mfact -0.01"))
-hl.bind(root.mod .. " + ALT + SHIFT + L", hl.dsp.layout("mfact +0.01"))
+bind({"ALT", "H"}, hl.dsp.layout("mfact -0.08"))
+bind({"ALT", "L"}, hl.dsp.layout("mfact +0.08"))
+bind({"ALT", "SHIFT", "H"}, hl.dsp.layout("mfact -0.01"))
+bind({"ALT", "SHIFT", "L"}, hl.dsp.layout("mfact +0.01"))
 
-hl.bind(root.mod .. " + CTRL + H", hl.dsp.focus { monitor = 0 })
-hl.bind(root.mod .. " + CTRL + L", hl.dsp.focus { monitor = 1 })
+bind({"CTRL", "H"}, hl.dsp.focus { monitor = 0 })
+bind({"CTRL", "L"}, hl.dsp.focus { monitor = 1 })
 
-hl.bind(root.mod .. " + P", hl.dsp.window.pin())
+bind({"P"}, hl.dsp.window.pin())
 
-hl.bind(root.mod .. " + L", hl.dsp.focus { direction = "right" })
-hl.bind(root.mod .. " + H", hl.dsp.focus { direction = "left" })
-hl.bind(root.mod .. " + K", hl.dsp.focus { direction = "up" })
-hl.bind(root.mod .. " + J", hl.dsp.focus { direction = "down" })
+bind({"L"}, hl.dsp.focus { direction = "right" })
+bind({"H"}, hl.dsp.focus { direction = "left" })
+bind({"K"}, hl.dsp.focus { direction = "up" })
+bind({"J"}, hl.dsp.focus { direction = "down" })
 
-hl.bind(root.mod .. " + SHIFT + L", hl.dsp.window.move { direction = "right" })
-hl.bind(root.mod .. " + SHIFT + H", hl.dsp.window.move { direction = "left" })
-hl.bind(root.mod .. " + SHIFT + K", hl.dsp.window.move { direction = "up" })
-hl.bind(root.mod .. " + SHIFT + J", hl.dsp.window.move { direction = "down" })
+bind({"SHIFT", "L"}, hl.dsp.window.move { direction = "right" })
+bind({"SHIFT", "H"}, hl.dsp.window.move { direction = "left" })
+bind({"SHIFT", "K"}, hl.dsp.window.move { direction = "up" })
+bind({"SHIFT", "J"}, hl.dsp.window.move { direction = "down" })
 
 -- Workspaces
 
-hl.bind(root.mod .. " + tab", hl.dsp.focus { workspace = "previous" })
+bind({"tab"}, hl.dsp.focus { workspace = "previous" })
 
 for i = 1, 10 do
-    local key = i % 10
-    hl.bind(root.mod .. " + " .. key, hl.dsp.focus { workspace = i })
-    hl.bind(root.mod .. " + SHIFT + " .. key, hl.dsp.window.move { workspace = i })
+    local key = tostring(i % 10)
+    bind({key}, hl.dsp.focus { workspace = i })
+    bind({"SHIFT", key}, hl.dsp.window.move { workspace = i })
 end
 
 -- Special workspaces
 
-hl.bind(root.mod .. " + grave", sw.toggle_recent())
+bind({"grave"}, sw.toggle_recent())
 
-hl.bind(root.mod .. " + F2", sw.toggle("mail"))
-hl.bind(root.mod .. " + F3", sw.toggle("music"))
-hl.bind(root.mod .. " + F4", sw.toggle("social"))
-hl.bind(root.mod .. " + CTRL + W", sw.toggle("vpn"))
+bind({"F2"}, sw.toggle("mail"))
+bind({"F3"}, sw.toggle("music"))
+bind({"F4"}, sw.toggle("social"))
+bind({"CTRL", "W"}, sw.toggle("vpn"))
 
-hl.bind(root.mod .. " + SHIFT + F2", hl.dsp.window.move { workspace = "special:mail" })
-hl.bind(root.mod .. " + SHIFT + F3", hl.dsp.window.move { workspace = "special:music" })
-hl.bind(root.mod .. " + SHIFT + F4", hl.dsp.window.move { workspace = "special:social" })
-hl.bind(root.mod .. " + CTRL + SHIFT + W", hl.dsp.window.move { workspace = "special:vpn" })
+bind({"SHIFT", "F2"}, hl.dsp.window.move { workspace = "special:mail" })
+bind({"SHIFT", "F3"}, hl.dsp.window.move { workspace = "special:music" })
+bind({"SHIFT", "F4"}, hl.dsp.window.move { workspace = "special:social" })
+bind({"CTRL", "SHIFT", "W"}, hl.dsp.window.move { workspace = "special:vpn" })
 
 -- Applications
 
-hl.bind(root.mod .. " + Return", hl.dsp.exec_cmd(root.terminal .. " zellij"))
-hl.bind(root.mod .. " + ALT + Return",
+bind({"Return"}, hl.dsp.exec_cmd(root.terminal .. " zellij"))
+bind({"ALT", "Return"},
     hl.dsp.exec_cmd(root.terminal .. " sh -c 'zellij attach $(zellij ls --short | tail -n1)'"))
-hl.bind(root.mod .. " + CTRL + Return",
+bind({"CTRL", "Return"},
     hl.dsp.exec_cmd(root.terminal .. " sh -c 'printf \"\\033[1m(no multiplexer)\\n\" && " .. root.shell .. "'"))
 
-hl.bind(root.mod .. " + O", hl.dsp.exec_cmd(root.terminal .. " sh -c 'cd ~/docs/notes && nvim $(notename)'"))
+bind({"O"}, hl.dsp.exec_cmd(root.terminal .. " sh -c 'cd ~/docs/notes && nvim $(notename)'"))
 
 -- Popups
 
-hl.bind(root.mod .. " + D", hl.dsp.exec_cmd('$(terminal-popup fzf-menu "$XDG_DATA_HOME/applications-minimal/")'))
-hl.bind(root.mod .. " + SHIFT + D",
-    hl.dsp.exec_cmd('$(terminal-popup fzf-menu "/usr/share/applications/ $XDG_DATA_HOME/applications/")'))
-hl.bind(root.mod .. " + CTRL + D", hl.dsp.exec_cmd('rofi -show drun'))
+bind({"D"}, hl.dsp.exec_cmd('$(terminal-popup fzf-menu "$XDG_DATA_HOME/applications-minimal/")'))
+bind({"SHIFT", "D"}, hl.dsp.exec_cmd('$(terminal-popup fzf-menu "/usr/share/applications/ $XDG_DATA_HOME/applications/")'))
+bind({"CTRL", "D"}, hl.dsp.exec_cmd('rofi -show drun'))
 
-hl.bind(root.mod .. " + escape", hl.dsp.exec_cmd('fzf-powermenu'))
+bind({"escape"}, hl.dsp.exec_cmd('fzf-powermenu'))
 
-hl.bind(root.mod .. " + period", hl.dsp.exec_cmd('wl-copy $(terminal-popup fzf-emoji)'))
+bind({"period"}, hl.dsp.exec_cmd('wl-copy $(terminal-popup fzf-emoji)'))
 
-hl.bind(root.mod .. " + V", hl.dsp.exec_cmd('foot --app-id=popup-clipse -- clipse'))
+bind({"V"}, hl.dsp.exec_cmd('foot --app-id=popup-clipse -- clipse'))
 
-hl.bind(root.mod .. " + M", hl.dsp.exec_cmd('mount-gui --notify'))
+bind({"M"}, hl.dsp.exec_cmd('mount-gui --notify'))
 
 -- Misc
 
 hl.bind("print", hl.dsp.exec_cmd('flameshot gui'))
 hl.bind("SHIFT + print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
-hl.bind(root.mod .. " + B", hl.dsp.exec_cmd('bt connect'))
-hl.bind(root.mod .. " + SHIFT + B", hl.dsp.exec_cmd('bt disconnect'))
+bind({"B"}, hl.dsp.exec_cmd('bt connect'))
+bind({"SHIFT", "B"}, hl.dsp.exec_cmd('bt disconnect'))
 
-hl.bind(root.mod .. " + S", hl.dsp.exec_cmd('player-info notify'))
-hl.bind(root.mod .. " + SHIFT + S",
-    hl.dsp.exec_cmd('dunstify -t 2000 --replace 8428 "$(date \'+%T\')" "$(date +\'%A %-d %B\\n%FT%T%z\')"'))
-hl.bind(root.mod .. " + CTRL + N", hl.dsp.exec_cmd('dunstctl close-all'))
+bind({"S"}, hl.dsp.exec_cmd('player-info notify'))
+bind({"SHIFT", "S"}, hl.dsp.exec_cmd('dunstify -t 2000 --replace 8428 "$(date \'+%T\')" "$(date +\'%A %-d %B\\n%FT%T%z\')"'))
+bind({"CTRL", "N"}, hl.dsp.exec_cmd('dunstctl close-all'))
 
-hl.bind(root.mod .. " + U", hl.dsp.exec_cmd(root.scripts .. "/hypridle-toggle.sh"))
+bind({"U"}, hl.dsp.exec_cmd(root.scripts .. "/hypridle-toggle.sh"))
 
-hl.bind(root.mod .. " + mouse:272", hl.dsp.window.drag())
-hl.bind(root.mod .. " + mouse:273", hl.dsp.window.resize())
+bind({"mouse:272"}, hl.dsp.window.drag())
+bind({"mouse:273"}, hl.dsp.window.resize())
 
 hl.bind("XF86PowerOff", hl.dsp.exec_cmd("hyprlock"))
 
