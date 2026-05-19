@@ -39,6 +39,8 @@ local programs = {
 }
 
 local recent_filepath = "/tmp/sw.recent"
+local log_filepath = "/tmp/sw.log"
+
 ---@param name string
 ---@return Program?
 local function find_program(name)
@@ -52,9 +54,21 @@ end
 
 ---@param level "info"|"warn"|"err"
 ---@param name string|nil
----@param ...string|number
-local function log(level, name, ...)
-	-- TODO:
+---@param message string
+local function log(level, name, message)
+	local line = ""
+	line = line .. os.date("%Y-%m-%dT%H:%M:%S")
+	line = line .. " " .. level:upper()
+	if name then
+		line = line .. "(" .. name .. ")"
+	end
+	line = line .. ": " .. tostring(message)
+
+	local file, _ = io.open(log_filepath, "a")
+	if file then
+		file:write(line, "\n")
+		file:close()
+	end
 end
 
 ---@return string|nil
