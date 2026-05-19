@@ -28,6 +28,17 @@ project-setup() {
     [ -x "$file" ] && "$file"
 }
 
+venv() {
+    cwd=$PWD
+    while ! [ "$cwd" = '/' ]; do
+        if [ -d "$cwd/.venv" ]; then
+            source "$cwd/.venv/bin/activate"
+            break
+        fi
+        cwd="$(realpath "$cwd/..")"
+    done
+}
+
 #-------------------------------------------------------------------------------
 # Navigation
 
