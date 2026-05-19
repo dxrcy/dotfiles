@@ -97,12 +97,9 @@ keybinds clear-defaults=true {
     }
 
     renametab {
-        bind "Ctrl c" { SwitchToMode "normal"; }
         bind "Esc" { UndoRenameTab; SwitchToMode "tab"; }
     }
-
     renamepane {
-        bind "Ctrl c" { SwitchToMode "normal"; }
         bind "Esc" { UndoRenamePane; SwitchToMode "pane"; }
     }
 
@@ -209,12 +206,6 @@ keybinds clear-defaults=true {
     }
     shared_among "renametab" "renamepane" {
         bind "Ctrl c" { SwitchToMode "normal"; }
-    }
-    renametab {
-        bind "Esc" { UndoRenameTab; SwitchToMode "tab"; }
-    }
-    renamepane {
-        bind "Esc" { UndoRenamePane; SwitchToMode "pane"; }
     }
 }
 
