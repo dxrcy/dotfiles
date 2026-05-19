@@ -2,7 +2,7 @@
 //                      * Blazingly fast Zellij config *                      //
 //----------------------------------------------------------------------------//
 
-theme "kanagawa"
+theme "custom"
 // default_layout "compact"
 pane_frames false
 show_startup_tips false
@@ -208,6 +208,123 @@ keybinds clear-defaults=true {
     }
     shared_among "renametab" "renamepane" {
         bind "Ctrl c" { SwitchToMode "normal"; }
+    }
+}
+
+themes {
+    custom {
+        ribbon_unselected {
+            base 46 52 64
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 180 142 173
+        }
+        ribbon_selected {
+            base 246 245 244
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 163 190 140
+        }
+        text_unselected {
+            base 61 56 70
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 180 142 173
+        }
+        text_selected {
+            base 222 221 218
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 163 190 140
+        }
+        table_title {
+            base 46 52 64
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 180 142 173
+        }
+        table_cell_unselected {
+            base 46 52 64
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 180 142 173
+        }
+        table_cell_selected {
+            base 222 221 218
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 163 190 140
+        }
+        list_unselected {
+            base 46 52 64
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 180 142 173
+        }
+        list_selected {
+            base 222 221 218
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 163 190 140
+        }
+        frame_unselected {
+            base 94 92 100
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 180 142 173
+        }
+        frame_selected {
+            base 248 228 92
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 163 190 140
+        }
+        frame_highlight {
+            base 98 160 234
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 235 203 139
+            emphasis_2 153 193 241
+            emphasis_3 163 190 140
+        }
+        exit_code_success {
+            base 143 240 164
+            background 0 0 0
+            emphasis_0 163 190 140
+            emphasis_1 163 190 140
+            emphasis_2 153 193 241
+            emphasis_3 163 190 140
+        }
+        exit_code_error {
+            base 246 97 81
+            background 0 0 0
+            emphasis_0 191 97 106
+            emphasis_1 191 97 106
+            emphasis_2 153 193 241
+            emphasis_3 191 97 106
+        }
     }
 }
 
