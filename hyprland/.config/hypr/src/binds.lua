@@ -54,6 +54,9 @@ for i = 1, 10 do
 	bind({ "SHIFT", key }, hl.dsp.window.move({ workspace = i }))
 end
 
+bind({ "CTRL", "ALT", "H" }, hl.dsp.workspace.move({ monitor = 0 }))
+bind({ "CTRL", "ALT", "L" }, hl.dsp.workspace.move({ monitor = 1 }))
+
 -- Special workspaces
 
 bind({ "grave" }, sw.toggle_recent())
