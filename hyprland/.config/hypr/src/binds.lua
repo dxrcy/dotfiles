@@ -101,8 +101,7 @@ bind({ "M" }, hl.dsp.exec_cmd("mount-gui --notify"))
 
 -- Misc
 
-hl.bind("print", hl.dsp.exec_cmd("flameshot gui"))
-hl.bind("SHIFT + print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
+hl.bind("print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
 bind({ "B" }, hl.dsp.exec_cmd("bt connect"))
 bind({ "SHIFT", "B" }, hl.dsp.exec_cmd("bt disconnect"))
