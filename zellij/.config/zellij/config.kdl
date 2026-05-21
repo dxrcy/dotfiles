@@ -177,6 +177,8 @@ keybinds clear-defaults=true {
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
 
+        bind "Alt f" { ToggleFocusFullscreen; SwitchToMode "normal"; }
+
         bind "Alt r" { SwitchToMode "RenameTab"; TabNameInput 0; }
     }
 
