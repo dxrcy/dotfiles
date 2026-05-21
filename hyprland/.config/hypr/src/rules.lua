@@ -23,10 +23,11 @@ hl.window_rule({
 	match = { class = "flameshot" },
 	float = true,
 	pin = true,
-	size = { 0, 0 },
+	move = { 0, 0 },
 	monitor = root.monitor1,
 	stay_focused = true,
 	border_size = 0,
+	fullscreen_state = "0 0",
 })
 
 hl.window_rule({
