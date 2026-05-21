@@ -29,14 +29,21 @@ project-setup() {
 }
 
 venv() {
+    venv=$(venv-path)
+    [ $? = 0 ] || return 1
+    source "$venv/.venv/bin/activate"
+}
+
+venv-path() {
     cwd=$PWD
     while ! [ "$cwd" = '/' ]; do
         if [ -d "$cwd/.venv" ]; then
-            source "$cwd/.venv/bin/activate"
-            break
+            echo "$cwd"
+            return 0
         fi
         cwd="$(realpath "$cwd/..")"
     done
+    return 1
 }
 
 #-------------------------------------------------------------------------------
