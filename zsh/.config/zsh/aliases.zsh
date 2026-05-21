@@ -60,6 +60,7 @@ alias bhs='basic-http-server'
 alias wlc='wl-copy'
 alias gp='git push'
 alias print='printf' # Prevent terrible problems!
+alias zl='zellij action switch-session'
 
 # Exit (vim habit)
 alias   q='exit'
