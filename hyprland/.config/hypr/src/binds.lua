@@ -109,7 +109,7 @@ bind({ "SHIFT", "B" }, hl.dsp.exec_cmd("bt disconnect"))
 bind({ "S" }, hl.dsp.exec_cmd("player-info notify"))
 bind(
 	{ "SHIFT", "S" },
-	hl.dsp.exec_cmd("dunstify -t 2000 --replace 8428 \"$(date '+%T')\" \"$(date +'%A %-d %B\\n%FT%T%z')\"")
+	hl.dsp.exec_cmd("dunstify -t 2000 --replace 8428 \"$(date '+%T')\" \"$(date +'%A %-d %B')\"")
 )
 bind({ "CTRL", "N" }, hl.dsp.exec_cmd("dunstctl close-all"))
 
