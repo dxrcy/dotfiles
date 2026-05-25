@@ -20,6 +20,7 @@ alias pjs='project-setup'
 alias ghu='gh-url'
 alias gcl='git-clone-cd'
 alias ghs='gh-switch'
+alias zl='zellij-switch'
 
 # Custom scripts
 alias p='pacman-thing'
@@ -60,7 +61,6 @@ alias bhs='basic-http-server'
 alias wlc='wl-copy'
 alias gp='git push'
 alias print='printf' # Prevent terrible problems!
-alias zl='zellij action switch-session'
 
 # Exit (vim habit)
 alias   q='exit'

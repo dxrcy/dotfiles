@@ -46,6 +46,16 @@ venv-path() {
     return 1
 }
 
+zellij-switch() {
+    session="$1"
+    if [ -z "$1" ]; then
+        session="$(zellij list-sessions -ns | fzf)"
+    fi
+    if [ -n "$session" ]; then
+        zellij action switch-session "$session"
+    fi
+}
+
 #-------------------------------------------------------------------------------
 # Navigation
 
