@@ -126,7 +126,7 @@ local function start_program(program, delay, silent)
 	end
 
 	after(delay, function()
-		hl.dispatch(hl.dsp.exec_cmd(program.command, { workspace = "special:" .. program.name .. silent_option }))
+		hl.exec_cmd(program.command, { workspace = "special:" .. program.name .. silent_option })
 	end)
 end
 
