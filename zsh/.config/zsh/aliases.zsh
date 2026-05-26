@@ -37,7 +37,7 @@ alias journalctl='journalctl -e'
 alias slop='opencode . -c'
 
 # ls (eza) options
-alias ls='eza -l --group-directories-first'
+alias ls='eza -l --group-directories-first --icons'
 alias lsa='ls -a'
 alias lst='ls --total-size --sort size --reverse'
 
