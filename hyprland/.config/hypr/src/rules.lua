@@ -33,9 +33,9 @@ hl.window_rule({
 hl.window_rule({
 	name = "windscribe",
 	match = { class = "Windscribe" },
-	float = true,
-	center = true,
-	size = { 300, 300 },
+	-- float = true,
+	-- center = true,
+	-- size = { 300, 300 },
 })
 
 hl.window_rule({
