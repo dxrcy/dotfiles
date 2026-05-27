@@ -21,10 +21,10 @@ hl.on("hyprland.start", function()
 
 	hl.exec_cmd(root.browser, { workspace = "1 silent" })
 
-	hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland \
-        & sleep 2 & /usr/lib/xdg-desktop-portal")
+	-- TODO: Use `hl.timer`
+	hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland & sleep 2 & /usr/lib/xdg-desktop-portal")
 
-	hl.dispatch(hl.dsp.focus({ workspace = 2 }))
+	hl.dispatch(hl.dsp.focus { workspace = 2 })
 
 	root.sw.autostart_programs()
 end)

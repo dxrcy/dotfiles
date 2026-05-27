@@ -161,7 +161,7 @@ end
 ---@return nil
 local function move_program(program)
 	log("info", program.name, "moving window")
-	hl.dispatch(hl.dsp.window.move({ workspace = "special:" .. program.name }))
+	hl.dispatch(hl.dsp.window.move { workspace = "special:" .. program.name })
 end
 
 local M = {

@@ -1,6 +1,6 @@
 local root = require("src")
 
-hl.config({
+hl.config {
 	general = {
 		border_size = 1,
 		gaps_in = 2,
@@ -82,4 +82,4 @@ hl.config({
 	debug = {
 		disable_logs = false,
 	},
-})
+}

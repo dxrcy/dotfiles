@@ -26,11 +26,11 @@ M.run = function()
 	require("src.rules")
 	require("src.autostart")
 
-	hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto" })
-	hl.monitor({ output = M.monitor1, mode = "preferred", position = "auto", scale = "1.6" })
+	hl.monitor { output = "", mode = "preferred", position = "auto", scale = "auto" }
+	hl.monitor { output = M.monitor1, mode = "preferred", position = "auto", scale = "1.6" }
 
 	hl.curve("rubber", { type = "spring", mass = 0.6, stiffness = 200, dampening = 20 })
-	hl.animation({ leaf = "global", enabled = true, speed = 1, spring = "rubber" })
+	hl.animation { leaf = "global", enabled = true, speed = 1, spring = "rubber" }
 end
 
 return M
