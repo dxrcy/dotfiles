@@ -4,7 +4,7 @@
 -- TODO: Plugin config (keybinds)
 
 local M = {
-	fancy = true,
+	fancy = false,
 	weird = true,
 
 	mod = "SUPER",
