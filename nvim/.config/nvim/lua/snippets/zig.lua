@@ -6,71 +6,76 @@ local fmt = require("luasnip.extras.fmt").fmt
 
 --- Reuse text from node.
 local function recall(index)
-    return ls.function_node(function(args)
-        return args[1][1]
-    end, { index }, {})
+	return ls.function_node(function(args)
+		return args[1][1]
+	end, { index }, {})
 end
 
 ls.add_snippets("all", {
-    snippet("mainskeleton", {
-        text({
-            [[const std = @import("std");]],
-            [[]],
-            [[pub fn main(init: std.process.Init) !void {]],
-            [[    ]]
-        }),
-        insert(1, [[_ = init;]]),
-        text({
-            [[]],
-            [[}]],
-        }),
-    }),
+	snippet("mainskeleton", {
+		text {
+			[[const std = @import("std");]],
+			[[]],
+			[[pub fn main(init: std.process.Init) !void {]],
+			[[    ]],
+		},
+		insert(1, [[_ = init;]]),
+		text {
+			[[]],
+			[[}]],
+		},
+	}),
 
-    snippet("importstd", {
-        text([[const std = @import("std");]]),
-    }),
+	snippet("importstd", {
+		text([[const std = @import("std");]]),
+	}),
 
-    snippet("importfile",
-        fmt([[const {} = @import("{}{}.zig"){};]], {
-            insert(1),
-            insert(2),
-            recall(1),
-            insert(3),
-        })
-    ),
+	snippet(
+		"importfile",
+		fmt([[const {} = @import("{}{}.zig"){};]], {
+			insert(1),
+			insert(2),
+			recall(1),
+			insert(3),
+		})
+	),
 
-    snippet("importchild",
-        fmt([[const {} = {}.{};]], {
-            insert(1),
-            insert(2),
-            recall(1),
-        })
-    ),
+	snippet(
+		"importchild",
+		fmt([[const {} = {}.{};]], {
+			insert(1),
+			insert(2),
+			recall(1),
+		})
+	),
 
-    snippet("debugprint",
-        fmt([[std.debug.print("{}\n", .{{{}}});]], {
-            insert(1, [[{}]]),
-            insert(2),
-        })
-    ),
+	snippet(
+		"debugprint",
+		fmt([[std.debug.print("{}\n", .{{{}}});]], {
+			insert(1, [[{}]]),
+			insert(2),
+		})
+	),
 
-    snippet("debugallocator", {
-        text({
-            [[var gpa = std.heap.DebugAllocator(.{}){};]],
-            [[defer _ = gpa.deinit();]],
-            [[const allocator = gpa.allocator();]],
-        }),
-    }),
+	snippet("debugallocator", {
+		text {
+			[[var gpa = std.heap.DebugAllocator(.{}){};]],
+			[[defer _ = gpa.deinit();]],
+			[[const allocator = gpa.allocator();]],
+		},
+	}),
 
-    snippet("selfthis",
-        fmt([[const {} = @This();]], {
-            insert(1, [[Self]]),
-        })
-    ),
+	snippet(
+		"selfthis",
+		fmt([[const {} = @This();]], {
+			insert(1, [[Self]]),
+		})
+	),
 
-    snippet("logscoped",
-        fmt([[const log = std.log.scoped(.{});]], {
-            insert(1),
-        })
-    ),
+	snippet(
+		"logscoped",
+		fmt([[const log = std.log.scoped(.{});]], {
+			insert(1),
+		})
+	),
 })

@@ -33,7 +33,7 @@ vim.opt.backup = false
 -- Use system clipboard
 -- Defer to reduce startup time
 vim.schedule(function()
-    vim.opt.clipboard = "unnamedplus"
+	vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
@@ -46,12 +46,12 @@ vim.opt.inccommand = "split"
 -- Render whitespace characters
 vim.opt.list = true
 vim.opt.listchars = {
-    tab = "🮮  ",
-    trail = "~",
-    lead = "⸱",
-    nbsp = "␣",
-    extends = "",
-    precedes = "",
+	tab = "🮮  ",
+	trail = "~",
+	lead = "⸱",
+	nbsp = "␣",
+	extends = "",
+	precedes = "",
 }
 
 vim.opt.termguicolors = true

@@ -5,7 +5,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Esperanto keys
-vim.api.nvim_set_option('langmap', 'ĉx,ĝw,ĥ],ĵ[,ŝq,ŭy,ĈX,ĜW,Ĥ},Ĵ{,ŜQ,ŬY')
+vim.api.nvim_set_option(
+	"langmap",
+	"ĉx,ĝw,ĥ],ĵ[,ŝq,ŭy,ĈX,ĜW,Ĥ},Ĵ{,ŜQ,ŬY"
+)
 -- Manual Esperanto keybinds (for some reason)
 vim.keymap.set("n", "cĝ", "cw")
 vim.keymap.set("n", "dĝ", "dw")
@@ -68,18 +71,34 @@ vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
 
 vim.keymap.set("n", "<leader>v", "ggVG", { desc = "Select entire buffer" })
 
-vim.keymap.set("n", "<leader>q", [[<cmd>.!qalc -t $(cat)<CR>]],
-    { desc = "Evaluate line with libqalculate" })
+vim.keymap.set(
+	"n",
+	"<leader>q",
+	[[<cmd>.!qalc -t $(cat)<CR>]],
+	{ desc = "Evaluate line with libqalculate" }
+)
 
-vim.keymap.set("n", "<leader>l", commands.cycle_column_limit,
-    { desc = "Change line width / column limit" })
+vim.keymap.set(
+	"n",
+	"<leader>l",
+	commands.cycle_column_limit,
+	{ desc = "Change line width / column limit" }
+)
 
-vim.keymap.set("n", "<leader>ex", commands.chmod_executable,
-    { desc = "Make current file an executable script" })
+vim.keymap.set(
+	"n",
+	"<leader>ex",
+	commands.chmod_executable,
+	{ desc = "Make current file an executable script" }
+)
 
-vim.keymap.set("n", "<leader>td", commands.toggle_diagnostics,
-    { desc = "Toggle LSP diagnostics visibility" })
+vim.keymap.set(
+	"n",
+	"<leader>td",
+	commands.toggle_diagnostics,
+	{ desc = "Toggle LSP diagnostics visibility" }
+)
 
 vim.keymap.set("n", "<leader>j", function()
-    vim.fn.cursor(0, vim.bo.textwidth)
+	vim.fn.cursor(0, vim.bo.textwidth)
 end, { desc = "Jump to textwidth column" })

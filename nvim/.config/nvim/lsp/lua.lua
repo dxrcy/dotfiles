@@ -1,21 +1,21 @@
 return {
-    cmd = {
-        "lua-language-server",
-    },
-    filetypes = {
-        "lua",
-    },
-    root_markers = {
-        ".luacheckrc",
-        ".luarc.json",
-        ".luarc.jsonc",
-        ".stylua.toml",
-        "selene.toml",
-        "selene.yml",
-        "stylua.toml",
-        ".git",
-    },
+	cmd = {
+		"lua-language-server",
+	},
+	filetypes = {
+		"lua",
+	},
+	root_markers = {
+		".luacheckrc",
+		".luarc.json",
+		".luarc.jsonc",
+		".stylua.toml",
+		"selene.toml",
+		"selene.yml",
+		"stylua.toml",
+		".git",
+	},
 
-    single_file_support = true,
-    log_level = vim.lsp.protocol.MessageType.Warning,
+	single_file_support = true,
+	log_level = vim.lsp.protocol.MessageType.Warning,
 }

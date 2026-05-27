@@ -17,7 +17,7 @@ return { -- Git integration for buffers
 			-- Navigation
 			map("n", "]h", function()
 				if vim.wo.diff then
-					vim.cmd.normal({ "]h", bang = true })
+					vim.cmd.normal { "]h", bang = true }
 				else
 					---@diagnostic disable-next-line: param-type-mismatch
 					gitsigns.nav_hunk("next")
@@ -26,7 +26,7 @@ return { -- Git integration for buffers
 
 			map("n", "[h", function()
 				if vim.wo.diff then
-					vim.cmd.normal({ "[h", bang = true })
+					vim.cmd.normal { "[h", bang = true }
 				else
 					---@diagnostic disable-next-line: param-type-mismatch
 					gitsigns.nav_hunk("prev")
@@ -34,18 +34,33 @@ return { -- Git integration for buffers
 			end, { desc = "Previous hunk", noremap = true })
 
 			-- Actions
-			map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk", noremap = true })
-			map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Reset hunk", noremap = true })
+			map(
+				"n",
+				"<leader>hs",
+				gitsigns.stage_hunk,
+				{ desc = "Stage hunk", noremap = true }
+			)
+			map(
+				"n",
+				"<leader>hr",
+				gitsigns.reset_hunk,
+				{ desc = "Reset hunk", noremap = true }
+			)
 
 			map("v", "<leader>hs", function()
-				gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+				gitsigns.stage_hunk { vim.fn.line("."), vim.fn.line("v") }
 			end, { desc = "Stage hunk", noremap = true })
 
 			map("v", "<leader>hr", function()
-				gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+				gitsigns.reset_hunk { vim.fn.line("."), vim.fn.line("v") }
 			end, { desc = "Reset hunk", noremap = true })
 
-			map("n", "<leader>hp", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline", noremap = true })
+			map(
+				"n",
+				"<leader>hp",
+				gitsigns.preview_hunk_inline,
+				{ desc = "Preview hunk inline", noremap = true }
+			)
 
 			map({ "n", "v" }, "<leader>ht", function()
 				gitsigns.toggle_linehl()
@@ -53,5 +68,5 @@ return { -- Git integration for buffers
 				print("gitsigns hl: " .. (state and "on" or "off"))
 			end, { desc = "Toggle Diff Highlight", noremap = true })
 		end,
-	}
+	},
 }

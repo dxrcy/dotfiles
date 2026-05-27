@@ -1,27 +1,27 @@
 return { -- Autocompletion
-    "saghen/blink.cmp",
-    event = "VeryLazy",
-    version = "1.*",
-    dependencies = { "L3MON4D3/LuaSnip" },
+	"saghen/blink.cmp",
+	event = "VeryLazy",
+	version = "1.*",
+	dependencies = { "L3MON4D3/LuaSnip" },
 
-    opts = {
-        keymap = { preset = "default" },
+	opts = {
+		keymap = { preset = "default" },
 
-        appearance = {
-            nerd_font_variant = "mono",
-        },
+		appearance = {
+			nerd_font_variant = "mono",
+		},
 
-        completion = {
-            documentation = { auto_show = true, auto_show_delay_ms = 500 },
-        },
+		completion = {
+			documentation = { auto_show = true, auto_show_delay_ms = 500 },
+		},
 
-        sources = {
-            default = { "lsp", "path", "snippets", "buffer", "elk" },
-            providers = { elk = { module = "elk.cmp" } },
-        },
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer", "elk" },
+			providers = { elk = { module = "elk.cmp" } },
+		},
 
-        fuzzy = { implementation = "prefer_rust_with_warning" },
+		fuzzy = { implementation = "prefer_rust_with_warning" },
 
-        snippets = { preset = "luasnip" },
-    },
+		snippets = { preset = "luasnip" },
+	},
 }

@@ -1,9 +1,9 @@
 return {
-    cmd = {
-        "asp-lsp",
-    },
-    filetypes = {
-        "asp",
-        "clingo",
-    },
+	cmd = {
+		"asp-lsp",
+	},
+	filetypes = {
+		"asp",
+		"clingo",
+	},
 }

@@ -1,12 +1,12 @@
 return {
-    cmd = {
-        "zls",
-    },
-    filetypes = {
-        "zig",
-    },
-    root_markers = {
-        "build.zig",
-        "main.zig",
-    },
+	cmd = {
+		"zls",
+	},
+	filetypes = {
+		"zig",
+	},
+	root_markers = {
+		"build.zig",
+		"main.zig",
+	},
 }
