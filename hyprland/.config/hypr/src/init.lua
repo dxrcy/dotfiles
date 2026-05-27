@@ -4,7 +4,7 @@
 -- TODO: Plugin config (keybinds)
 
 local M = {
-	fancy = false,
+	fancy = true,
 	weird = true,
 
 	mod = "SUPER",
@@ -29,8 +29,8 @@ M.run = function()
 	hl.monitor { output = "", mode = "preferred", position = "auto", scale = "auto" }
 	hl.monitor { output = M.monitor1, mode = "preferred", position = "auto", scale = "1.6" }
 
-	hl.curve("rubber", { type = "spring", mass = 0.6, stiffness = 200, dampening = 20 })
-	hl.animation { leaf = "global", enabled = true, speed = 1, spring = "rubber" }
+	hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0 }, { 0.35, 1 } } })
+	hl.animation { leaf = "global", enabled = true, speed = 1.5, bezier = "easeInOutCubic" }
 end
 
 return M
