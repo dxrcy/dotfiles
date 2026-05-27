@@ -61,15 +61,14 @@ bind({ "CTRL", "ALT", "L" }, hl.dsp.workspace.move({ monitor = 1 }))
 
 bind({ "grave" }, sw.toggle_recent())
 
-bind({ "F2" }, sw.toggle("mail"))
-bind({ "F3" }, sw.toggle("music"))
-bind({ "F4" }, sw.toggle("social"))
-bind({ "CTRL", "W" }, sw.toggle("vpn"))
-
-bind({ "SHIFT", "F2" }, hl.dsp.window.move({ workspace = "special:mail" }))
-bind({ "SHIFT", "F3" }, hl.dsp.window.move({ workspace = "special:music" }))
-bind({ "SHIFT", "F4" }, hl.dsp.window.move({ workspace = "special:social" }))
-bind({ "CTRL", "SHIFT", "W" }, hl.dsp.window.move({ workspace = "special:vpn" }))
+for _, program in ipairs(sw.programs) do
+	if program.keybind_toggle then
+		bind(program.keybind_toggle, sw.toggle(program.name))
+	end
+	if program.keybind_move then
+		bind(program.keybind_move, sw.move(program.name))
+	end
+end
 
 -- Applications
 
@@ -107,10 +106,7 @@ bind({ "B" }, hl.dsp.exec_cmd("bt connect"))
 bind({ "SHIFT", "B" }, hl.dsp.exec_cmd("bt disconnect"))
 
 bind({ "S" }, hl.dsp.exec_cmd("player-info notify"))
-bind(
-	{ "SHIFT", "S" },
-	hl.dsp.exec_cmd("dunstify -t 2000 --replace 8428 \"$(date '+%T')\" \"$(date +'%A %-d %B')\"")
-)
+bind({ "SHIFT", "S" }, hl.dsp.exec_cmd("dunstify -t 2000 --replace 8428 \"$(date '+%T')\" \"$(date +'%A %-d %B')\""))
 bind({ "CTRL", "N" }, hl.dsp.exec_cmd("dunstctl close-all"))
 
 bind({ "U" }, hl.dsp.exec_cmd(root.scripts .. "/hypridle-toggle.sh"))

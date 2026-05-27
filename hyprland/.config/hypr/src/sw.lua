@@ -3,6 +3,8 @@
 ---@field class string
 ---@field command string
 ---@field autostart integer|nil
+---@field keybind_toggle string[]|nil
+---@field keybind_move string[]|nil
 
 ---@type Program[]
 local programs = {
@@ -11,18 +13,24 @@ local programs = {
 		class = "Mailspring",
 		command = "mailspring --password-store=gnome-libsecret",
 		autostart = 5,
+		keybind_toggle = { "F2" },
+		keybind_move = { "SHIFT", "F2" },
 	},
 	{
 		name = "music",
 		class = "Spotify",
 		command = "spotify",
 		autostart = 1,
+		keybind_toggle = { "F3" },
+		keybind_move = { "SHIFT", "F3" },
 	},
 	{
 		name = "social",
 		class = "Ferdium",
 		command = "ferdium",
 		autostart = 20,
+		keybind_toggle = { "F4" },
+		keybind_move = { "SHIFT", "F4" },
 	},
 	{
 		name = "calculator",
@@ -35,6 +43,8 @@ local programs = {
 		class = "Windscribe",
 		command = "windscribe",
 		autostart = 0,
+		keybind_toggle = { "CTRL", "W" },
+		keybind_move = { "CTRL", "SHIFT", "W" },
 	},
 }
 
@@ -78,7 +88,6 @@ local function get_recent_name()
 		log("err", nil, "failed to read recent file")
 		return nil
 	end
-
 	local name = file:read()
 	file:close()
 
@@ -124,7 +133,6 @@ local function start_program(program, delay, silent)
 	if silent then
 		silent_option = " silent"
 	end
-
 	after(delay, function()
 		hl.exec_cmd(program.command, { workspace = "special:" .. program.name .. silent_option })
 	end)
@@ -145,12 +153,20 @@ end
 ---@return nil
 local function toggle_program(program)
 	log("info", program.name, "toggling visibility")
-
 	hl.dispatch(hl.dsp.workspace.toggle_special(program.name))
 	write_recent_program(program)
 end
 
-local M = {}
+---@param program Program
+---@return nil
+local function move_program(program)
+	log("info", program.name, "moving window")
+	hl.dispatch(hl.dsp.window.move({ workspace = "special:" .. program.name }))
+end
+
+local M = {
+	programs = programs,
+}
 
 ---@return nil
 M.autostart_programs = function()
@@ -191,7 +207,6 @@ M.toggle = function(name)
 		else
 			start_program(program, 0, false)
 		end
-
 		log("info", program.name, "done")
 	end
 end
@@ -216,7 +231,24 @@ M.toggle_recent = function()
 
 		-- Assume already running
 		toggle_program(program)
+		log("info", program.name, "done")
+	end
+end
 
+---@param name string
+---@return fun(): nil
+M.move = function(name)
+	return function()
+		log("info", nil, "move '" .. name .. "'")
+
+		local program = find_program(name)
+		if program == nil then
+			log("err", name, "no such program")
+			return
+		end
+		log("info", program.name, "found")
+
+		move_program(program)
 		log("info", program.name, "done")
 	end
 end
