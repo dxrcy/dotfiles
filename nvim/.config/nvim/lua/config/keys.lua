@@ -79,3 +79,7 @@ vim.keymap.set("n", "<leader>ex", commands.chmod_executable,
 
 vim.keymap.set("n", "<leader>td", commands.toggle_diagnostics,
     { desc = "Toggle LSP diagnostics visibility" })
+
+vim.keymap.set("n", "<leader>j", function()
+    vim.fn.cursor(0, vim.bo.textwidth)
+end, { desc = "Jump to textwidth column" })
