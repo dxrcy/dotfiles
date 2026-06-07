@@ -23,6 +23,13 @@ nvim-dir() {
     fi
 }
 
+cat-ls() {
+    if [ -d "$1" ];
+        then eval $aliases[ls] $1
+        else eval $aliases[cat_] $1
+    fi
+}
+
 project-setup() {
     local file='./.project-setup'
     [ -x "$file" ] && "$file"

@@ -3,7 +3,7 @@
 # Renames
 
 # Misc. alternative programs
-alias cat='bat'
+alias cat_='bat' # see `cat`
 alias grep="rg"
 alias z='zi'
 
@@ -12,6 +12,7 @@ alias zr='zsh-reload-config'
 alias ,='abandon'
 alias ,,='abandon-exit'
 alias nvim='nvim-dir'
+alias cat='cat-ls'
 alias mkd='mkdir-cd'
 alias yazi='yazi-cd'
 alias pj='fzf-project'
