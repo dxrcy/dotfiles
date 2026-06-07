@@ -51,7 +51,7 @@ bind({ "tab" }, hl.dsp.focus { workspace = "previous" })
 for i = 1, 10 do
 	local key = tostring(i % 10)
 	bind({ key }, hl.dsp.focus { workspace = i })
-	bind({ "SHIFT", key }, hl.dsp.window.move { workspace = i })
+	bind({ "SHIFT", key }, hl.dsp.window.move { workspace = i, follow = false })
 end
 
 bind({ "CTRL", "ALT", "H" }, hl.dsp.workspace.move { monitor = 0 })
