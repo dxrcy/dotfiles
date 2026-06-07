@@ -145,3 +145,20 @@ hl.bind(
 	hl.dsp.exec_cmd("playerctl -p " .. root.player .. " previous")
 )
 hl.bind("CTRL + SHIFT + bracketright", hl.dsp.exec_cmd("playerctl -p " .. root.player .. " next"))
+
+local global_binds = {
+	{
+		window = "class:^(com\\.obsproject\\.Studio)$",
+		binds = {
+			root.mod .. " + F10",
+			root.mod .. " + F11",
+			root.mod .. " + F12",
+		},
+	},
+}
+
+for _, item in ipairs(global_binds) do
+	for _, keys in ipairs(item.binds) do
+		hl.bind(keys, hl.dsp.pass { window = item.window })
+	end
+end
