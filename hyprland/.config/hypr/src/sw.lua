@@ -25,18 +25,24 @@ local programs = {
 		keybind_move = { "SHIFT", "F3" },
 	},
 	{
+		name = "discord",
+		class = "vesktop",
+		command = "vesktop",
+		autostart = 10,
+		keybind_toggle = { "F4" },
+		keybind_move = { "SHIFT", "F4" },
+	},
+	{
 		name = "social",
 		class = "Ferdium",
 		command = "ferdium",
-		autostart = 20,
-		keybind_toggle = { "F4" },
-		keybind_move = { "SHIFT", "F4" },
+		keybind_toggle = { "F5" },
+		keybind_move = { "SHIFT", "F5" },
 	},
 	{
 		name = "calculator",
 		class = "terminal-calculator",
 		command = "kitty --app-id terminal-calculator -o font_size=12 qalc",
-		autostart = nil,
 	},
 	{
 		name = "vpn",
