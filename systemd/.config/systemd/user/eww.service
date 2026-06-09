@@ -1,0 +1,10 @@
+[Unit]
+Description=idk
+
+[Service]
+ExecStart=sh -c '{ sleep 1; eww open bar; } & { eww kill; eww daemon --no-daemonize; }'
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
