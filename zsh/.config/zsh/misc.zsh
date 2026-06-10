@@ -36,7 +36,7 @@ NO_AUTOCD_DIRS=(code example)
 for dir in $NO_AUTOCD_DIRS; do
     eval $(cat << EOF
         $dir() {
-            if [ -d '$dir' ];
+            if [ -d '$dir' ] && [ \$# -eq 0 ];
                 then cd '$dir';
                 else command '$dir' \$@;
             fi;
