@@ -73,4 +73,28 @@ return {
 			image_output = "  × %s",
 		},
 	},
+
+	init = function()
+		vim.keymap.set("n", "<leader>cE", function()
+			local py_name = vim.api.nvim_buf_get_name(0)
+			local ipynb_name = py_name:gsub("%.nb%.py$", ".ipynb")
+			if ipynb_name == py_name then
+				return
+			end
+
+			local py_buf = vim.api.nvim_get_current_buf()
+			local lines = vim.api.nvim_buf_get_lines(py_buf, 0, -1, false)
+
+			local fd = assert(vim.uv.fs_open(ipynb_name, "w", 420))
+			vim.uv.fs_close(fd)
+
+			vim.cmd("edit " .. vim.fn.fnameescape(ipynb_name))
+
+			local ipynb_buf = vim.api.nvim_get_current_buf()
+			vim.api.nvim_buf_set_lines(ipynb_buf, 0, -1, false, lines)
+			vim.api.nvim_buf_call(ipynb_buf, function()
+				vim.cmd("write")
+			end)
+		end, { desc = "Save as ipynb" })
+	end,
 }
