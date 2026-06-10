@@ -13,7 +13,6 @@ hl.on("hyprland.start", function()
 
 	hl.exec_cmd("wpaperd")
 	hl.exec_cmd("hyprsunset")
-	hl.exec_cmd("eww daemon & eww open bar")
 	hl.exec_cmd("wvkbd-mobintl --hidden -L 250")
 
 	hl.exec_cmd("sleep 1; bt mute-if-disconnected")
