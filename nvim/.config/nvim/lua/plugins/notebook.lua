@@ -1,5 +1,6 @@
 return {
 	"twhlynch/notebook.nvim",
+	branch = "feat/py-file-notebooks",
 
 	opts = {
 		keybind_prefix = "<leader>c",
