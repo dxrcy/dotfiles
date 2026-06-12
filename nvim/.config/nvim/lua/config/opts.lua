@@ -57,3 +57,16 @@ vim.opt.listchars = {
 vim.opt.termguicolors = true
 
 vim.opt.winborder = "rounded"
+
+-- Disable line wrapping (slow) when file contains extremely long lines
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+		local max = 1000
+		for _, line in ipairs(vim.api.nvim_buf_get_lines(0, 0, 100, false)) do
+			if #line > max then
+				vim.opt_local.wrap = false
+				break
+			end
+		end
+	end,
+})
