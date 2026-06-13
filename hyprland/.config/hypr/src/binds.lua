@@ -22,7 +22,9 @@ bind({ "space" }, function()
 	hl.dispatch(hl.dsp.window.float { action = "toggle" })
 	hl.dispatch(hl.dsp.window.resize { x = 1200, y = 800 })
 end)
-bind({ "F" }, hl.dsp.window.fullscreen())
+
+bind({ "F" }, hl.dsp.window.fullscreen { mode = 1, action = "toggle" })
+bind({ "SHIFT", "F" }, hl.dsp.window.fullscreen())
 
 bind({ "ALT", "H" }, hl.dsp.layout("mfact -0.08"))
 bind({ "ALT", "L" }, hl.dsp.layout("mfact +0.08"))
