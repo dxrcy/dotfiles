@@ -17,8 +17,9 @@ end
 
 bind({ "Q" }, hl.dsp.window.close())
 
+-- Toggle float, set size and disable pin
 bind({ "space" }, function()
-	-- Hack to stop windows becoming massive after enabling float
+	hl.dispatch(hl.dsp.window.pin { action = "disable" })
 	hl.dispatch(hl.dsp.window.float { action = "toggle" })
 	hl.dispatch(hl.dsp.window.resize { x = 1200, y = 800 })
 end)
