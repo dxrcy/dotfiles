@@ -27,10 +27,16 @@ end)
 bind({ "F" }, hl.dsp.window.fullscreen { mode = 1, action = "toggle" })
 bind({ "SHIFT", "F" }, hl.dsp.window.fullscreen())
 
-bind({ "ALT", "H" }, hl.dsp.layout("mfact -0.08"))
-bind({ "ALT", "L" }, hl.dsp.layout("mfact +0.08"))
-bind({ "ALT", "SHIFT", "H" }, hl.dsp.layout("mfact -0.01"))
-bind({ "ALT", "SHIFT", "L" }, hl.dsp.layout("mfact +0.01"))
+local resize_large = 80
+local resize_small = 20
+bind({ "ALT", "H" }, hl.dsp.window.resize { x = -resize_large, y = 0, relative = true })
+bind({ "ALT", "L" }, hl.dsp.window.resize { x = resize_large, y = 0, relative = true })
+bind({ "ALT", "K" }, hl.dsp.window.resize { x = 0, y = resize_large, relative = true })
+bind({ "ALT", "J" }, hl.dsp.window.resize { x = 0, y = -resize_large, relative = true })
+bind({ "ALT", "SHIFT", "H" }, hl.dsp.window.resize { x = -resize_small, y = 0, relative = true })
+bind({ "ALT", "SHIFT", "L" }, hl.dsp.window.resize { x = resize_small, y = 0, relative = true })
+bind({ "ALT", "SHIFT", "K" }, hl.dsp.window.resize { x = 0, y = resize_small, relative = true })
+bind({ "ALT", "SHIFT", "J" }, hl.dsp.window.resize { x = 0, y = -resize_small, relative = true })
 
 bind({ "CTRL", "H" }, hl.dsp.focus { monitor = 0 })
 bind({ "CTRL", "L" }, hl.dsp.focus { monitor = 1 })
