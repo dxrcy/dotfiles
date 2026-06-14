@@ -18,7 +18,7 @@ end
 bind({ "Q" }, hl.dsp.window.close())
 
 -- Toggle float, set size and disable pin
-bind({ "space" }, function()
+bind({ "SHIFT", "space" }, function()
 	hl.dispatch(hl.dsp.window.pin { action = "disable" })
 	hl.dispatch(hl.dsp.window.float { action = "toggle" })
 	hl.dispatch(hl.dsp.window.resize { x = 1200, y = 800 })
@@ -65,6 +65,10 @@ bind({ "L" }, hl.dsp.focus { direction = "right" })
 bind({ "H" }, hl.dsp.focus { direction = "left" })
 bind({ "K" }, hl.dsp.focus { direction = "up" })
 bind({ "J" }, hl.dsp.focus { direction = "down" })
+
+-- For focusing floating windows
+-- TODO: Only toggle between most recent floating window and most recent tiling window
+bind({ "space" }, hl.dsp.window.cycle_next())
 
 bind({ "SHIFT", "L" }, hl.dsp.window.move { direction = "right" })
 bind({ "SHIFT", "H" }, hl.dsp.window.move { direction = "left" })
