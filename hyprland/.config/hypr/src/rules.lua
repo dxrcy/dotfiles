@@ -58,6 +58,13 @@ hl.window_rule {
 	fullscreen_state = 0,
 }
 
+hl.window_rule {
+	name = "pin",
+	match = { pin = true },
+	border_size = 2,
+	border_color = "0x9b8921ff 0xff33125b",
+}
+
 -- TODO: Move to sw.lua
 hl.window_rule {
 	name = "special:mail",
