@@ -43,6 +43,24 @@ bind({ "CTRL", "L" }, hl.dsp.focus { monitor = 1 })
 
 bind({ "P" }, hl.dsp.window.pin())
 
+-- Pinned video player
+bind({ "SHIFT", "P" }, function()
+	local window = hl.get_active_window()
+	if window == nil then
+		return
+	end
+	if window.floating and window.pinned then
+		hl.dispatch(hl.dsp.window.pin { action = "disable" })
+		hl.dispatch(hl.dsp.window.float { action = "disable" })
+	else
+		hl.dispatch(hl.dsp.window.float { action = "enable" })
+		hl.dispatch(hl.dsp.window.resize { x = 500, y = 280 })
+		hl.dispatch(hl.dsp.window.move { direction = "up" })
+		hl.dispatch(hl.dsp.window.move { direction = "right" })
+		hl.dispatch(hl.dsp.window.pin { action = "enable" })
+	end
+end)
+
 bind({ "L" }, hl.dsp.focus { direction = "right" })
 bind({ "H" }, hl.dsp.focus { direction = "left" })
 bind({ "K" }, hl.dsp.focus { direction = "up" })
