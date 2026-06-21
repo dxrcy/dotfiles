@@ -1,4 +1,5 @@
 local root = require("src")
+local sw = root.sw
 
 hl.window_rule {
 	name = "popup",
@@ -65,24 +66,10 @@ hl.window_rule {
 	border_color = "0x9b8921ff 0xff33125b",
 }
 
--- TODO: Move to sw.lua
-hl.window_rule {
-	name = "special:mail",
-	match = { class = "Mailspring" },
-	workspace = "special:mail",
-}
-hl.window_rule {
-	name = "special:spotify",
-	match = { class = "Spotify" },
-	workspace = "special:music",
-}
-hl.window_rule {
-	name = "special:social",
-	match = { class = "Ferdium" },
-	workspace = "special:social",
-}
-hl.window_rule {
-	name = "special:vpn",
-	match = { class = "Windscribe" },
-	workspace = "special:vpn",
-}
+for _, program in ipairs(sw.programs) do
+	hl.window_rule {
+		name = "special:" .. program.name,
+		match = { class = program.class },
+		workspace = "special:" .. program.name,
+	}
+end
