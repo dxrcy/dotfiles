@@ -1,4 +1,3 @@
--- TODO: Add comments
 -- TODO: Esperanto keyboard equivalent binds
 -- TODO: Call scripts directly from lua
 -- TODO: Plugin config (keybinds)
@@ -17,6 +16,7 @@ local M = {
 
 	scripts = "~/.config/hypr/scripts/",
 
+	-- TODO: Rename to `special`
 	sw = require("src.sw"),
 }
 
@@ -30,7 +30,7 @@ M.run = function()
 	hl.monitor { output = M.monitor1, mode = "preferred", position = "auto", scale = "1.6" }
 
 	hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0 }, { 0.35, 1 } } })
-	hl.animation { leaf = "global", enabled = true, speed = 1.5, bezier = "easeInOutCubic" }
+	hl.animation { leaf = "global", enabled = true, speed = 1.7, bezier = "easeInOutCubic" }
 end
 
 return M
