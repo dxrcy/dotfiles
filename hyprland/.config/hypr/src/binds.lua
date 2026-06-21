@@ -57,6 +57,8 @@ bind({ "SHIFT", "P" }, function()
 		hl.dispatch(hl.dsp.window.resize { x = 500, y = 280 })
 		hl.dispatch(hl.dsp.window.move { direction = "up" })
 		hl.dispatch(hl.dsp.window.move { direction = "right" })
+		local gap = 3
+		hl.dispatch(hl.dsp.window.move { relative = true, x = -gap, y = gap })
 		hl.dispatch(hl.dsp.window.pin { action = "enable" })
 	end
 end)
