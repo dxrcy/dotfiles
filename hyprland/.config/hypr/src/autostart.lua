@@ -20,7 +20,7 @@ return function(first)
 	hl.timer(function()
 		hl.exec_cmd("bt mute-if-disconnected")
 		hl.exec_cmd("volume-brightness.nu microphones disable")
-	end, { type = "oneshot", timeout = 1000 })
+	end, { type = "oneshot", timeout = 200 })
 
 	if first then
 		hl.exec_cmd(root.browser, { workspace = "1 silent" })
