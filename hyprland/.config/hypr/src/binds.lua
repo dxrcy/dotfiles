@@ -1,5 +1,6 @@
 local root = require("src")
 local sw = root.sw
+local autostart = require("src.autostart")
 
 ---@param keys string[]
 ---@param dispatcher (fun(): nil) | HL.Dispatcher
@@ -14,6 +15,8 @@ local function bind(keys, dispatcher)
 end
 
 -- Windows
+
+bind({ "SHIFT", "R" }, autostart)
 
 bind({ "Q" }, hl.dsp.window.close())
 
