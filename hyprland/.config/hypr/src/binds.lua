@@ -16,7 +16,9 @@ end
 
 -- Windows
 
-bind({ "SHIFT", "R" }, autostart)
+bind({ "SHIFT", "R" }, function()
+	autostart(false)
+end)
 
 bind({ "Q" }, hl.dsp.window.close())
 
