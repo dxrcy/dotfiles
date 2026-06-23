@@ -24,7 +24,7 @@ M.run = function()
 	require("src.variables")
 	require("src.binds")
 	require("src.rules")
-	require("src.autostart")
+	hl.on("hyprland.start", require("src.autostart"))
 
 	hl.monitor { output = "", mode = "preferred", position = "auto", scale = "auto" }
 	hl.monitor { output = M.monitor1, mode = "preferred", position = "auto", scale = "1.6" }

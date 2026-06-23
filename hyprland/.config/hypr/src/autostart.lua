@@ -1,7 +1,7 @@
 local root = require("src")
 
 -- PERF: Maybe add some sleeps between exec_cmd calls ?
-hl.on("hyprland.start", function()
+return function()
 	hl.exec_cmd("nm-applet")
 	hl.exec_cmd("dunst")
 	hl.exec_cmd("clipse -listen")
@@ -26,4 +26,4 @@ hl.on("hyprland.start", function()
 	hl.dispatch(hl.dsp.focus { workspace = 2 })
 
 	root.sw.autostart_programs()
-end)
+end
