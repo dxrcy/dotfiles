@@ -22,6 +22,16 @@ end)
 
 bind({ "Q" }, hl.dsp.window.close())
 
+bind({ "C" }, function()
+	local weird = not (
+		hl.get_config("input.touchpad.flip_x") or hl.get_config("input.touchpad.flip_y")
+	)
+	hl.config { input = { touchpad = { flip_x = weird, flip_y = weird } } }
+	hl.exec_cmd(
+		"notify-send -r 8124 'set cursor direction to " .. (weird and "weird" or "normal") .. "'"
+	)
+end)
+
 -- Toggle float, set size and disable pin
 bind({ "SHIFT", "space" }, function()
 	hl.dispatch(hl.dsp.window.pin { action = "disable" })
