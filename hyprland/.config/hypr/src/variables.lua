@@ -3,8 +3,8 @@ local root = require("src")
 hl.config {
 	general = {
 		border_size = 1,
-		gaps_in = 3,
-		gaps_out = 4,
+		gaps_in = root.fancy and 3 or 0,
+		gaps_out = root.fancy and 4 or 0,
 
 		col = {
 			inactive_border = 0xff342d01,
@@ -26,7 +26,7 @@ hl.config {
 	},
 
 	decoration = {
-		rounding = 4,
+		rounding = root.fancy and 4 or 0,
 
 		blur = {
 			enabled = root.fancy,
