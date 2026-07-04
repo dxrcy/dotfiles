@@ -28,7 +28,9 @@ bind({ "C" }, function()
 	)
 	hl.config { input = { touchpad = { flip_x = weird, flip_y = weird } } }
 	hl.exec_cmd(
-		"notify-send -r 8124 'set cursor direction to " .. (weird and "weird" or "normal") .. "'"
+		"notify-send -t 1000 -r 8124 'set cursor direction to "
+			.. (weird and "weird" or "normal")
+			.. "'"
 	)
 end)
 
