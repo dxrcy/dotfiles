@@ -98,6 +98,9 @@ bind({ "SHIFT", "J" }, hl.dsp.window.move { direction = "down" })
 
 bind({ "tab" }, hl.dsp.focus { workspace = "previous" })
 
+bind({ "I" }, hl.dsp.focus { workspace = "-1" })
+bind({ "O" }, hl.dsp.focus { workspace = "+1" })
+
 for i = 1, 10 do
 	local key = tostring(i % 10)
 	bind({ key }, hl.dsp.focus { workspace = i })
