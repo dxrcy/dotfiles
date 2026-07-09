@@ -27,6 +27,7 @@ zsh-prepend-path() {
 }
 zsh-prepend-path "$HOME/scripts/cmd"
 zsh-prepend-path "$HOME/.local/bin"
+zsh-prepend-path "/home/linuxbrew/.linuxbrew/bin"
 
 # Change directory by typing name
 setopt AUTOCD
