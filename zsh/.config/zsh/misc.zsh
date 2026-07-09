@@ -12,22 +12,11 @@ zsh-start-desktop() {
     start-hyprland
 }
 
-# Add scripts and binaries to path
-# Does not change order if dir is already in PATH
-zsh-prepend-path() {
-    local dir="$1"
-    [ -d "$dir" ] || return 1
-    case "$PATH" in
-        "$dir")     ;;  # Only item
-        "$dir:"*)   ;;  # At start
-        *":$dir")   ;;  # At end
-        *":$dir:"*) ;;  # In middle
-        *) PATH="$dir:$PATH" ;;
-    esac
-}
-zsh-prepend-path "$HOME/scripts/cmd"
-zsh-prepend-path "$HOME/.local/bin"
-zsh-prepend-path "/home/linuxbrew/.linuxbrew/bin"
+# Reverse priority order
+PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+PATH="$HOME/scripts/cmd:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+typeset -U path PATH # Remove duplicate entries
 
 # Change directory by typing name
 setopt AUTOCD
