@@ -4,6 +4,9 @@ onboarding = false
 name = "vesper"
 auto_switch = false
 
+[ui]
+sidebar_start_collapsed = true
+
 [ui.toast.clipboard]
 enabled = true
 position = "bottom-right"
