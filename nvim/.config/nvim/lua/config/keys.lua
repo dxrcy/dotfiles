@@ -104,3 +104,7 @@ vim.keymap.set("n", "<leader>j", function()
 end, { desc = "Jump to textwidth column" })
 
 vim.keymap.set("n", "<leader>w", "visgw")
+
+vim.keymap.set("n", "<leader>z", function()
+	vim.wo.wrap = not vim.wo.wrap
+end)
