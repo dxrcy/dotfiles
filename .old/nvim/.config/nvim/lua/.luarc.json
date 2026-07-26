@@ -1,9 +1,0 @@
-{
-    "diagnostics.globals": [
-        "vim",
-        "require"
-    ],
-    "diagnostics.disable": [
-        "param-type-mismatch"
-    ]
-}
