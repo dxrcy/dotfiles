@@ -14,7 +14,7 @@ zsh-start-desktop() {
 
 # Reverse priority order
 PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-PATH="$HOME/scripts/cmd:$PATH"
+PATH="$HOME/code/scripts/cmd:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 typeset -U path PATH # Remove duplicate entries
 
