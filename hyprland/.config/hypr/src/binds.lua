@@ -125,11 +125,8 @@ end
 
 -- Applications
 
-bind({ "Return" }, hl.dsp.exec_cmd(root.terminal .. " zellij"))
-bind(
-	{ "ALT", "Return" },
-	hl.dsp.exec_cmd(root.terminal .. " sh -c 'zellij attach $(zellij ls --short | tail -n1)'")
-)
+bind({ "Return" }, hl.dsp.exec_cmd(root.terminal .. " herdr --session \"$(namegen '%A-%N')\""))
+bind({ "ALT", "Return" }, hl.dsp.exec_cmd(root.terminal .. " herdr"))
 bind(
 	{ "CTRL", "Return" },
 	hl.dsp.exec_cmd(
