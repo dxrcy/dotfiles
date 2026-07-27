@@ -16,5 +16,7 @@ prepend_keymap = [
 
     # Rename
     { on = "R", run = "rename --empty=all", desc = "Rename (empty)" },
+
+    { on = [ "H" ], run = "help" },
 ]
 
