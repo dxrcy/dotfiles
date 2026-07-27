@@ -139,7 +139,7 @@ bind(
 
 bind(
 	{ "SHIFT", "O" },
-	hl.dsp.exec_cmd(root.terminal .. " sh -c 'cd ~/docs/notes && nvim $(notename)'")
+	hl.dsp.exec_cmd(root.terminal .. " sh -c 'cd ~/media/notes && nvim $(notename)'")
 )
 
 -- Popups
