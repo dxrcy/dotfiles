@@ -37,5 +37,7 @@ return function(first)
 		hl.dispatch(hl.dsp.focus { workspace = 2 })
 	end
 
+	hl.exec_cmd("eww open bar") -- Also started by systemd
+
 	root.sw.autostart_programs()
 end
