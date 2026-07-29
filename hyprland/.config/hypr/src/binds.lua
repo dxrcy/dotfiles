@@ -163,6 +163,13 @@ bind({ root.mod, "M" }, hl.dsp.exec_cmd("mount-gui --notify"))
 
 -- Misc
 
+local function switch_kb_layout()
+	local kb_layout = hl.get_config("input.kb_layout") ~= "us" and "us" or "epo"
+	hl.config { input = { kb_layout = kb_layout } }
+end
+bind({ "ALT", "Q" }, switch_kb_layout)
+bind({ "ALT", "scircumflex" }, switch_kb_layout)
+
 bind({ "print" }, hl.dsp.exec_cmd("flameshot gui"))
 bind({ "SHIFT", "print" }, hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
