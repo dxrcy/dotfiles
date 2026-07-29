@@ -1,3 +1,5 @@
+local root = require("src")
+
 ---@class Program
 ---@field name string
 ---@field class string
@@ -13,31 +15,31 @@ local programs = {
 		class = "Mailspring",
 		command = "mailspring --password-store=gnome-libsecret",
 		autostart = 5,
-		keybind_toggle = { "F2" },
-		keybind_move = { "SHIFT", "F2" },
+		keybind_toggle = { root.mod, "F2" },
+		keybind_move = { root.mod, "SHIFT", "F2" },
 	},
 	{
 		name = "music",
 		class = "Spotify",
 		command = "spotify",
 		autostart = 1,
-		keybind_toggle = { "F3" },
-		keybind_move = { "SHIFT", "F3" },
+		keybind_toggle = { root.mod, "F3" },
+		keybind_move = { root.mod, "SHIFT", "F3" },
 	},
 	{
 		name = "discord",
 		class = "vesktop",
 		command = "vesktop",
 		autostart = 10,
-		keybind_toggle = { "F4" },
-		keybind_move = { "SHIFT", "F4" },
+		keybind_toggle = { root.mod, "F4" },
+		keybind_move = { root.mod, "SHIFT", "F4" },
 	},
 	{
 		name = "social",
 		class = "Ferdium",
 		command = "ferdium",
-		keybind_toggle = { "F5" },
-		keybind_move = { "SHIFT", "F5" },
+		keybind_toggle = { root.mod, "F5" },
+		keybind_move = { root.mod, "SHIFT", "F5" },
 	},
 	{
 		name = "calculator",
@@ -49,8 +51,8 @@ local programs = {
 		class = "Windscribe",
 		command = "windscribe",
 		autostart = 0,
-		keybind_toggle = { "CTRL", "W" },
-		keybind_move = { "CTRL", "SHIFT", "W" },
+		keybind_toggle = { root.mod, "CTRL", "W" },
+		keybind_move = { root.mod, "CTRL", "SHIFT", "W" },
 	},
 }
 

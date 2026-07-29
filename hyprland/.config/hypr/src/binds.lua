@@ -6,8 +6,11 @@ local autostart = require("src.autostart")
 ---@param dispatcher (fun(): nil) | HL.Dispatcher
 ---@return nil
 local function bind(keys, dispatcher)
-	local keys_string = root.mod
+	local keys_string = ""
 	for _, key in ipairs(keys) do
+		if #keys_string > 0 then
+			keys_string = keys_string .. " + "
+		end
 		keys_string = keys_string .. " + " .. key
 	end
 
@@ -16,52 +19,52 @@ end
 
 -- Windows
 
-bind({ "SHIFT", "R" }, function()
+bind({ root.mod, "SHIFT", "R" }, function()
 	autostart(false)
 end)
 
-bind({ "Q" }, hl.dsp.window.close())
+bind({ root.mod, "Q" }, hl.dsp.window.close())
 
-bind({ "C" }, function()
+bind({ root.mod, "C" }, function()
 	local weird = not (
 		hl.get_config("input.touchpad.flip_x") or hl.get_config("input.touchpad.flip_y")
 	)
 	hl.config { input = { touchpad = { flip_x = weird, flip_y = weird } } }
 	hl.exec_cmd(
 		"notify-send -t 1000 -r 8124 'set cursor direction to "
-			.. (weird and "weird" or "normal")
-			.. "'"
+		.. (weird and "weird" or "normal")
+		.. "'"
 	)
 end)
 
 -- Toggle float, set size and disable pin
-bind({ "SHIFT", "space" }, function()
+bind({ root.mod, "SHIFT", "space" }, function()
 	hl.dispatch(hl.dsp.window.pin { action = "disable" })
 	hl.dispatch(hl.dsp.window.float { action = "toggle" })
 	hl.dispatch(hl.dsp.window.resize { x = 1200, y = 800 })
 end)
 
-bind({ "F" }, hl.dsp.window.fullscreen { mode = 1, action = "toggle" })
-bind({ "SHIFT", "F" }, hl.dsp.window.fullscreen())
+bind({ root.mod, "F" }, hl.dsp.window.fullscreen { mode = 1, action = "toggle" })
+bind({ root.mod, "SHIFT", "F" }, hl.dsp.window.fullscreen())
 
 local resize_large = 80
 local resize_small = 20
-bind({ "ALT", "H" }, hl.dsp.window.resize { x = -resize_large, y = 0, relative = true })
-bind({ "ALT", "L" }, hl.dsp.window.resize { x = resize_large, y = 0, relative = true })
-bind({ "ALT", "K" }, hl.dsp.window.resize { x = 0, y = resize_large, relative = true })
-bind({ "ALT", "J" }, hl.dsp.window.resize { x = 0, y = -resize_large, relative = true })
-bind({ "ALT", "SHIFT", "H" }, hl.dsp.window.resize { x = -resize_small, y = 0, relative = true })
-bind({ "ALT", "SHIFT", "L" }, hl.dsp.window.resize { x = resize_small, y = 0, relative = true })
-bind({ "ALT", "SHIFT", "K" }, hl.dsp.window.resize { x = 0, y = resize_small, relative = true })
-bind({ "ALT", "SHIFT", "J" }, hl.dsp.window.resize { x = 0, y = -resize_small, relative = true })
+bind({ root.mod, "ALT", "H" }, hl.dsp.window.resize { x = -resize_large, y = 0, relative = true })
+bind({ root.mod, "ALT", "L" }, hl.dsp.window.resize { x = resize_large, y = 0, relative = true })
+bind({ root.mod, "ALT", "K" }, hl.dsp.window.resize { x = 0, y = resize_large, relative = true })
+bind({ root.mod, "ALT", "J" }, hl.dsp.window.resize { x = 0, y = -resize_large, relative = true })
+bind({ root.mod, "ALT", "SHIFT", "H" }, hl.dsp.window.resize { x = -resize_small, y = 0, relative = true })
+bind({ root.mod, "ALT", "SHIFT", "L" }, hl.dsp.window.resize { x = resize_small, y = 0, relative = true })
+bind({ root.mod, "ALT", "SHIFT", "K" }, hl.dsp.window.resize { x = 0, y = resize_small, relative = true })
+bind({ root.mod, "ALT", "SHIFT", "J" }, hl.dsp.window.resize { x = 0, y = -resize_small, relative = true })
 
-bind({ "CTRL", "H" }, hl.dsp.focus { monitor = 0 })
-bind({ "CTRL", "L" }, hl.dsp.focus { monitor = 1 })
+bind({ root.mod, "CTRL", "H" }, hl.dsp.focus { monitor = 0 })
+bind({ root.mod, "CTRL", "L" }, hl.dsp.focus { monitor = 1 })
 
-bind({ "P" }, hl.dsp.window.pin())
+bind({ root.mod, "P" }, hl.dsp.window.pin())
 
 -- Pinned video player
-bind({ "SHIFT", "P" }, function()
+bind({ root.mod, "SHIFT", "P" }, function()
 	local window = hl.get_active_window()
 	if window == nil then
 		return
@@ -80,39 +83,39 @@ bind({ "SHIFT", "P" }, function()
 	end
 end)
 
-bind({ "L" }, hl.dsp.focus { direction = "right" })
-bind({ "H" }, hl.dsp.focus { direction = "left" })
-bind({ "K" }, hl.dsp.focus { direction = "up" })
-bind({ "J" }, hl.dsp.focus { direction = "down" })
+bind({ root.mod, "L" }, hl.dsp.focus { direction = "right" })
+bind({ root.mod, "H" }, hl.dsp.focus { direction = "left" })
+bind({ root.mod, "K" }, hl.dsp.focus { direction = "up" })
+bind({ root.mod, "J" }, hl.dsp.focus { direction = "down" })
 
 -- For focusing floating windows
 -- TODO: Only toggle between most recent floating window and most recent tiling window
-bind({ "space" }, hl.dsp.window.cycle_next())
+bind({ root.mod, "space" }, hl.dsp.window.cycle_next())
 
-bind({ "SHIFT", "L" }, hl.dsp.window.move { direction = "right" })
-bind({ "SHIFT", "H" }, hl.dsp.window.move { direction = "left" })
-bind({ "SHIFT", "K" }, hl.dsp.window.move { direction = "up" })
-bind({ "SHIFT", "J" }, hl.dsp.window.move { direction = "down" })
+bind({ root.mod, "SHIFT", "L" }, hl.dsp.window.move { direction = "right" })
+bind({ root.mod, "SHIFT", "H" }, hl.dsp.window.move { direction = "left" })
+bind({ root.mod, "SHIFT", "K" }, hl.dsp.window.move { direction = "up" })
+bind({ root.mod, "SHIFT", "J" }, hl.dsp.window.move { direction = "down" })
 
 -- Workspaces
 
-bind({ "tab" }, hl.dsp.focus { workspace = "previous" })
+bind({ root.mod, "tab" }, hl.dsp.focus { workspace = "previous" })
 
-bind({ "I" }, hl.dsp.focus { workspace = "-1" })
-bind({ "O" }, hl.dsp.focus { workspace = "+1" })
+bind({ root.mod, "I" }, hl.dsp.focus { workspace = "-1" })
+bind({ root.mod, "O" }, hl.dsp.focus { workspace = "+1" })
 
 for i = 1, 10 do
 	local key = tostring(i % 10)
-	bind({ key }, hl.dsp.focus { workspace = i })
-	bind({ "SHIFT", key }, hl.dsp.window.move { workspace = i, follow = false })
+	bind({ root.mod, key }, hl.dsp.focus { workspace = i })
+	bind({ root.mod, "SHIFT", key }, hl.dsp.window.move { workspace = i, follow = false })
 end
 
-bind({ "CTRL", "ALT", "H" }, hl.dsp.workspace.move { monitor = 0 })
-bind({ "CTRL", "ALT", "L" }, hl.dsp.workspace.move { monitor = 1 })
+bind({ root.mod, "CTRL", "ALT", "H" }, hl.dsp.workspace.move { monitor = 0 })
+bind({ root.mod, "CTRL", "ALT", "L" }, hl.dsp.workspace.move { monitor = 1 })
 
 -- Special workspaces
 
-bind({ "grave" }, sw.toggle_recent())
+bind({ root.mod, "grave" }, sw.toggle_recent())
 
 for _, program in ipairs(sw.programs) do
 	if program.keybind_toggle then
@@ -125,8 +128,8 @@ end
 
 -- Applications
 
-bind({ "Return" }, hl.dsp.exec_cmd(root.terminal .. " herdr --session \"$(namegen '%A-%N')\""))
-bind({ "ALT", "Return" }, hl.dsp.exec_cmd(root.terminal .. " herdr"))
+bind({ root.mod, "Return" }, hl.dsp.exec_cmd(root.terminal .. " herdr --session \"$(namegen '%A-%N')\""))
+bind({ root.mod, "ALT", "Return" }, hl.dsp.exec_cmd(root.terminal .. " herdr"))
 bind(
 	{ "CTRL", "Return" },
 	hl.dsp.exec_cmd(
@@ -141,78 +144,75 @@ bind(
 
 -- Popups
 
-bind({ "D" }, hl.dsp.exec_cmd('$(terminal-popup fzf-menu "$XDG_DATA_HOME/applications-minimal/")'))
+bind({ root.mod, "D" }, hl.dsp.exec_cmd('$(terminal-popup fzf-menu "$XDG_DATA_HOME/applications-minimal/")'))
 bind(
 	{ "SHIFT", "D" },
 	hl.dsp.exec_cmd(
 		'$(terminal-popup fzf-menu "/usr/share/applications/ $XDG_DATA_HOME/applications/")'
 	)
 )
-bind({ "CTRL", "D" }, hl.dsp.exec_cmd("rofi -show drun"))
+bind({ root.mod, "CTRL", "D" }, hl.dsp.exec_cmd("rofi -show drun"))
 
-bind({ "escape" }, hl.dsp.exec_cmd("fzf-powermenu"))
+bind({ root.mod, "escape" }, hl.dsp.exec_cmd("fzf-powermenu"))
 
-bind({ "period" }, hl.dsp.exec_cmd("wl-copy $(terminal-popup fzf-emoji)"))
+bind({ root.mod, "period" }, hl.dsp.exec_cmd("wl-copy $(terminal-popup fzf-emoji)"))
 
-bind({ "V" }, hl.dsp.exec_cmd("foot --app-id=popup-clipse -- clipse"))
+bind({ root.mod, "V" }, hl.dsp.exec_cmd("foot --app-id=popup-clipse -- clipse"))
 
-bind({ "M" }, hl.dsp.exec_cmd("mount-gui --notify"))
+bind({ root.mod, "M" }, hl.dsp.exec_cmd("mount-gui --notify"))
 
 -- Misc
 
-hl.bind("print", hl.dsp.exec_cmd("flameshot gui"))
-hl.bind("SHIFT + print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
+bind({ "print" }, hl.dsp.exec_cmd("flameshot gui"))
+bind({ "SHIFT", "print" }, hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
-bind({ "B" }, hl.dsp.exec_cmd("bt connect"))
-bind({ "SHIFT", "B" }, hl.dsp.exec_cmd("bt disconnect"))
+bind({ root.mod, "B" }, hl.dsp.exec_cmd("bt connect"))
+bind({ root.mod, "SHIFT", "B" }, hl.dsp.exec_cmd("bt disconnect"))
 
-bind({ "S" }, hl.dsp.exec_cmd("player-info notify"))
+bind({ root.mod, "S" }, hl.dsp.exec_cmd("player-info notify"))
 bind(
 	{ "SHIFT", "S" },
 	hl.dsp.exec_cmd("dunstify -t 2000 --replace 8428 \"$(date '+%T')\" \"$(date +'%A %-d %B')\"")
 )
-bind({ "CTRL", "N" }, hl.dsp.exec_cmd("dunstctl close-all"))
+bind({ root.mod, "CTRL", "N" }, hl.dsp.exec_cmd("dunstctl close-all"))
 
-bind({ "U" }, hl.dsp.exec_cmd(root.scripts .. "/hypridle-toggle.sh"))
+bind({ root.mod, "U" }, hl.dsp.exec_cmd(root.scripts .. "/hypridle-toggle.sh"))
 
-bind({ "mouse:272" }, hl.dsp.window.drag())
-bind({ "mouse:273" }, hl.dsp.window.resize())
+bind({ root.mod, "mouse:272" }, hl.dsp.window.drag())
+bind({ root.mod, "mouse:273" }, hl.dsp.window.resize())
 
-hl.bind("XF86PowerOff", hl.dsp.exec_cmd("hyprlock"))
+bind({ "XF86PowerOff" }, hl.dsp.exec_cmd("hyprlock"))
 
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("volume-brightness.nu mute toggle"))
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("volume-brightness.nu volume down"))
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("volume-brightness.nu volume up"))
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("volume-brightness.nu microphones toggle"))
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("volume-brightness.nu brightness down"))
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("volume-brightness.nu brightness up"))
+bind({ "XF86AudioMute" }, hl.dsp.exec_cmd("volume-brightness.nu mute toggle"))
+bind({ "XF86AudioLowerVolume" }, hl.dsp.exec_cmd("volume-brightness.nu volume down"))
+bind({ "XF86AudioRaiseVolume" }, hl.dsp.exec_cmd("volume-brightness.nu volume up"))
+bind({ "XF86AudioMicMute" }, hl.dsp.exec_cmd("volume-brightness.nu microphones toggle"))
+bind({ "XF86MonBrightnessDown" }, hl.dsp.exec_cmd("volume-brightness.nu brightness down"))
+bind({ "XF86MonBrightnessUp" }, hl.dsp.exec_cmd("volume-brightness.nu brightness up"))
 
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
+bind({ "XF86AudioPause" }, hl.dsp.exec_cmd("playerctl play-pause"))
+bind({ "XF86AudioPlay" }, hl.dsp.exec_cmd("playerctl play-pause"))
+bind({ "XF86AudioPrev" }, hl.dsp.exec_cmd("playerctl previous"))
+bind({ "XF86AudioNext" }, hl.dsp.exec_cmd("playerctl next"))
 
-hl.bind("CTRL + backslash", hl.dsp.exec_cmd("playerctl -p " .. root.player .. " play-pause"))
-hl.bind("CTRL + SHIFT + backslash", hl.dsp.exec_cmd("playerctl --all-config.config.player pause"))
-hl.bind(
-	"CTRL + SHIFT + bracketleft",
-	hl.dsp.exec_cmd("playerctl -p " .. root.player .. " previous")
-)
-hl.bind("CTRL + SHIFT + bracketright", hl.dsp.exec_cmd("playerctl -p " .. root.player .. " next"))
+bind({ "CTRL", "backslash" }, hl.dsp.exec_cmd("playerctl -p " .. root.player .. " play-pause"))
+bind({ "CTRL", "SHIFT", "backslash" }, hl.dsp.exec_cmd("playerctl --all-config.config.player pause"))
+bind({ "CTRL", "SHIFT", "bracketleft" }, hl.dsp.exec_cmd("playerctl -p " .. root.player .. " previous"))
+bind({ "CTRL", "SHIFT", "bracketright" }, hl.dsp.exec_cmd("playerctl -p " .. root.player .. " next"))
 
 local global_binds = {
 	{
 		window = "class:^(com\\.obsproject\\.Studio)$",
 		binds = {
-			root.mod .. " + F10",
-			root.mod .. " + F11",
-			root.mod .. " + F12",
+			{ root.mod, "F10" },
+			{ root.mod, "F11" },
+			{ root.mod, "F12" },
 		},
 	},
 }
 
 for _, item in ipairs(global_binds) do
 	for _, keys in ipairs(item.binds) do
-		hl.bind(keys, hl.dsp.pass { window = item.window })
+		bind(keys, hl.dsp.pass { window = item.window })
 	end
 end
