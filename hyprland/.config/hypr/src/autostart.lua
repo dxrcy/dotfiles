@@ -1,4 +1,5 @@
 local root = require("src")
+local sw = require("src.sw")
 
 -- PERF: Maybe add some sleeps between exec_cmd calls ?
 ---@param first boolean
@@ -37,5 +38,5 @@ return function(first)
 		hl.dispatch(hl.dsp.focus { workspace = 2 })
 	end
 
-	root.sw.autostart_programs()
+	sw.autostart_programs()
 end

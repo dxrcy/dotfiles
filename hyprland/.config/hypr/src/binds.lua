@@ -1,5 +1,5 @@
 local root = require("src")
-local sw = root.sw
+local sw = require("src.sw")
 local autostart = require("src.autostart")
 
 ---@param keys string[]

@@ -1,5 +1,5 @@
 local root = require("src")
-local sw = root.sw
+local sw = require("src.sw")
 
 hl.window_rule {
 	name = "popup",

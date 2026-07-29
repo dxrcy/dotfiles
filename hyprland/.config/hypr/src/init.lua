@@ -15,15 +15,14 @@ local M = {
 	player = "spotify",
 
 	scripts = "~/.config/hypr/scripts/",
-
-	-- TODO: Rename to `special`
-	sw = require("src.sw"),
 }
 
 M.run = function()
 	require("src.variables")
 	require("src.binds")
 	require("src.rules")
+	-- TODO: Rename to `special`
+	require("src.sw")
 	local autostart = require("src.autostart")
 
 	hl.on("hyprland.start", function()
