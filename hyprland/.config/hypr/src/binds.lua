@@ -131,14 +131,14 @@ end
 bind({ root.mod, "Return" }, hl.dsp.exec_cmd(root.terminal .. " herdr --session \"$(namegen '%A-%N')\""))
 bind({ root.mod, "ALT", "Return" }, hl.dsp.exec_cmd(root.terminal .. " herdr"))
 bind(
-	{ "CTRL", "Return" },
+	{ root.mod, "CTRL", "Return" },
 	hl.dsp.exec_cmd(
 		root.terminal .. ' sh -c \'printf "\\033[1m(no multiplexer)\\n" && ' .. root.shell .. "'"
 	)
 )
 
 bind(
-	{ "SHIFT", "O" },
+	{ root.mod, "SHIFT", "O" },
 	hl.dsp.exec_cmd(root.terminal .. " sh -c 'cd ~/media/notes && nvim $(notename)'")
 )
 
@@ -146,7 +146,7 @@ bind(
 
 bind({ root.mod, "D" }, hl.dsp.exec_cmd('$(terminal-popup fzf-menu "$XDG_DATA_HOME/applications-minimal/")'))
 bind(
-	{ "SHIFT", "D" },
+	{ root.mod, "SHIFT", "D" },
 	hl.dsp.exec_cmd(
 		'$(terminal-popup fzf-menu "/usr/share/applications/ $XDG_DATA_HOME/applications/")'
 	)
@@ -178,7 +178,7 @@ bind({ root.mod, "SHIFT", "B" }, hl.dsp.exec_cmd("bt disconnect"))
 
 bind({ root.mod, "S" }, hl.dsp.exec_cmd("player-info notify"))
 bind(
-	{ "SHIFT", "S" },
+	{ root.mod, "SHIFT", "S" },
 	hl.dsp.exec_cmd("dunstify -t 2000 --replace 8428 \"$(date '+%T')\" \"$(date +'%A %-d %B')\"")
 )
 bind({ root.mod, "CTRL", "N" }, hl.dsp.exec_cmd("dunstctl close-all"))
