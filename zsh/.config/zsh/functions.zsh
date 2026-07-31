@@ -36,6 +36,7 @@ project-setup() {
 }
 
 venv() {
+    command -v deactivate &>/dev/null && deactivate
     venv=$(venv-path)
     [ $? = 0 ] || return 1
     source "$venv/.venv/bin/activate"
