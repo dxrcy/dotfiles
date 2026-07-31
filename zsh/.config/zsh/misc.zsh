@@ -35,6 +35,11 @@ EOF
     )
 done
 
+# Set/unset venv on directory change
+chpwd() {
+    venv
+}
+
 # Persistant history
 export HISTFILE=$XDG_CACHE_HOME/zsh_history
 export HISTSIZE=5000
