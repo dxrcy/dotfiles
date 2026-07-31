@@ -25,6 +25,7 @@ source "$ZSH_CONFIG_DIR/plugins.zsh"
 
 zsh-plugins-init # plugins.zsh
 zsh-start-desktop # misc.zsh
+venv # functions.zsh
 
 true # Reset $? for prompt
 
