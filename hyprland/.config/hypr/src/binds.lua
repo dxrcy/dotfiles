@@ -4,8 +4,9 @@ local autostart = require("src.autostart")
 
 ---@param keys string[]
 ---@param dispatcher (fun(): nil) | HL.Dispatcher
+---@param opts? HL.BindOptions
 ---@return nil
-local function bind(keys, dispatcher)
+local function bind(keys, dispatcher, opts)
 	local keys_string = ""
 	for _, key in ipairs(keys) do
 		if #keys_string > 0 then
@@ -14,7 +15,7 @@ local function bind(keys, dispatcher)
 		keys_string = keys_string .. " + " .. key
 	end
 
-	hl.bind(keys_string, dispatcher)
+	hl.bind(keys_string, dispatcher, opts)
 end
 
 -- Windows
@@ -167,8 +168,8 @@ local function switch_kb_layout()
 	local kb_layout = hl.get_config("input.kb_layout") ~= "us" and "us" or "epo"
 	hl.config { input = { kb_layout = kb_layout } }
 end
-bind({ "ALT", "Q" }, switch_kb_layout)
-bind({ "ALT", "scircumflex" }, switch_kb_layout)
+bind({ "ALT", "Q" }, switch_kb_layout, { non_consuming = true })
+bind({ "ALT", "scircumflex" }, switch_kb_layout, { non_consuming = true })
 
 bind({ "print" }, hl.dsp.exec_cmd("flameshot gui"))
 bind({ "SHIFT", "print" }, hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
