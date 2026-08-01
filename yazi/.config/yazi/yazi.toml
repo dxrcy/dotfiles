@@ -53,6 +53,7 @@ okular = [
 prepend_rules = [
     # mime="text/*" overrides
     { url = "*.drawio", use = [ "drawio", "edit", "default", "copy-text" ] },
+    { url = "*.md", use = [ "edit", "browser", "default", "copy-text" ] },
 
     # "edit" enters the file, instead of opening in new window, so prefer this
     { mime = "text/*", use = [ "edit", "default", "copy-text" ] },
