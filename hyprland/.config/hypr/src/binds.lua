@@ -7,15 +7,30 @@ local autostart = require("src.autostart")
 ---@param opts? HL.BindOptions
 ---@return nil
 local function bind(keys, dispatcher, opts)
-	local keys_string = ""
-	for _, key in ipairs(keys) do
-		if #keys_string > 0 then
-			keys_string = keys_string .. " + "
-		end
-		keys_string = keys_string .. " + " .. key
-	end
+	hl.bind(table.concat(keys, " + "), dispatcher, opts)
+end
 
-	hl.bind(keys_string, dispatcher, opts)
+---@param keys string[]
+---@param dispatcher (fun(): nil) | HL.Dispatcher
+---@param opts? HL.BindOptions
+---@return nil
+local function bind2(keys, dispatcher, opts)
+	local alt_syms = {
+		Q = "scircumflex",
+		W = "gcircumflex",
+		X = "ccircumflex",
+		Y = "ubreve",
+		bracketleft = "jcircumflex",
+		bracketright = "hcircumflex",
+	}
+	local keys_alt = {}
+	for _, key in ipairs(keys) do
+		keys_alt[#keys_alt + 1] = alt_syms[key] or key
+	end
+	if table.concat(keys, " + ") ~= table.concat(keys_alt, " + ") then
+		bind(keys, dispatcher, opts)
+	end
+	bind(keys_alt, dispatcher, opts)
 end
 
 -- Windows
@@ -24,7 +39,7 @@ bind({ root.mod, "SHIFT", "R" }, function()
 	autostart(false)
 end)
 
-bind({ root.mod, "Q" }, hl.dsp.window.close())
+bind2({ root.mod, "Q" }, hl.dsp.window.close())
 
 bind({ root.mod, "C" }, function()
 	local weird = not (
@@ -120,10 +135,10 @@ bind({ root.mod, "grave" }, sw.toggle_recent())
 
 for _, program in ipairs(sw.programs) do
 	if program.keybind_toggle then
-		bind(program.keybind_toggle, sw.toggle(program.name))
+		bind2(program.keybind_toggle, sw.toggle(program.name))
 	end
 	if program.keybind_move then
-		bind(program.keybind_move, sw.move(program.name))
+		bind2(program.keybind_move, sw.move(program.name))
 	end
 end
 
@@ -168,8 +183,7 @@ local function switch_kb_layout()
 	local kb_layout = hl.get_config("input.kb_layout") ~= "us" and "us" or "epo"
 	hl.config { input = { kb_layout = kb_layout } }
 end
-bind({ "ALT", "Q" }, switch_kb_layout, { non_consuming = true })
-bind({ "ALT", "scircumflex" }, switch_kb_layout, { non_consuming = true })
+bind2({ "ALT", "Q" }, switch_kb_layout, { non_consuming = true })
 
 bind({ "print" }, hl.dsp.exec_cmd("flameshot gui"))
 bind({ "SHIFT", "print" }, hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
@@ -203,10 +217,10 @@ bind({ "XF86AudioPlay" }, hl.dsp.exec_cmd("playerctl play-pause"))
 bind({ "XF86AudioPrev" }, hl.dsp.exec_cmd("playerctl previous"))
 bind({ "XF86AudioNext" }, hl.dsp.exec_cmd("playerctl next"))
 
-bind({ "CTRL", "backslash" }, hl.dsp.exec_cmd("playerctl -p " .. root.player .. " play-pause"))
-bind({ "CTRL", "SHIFT", "backslash" }, hl.dsp.exec_cmd("playerctl --all-config.config.player pause"))
-bind({ "CTRL", "SHIFT", "bracketleft" }, hl.dsp.exec_cmd("playerctl -p " .. root.player .. " previous"))
-bind({ "CTRL", "SHIFT", "bracketright" }, hl.dsp.exec_cmd("playerctl -p " .. root.player .. " next"))
+bind2({ "CTRL", "backslash" }, hl.dsp.exec_cmd("playerctl -p " .. root.player .. " play-pause"))
+bind2({ "CTRL", "SHIFT", "backslash" }, hl.dsp.exec_cmd("playerctl --all-config.config.player pause"))
+bind2({ "CTRL", "SHIFT", "bracketleft" }, hl.dsp.exec_cmd("playerctl -p " .. root.player .. " previous"))
+bind2({ "CTRL", "SHIFT", "bracketright" }, hl.dsp.exec_cmd("playerctl -p " .. root.player .. " next"))
 
 local global_binds = {
 	{
@@ -221,6 +235,6 @@ local global_binds = {
 
 for _, item in ipairs(global_binds) do
 	for _, keys in ipairs(item.binds) do
-		bind(keys, hl.dsp.pass { window = item.window })
+		bind2(keys, hl.dsp.pass { window = item.window })
 	end
 end
