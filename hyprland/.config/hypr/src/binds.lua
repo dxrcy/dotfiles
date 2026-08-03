@@ -113,6 +113,14 @@ bind({ root.mod, "SHIFT", "H" }, hl.dsp.window.move { direction = "left" })
 bind({ root.mod, "SHIFT", "K" }, hl.dsp.window.move { direction = "up" })
 bind({ root.mod, "SHIFT", "J" }, hl.dsp.window.move { direction = "down" })
 
+bind({ root.mod, "N" }, function()
+	-- TODO: Get regex string from `variables.lua` or some shared definition
+	local swallow_regex = hl.get_config("misc.swallow_regex") == "" and "^.*$" or ""
+	hl.exec_cmd("notify-send -t 1000 -r 7915 'Window swallowing " ..
+		(swallow_regex == "" and "DISABLED" or "ENABLED") .. "'")
+	hl.config { misc = { swallow_regex = swallow_regex } }
+end)
+
 -- Workspaces
 
 bind({ root.mod, "tab" }, hl.dsp.focus { workspace = "previous" })
