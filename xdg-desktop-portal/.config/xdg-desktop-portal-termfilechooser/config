@@ -2,7 +2,7 @@
 cmd=yazi-wrapper.sh
 default_dir=$HOME
 create_help_file=0
-env=TERMCMD=foot
+env=TERMCMD=kitty
 
 ; Mode must be one of 'suggested', 'default', or 'last'.
 open_mode=suggested
