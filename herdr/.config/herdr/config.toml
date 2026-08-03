@@ -1,7 +1,7 @@
 onboarding = false
 
 [theme]
-name = "vesper"
+name = "gruvbox"
 auto_switch = false
 
 [ui]
