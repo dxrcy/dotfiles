@@ -23,9 +23,19 @@ _colorize() {
         echo "$2$1$3"
     fi
 }
-git_branch() { _colorize "$(git-info -b)" ' %F{blue}' '' }
-git_status() { _colorize "$(git-info)" ' %F{red}[' ']' }
-version() { _colorize "$(package-version)" " %F{green}\x1b[2mv" "\x1b[0m" }
+_fallback() {
+    local fallback=$1
+    shift
+    if ! command -v $1 >/dev/null; then
+        printf $fallback
+        return 0
+    fi
+    $*
+}
+
+git_branch() { _colorize "$(_fallback '!?' git-info -b)" ' %F{blue}' '' }
+git_status() { _colorize "$(_fallback '!?' git-info)" ' %F{red}[' ']' }
+version() { _colorize "$(_fallback '!?' package-version)" " %F{green}\x1b[2mv" "\x1b[0m" }
 
 # Concat strings for PSx prompt
 _prompt() {
