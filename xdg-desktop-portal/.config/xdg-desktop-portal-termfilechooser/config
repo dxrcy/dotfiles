@@ -1,7 +1,7 @@
 [filechooser]
 cmd=yazi-wrapper.sh
 default_dir=$HOME
-create_help_file=0
+create_help_file=1
 env=TERMCMD=kitty
 
 ; Mode must be one of 'suggested', 'default', or 'last'.
