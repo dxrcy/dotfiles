@@ -113,12 +113,31 @@ bind({ root.mod, "SHIFT", "H" }, hl.dsp.window.move { direction = "left" })
 bind({ root.mod, "SHIFT", "K" }, hl.dsp.window.move { direction = "up" })
 bind({ root.mod, "SHIFT", "J" }, hl.dsp.window.move { direction = "down" })
 
-bind({ root.mod, "N" }, function()
+---@return boolean
+local function is_swallow()
+	return hl.get_config("misc.swallow_regex") ~= ""
+end
+
+---@param enabled boolean
+---@return nil
+local function set_swallow(enabled)
 	-- TODO: Get regex string from `variables.lua` or some shared definition
-	local swallow_regex = hl.get_config("misc.swallow_regex") == "" and "^.*$" or ""
+	hl.config { misc = { swallow_regex = enabled and "^.*$" or "" } }
+end
+
+bind({ root.mod, "N" }, function()
+	if not is_swallow() then return end
+	set_swallow(false)
+	hl.timer(function()
+		set_swallow(true)
+	end, { type = "oneshot", timeout = 2000 })
+end)
+
+bind({ root.mod, "SHIFT", "N" }, function()
+	local enabled = is_swallow()
 	hl.exec_cmd("notify-send -t 1000 -r 7915 'Window swallowing " ..
-		(swallow_regex == "" and "DISABLED" or "ENABLED") .. "'")
-	hl.config { misc = { swallow_regex = swallow_regex } }
+		(enabled and "DISABLED" or "ENABLED") .. "'")
+	set_swallow(not enabled)
 end)
 
 -- Workspaces
