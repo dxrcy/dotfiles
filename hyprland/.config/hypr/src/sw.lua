@@ -11,6 +11,14 @@ local root = require("src")
 ---@type Program[]
 local programs = {
 	{
+		name = "music",
+		class = "Spotify",
+		command = "spotify",
+		autostart = 1,
+		keybind_toggle = { root.mod, "F1" },
+		keybind_move = { root.mod, "SHIFT", "F1" },
+	},
+	{
 		name = "mail",
 		class = "Mailspring",
 		command = "mailspring --password-store=gnome-libsecret",
@@ -19,27 +27,19 @@ local programs = {
 		keybind_move = { root.mod, "SHIFT", "F2" },
 	},
 	{
-		name = "music",
-		class = "Spotify",
-		command = "spotify",
-		autostart = 1,
-		keybind_toggle = { root.mod, "F3" },
-		keybind_move = { root.mod, "SHIFT", "F3" },
-	},
-	{
 		name = "discord",
 		class = "vesktop",
 		command = "vesktop",
 		autostart = 10,
-		keybind_toggle = { root.mod, "F4" },
-		keybind_move = { root.mod, "SHIFT", "F4" },
+		keybind_toggle = { root.mod, "F3" },
+		keybind_move = { root.mod, "SHIFT", "F3" },
 	},
 	{
 		name = "social",
 		class = "Ferdium",
 		command = "ferdium",
-		keybind_toggle = { root.mod, "F5" },
-		keybind_move = { root.mod, "SHIFT", "F5" },
+		keybind_toggle = { root.mod, "F4" },
+		keybind_move = { root.mod, "SHIFT", "F4" },
 	},
 	{
 		name = "calculator",
