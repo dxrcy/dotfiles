@@ -5,14 +5,12 @@ gui:
     selectedRangeBgColor:
       - underline
   mainPanelSplitMode: horizontal
-
 git:
-  pagers:
+  diffRenderers:
     # - useExternalDiffGitConfig: true
-    - pager: delta --dark --paging=never
+    - command: delta --dark --paging=never
   disableForcePushing: true
   overrideGpg: true
-
 customCommands:
   - key: 'ŝ'
     context: 'global'
@@ -22,6 +20,4 @@ customCommands:
     command: 'zsh -ci gh-switch'
 os:
   editPreset: 'nvim'
-
 promptToReturnFromSubprocess: false
-
