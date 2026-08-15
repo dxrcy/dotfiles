@@ -36,7 +36,7 @@ local programs = {
 	},
 	{
 		name = "social",
-		class = "Ferdium",
+		class = "ferdium",
 		command = "ferdium",
 		keybind_toggle = { root.mod, "F4" },
 		keybind_move = { root.mod, "SHIFT", "F4" },
