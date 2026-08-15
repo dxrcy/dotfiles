@@ -4,7 +4,7 @@ local M = {}
 ---@param dispatcher (fun(): nil) | HL.Dispatcher
 ---@param opts? HL.BindOptions
 ---@return nil
-M.bind = function(keys, dispatcher, opts)
+M.bind_single = function(keys, dispatcher, opts)
 	hl.bind(table.concat(keys, " + "), dispatcher, opts)
 end
 
@@ -12,7 +12,7 @@ end
 ---@param dispatcher (fun(): nil) | HL.Dispatcher
 ---@param opts? HL.BindOptions
 ---@return nil
-M.bind2 = function(keys, dispatcher, opts)
+M.bind = function(keys, dispatcher, opts)
 	local alt_syms = {
 		Q = "scircumflex",
 		W = "gcircumflex",
@@ -26,9 +26,9 @@ M.bind2 = function(keys, dispatcher, opts)
 		keys_alt[#keys_alt + 1] = alt_syms[key] or key
 	end
 	if table.concat(keys, " + ") ~= table.concat(keys_alt, " + ") then
-		M.bind(keys, dispatcher, opts)
+		M.bind_single(keys, dispatcher, opts)
 	end
-	M.bind(keys_alt, dispatcher, opts)
+	M.bind_single(keys_alt, dispatcher, opts)
 end
 
 ---@return nil
