@@ -101,8 +101,8 @@ end)
 
 bind({ root.mod, "L" }, hl.dsp.focus { direction = "right" })
 bind({ root.mod, "H" }, hl.dsp.focus { direction = "left" })
-bind({ root.mod, "K" }, hl.dsp.focus { direction = "up" })
-bind({ root.mod, "J" }, hl.dsp.focus { direction = "down" })
+bind({ root.mod, "K" }, hl.dsp.focus { workspace = "-1" })
+bind({ root.mod, "J" }, hl.dsp.focus { workspace = "+1" })
 
 -- For focusing floating windows
 -- TODO: Only toggle between most recent floating window and most recent tiling window
@@ -110,8 +110,8 @@ bind({ root.mod, "space" }, hl.dsp.window.cycle_next())
 
 bind({ root.mod, "SHIFT", "L" }, hl.dsp.window.move { direction = "right" })
 bind({ root.mod, "SHIFT", "H" }, hl.dsp.window.move { direction = "left" })
-bind({ root.mod, "SHIFT", "K" }, hl.dsp.window.move { direction = "up" })
-bind({ root.mod, "SHIFT", "J" }, hl.dsp.window.move { direction = "down" })
+bind({ root.mod, "SHIFT", "K" }, hl.dsp.window.move { workspace = "-1" })
+bind({ root.mod, "SHIFT", "J" }, hl.dsp.window.move { workspace = "+1" })
 
 ---@return boolean
 local function is_swallow()
@@ -143,9 +143,6 @@ end)
 -- Workspaces
 
 bind({ root.mod, "tab" }, hl.dsp.focus { workspace = "previous" })
-
-bind({ root.mod, "I" }, hl.dsp.focus { workspace = "-1" })
-bind({ root.mod, "O" }, hl.dsp.focus { workspace = "+1" })
 
 for i = 1, 10 do
 	local key = tostring(i % 10)
