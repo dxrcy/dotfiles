@@ -1,3 +1,5 @@
+local root = require("src")
+
 local M = {}
 
 ---@param keys string[]
@@ -29,6 +31,40 @@ M.bind = function(keys, dispatcher, opts)
 		M.bind_single(keys, dispatcher, opts)
 	end
 	M.bind_single(keys_alt, dispatcher, opts)
+end
+
+---@param mode "minimal"|"global"|"fallback"
+---@return HL.Dispatcher
+M.open_runner = function(mode)
+	if mode == "minimal" then
+		return hl.dsp.exec_cmd('$(terminal-popup fzf-menu "$XDG_DATA_HOME/applications-minimal/")')
+	elseif mode == "global" then
+		return hl.dsp.exec_cmd('$(terminal-popup fzf-menu "/usr/share/applications/ $XDG_DATA_HOME/applications/")')
+	elseif mode == "fallback" then
+		return hl.dsp.exec_cmd("rofi -show drun")
+	else
+		error("invalid mode")
+	end
+end
+
+---@param mode "new"|"reattach"|"no_mux"
+---@return HL.Dispatcher
+M.open_terminal = function(mode)
+	if mode == "new" then
+		return hl.dsp.exec_cmd(root.terminal .. " herdr --session \"$(namegen '%A-%N')\"")
+	elseif mode == "reattach" then
+		return hl.dsp.exec_cmd(root.terminal .. " herdr")
+	elseif mode == "no_mux" then
+		return hl.dsp.exec_cmd(root.terminal ..
+			' sh -c \'printf "\\033[1m(no multiplexer)\\n" && ' .. root.shell .. "'")
+	else
+		error("invalid mode")
+	end
+end
+
+---@return nil
+M.open_notes = function()
+	hl.exec_cmd(root.terminal .. " sh -c 'cd ~/media/notes && nvim $(notename)'")
 end
 
 ---@return nil
