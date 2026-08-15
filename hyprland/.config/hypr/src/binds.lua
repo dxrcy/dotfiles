@@ -1,64 +1,19 @@
 local root = require("src")
 local sw = require("src.sw")
 local autostart = require("src.autostart")
-
----@param keys string[]
----@param dispatcher (fun(): nil) | HL.Dispatcher
----@param opts? HL.BindOptions
----@return nil
-local function bind(keys, dispatcher, opts)
-	hl.bind(table.concat(keys, " + "), dispatcher, opts)
-end
-
----@param keys string[]
----@param dispatcher (fun(): nil) | HL.Dispatcher
----@param opts? HL.BindOptions
----@return nil
-local function bind2(keys, dispatcher, opts)
-	local alt_syms = {
-		Q = "scircumflex",
-		W = "gcircumflex",
-		X = "ccircumflex",
-		Y = "ubreve",
-		bracketleft = "jcircumflex",
-		bracketright = "hcircumflex",
-	}
-	local keys_alt = {}
-	for _, key in ipairs(keys) do
-		keys_alt[#keys_alt + 1] = alt_syms[key] or key
-	end
-	if table.concat(keys, " + ") ~= table.concat(keys_alt, " + ") then
-		bind(keys, dispatcher, opts)
-	end
-	bind(keys_alt, dispatcher, opts)
-end
+local actions = require("src.actions")
+local bind = actions.bind
+local bind2 = actions.bind2
 
 -- Windows
 
-bind({ root.mod, "SHIFT", "R" }, function()
-	autostart(false)
-end)
+bind({ root.mod, "SHIFT", "R" }, function() autostart(false) end)
 
 bind2({ root.mod, "Q" }, hl.dsp.window.close())
 
-bind({ root.mod, "C" }, function()
-	local weird = not (
-		hl.get_config("input.touchpad.flip_x") or hl.get_config("input.touchpad.flip_y")
-	)
-	hl.config { input = { touchpad = { flip_x = weird, flip_y = weird } } }
-	hl.exec_cmd(
-		"notify-send -t 1000 -r 8124 'set cursor direction to "
-		.. (weird and "weird" or "normal")
-		.. "'"
-	)
-end)
+bind({ root.mod, "C" }, actions.toggle_weird)
 
--- Toggle float, set size and disable pin
-bind({ root.mod, "SHIFT", "space" }, function()
-	hl.dispatch(hl.dsp.window.pin { action = "disable" })
-	hl.dispatch(hl.dsp.window.float { action = "toggle" })
-	hl.dispatch(hl.dsp.window.resize { x = 1200, y = 800 })
-end)
+bind({ root.mod, "SHIFT", "space" }, actions.toggle_float)
 
 bind({ root.mod, "F" }, hl.dsp.window.fullscreen { mode = 1, action = "toggle" })
 bind({ root.mod, "SHIFT", "F" }, hl.dsp.window.fullscreen())
@@ -79,25 +34,7 @@ bind({ root.mod, "CTRL", "L" }, hl.dsp.focus { monitor = 1 })
 
 bind({ root.mod, "P" }, hl.dsp.window.pin())
 
--- Pinned video player
-bind({ root.mod, "SHIFT", "P" }, function()
-	local window = hl.get_active_window()
-	if window == nil then
-		return
-	end
-	if window.floating and window.pinned then
-		hl.dispatch(hl.dsp.window.pin { action = "disable" })
-		hl.dispatch(hl.dsp.window.float { action = "disable" })
-	else
-		hl.dispatch(hl.dsp.window.float { action = "enable" })
-		hl.dispatch(hl.dsp.window.resize { x = 500, y = 280 })
-		hl.dispatch(hl.dsp.window.move { direction = "up" })
-		hl.dispatch(hl.dsp.window.move { direction = "right" })
-		local gap = 3
-		hl.dispatch(hl.dsp.window.move { relative = true, x = -gap, y = gap })
-		hl.dispatch(hl.dsp.window.pin { action = "enable" })
-	end
-end)
+bind({ root.mod, "SHIFT", "P" }, actions.toggle_popup_float)
 
 bind({ root.mod, "L" }, hl.dsp.focus { direction = "right" })
 bind({ root.mod, "H" }, hl.dsp.focus { direction = "left" })
@@ -113,32 +50,8 @@ bind({ root.mod, "SHIFT", "H" }, hl.dsp.window.move { direction = "left" })
 bind({ root.mod, "SHIFT", "K" }, hl.dsp.window.move { workspace = "-1" })
 bind({ root.mod, "SHIFT", "J" }, hl.dsp.window.move { workspace = "+1" })
 
----@return boolean
-local function is_swallow()
-	return hl.get_config("misc.swallow_regex") ~= ""
-end
-
----@param enabled boolean
----@return nil
-local function set_swallow(enabled)
-	-- TODO: Get regex string from `variables.lua` or some shared definition
-	hl.config { misc = { swallow_regex = enabled and "^.*$" or "" } }
-end
-
-bind({ root.mod, "N" }, function()
-	if not is_swallow() then return end
-	set_swallow(false)
-	hl.timer(function()
-		set_swallow(true)
-	end, { type = "oneshot", timeout = 2000 })
-end)
-
-bind({ root.mod, "SHIFT", "N" }, function()
-	local enabled = is_swallow()
-	hl.exec_cmd("notify-send -t 1000 -r 7915 'Window swallowing " ..
-		(enabled and "DISABLED" or "ENABLED") .. "'")
-	set_swallow(not enabled)
-end)
+bind({ root.mod, "N" }, actions.set_oneshot_swallow)
+bind({ root.mod, "SHIFT", "N" }, actions.toggle_swallow)
 
 -- Workspaces
 
@@ -203,11 +116,7 @@ bind({ root.mod, "M" }, hl.dsp.exec_cmd("mount-gui --notify"))
 
 -- Misc
 
-local function switch_kb_layout()
-	local kb_layout = hl.get_config("input.kb_layout") ~= "us" and "us" or "epo"
-	hl.config { input = { kb_layout = kb_layout } }
-end
-bind2({ "ALT", "Q" }, switch_kb_layout)
+bind2({ "ALT", "Q" }, actions.switch_kb_layout)
 
 bind({ "print" }, hl.dsp.exec_cmd("flameshot gui"))
 bind({ "SHIFT", "print" }, hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))

@@ -1,4 +1,3 @@
--- TODO: Esperanto keyboard equivalent binds
 -- TODO: Call scripts directly from lua
 -- TODO: Plugin config (keybinds)
 
