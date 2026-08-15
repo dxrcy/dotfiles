@@ -42,6 +42,13 @@ M.run = function()
 		bezier = "easeOut",
 		style = "slidevert",
 	}
+	hl.animation {
+		leaf = "specialWorkspace",
+		enabled = true,
+		speed = 4,
+		bezier = "default",
+		style = "fade",
+	}
 end
 
 return M
