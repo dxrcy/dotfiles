@@ -80,6 +80,8 @@ prepend_rules = [
 
     # TODO: Use mime type `application/x-subrip`
     { url = "*.srt", use = [ "edit", "default", "copy-text" ] },
+
+    { url = "*.zip", use = [ "extract", "reveal" ] },
 ]
 
 append_rules = [
