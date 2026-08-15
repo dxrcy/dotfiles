@@ -33,7 +33,15 @@ M.run = function()
 	hl.monitor { output = M.monitor1, mode = "preferred", position = "auto", scale = "1.6" }
 
 	hl.curve("easeOut", { type = "bezier", points = { { 0.33, 1 }, { 0.68, 1 } } })
+
 	hl.animation { leaf = "global", enabled = true, speed = 1.7, bezier = "easeOut" }
+	hl.animation {
+		leaf = "workspaces",
+		enabled = true,
+		speed = 1.8,
+		bezier = "easeOut",
+		style = "slidevert",
+	}
 end
 
 return M
