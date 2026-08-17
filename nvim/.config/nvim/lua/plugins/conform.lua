@@ -23,6 +23,7 @@ return { -- Formatter
 			typescriptreact = { "prettier" },
 			json = { "prettier" },
 			jsonc = { "prettier" },
+			markdown = { "prettier" },
 			python = { "black" },
 			lua = { "stylua" },
 		},
