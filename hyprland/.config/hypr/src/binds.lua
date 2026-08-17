@@ -105,7 +105,7 @@ bind({ root.mod, "M" }, hl.dsp.exec_cmd("mount-gui --notify"))
 bind({ "ALT", "Q" }, actions.switch_kb_layout)
 
 bind({ "print" }, hl.dsp.exec_cmd("flameshot gui"))
-bind({ "SHIFT", "print" }, hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
+bind({ "SHIFT", "print" }, hl.dsp.exec_cmd('pgrep slurp || grim -g "$(slurp -d)" - | wl-copy'))
 
 bind({ root.mod, "B" }, hl.dsp.exec_cmd("bt connect"))
 bind({ root.mod, "SHIFT", "B" }, hl.dsp.exec_cmd("bt disconnect"))
