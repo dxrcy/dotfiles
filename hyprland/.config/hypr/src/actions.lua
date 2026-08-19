@@ -2,6 +2,9 @@ local root = require("src")
 
 local M = {}
 
+local WORKSPACE_MAX = 10
+local WORKSPACE_TEMP = 99
+
 ---@param keys string[]
 ---@param dispatcher (fun(): nil) | HL.Dispatcher
 ---@param opts? HL.BindOptions
@@ -105,6 +108,23 @@ M.toggle_weird = function()
 		.. (weird and "weird" or "normal")
 		.. "'"
 	)
+end
+
+---@param direction -1|1
+---@return fun(): nil
+M.swap_workspaces = function(direction)
+	return function()
+		local old = hl.get_active_workspace().id
+		local new = hl.get_active_workspace().id + direction
+		if new < 1 or new > WORKSPACE_MAX then
+			return
+		end
+		hl.dispatch(hl.dsp.workspace.change_id { workspace = old, id = WORKSPACE_TEMP })
+		hl.dispatch(hl.dsp.workspace.change_id { workspace = new, id = old })
+		hl.dispatch(hl.dsp.workspace.change_id { workspace = WORKSPACE_TEMP, id = new })
+		hl.dispatch(hl.dsp.focus { workspace = old })
+		hl.dispatch(hl.dsp.focus { workspace = new })
+	end
 end
 
 ---@return boolean

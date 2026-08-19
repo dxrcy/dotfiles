@@ -62,6 +62,9 @@ for i = 1, 10 do
 	bind({ root.mod, "SHIFT", key }, hl.dsp.window.move { workspace = i, follow = false })
 end
 
+bind({ root.mod, "CTRL", "SHIFT", "K" }, actions.swap_workspaces(-1))
+bind({ root.mod, "CTRL", "SHIFT", "J" }, actions.swap_workspaces(1))
+
 bind({ root.mod, "CTRL", "ALT", "H" }, hl.dsp.workspace.move { monitor = 0 })
 bind({ root.mod, "CTRL", "ALT", "L" }, hl.dsp.workspace.move { monitor = 1 })
 
