@@ -119,11 +119,13 @@ M.swap_workspaces = function(direction)
 		if new < 1 or new > WORKSPACE_MAX then
 			return
 		end
+		local window = hl.get_active_window()
 		hl.dispatch(hl.dsp.workspace.change_id { workspace = old, id = WORKSPACE_TEMP })
 		hl.dispatch(hl.dsp.workspace.change_id { workspace = new, id = old })
 		hl.dispatch(hl.dsp.workspace.change_id { workspace = WORKSPACE_TEMP, id = new })
 		hl.dispatch(hl.dsp.focus { workspace = old })
 		hl.dispatch(hl.dsp.focus { workspace = new })
+		hl.dispatch(hl.dsp.focus { window = window })
 	end
 end
 
