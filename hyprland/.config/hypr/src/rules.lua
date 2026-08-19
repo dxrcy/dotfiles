@@ -63,7 +63,7 @@ hl.window_rule {
 	name = "pin",
 	match = { pin = true },
 	border_size = 2,
-	border_color = "0x9b8921ff 0xff33125b",
+	border_color = "#8921ff9b #33125b",
 }
 
 for _, program in ipairs(sw.programs) do

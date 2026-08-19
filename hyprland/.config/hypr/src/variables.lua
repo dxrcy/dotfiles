@@ -7,8 +7,8 @@ hl.config {
 		gaps_out = root.fancy and 4 or 0,
 
 		col = {
-			inactive_border = 0xff342d01,
-			active_border = 0xff9b8921,
+			inactive_border = "#342d01",
+			active_border = "#9b8921",
 		},
 
 		layout = "scrolling",
@@ -69,7 +69,6 @@ hl.config {
 		disable_hyprland_logo = true,
 
 		enable_swallow = true,
-		-- TODO: Specify terminal class,
 		swallow_regex = "^.*$",
 
 		on_focus_under_fullscreen = 2,
