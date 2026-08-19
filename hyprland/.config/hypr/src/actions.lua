@@ -112,7 +112,7 @@ end
 
 ---@param direction -1|1
 ---@return fun(): nil
-M.swap_workspaces = function(direction)
+M.shift_workspace = function(direction)
 	return function()
 		local old = hl.get_active_workspace().id
 		local new = hl.get_active_workspace().id + direction
