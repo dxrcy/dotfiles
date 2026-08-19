@@ -1,4 +1,7 @@
 local root = require("src")
+local logging = require("src.logging")
+
+local FILEPATH_RECENT = "/tmp/sw.recent"
 
 ---@class Program
 ---@field name string
@@ -56,9 +59,6 @@ local programs = {
 	},
 }
 
-local recent_filepath = "/tmp/sw.recent"
-local log_filepath = "/tmp/sw.log"
-
 ---@param name string
 ---@return Program?
 local function find_program(name)
@@ -74,24 +74,12 @@ end
 ---@param name string|nil
 ---@param message string
 local function log(level, name, message)
-	local line = ""
-	line = line .. os.date("%Y-%m-%dT%H:%M:%S")
-	line = line .. " " .. level:upper()
-	if name then
-		line = line .. "(" .. name .. ")"
-	end
-	line = line .. ": " .. tostring(message)
-
-	local file, _ = io.open(log_filepath, "a")
-	if file then
-		file:write(line, "\n")
-		file:close()
-	end
+	logging.log(level, { "sw", name }, message)
 end
 
 ---@return string|nil
 local function get_recent_name()
-	local file = io.open(recent_filepath, "r")
+	local file = io.open(FILEPATH_RECENT, "r")
 	if file == nil then
 		log("err", nil, "failed to read recent file")
 		return nil
@@ -109,7 +97,7 @@ end
 ---@param program Program
 ---@return nil
 local function write_recent_program(program)
-	local file = io.open(recent_filepath, "w")
+	local file = io.open(FILEPATH_RECENT, "w")
 	if file == nil then
 		log("warn", nil, "failed to write recent file")
 		return
