@@ -39,15 +39,19 @@ bind({ root.mod, "L" }, hl.dsp.focus { direction = "right" })
 bind({ root.mod, "H" }, hl.dsp.focus { direction = "left" })
 bind({ root.mod, "K" }, hl.dsp.focus { workspace = "-1" })
 bind({ root.mod, "J" }, hl.dsp.focus { workspace = "+1" })
-
--- For focusing floating windows
--- TODO: Only toggle between most recent floating window and most recent tiling window
-bind({ root.mod, "space" }, hl.dsp.window.cycle_next())
+bind({ root.mod, "I" }, hl.dsp.focus { direction = "down" })
+bind({ root.mod, "O" }, hl.dsp.focus { direction = "up" })
 
 bind({ root.mod, "SHIFT", "L" }, hl.dsp.window.move { direction = "right" })
 bind({ root.mod, "SHIFT", "H" }, hl.dsp.window.move { direction = "left" })
 bind({ root.mod, "SHIFT", "K" }, hl.dsp.window.move { workspace = "-1" })
 bind({ root.mod, "SHIFT", "J" }, hl.dsp.window.move { workspace = "+1" })
+bind({ root.mod, "SHIFT", "I" }, hl.dsp.window.move { direction = "down" })
+bind({ root.mod, "SHIFT", "O" }, hl.dsp.window.move { direction = "up" })
+
+-- For focusing floating windows
+-- TODO: Only toggle between most recent floating window and most recent tiling window
+bind({ root.mod, "space" }, hl.dsp.window.cycle_next())
 
 bind({ root.mod, "N" }, actions.set_oneshot_swallow)
 bind({ root.mod, "SHIFT", "N" }, actions.toggle_swallow)
