@@ -87,7 +87,7 @@ bind({ root.mod, "Return" }, actions.open_terminal("new"))
 bind({ root.mod, "ALT", "Return" }, actions.open_terminal("reattach"))
 bind({ root.mod, "CTRL", "Return" }, actions.open_terminal("no_mux"))
 
-bind({ root.mod, "SHIFT", "O" }, actions.open_notes)
+bind({ root.mod, "Y" }, actions.open_notes)
 
 -- Popups
 
