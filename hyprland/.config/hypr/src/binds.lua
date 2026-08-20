@@ -3,6 +3,7 @@ local sw = require("src.sw")
 local autostart = require("src.autostart")
 local actions = require("src.actions")
 local bind = actions.bind
+local log = require("src.logging").log
 
 -- Windows
 
@@ -71,6 +72,8 @@ bind({ root.mod, "CTRL", "SHIFT", "J" }, actions.shift_workspace(1))
 
 bind({ root.mod, "CTRL", "ALT", "H" }, hl.dsp.workspace.move { monitor = 0 })
 bind({ root.mod, "CTRL", "ALT", "L" }, hl.dsp.workspace.move { monitor = 1 })
+
+bind({ root.mod, "T" }, actions.insert_empty_workspace())
 
 -- Special workspaces
 

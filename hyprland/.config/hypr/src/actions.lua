@@ -1,4 +1,5 @@
 local root = require("src")
+local log = require("src.logging").log
 
 local M = {}
 
@@ -126,6 +127,36 @@ M.shift_workspace = function(direction)
 		hl.dispatch(hl.dsp.focus { workspace = old })
 		hl.dispatch(hl.dsp.focus { workspace = new })
 		hl.dispatch(hl.dsp.focus { window = window })
+	end
+end
+
+---@param workspace integer
+---@return boolean
+local function is_workspace_empty(workspace)
+	for _, window in ipairs(hl.get_windows()) do
+		if window.workspace.id == workspace and not window.pinned then
+			return false
+		end
+	end
+	return true
+end
+
+---@return fun(): nil
+M.insert_empty_workspace = function()
+	return function()
+		local old = hl.get_active_workspace().id
+		local new = old + 1
+		if is_workspace_empty(old) or new > WORKSPACE_MAX then
+			return
+		end
+		if is_workspace_empty(new) then
+			hl.dispatch(hl.dsp.focus { workspace = new })
+			return
+		end
+		for i = WORKSPACE_MAX, new, -1 do
+			hl.dispatch(hl.dsp.workspace.change_id { workspace = i, id = i + 1 })
+		end
+		hl.dispatch(hl.dsp.focus { workspace = new })
 	end
 end
 
