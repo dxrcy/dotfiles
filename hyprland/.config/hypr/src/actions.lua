@@ -111,6 +111,17 @@ M.toggle_weird = function()
 	)
 end
 
+---@param old integer
+---@param new integer
+---@return nil
+local function swap_workspaces(old, new)
+	hl.dispatch(hl.dsp.workspace.change_id { workspace = old, id = WORKSPACE_TEMP })
+	hl.dispatch(hl.dsp.workspace.change_id { workspace = new, id = old })
+	hl.dispatch(hl.dsp.workspace.change_id { workspace = WORKSPACE_TEMP, id = new })
+	hl.dispatch(hl.dsp.focus { workspace = old })
+	hl.dispatch(hl.dsp.focus { workspace = new })
+end
+
 ---@param direction -1|1
 ---@return fun(): nil
 M.shift_workspace = function(direction)
@@ -121,11 +132,7 @@ M.shift_workspace = function(direction)
 			return
 		end
 		local window = hl.get_active_window()
-		hl.dispatch(hl.dsp.workspace.change_id { workspace = old, id = WORKSPACE_TEMP })
-		hl.dispatch(hl.dsp.workspace.change_id { workspace = new, id = old })
-		hl.dispatch(hl.dsp.workspace.change_id { workspace = WORKSPACE_TEMP, id = new })
-		hl.dispatch(hl.dsp.focus { workspace = old })
-		hl.dispatch(hl.dsp.focus { workspace = new })
+		swap_workspaces(old, new)
 		hl.dispatch(hl.dsp.focus { window = window })
 	end
 end
@@ -164,26 +171,35 @@ end
 M.remove_empty_workspaces = function()
 	return function()
 		local window = hl.get_active_window()
-		local old = hl.get_active_workspace().id
-		local new = nil
+		local workspace_old = hl.get_active_workspace().id
+		local workspace_new = nil
 		local next_empty = nil
+		local nonempty_count = 0
 		for i = 1, WORKSPACE_MAX do
 			local can_move = next_empty and next_empty < i
 			if is_workspace_empty(i) then
+				if i == workspace_old then workspace_new = nonempty_count end
 				if not can_move then next_empty = i end
-			elseif can_move then
-				if i == old then new = next_empty end
-				hl.dispatch(hl.dsp.workspace.change_id { workspace = i, id = next_empty })
-				next_empty = next_empty + 1
 			else
-				next_empty = nil
+				nonempty_count = nonempty_count + 1
+				if can_move then
+					assert(next_empty)
+					swap_workspaces(i, next_empty)
+					if i == workspace_old then workspace_new = next_empty end
+					next_empty = next_empty + 1
+				else
+					next_empty = nil
+				end
 			end
 		end
-		if new then
-			hl.dispatch(hl.dsp.focus { workspace = old })
-			hl.dispatch(hl.dsp.focus { workspace = new })
+		if workspace_new then
+			-- TODO: Can remove this line?
+			hl.dispatch(hl.dsp.focus { workspace = workspace_old })
+			hl.dispatch(hl.dsp.focus { workspace = workspace_new })
 		end
-		hl.dispatch(hl.dsp.focus { window = window })
+		if window then
+			hl.dispatch(hl.dsp.focus { window = window })
+		end
 	end
 end
 
