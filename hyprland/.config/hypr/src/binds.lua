@@ -74,6 +74,7 @@ bind({ root.mod, "CTRL", "ALT", "H" }, hl.dsp.workspace.move { monitor = 0 })
 bind({ root.mod, "CTRL", "ALT", "L" }, hl.dsp.workspace.move { monitor = 1 })
 
 bind({ root.mod, "T" }, actions.insert_empty_workspace())
+bind({ root.mod, "G" }, actions.remove_empty_workspaces())
 
 -- Special workspaces
 

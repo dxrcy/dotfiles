@@ -160,6 +160,33 @@ M.insert_empty_workspace = function()
 	end
 end
 
+---@return fun(): nil
+M.remove_empty_workspaces = function()
+	return function()
+		local window = hl.get_active_window()
+		local old = hl.get_active_workspace().id
+		local new = nil
+		local next_empty = nil
+		for i = 1, WORKSPACE_MAX do
+			local can_move = next_empty and next_empty < i
+			if is_workspace_empty(i) then
+				if not can_move then next_empty = i end
+			elseif can_move then
+				if i == old then new = next_empty end
+				hl.dispatch(hl.dsp.workspace.change_id { workspace = i, id = next_empty })
+				next_empty = next_empty + 1
+			else
+				next_empty = nil
+			end
+		end
+		if new then
+			hl.dispatch(hl.dsp.focus { workspace = old })
+			hl.dispatch(hl.dsp.focus { workspace = new })
+		end
+		hl.dispatch(hl.dsp.focus { window = window })
+	end
+end
+
 ---@return boolean
 M.is_swallow = function()
 	return hl.get_config("misc.swallow_regex") ~= ""
