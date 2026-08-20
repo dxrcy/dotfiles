@@ -24,6 +24,7 @@ return { -- Manage files in a tree
 
 			window = {
 				mappings = {
+					["ŝ"] = "close_window",
 					["\\"] = "close_window",
 					["/"] = "none",
 				},
